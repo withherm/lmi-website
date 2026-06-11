@@ -129,6 +129,23 @@ Everywhere else stays line-art. Warmth without slop. This is the deliberate dive
 
 ---
 
+## Structural role model: NN/g (Resources, Insights, Knowledge Base)
+
+Nielsen Norman Group (nngroup.com) is the reference for how a research-led training authority structures content. It is the right model because the parallel is exact: NN/g teaches UX from research, LMI teaches Lean from practice. Patterns to adopt, drawn from their articles index:
+
+1. **Content-first index, no hero burying the list.** The Insights / Resources / Knowledge Base index leads straight with the content list, minimal chrome, no full-bleed hero image you scroll past. (Reinforces the existing anti-slop rule.)
+2. **Topic taxonomy with a curated shortlist + expand.** Browse-by-topic shows a handful of curated topics with a "see all topics" expand, not a wall of tags. LMI topics: Lean Six Sigma, Lean Agile, AI in Lean, Lean Service Design, Lean Business Analysis, plus belt level. Tag every resource; show a curated few, expandable.
+3. **Scannable card metadata (adopt verbatim).** Every item carries: clear title, date, content-type + read-time label ("Article: 6 min read", "5 min video", "Tool", "Template"), and a one-sentence plain-English summary. This is the LMI Insights / KB / FAQ card pattern.
+4. **Filters by recency, popularity and type.** Most Recent / Most Popular / Videos / Articles. LMI: filter by type (article, tool, video, FAQ, template) and topic.
+5. **A curated "Start here" block** above the feed (NN/g's "Popular Articles"). LMI: hand-pick the entry set, e.g. What is Lean Six Sigma, the belt pathway, and the three calculators.
+6. **High-scent titles: value-first, number-led where it fits.** "10 Usability Heuristics", "Why You Only Need to Test with 5 Users", "Usability 101". Pairs with LMI's verb-first rule: lead with the value or the number, never a vague title.
+7. **Read-time + content-type labels** set expectation and cut friction. Adopt on every resource.
+8. **Writing for the web (substance, not just layout).** NN/g's own canon governs LMI content: inverted pyramid (key point first), scannable subheads, short paragraphs, plain language, front-loaded links. Sits naturally with the locked Lora body + short marketing blocks.
+9. **Free templates and tools as lead magnets.** NN/g gives away templates (e.g. a heuristic-eval template). LMI's equivalent is the Resources/Tools page: the Catapult simulator, the sample-size calculator, the process-sigma calculator (EQT-301 / EQT-302 / EQT-303), plus downloadable templates. Ungated for reach, email-gated where the magnet is strong.
+10. **Artwork validates the line-art decision.** NN/g uses almost no decorative imagery on index pages, and where it uses visuals they are diagrams that teach (journey maps, frameworks), not stock. This backs LMI's line-art-led idiom and the Framework Teaching Layer: diagrams that teach over photography that decorates.
+
+---
+
 ## Anti-slop checklist (reject all of these)
 
 Generic stock photography; stocky purple/blue gradients; autoplay carousels and logo marquees; full-screen hero images you scroll past to reach information; parallax; load-in animation theatre; bouncing or pulsing CTAs; **red or crimson buttons**; emoji or generic icon-font icons; AI-raster illustration; dense small grey text; the default Squarespace/template look; big-image heroes that bury the content.
