@@ -194,6 +194,14 @@ NN/g is the structural role model, but its execution has five faults LMI must no
 4. **Taxonomy/findability overload, weak search.** → Faceted filter (type + topic + belt level), real on-site search, a curated "Start here", and a short curated shortlist with expand, never a full-taxonomy dump. (Carried in `LMI_SITE_ARCHITECTURE_v2.md`.)
 5. **Static, desktop-text-first, no living-product feel, no capture.** → Lead with the interactive tools NN/g lacks (calculators, selectors), mobile-first, restrained modern motion, and use the strong magnets to capture (light gate on bundles/reports, the AI Readiness result) feeding nurture. The tools are LMI's living product.
 
+Second batch (noticed 2026-06-11, the certification area):
+
+6. **Self-certification, no independent separation** (NN/g trains, certifies and runs the registry itself; "marking your own homework"). → LMI's moat is the opposite: AUSQ is the genuinely independent certifier for LSS. Foreground trainer-certifier separation on the Certifications page, don't bury it. (Strategy: see `LMI_SITE_ARCHITECTURE_v2.md`.)
+7. **Weak, non-employer-friendly verification** (18k-row paginated registry, search by name/ID only, no clean single-credential confirm). → Certizio verify is a one-step ID lookup → single clean result, plus shareable verifiable digital badges (LinkedIn-addable URL), not a scroll table. Built for the employer/procurement officer.
+8. **Pricing / cost opacity** (buy-walls, prices hidden deep in funnels). → Public per-participant pricing + Stripe self-serve on standard courses; a clear free-vs-paid line across the Resource Center; no "contact us for price" on a standard belt course.
+9. **Authority by assertion, thin outcome evidence.** → Evidence tied to the action (a locked principle), real anonymised client-type outcomes, captioned AICD-style testimonial, employer trust signals placed where the decision happens. Show the result, don't assert the reputation.
+10. **Content freshness ambiguity** (1994/2000 articles beside 2026 ones, no "reviewed" signal). → Visible "last reviewed" date + a review cadence on evergreen guides, updated in place. Freshness is a trust signal, doubly so for the AI differentiator.
+
 ---
 
 ## Anti-slop checklist (reject all of these)
