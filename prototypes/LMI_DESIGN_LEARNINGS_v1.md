@@ -90,7 +90,13 @@ Same two families as EQUIBT v6x, on purpose.
 **CTA wording — "Get in touch", not "Book a discovery call" (Herman, 2026-06-11).** Reverses the architecture's locked "Book a discovery call". Reason: there is no one on the ground to staff live discovery calls, so a "book a call" CTA over-promises and the first impression is a call that never happens. "Get in touch" is async (form / email, answered when capacity allows) and happens to match EQUIBT's CTA, so the group reads consistently. Self-serve carries the individual learner with no call needed: Explore programs, View dates, the Belt Level Selector, Stripe enrolment. In-House keeps "Enquire about in-house training" (also async).
 
 - **Belt ladder (signature).** Vertical, Yellow foot to Master Black top. Each rung: belt chip (identity colour) + name + one-line outcome; selected rung expands a detail line (duration, credential), takes a **Cobalt** ring, and lights a **Cobalt** spine fill from the foot to the selected rung. Proximity (nearby rungs ease up by cursor distance), hover-selects-and-persists, keyboard accessible, reduced-motion safe. This is the one place motion shows off because it also does wayfinding.
-- **Course card / program tile.** Outcome-first name + Lora description + delivery-format chips + credential chip (AUSQ-certified in Cobalt) + "View programs ›" chevron link. Hover lifts and darkens the border.
+- **Course card / program tile.** Outcome-first name + Lora description + delivery-format chips + credential chip (AUSQ-certified in Cobalt) + "View programs ›" chevron link. Hover lifts and darkens the border. The program/belt badge (below) sits top-left of the card.
+- **Belt / credential badge (component).** A hand-drawn squircle outline (the LMI line-art wobble, not a geometric rounded rectangle) with a bold two-letter monogram inside, outline only, no fill. This is the LMI line-art idiom in token form, and it is the compact label that complements the belt ladder, not a competitor to it. Reuse it as the belt chip in the ladder, the badge on course cards, in tables, and in training PPTs. Source artwork: `GOS vault Docs/LMI/ARTWORK/LMI ARTWORK BAR/` (`.ai` source `LMI-BAR-88.ai`, with `ICON-*` badges, `BAR-*` badge+label lockups, and `Session-15/30/45/60` filled duration variants). **Web needs SVG exports from the `.ai` source; the supplied PNGs are 88px and will not scale crisply.** Affinity recolour + SVG export is Herman's draw (per the Affinity workflow); Claude specs and integrates.
+
+  **Badge colour by layer (locked discipline):**
+  - *Corporate Layer (website):* single accent. Real Lean Six Sigma belts keep their belt identity colour (Yellow / Green / Black, charcoal `#1C1C1C` not grey). Every non-belt badge renders in **Cobalt `#103E8C`** or navy ink, one accent, no colour-per-course.
+  - *Framework Teaching Layer (PPTs, training collateral):* colour is allowed and aids retention, but it must come from the locked teaching-layer palette (Petrol Teal, Amber, Slate, Crimson, Forest, Deep Navy), enterprise tones, **not** the current ad-hoc bright cyan / indigo (pastels are banned by the v7.1 addendum).
+  - *Artwork fixes flagged 2026-06-11:* Black Belt currently renders mid-grey (reads as a "grey belt"), fix to charcoal `#1C1C1C`; the blues in the batch are bright cyan `~#1BA8E8` and indigo, **neither is the locked Cobalt `#103E8C`**, so none of the current blues are web-ready. Full per-code colour map pending Herman's two-letter code legend.
 - **AI differentiator (signature block).** Sits immediately after the hero on Pale Sky. Verb-first headline, three proof columns (Yellow / Green / Black) on hairlines. The uncontested position, given the home's prime second slot.
 - **In-house callout (warm-wash pocket + hybrid photography).** The one Warm wash `#F3ECDD` section. Two-column: a real session photo with a Cobalt eyebrow tag + verb-first text overlay (AICD model) left, copy + Cobalt CTA right. Bilingual delivery line (EN / 中文) carried here, not as a banner.
 - **Certification strip.** Three hairline marks (AUSQ, LeanMethods.org, Certizio) + one line each. Cobalt square bullet. Links to "How LMI certification works ›".
@@ -112,13 +118,14 @@ Same two families as EQUIBT v6x, on purpose.
 
 ## Photography position (hybrid, line-art led)
 
-Line-art is the structural idiom and the signature (belt ladder, hero motif, pillar and sector icons). Real photography appears in **three trust zones only**: Faculty, In-house delivery proof, and the lead testimonial. Rules:
+Line-art is the structural idiom and the signature (belt ladder, hero motif, pillar and sector icons). **Dosage rule: line-art leads, imagery is the proof/atmosphere accent, never the main event.** Line-art is what stops LMI looking like every other RTO and like the old OE Methods site; if photography goes heavy, the differentiator is lost. Keep imagery contained.
 
-- Only genuine LMI sessions, never a stock library.
-- Always a Cobalt eyebrow tag + verb-first text overlay (AICD model) or an italic caption, so a photo can never read as generic.
-- Everywhere else stays line-art.
+Two kinds of imagery, with different rules:
 
-Warmth without slop. This is the deliberate divergence from EQUIBT's no-photo line-art, justified because LMI sells human learning.
+- **Real photography — the three trust zones only:** Faculty, In-house delivery proof, and the lead testimonial. These make an implicit truth claim ("our real instructor / our real session / our real client"), so they must be genuine LMI sessions, never a stock library and **never AI-generated**. A fake face presented as a real person is a credibility landmine with corporate and government buyers. Always a Cobalt eyebrow tag + verb-first text overlay (AICD model) or an italic caption, so a photo can never read as generic.
+- **AI-generated imagery — non-claim contexts only (Herman, 2026-06-11):** high-quality AI imagery is allowed for conceptual, atmospheric, environmental or textural use (hero backgrounds, abstract section art, mood imagery) where it makes no claim to be a specific real person, session or client. It must be genuinely high quality, on-palette, and never read as slop or as a fake-real photo. **Hard line: AI imagery never substitutes for a real face/session/client in the three trust zones.**
+
+Everywhere else stays line-art. Warmth without slop. This is the deliberate divergence from EQUIBT's no-photo line-art, justified because LMI sells human learning.
 
 ---
 
