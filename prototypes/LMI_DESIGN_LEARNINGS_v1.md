@@ -146,6 +146,22 @@ Nielsen Norman Group (nngroup.com) is the reference for how a research-led train
 
 ---
 
+## Framework diagram style (NN/g-informed teaching diagrams)
+
+NN/g's framework diagrams (e.g. their Journey Map 101) are the reference for how LMI illustrates a whole tool. Principle: **one clean diagram explains one tool, simply.** Structure carries the teaching; decoration is absent.
+
+**The blank-template + worked-example pairing (adopt this, it does double duty).** NN/g publishes each framework twice: a pure line-art **blank template** (fill-in-the-blanks) and a **worked example** (the same frame filled, lightly colour-zoned). This is both a teaching device (show the empty frame, then show it filled) and LMI's lead-magnet device: the blank template is the **download** (the DMAIC toolkit, EQT-305), the worked example is the **guide content** (the 101 set, EQT-306). Build every core framework as this pair.
+
+**Elements (the shared grammar):** heavy, clean outline boxes on a clear grid; bold Montserrat zone headings; numbered steps; speech-bubble callouts for the learner/quote voice; an experience or value curve threaded through where the framework has a flow; a reusable **persona glyph** (the circle + person line mark) for the "who"; and labelled zones, typically top (who / scenario / goal), middle (the phases or steps), bottom (opportunities / ownership / outputs).
+
+**Palette discipline (where LMI diverges from NN/g):** the blank template is **navy line-art only** (one Cobalt accent on web). The worked example uses the **Framework Teaching Layer palette** (Petrol Teal, Amber, Slate, Crimson, Forest, Deep Navy) as restrained zone tints, **enterprise tones, not NN/g's pastels** (the v7.1 addendum bans pastels). Never the bright cyan/indigo.
+
+**Apply to:** DMAIC, SIPOC, VSM, 5S, 8 Wastes (DOWNTIME), A3, fishbone/Ishikawa, FMEA, and a Lean customer-journey map, across the guides, the cheat-sheet posters, the downloadable templates, and the training PPTs. The belt badge component is the type/topic marker on these.
+
+**Production:** Affinity draw (Herman) + Claude clean/integrate + SVG export; render-check at actual display size before sign-off (the EQT-272 lesson). These are direction specs, not hand-authored production art.
+
+---
+
 ## Anti-slop checklist (reject all of these)
 
 Generic stock photography; stocky purple/blue gradients; autoplay carousels and logo marquees; full-screen hero images you scroll past to reach information; parallax; load-in animation theatre; bouncing or pulsing CTAs; **red or crimson buttons**; emoji or generic icon-font icons; AI-raster illustration; dense small grey text; the default Squarespace/template look; big-image heroes that bury the content.
