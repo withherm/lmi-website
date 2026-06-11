@@ -1,5 +1,5 @@
 # Codex Project GOS — Operating Instructions
-_Last updated: 2026-05-22 | Platform: OpenAI Codex (cloud code agent, GitHub access, no vault access)_
+_Last updated: 2026-06-11 (staleness refresh) | Platform: OpenAI Codex (cloud code agent, GitHub access, no vault access)_
 
 ---
 
@@ -42,7 +42,7 @@ Codex does not replace or configure Hermes. It handles code execution tasks assi
 
 | Brand | Repo | Stack | Notes |
 |---|---|---|---|
-| EQUIBT | `withherm/equibt-website` | Squarespace Phase 1, WordPress Phase 2 (Sep 2026) | Do not build WordPress config until Phase 2 is scoped |
+| EQUIBT | `withherm/equibt-website` | Astro + Cloudflare Pages (v6x) | Live (gated) at `equibt-website.pages.dev`; go-live pending EQT-262. Design authority: `prototypes/DESIGN_LEARNINGS_v6x.md`. Squarespace/WordPress retired. |
 | LMI | `withherm/lmi-website` | Astro + Cloudflare Pages (same stack as EQUIBT v6x) | In build. Design authority: `prototypes/LMI_DESIGN_LEARNINGS_v1.md`. NOT WordPress. |
 | CUBOROO | No repo — Squarespace only | Squarespace only | Never WordPress |
 
@@ -60,7 +60,7 @@ Codex does not replace or configure Hermes. It handles code execution tasks assi
 
 ## Brand rules
 
-**EQUIBT:** B2B advisory. Five pillars: PLAN, SOLVE, PROVE, LEAP, SUSTAIN.
+**EQUIBT:** B2B advisory. Six locked pillars (DMAICO): FRAME, PLAN, SOLVE, EVOLVE, GOVERN, SCALE. Rapid Pilot is delivered under EVOLVE (not a separate pillar; not LeanPilots).
 
 **LMI:** Training. Tagline: "We build lean, AI-capable teams."
 
