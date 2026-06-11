@@ -22,9 +22,9 @@ Code agent for GOS build tasks. Codex operates from Linear issues and GitHub —
 2. Update issue status: Backlog → In Progress.
 3. Create a Git branch named after the issue identifier: `eqt-12-setup-nav`.
 4. Build only what the issue describes. Do not refactor unrelated files or add scope.
-5. Verify all acceptance criteria before completing.
+5. Verify all acceptance criteria before completing. **For any LMI page, also run the NN/g anti-pattern ship-gate checklist in `prototypes/LMI_DESIGN_LEARNINGS_v1.md` and confirm none are present. That file is the LMI design authority: read it before any LMI visual build.**
 6. Create a pull request. Post the PR URL as a comment on the Linear issue.
-7. Update issue status: In Progress → Done.
+7. After the PR is open, set status to In Review. Do NOT self-mark Done; Done means merged to main and live, set only by Herman or Cowork.
 
 To pick up the next task: read the Linear board, take the highest-priority Backlog issue in the relevant project.
 
@@ -43,7 +43,7 @@ Codex does not replace or configure Hermes. It handles code execution tasks assi
 | Brand | Repo | Stack | Notes |
 |---|---|---|---|
 | EQUIBT | `withherm/equibt-website` | Squarespace Phase 1, WordPress Phase 2 (Sep 2026) | Do not build WordPress config until Phase 2 is scoped |
-| LMI | `withherm/lmi-website` | WordPress (Sep 2026) | Not started |
+| LMI | `withherm/lmi-website` | Astro + Cloudflare Pages (same stack as EQUIBT v6x) | In build. Design authority: `prototypes/LMI_DESIGN_LEARNINGS_v1.md`. NOT WordPress. |
 | CUBOROO | No repo — Squarespace only | Squarespace only | Never WordPress |
 
 **Use before build:** existing subscription → existing platform → SaaS tool → custom build.

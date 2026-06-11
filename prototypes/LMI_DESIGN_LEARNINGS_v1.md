@@ -186,7 +186,9 @@ NN/g's framework diagrams (e.g. their Journey Map 101) are the reference for how
 
 ## NN/g anti-patterns to avoid (mitigations baked in)
 
-NN/g is the structural role model, but its execution has five faults LMI must not copy. Each has a locked mitigation (design and IA).
+> **This list is the single source of truth and a ship-gate checklist.** It lives only here (versioned in git); other docs point to it, never restate it. Owner: Skye (design) + Claire (strategy). Append new patterns as found; review at the design-learnings cadence. **Definition of done:** no LMI page issue moves to In Review until it has been checked against this list (enforced via the repo `AGENTS.md` and vault `CLAUDE_CODE.md`).
+
+NN/g is the structural role model, but its execution has faults LMI must not copy. Each has a locked mitigation (design and IA).
 
 1. **Austere, dated, visually inconsistent** (B/W, unchanged for years, polished diagrams next to raw screenshots). → LMI keeps NN/g's structure and scannability but carries disciplined warmth and consistency: single Cobalt accent, Pale Sky grounds, the Warm-wash pocket, one treated hero, and **every diagram in one house style (Framework Teaching Layer), never a raw screenshot in content.**
 2. **Wall-of-text articles, weak chunking.** → The article/guide template is designed for scanning: a summary box + key-takeaways at the top, an "in this article" jump-nav, short Lora blocks, a subhead every screen, and a framework diagram every screen or two to break the text.
