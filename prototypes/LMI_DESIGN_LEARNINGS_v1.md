@@ -6,6 +6,18 @@ _**Status: LOCKED.** This is the canonical design authority for the LMI build, t
 
 ---
 
+## DIRECTION CHANGE — visual idiom (Herman, 2026-06-11, later same day)
+
+**The idiom moves from "line-art-led / hand-drawn signature" to a structured, formal, precise system. Hybrid: hand-drawn is retained in ONE place only, the belt / credential badges. Everything else, framework diagrams, program and sector icons, layout, components, is clean architectural line, no wobble.**
+
+Why: Lean Six Sigma is about precision, standardisation and removing variation. A deliberately hand-drawn wobble quietly contradicts the discipline LMI teaches, and reads as informal to the conservative corporate and government buyer. A structured, formal system is on-message and de-risked. The signature shifts from "the hand-drawn idiom" to **the belt ladder + the disciplined Cobalt-on-Pale-Sky system + the Framework Teaching Layer diagram pairs**, with the hand-drawn belt badges as the single warmth/craft token.
+
+**Hero image:** a treated / art-directed AI-generated image with realistic people, graded (Cobalt duotone or a structure overlay) so it reads as deliberate brand craft, not stock. Aspirational, never a "this is our real classroom" claim. A genuine session photo is preferred if available; treated AI is the fallback. The three real-photo trust zones below still hold (faculty, in-house proof, testimonial = genuine, never AI).
+
+This block governs. Where older language below still says "line-art led" or "hand-drawn idiom" as the system signature, read it as superseded by this: structured system, hand-drawn only in the belt badges.
+
+---
+
 ## Decisions locked this session (Herman, 2026-06-11)
 
 1. **Action colour = Cobalt `#103E8C`** (hover `#0c2f6b`). Ocean Blue `#0072CE` was trialled and rejected as too bright/cool against the warm ground; Petrol Teal before it was rejected as dull/old. Crimson and red are banned from buttons and titles: a past project got poor user feedback on red buttons.
@@ -14,7 +26,7 @@ _**Status: LOCKED.** This is the canonical design authority for the LMI build, t
 4. **Single accent = Cobalt. Crimson leaves the system entirely** (Herman, "minimise the colours, cleaner with a single colour"). LMI mirrors EQUIBT's single-accent structure: navy line-art + ONE accent + neutrals. Cobalt does everything: buttons, links, chevrons, nav hover, eyebrow text + dot, the active-belt highlight and spine fill, and the one accent per line-art glyph. **Crimson `#A51C30` is removed as a system colour** and survives only inside the actual LMI logo mark (the red square). Not on eyebrows, not on highlights, not in glyphs.
 5. **Eyebrow = Cobalt text + Cobalt dot** (the EQUIBT eyebrow idiom, held to one colour). Headings stay near-black ink.
 6. **Home hero rhythm = Option B, the belt ladder is the hero** (vertical climb, Yellow at the foot to Master Black at the top). Option A (editorial hero + horizontal belt spine) is retained as the Programs-hub treatment, not wasted.
-7. **Photography = hybrid, line-art led.** Line-art stays the idiom and the signature; real captioned photos appear in three trust zones only.
+7. **Photography / imagery** (revised by the Direction Change above). Structured system, not line-art-led. Hero = treated/art-directed AI with realistic people (graded, aspirational). Real captioned photos appear in three trust zones only (faculty, in-house proof, testimonial); those stay genuine, never AI.
 
 **Cascade corrections applied on sign-off (2026-06-11):**
 - `LMI_Site_Architecture_v1.html` corrected: the "Crimson doubles as the site-wide conversion colour (all buttons)" note is removed (Cobalt is the conversion colour), and every "Book a discovery call" CTA is now "Get in touch". A header banner on that file points back here as the colour authority.
@@ -31,11 +43,11 @@ Simple to understand, simple to navigate, modern, trustworthy. Not dated, not ge
 ## Principles
 
 1. **Editorial calm.** Air, large clean type, restraint. Layout serves the message.
-2. **One house, two siblings.** Same type pairing and line-art idiom as EQUIBT v6x, so the two sites read as one family. Divergence is carried by colour, warmth and photography, not by new fonts.
-3. **Warmth where it earns it, not everywhere.** LMI sells learning to people, so it carries warmth, but the base is cool and credible (Cobalt + Pale Sky). The human warmth lives in two contained places: the Warm-wash callout pocket and the captioned photography. Trustworthy not stiff, approachable not cheap. This is the corrected read after the cool/warm tuning: warm-everywhere fought the deep blue.
-4. **The belt ladder is the signature.** It is the hero motif and the wayfinding spine of the Lean Six Sigma hub, the LMI equivalent of the EQUIBT DMAICO trainline.
+2. **Structured and formal, one family with EQUIBT by type and colour discipline.** Shares the Montserrat + Lora pairing and the single-accent discipline with EQUIBT, but the idiom is precise and structured (see Direction Change), not hand-drawn. Hand-drawn survives only in the belt badges.
+3. **Warmth where it earns it, not everywhere.** LMI sells learning to people, so it carries warmth, but the base is cool and credible (Cobalt + Pale Sky). The human warmth lives in three contained places: the Warm-wash callout pocket, the treated hero image, and the captioned trust-zone photography. Trustworthy not stiff, approachable not cheap.
+4. **The belt ladder is the signature.** It is the hero motif and the wayfinding spine of the Lean Six Sigma hub, the LMI equivalent of the EQUIBT DMAICO trainline. With the structured-system shift, the signature is the belt ladder + the Cobalt-on-Pale-Sky discipline + the Framework Teaching Layer diagram pairs; the hand-drawn belt badges are the one warmth token.
 5. **Evidence, not claims.** Every metric tied to the action that produced it. No floating stat boxes.
-6. **Asymmetric, varied rhythm.** Loosen the grid, structure softened not just decorated. One dark moment maximum per page.
+6. **Ordered, precise rhythm.** A clear structured grid, deliberate hierarchy, generous whitespace. Precision over decoration (on-message for Lean). One dark moment maximum per page.
 
 ---
 
@@ -116,14 +128,24 @@ Same two families as EQUIBT v6x, on purpose.
 
 ---
 
-## Photography position (hybrid, line-art led)
+## Visual idiom (hybrid: structured + one hand-drawn token)
 
-Line-art is the structural idiom and the signature (belt ladder, hero motif, pillar and sector icons). **Dosage rule: line-art leads, imagery is the proof/atmosphere accent, never the main event.** Line-art is what stops LMI looking like every other RTO and like the old OE Methods site; if photography goes heavy, the differentiator is lost. Keep imagery contained.
+The system is structured and formal. Clean architectural line, precise grid, deliberate hierarchy. This is on-message for Lean (precision, standardisation, low variation) and de-risks the corporate/government buyer.
+
+- **Structured everywhere:** framework diagrams (clean architectural monoline per the v7.1 addendum), program and sector icons, components, layout, the belt ladder structure.
+- **Hand-drawn retained in ONE place:** the belt / credential badges keep the hand-drawn squircle wobble. They are the single warmth/craft token and the existing artwork Herman uses in training PPTs. Nowhere else carries the wobble.
+- **Signature** (replacing "hand-drawn idiom"): the belt ladder + the disciplined Cobalt-on-Pale-Sky system + the Framework Teaching Layer diagram pairs. This is more ownable for a Lean brand than a hand-drawn line.
+
+## Photography / imagery (structured system)
+
+The hero carries the humanity; the system stays structured around it. **Dosage rule: structure leads, imagery is the proof/atmosphere accent, never the main event.**
+
+- **Hero = treated / art-directed AI** with realistic people. Graded (Cobalt duotone or a structure overlay) so it reads as deliberate brand craft, not generic AI stock. Aspirational, never a "this is our real classroom" claim. Must be genuinely high quality; a single mediocre AI hero makes the whole site read cold and fake, so the bar is high. A genuine session photo is preferred where available; treated AI is the fallback.
 
 Two kinds of imagery, with different rules:
 
 - **Real photography — the three trust zones only:** Faculty, In-house delivery proof, and the lead testimonial. These make an implicit truth claim ("our real instructor / our real session / our real client"), so they must be genuine LMI sessions, never a stock library and **never AI-generated**. A fake face presented as a real person is a credibility landmine with corporate and government buyers. Always a Cobalt eyebrow tag + verb-first text overlay (AICD model) or an italic caption, so a photo can never read as generic.
-- **AI-generated imagery — non-claim contexts only (Herman, 2026-06-11):** high-quality AI imagery is allowed for conceptual, atmospheric, environmental or textural use (hero backgrounds, abstract section art, mood imagery) where it makes no claim to be a specific real person, session or client. It must be genuinely high quality, on-palette, and never read as slop or as a fake-real photo. **Hard line: AI imagery never substitutes for a real face/session/client in the three trust zones.**
+- **AI-generated imagery — aspirational / non-claim contexts (Herman, 2026-06-11):** high-quality AI imagery is allowed for the treated hero (realistic people, graded, aspirational) and for conceptual, atmospheric or textural use (section art, mood imagery). It must be genuinely high quality, on-palette/treated, and aspirational, never posing as a specific real session, instructor or client. **Hard line: AI imagery never substitutes for a real face/session/client in the three trust zones** (faculty, in-house proof, testimonial stay genuine).
 
 Everywhere else stays line-art. Warmth without slop. This is the deliberate divergence from EQUIBT's no-photo line-art, justified because LMI sells human learning.
 
@@ -159,6 +181,18 @@ NN/g's framework diagrams (e.g. their Journey Map 101) are the reference for how
 **Apply to:** DMAIC, SIPOC, VSM, 5S, 8 Wastes (DOWNTIME), A3, fishbone/Ishikawa, FMEA, and a Lean customer-journey map, across the guides, the cheat-sheet posters, the downloadable templates, and the training PPTs. The belt badge component is the type/topic marker on these.
 
 **Production:** Affinity draw (Herman) + Claude clean/integrate + SVG export; render-check at actual display size before sign-off (the EQT-272 lesson). These are direction specs, not hand-authored production art.
+
+---
+
+## NN/g anti-patterns to avoid (mitigations baked in)
+
+NN/g is the structural role model, but its execution has five faults LMI must not copy. Each has a locked mitigation (design and IA).
+
+1. **Austere, dated, visually inconsistent** (B/W, unchanged for years, polished diagrams next to raw screenshots). → LMI keeps NN/g's structure and scannability but carries disciplined warmth and consistency: single Cobalt accent, Pale Sky grounds, the Warm-wash pocket, one treated hero, and **every diagram in one house style (Framework Teaching Layer), never a raw screenshot in content.**
+2. **Wall-of-text articles, weak chunking.** → The article/guide template is designed for scanning: a summary box + key-takeaways at the top, an "in this article" jump-nav, short Lora blocks, a subhead every screen, and a framework diagram every screen or two to break the text.
+3. **Passive conversion, value buried** (free template hidden at the bottom, weak inline plug). → Every resource carries a clear primary CTA plus a contextual offer near the top and the bottom (the matching course/belt + a related tool/template), a sticky CTA, and the gated magnet surfaced high. The funnel is designed into the page template.
+4. **Taxonomy/findability overload, weak search.** → Faceted filter (type + topic + belt level), real on-site search, a curated "Start here", and a short curated shortlist with expand, never a full-taxonomy dump. (Carried in `LMI_SITE_ARCHITECTURE_v2.md`.)
+5. **Static, desktop-text-first, no living-product feel, no capture.** → Lead with the interactive tools NN/g lacks (calculators, selectors), mobile-first, restrained modern motion, and use the strong magnets to capture (light gate on bundles/reports, the AI Readiness result) feeding nurture. The tools are LMI's living product.
 
 ---
 
