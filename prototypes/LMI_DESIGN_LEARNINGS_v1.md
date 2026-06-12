@@ -6,6 +6,22 @@ _**Status: LOCKED.** This is the canonical design authority for the LMI build, t
 
 ---
 
+## REVERSAL — colour + type (Herman, 2026-06-12, AB-test EQT-299 result) — THIS BLOCK GOVERNS
+
+**Decided after Herman reviewed the rendered A/B home variants (Codex A vs Claude B), feedback in the GOS vault at `Docs/LMI/LMI-ABTest-01-Feebback.pptx`, resolved in `Docs/LMI/LMI_ABTEST_01_RESOLUTION_v1.md`. This block overrides ALL colour and typography language below. Where older text says "Cobalt single accent", "crimson removed", "crimson/red banned from buttons and titles", or "Montserrat + Lora", read it as superseded by this.**
+
+**Colour — CRIMSON-LED, cobalt minor.** Trigger: too much blue in the rendered variants. Reference is Herman's live Squarespace LMI site (charcoal headings, crimson accents, NOT crimson headings).
+- **Accent = Crimson `#A51C30`** (promoted from logo-mark-only). Used on: logo mark, primary buttons (e.g. Get Started / Get in touch), text links + their underline, eyebrows (text + dot), and sparing inline keyword emphasis. Crimson buttons are now ON-brand; the earlier "red buttons got poor feedback" ban is lifted for LMI.
+- **Structure / headings / body = charcoal-navy.** Dark Slate `#2C3E50` for headings and structure; Ink `#161616` / `#2C2C2C` for body. Headings are charcoal, never crimson.
+- **Cobalt `#103E8C` = minor.** Demoted from the single accent to rare secondary use, if used at all.
+- **Grounds = grey / charcoal, like EQUIBT.** Swap the blue/Pale-Sky section fills for white + grey/charcoal grounds. Reserve saturated colour for accents, not panels.
+
+**Type — ALL-MONTSERRAT.** LMI runs Montserrat for headings AND body. **No Lora.** This is a deliberate LMI exception to the portfolio Montserrat + Lora lock; LMI differentiates from EQUIBT on colour + photography, not shared fonts. Scaffold fix (EQT-277): swap `@fontsource/lato` + `@fontsource/source-serif-4` to `@fontsource/montserrat` only; do not add Lora; update the `--font-*` tokens accordingly.
+
+**Variant verdict:** build on **Claude B** for every section; lift the **proof strip from Codex A**. See the resolution doc for per-section changes (belt trainline redraw, animated highlight boxes, photography over OE graphics, remove Certizio + LeanMethods.org, drop the EN/中文 line, footer policy pages, naming fixes).
+
+---
+
 ## DIRECTION CHANGE — visual idiom (Herman, 2026-06-11, later same day)
 
 **The idiom moves from "line-art-led / hand-drawn signature" to a structured, formal, precise system. Hybrid: hand-drawn is retained in ONE place only, the belt / credential badges. Everything else, framework diagrams, program and sector icons, layout, components, is clean architectural line, no wobble.**
@@ -55,10 +71,11 @@ Simple to understand, simple to navigate, modern, trustworthy. Not dated, not ge
 
 Same two families as EQUIBT v6x, on purpose.
 
-- **Headings: Montserrat 700**, letter-spacing -0.015em (one notch tighter than EQUIBT's -0.012em so LMI reads as the more energetic sibling). Near-black `#161616`. **Never crimson.**
-- **Body: Lora 500, 19px**, line-height 1.5, near-black `#161616`. Dropped from EQUIBT's 22px because LMI runs shorter marketing blocks, not long advisory prose.
-- **Captions / evidence / belt descriptors / testimonial attribution: italic Lora.** Functional labels (eyebrows, kickers, belt names, nav, chips) stay Montserrat.
-- **Two typefaces only.** No third face.
+> SUPERSEDED by the 2026-06-12 reversal: LMI is ALL-MONTSERRAT, no Lora. Read the four bullets below with Lora replaced by Montserrat throughout.
+- **Headings: Montserrat 700**, letter-spacing -0.015em (one notch tighter than EQUIBT's -0.012em so LMI reads as the more energetic sibling). Charcoal `#2C3E50` / `#161616`, never crimson (crimson is the accent, not the heading colour).
+- **Body: Montserrat 400/500, ~17px**, line-height 1.5, near-black `#161616` / `#2C2C2C`. (Was Lora 500 19px; Lora dropped 2026-06-12.)
+- **Captions / evidence / belt descriptors / testimonial attribution: Montserrat italic or medium.** Functional labels (eyebrows, kickers, belt names, nav, chips) Montserrat. No Lora anywhere.
+- **One typeface: Montserrat.** No second or third face.
 
 **Type scale (home reference):** H1 `clamp(36px, 4vw, 54px)` / 1.04; section H2 `clamp(26px, 2.4vw, 33px)` / 1.12; lead 18px; body 15-16px; chip/label 10-11px uppercase.
 
@@ -68,8 +85,10 @@ Same two families as EQUIBT v6x, on purpose.
 
 | Role | Colour | Hex | Use |
 |---|---|---|---|
-| Single accent | Cobalt | `#103E8C` | Does everything: buttons, nav CTA, audience toggle, text links, chevrons, nav hover, credential chip, eyebrow text + dot, the active-belt highlight + spine fill, and the one accent per line-art glyph. Hover deepens to `#0c2f6b`. |
-| Logo mark only | Crimson | `#A51C30` | Reserved for the real LMI logo mark (the red square). Removed as a system colour: not on eyebrows, highlights, glyphs, buttons or titles. |
+> SUPERSEDED 2026-06-12: crimson is now the accent, cobalt is minor, grounds are grey/charcoal not Pale Sky. The two accent rows below are corrected; treat the Pale-Sky ground rows as grey/charcoal per the governing reversal block.
+| Single accent | Crimson | `#A51C30` | The accent (promoted 2026-06-12). Buttons, nav CTA, text links + underline, chevrons, nav hover, credential chip, eyebrow text + dot, active-belt highlight, sparing inline keyword emphasis, the logo mark. Crimson buttons are on-brand. |
+| Minor / secondary | Cobalt | `#103E8C` | Demoted 2026-06-12 from single accent to rare secondary use, if used at all. Hover `#0c2f6b`. |
+| Structure / headings | Dark Slate | `#2C3E50` | Headings and structural text (charcoal-navy). Not crimson. |
 | Dark moment | Ink Navy | `#0B1F3A` | The one dark card per page (the CTA on home). Harmonises with Cobalt. |
 | Ground (primary) | White | `#FFFFFF` | Alternating base. Hero and footer are always white. |
 | Ground (cool) | Pale Sky | `#E9EEF6` | The alternating ground (AI differentiator, certifications, proof). A cool light, faintly cobalt-tinted. Replaced the original warm beige, which fought the deep blue. |
@@ -208,7 +227,7 @@ Second batch (noticed 2026-06-11, the certification area):
 
 ## Anti-slop checklist (reject all of these)
 
-Generic stock photography; stocky purple/blue gradients; autoplay carousels and logo marquees; full-screen hero images you scroll past to reach information; parallax; load-in animation theatre; bouncing or pulsing CTAs; **red or crimson buttons**; emoji or generic icon-font icons; AI-raster illustration; dense small grey text; the default Squarespace/template look; big-image heroes that bury the content.
+Generic stock photography; stocky purple/blue gradients; autoplay carousels and logo marquees; full-screen hero images you scroll past to reach information; parallax; load-in animation theatre; bouncing or pulsing CTAs; emoji or generic icon-font icons; AI-raster illustration; dense small grey text; the default Squarespace/template look; big-image heroes that bury the content. _(2026-06-12: "red or crimson buttons" removed from this reject list, crimson buttons are now the LMI accent.)_
 
 ---
 
