@@ -1,0 +1,13 @@
+---
+interface Props {
+  current: "a" | "b";
+}
+
+const { current } = Astro.props;
+---
+
+<nav class="ab-switch" aria-label="Home hero variants">
+  <a href="/" class:list={[current === "a" && "is-active"]} aria-current={current === "a" ? "page" : undefined}>A</a>
+  <span aria-hidden="true">|</span>
+  <a href="/b/" class:list={[current === "b" && "is-active"]} aria-current={current === "b" ? "page" : undefined}>B</a>
+</nav>

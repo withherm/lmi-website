@@ -1,0 +1,156 @@
+---
+const belts = [
+  { key: "yellow", name: "Yellow Belt", verb: "Participate", outcome: "Understand the method and take part in improvement work.", duration: "2 days · classroom or live online · AUSQ-certified", colour: "var(--belt-yellow)", x: 72, y: 154 },
+  { key: "green", name: "Green Belt", verb: "Improve", outcome: "Run AI-assisted process discovery and root cause analysis.", duration: "5 days · project-based", colour: "var(--belt-green)", x: 342, y: 150 },
+  { key: "black", name: "Black Belt", verb: "Run/Lead", outcome: "Lead improvement on your own data, AI-powered.", duration: "10 days · two projects", colour: "var(--belt-black)", x: 612, y: 155 },
+  { key: "master", name: "Master Black", verb: "Lead", outcome: "Lead the programme and coach the belts.", duration: "by application · mentor track", colour: "var(--belt-black)", x: 882, y: 151 },
+] as const;
+---
+
+<section class="section ground home-reveal" id="belts">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">Lean Six Sigma</div>
+      <h2 class="section-title">One pathway, four levels. Start where your team is.</h2>
+      <p class="section-intro">Use the belt level to match training depth to the work, then mix levels across one cohort when the team needs different roles.</p>
+    </div>
+    <div class="trainline-shell" data-trainline>
+      <div class="trainline-panel" aria-live="polite">
+        <span data-belt-kicker>Green Belt</span>
+        <strong data-belt-title>Improve</strong>
+        <p data-belt-copy>Run AI-assisted process discovery and root cause analysis.</p>
+        <em data-belt-duration>5 days · project-based</em>
+      </div>
+      <div class="trainline-scroll" tabindex="0" aria-label="Lean Six Sigma belt pathway">
+        <svg class="trainline-svg" viewBox="0 0 954 230" role="group" aria-label="Yellow Belt to Master Black Belt pathway">
+          <path class="trainline-base" d="M72 154 C225 137 420 162 558 154 C690 146 794 148 882 151"/>
+          <path class="trainline-fill" data-line-fill d="M72 154 C225 137 420 162 558 154 C690 146 794 148 882 151"/>
+          {belts.map((belt) => (
+            <g class:list={["belt-station", belt.key === "green" && "is-active"]} tabindex="0" role="button" aria-pressed={belt.key === "green" ? "true" : "false"} data-key={belt.key} data-name={belt.name} data-verb={belt.verb} data-outcome={belt.outcome} data-duration={belt.duration} data-x={belt.x} data-y={belt.y}>
+              <circle class="station-hit" cx={belt.x} cy={belt.y} r="34" />
+              <circle class="station-ring" cx={belt.x} cy={belt.y} r={belt.key === "green" ? "15" : "11"} />
+              <circle class="station-dot" cx={belt.x} cy={belt.y} r={belt.key === "green" ? "8" : "7"} fill={belt.colour} />
+              <text x={belt.x} y="205">{belt.name}</text>
+            </g>
+          ))}
+        </svg>
+      </div>
+      <div class="trainline-foot">
+        <p>Climb as far as the work needs. Mix levels across one team.</p>
+        <a href="/course-dates/" class="btn-text"><span class="link-label">View course dates</span> <span class="ar">&rsaquo;</span></a>
+      </div>
+    </div>
+  </div>
+  <script is:inline>
+    (() => {
+      const shell = document.querySelector("[data-trainline]");
+      if (!shell) return;
+      const svg = shell.querySelector(".trainline-svg");
+      const fill = shell.querySelector("[data-line-fill]");
+      const stations = Array.from(shell.querySelectorAll(".belt-station"));
+      const panel = shell.querySelector(".trainline-panel");
+      const kicker = shell.querySelector("[data-belt-kicker]");
+      const title = shell.querySelector("[data-belt-title]");
+      const copy = shell.querySelector("[data-belt-copy]");
+      const duration = shell.querySelector("[data-belt-duration]");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      let active = stations.find((station) => station.dataset.key === "green") || stations[0];
+      const totalLength = fill ? fill.getTotalLength() : 0;
+      const lineStart = Number(stations[0]?.dataset.x || 72);
+      const lineEnd = Number(stations[stations.length - 1]?.dataset.x || 882);
+
+      function clamp(value, min, max) {
+        return Math.min(max, Math.max(min, value));
+      }
+
+      function mix(start, end, amount) {
+        return Math.round(start + (end - start) * amount);
+      }
+
+      function colour(amount) {
+        return `rgb(${mix(28, 16, amount)}, ${mix(28, 62, amount)}, ${mix(28, 140, amount)})`;
+      }
+
+      function updateFill(station) {
+        if (!fill || !totalLength) return;
+        const x = Number(station.dataset.x);
+        const progress = clamp((x - lineStart) / (lineEnd - lineStart), 0, 1);
+        fill.style.strokeDasharray = `${totalLength}`;
+        fill.style.strokeDashoffset = `${totalLength * (1 - progress)}`;
+      }
+
+      function updatePanel(station) {
+        if (!station || !panel) return;
+        kicker.textContent = station.dataset.name;
+        title.textContent = station.dataset.verb;
+        copy.textContent = station.dataset.outcome;
+        duration.textContent = station.dataset.duration;
+        const x = Number(station.dataset.x);
+        const progress = clamp((x - lineStart) / (lineEnd - lineStart), 0, 1);
+        panel.style.setProperty("--panel-x", `${progress * 100}%`);
+      }
+
+      function render(pointer) {
+        stations.forEach((station) => {
+          const ring = station.querySelector(".station-ring");
+          const dot = station.querySelector(".station-dot");
+          const selected = station === active;
+          const x = Number(station.dataset.x);
+          const y = Number(station.dataset.y);
+          const distance = pointer ? Math.hypot(pointer.x - x, pointer.y - y) : 999;
+          const proximity = selected ? 1 : clamp(1 - distance / 150, 0, 1);
+          const ringRadius = selected ? 15 : 11 + proximity * 5;
+          const dotRadius = selected ? 8 : 7 + proximity * 2;
+          ring.setAttribute("r", ringRadius.toFixed(2));
+          dot.setAttribute("r", dotRadius.toFixed(2));
+          ring.setAttribute("stroke", selected ? "var(--action)" : colour(proximity));
+          ring.setAttribute("stroke-width", selected ? "3" : (1.8 + proximity * 1.2).toFixed(2));
+          station.classList.toggle("is-active", selected);
+          station.setAttribute("aria-pressed", selected ? "true" : "false");
+        });
+      }
+
+      function select(station) {
+        active = station;
+        updatePanel(station);
+        updateFill(station);
+        render();
+      }
+
+      function pointFromEvent(event) {
+        const point = svg.createSVGPoint();
+        point.x = event.clientX;
+        point.y = event.clientY;
+        return point.matrixTransform(svg.getScreenCTM().inverse());
+      }
+
+      stations.forEach((station, index) => {
+        station.addEventListener("mouseenter", () => select(station));
+        station.addEventListener("click", () => select(station));
+        station.addEventListener("touchstart", () => select(station), { passive: true });
+        station.addEventListener("focus", () => select(station));
+        station.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            select(station);
+          }
+          if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+            event.preventDefault();
+            (stations[index + 1] || stations[0]).focus();
+          }
+          if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+            event.preventDefault();
+            (stations[index - 1] || stations[stations.length - 1]).focus();
+          }
+        });
+      });
+
+      if (!reduceMotion && svg) {
+        svg.addEventListener("mousemove", (event) => render(pointFromEvent(event)));
+        svg.addEventListener("mouseleave", () => render());
+      }
+
+      select(active);
+    })();
+  </script>
+</section>
