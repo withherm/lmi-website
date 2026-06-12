@@ -6,13 +6,13 @@ body{
   color:var(--near-black);
   font-family:var(--font-body);
   font-size:17px;
-  font-weight:400;
+  font-weight:500;
   line-height:1.58;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
 body.nav-open{overflow:hidden;}
-p{font-family:var(--font-body);font-size:17px;font-weight:400;line-height:1.58;}
+p{font-family:var(--font-body);font-size:17px;font-weight:500;line-height:1.58;color:var(--near-black);}
 a{color:inherit;}
 h1,h2,h3,h4{
   font-family:var(--font-heading);

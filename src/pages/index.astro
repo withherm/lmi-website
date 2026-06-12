@@ -30,74 +30,42 @@ import "../styles/home.css";
           </div>
         </div>
 
-        <div class="hero-panel" aria-label="Lean Six Sigma belt progression">
-          <div class="photo-slot hero-photo">
-            <span>Photography slot</span>
-            <p>Replace with LMI classroom or facilitator photography when approved assets are available.</p>
-          </div>
-          <div class="belt-ladder">
-            <div class="belt-line" aria-hidden="true"></div>
-            <article class="belt-step yellow">
-              <span class="belt-node"><span class="belt-badge">YB</span></span>
-              <div>
-                <h2>Yellow Belt</h2>
-                <p>Build shared language and practical problem framing.</p>
-              </div>
-            </article>
-            <article class="belt-step green selected">
-              <span class="belt-node"><span class="belt-badge">GB</span></span>
-              <div>
-                <h2>Green Belt</h2>
-                <p>Lead scoped improvement projects with evidence, coaching and AI support.</p>
-                <span class="belt-meta">Default pathway for team capability uplift.</span>
-              </div>
-            </article>
-            <article class="belt-step black">
-              <span class="belt-node"><span class="belt-badge">BB</span></span>
-              <div>
-                <h2>Black Belt</h2>
-                <p>Lead complex programs and coach improvement teams.</p>
-              </div>
-            </article>
-            <article class="belt-step master">
-              <span class="belt-node"><span class="belt-badge">MBB</span></span>
-              <div>
-                <h2>Master Black Belt</h2>
-                <p>Shape operating systems, governance and internal trainer capability.</p>
-              </div>
-            </article>
-          </div>
+        <div class="hero-panel" aria-label="Captioned training image placeholder">
+          <figure class="photo-slot hero-photo">
+            <span>Captioned image slot</span>
+            <figcaption>Replace with approved LMI classroom, facilitator or art-directed training imagery. The belt pathway is introduced later, after visitors choose that route.</figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <section class="section white difference-section">
+    <section class="section grey difference-section" id="our-difference">
       <div class="section-inner split">
         <div class="section-head sticky-head">
           <div class="eyebrow">OUR DIFFERENCE</div>
           <h2 class="section-title">Methods taught through real work, with AI built into the way people improve.</h2>
         </div>
-        <div class="difference-grid">
-          <article class="highlight-box">
-            <span class="box-number">01</span>
-            <h3>Practitioner-led</h3>
+        <div class="difference-stack">
+          <article class="difference-card">
+            <span class="line-icon practice-icon" aria-hidden="true"></span>
+            <h3>Skills that hold up in live work</h3>
             <p>Facilitators connect the method to operational constraints, stakeholder pressure and the messy reality of service work.</p>
           </article>
-          <article class="highlight-box">
-            <span class="box-number">02</span>
-            <h3>AI-enabled</h3>
+          <article class="difference-card featured">
+            <span class="line-icon ai-icon" aria-hidden="true"></span>
+            <h3>Faster analysis without losing rigour</h3>
             <p>Learners use AI for problem framing, data sense-making, experiment design and communication without weakening the discipline.</p>
           </article>
-          <article class="highlight-box">
-            <span class="box-number">03</span>
-            <h3>Evidence-first</h3>
+          <article class="difference-card">
+            <span class="line-icon evidence-icon" aria-hidden="true"></span>
+            <h3>Decisions your team can defend</h3>
             <p>Every activity ties back to the action that produced the result, so teams can defend decisions and repeat the improvement.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section grey offers-section" id="offers">
+    <section class="section white offers-section" id="offers">
       <div class="section-inner">
         <div class="section-head">
           <div class="eyebrow">FOUR OFFERS</div>
@@ -106,24 +74,28 @@ import "../styles/home.css";
         </div>
         <div class="offer-grid">
           <article class="offer-card">
+            <span class="offer-icon belt-offer-icon" aria-hidden="true"></span>
             <span class="offer-kicker">Core pathway</span>
             <h3>Lean Six Sigma belts</h3>
             <p>Yellow, Green and Black Belt training for teams that need a common improvement method and recognised credentials.</p>
             <a href="/courses/lean-six-sigma/" class="btn-text"><span class="link-label">View pathway</span> <span class="ar">&rsaquo;</span></a>
           </article>
           <article class="offer-card">
+            <span class="offer-icon service-offer-icon" aria-hidden="true"></span>
             <span class="offer-kicker">Service teams</span>
             <h3>Lean Service Design</h3>
             <p>Improve service journeys, handoffs and pain points with customer evidence and operational design discipline.</p>
             <a href="/courses/lean-service-design/" class="btn-text"><span class="link-label">View course</span> <span class="ar">&rsaquo;</span></a>
           </article>
           <article class="offer-card">
+            <span class="offer-icon analysis-offer-icon" aria-hidden="true"></span>
             <span class="offer-kicker">Change delivery</span>
             <h3>Lean Business Analysis</h3>
             <p>Frame the right problem, test assumptions early and translate evidence into clear requirements before work scales.</p>
             <a href="/courses/lean-business-analysis/" class="btn-text"><span class="link-label">View course</span> <span class="ar">&rsaquo;</span></a>
           </article>
           <article class="offer-card">
+            <span class="offer-icon inhouse-offer-icon" aria-hidden="true"></span>
             <span class="offer-kicker">Organisation uplift</span>
             <h3>In-house training</h3>
             <p>Contextualise the method around your processes, data, governance and improvement priorities for faster transfer.</p>
@@ -133,30 +105,36 @@ import "../styles/home.css";
       </div>
     </section>
 
-    <section class="section white trainline-section" id="belt-pathway">
+    <section class="section grey trainline-section" id="belt-pathway">
       <div class="section-inner">
         <div class="section-head">
           <div class="eyebrow">BELT PATHWAY</div>
           <h2 class="section-title">A straight progression from shared language to internal improvement leadership.</h2>
         </div>
-        <div class="horizontal-trainline" aria-label="Lean Six Sigma belt trainline">
+        <div class="stair-trainline" aria-label="Lean Six Sigma belt stair progression">
+          <svg class="step-path main-step-path" viewBox="0 0 1000 250" aria-hidden="true">
+            <path class="step-stroke step-yellow" d="M58 206 H226 V158 H394"/>
+            <path class="step-stroke step-green" d="M394 158 H562 V110 H730"/>
+            <path class="step-stroke step-black" d="M730 110 H894 V62"/>
+            <path class="step-stroke step-master" d="M894 62 H942"/>
+          </svg>
           <article class="station yellow">
-            <span class="station-node"><span class="belt-badge">YB</span></span>
+            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">YB</text></svg>
             <h3>Yellow Belt</h3>
             <p>Spot waste, frame problems and support improvement work.</p>
           </article>
           <article class="station green selected">
-            <span class="station-node"><span class="belt-badge">GB</span></span>
+            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">GB</text></svg>
             <h3>Green Belt</h3>
             <p>Lead scoped projects and apply structured analysis.</p>
           </article>
           <article class="station black">
-            <span class="station-node"><span class="belt-badge">BB</span></span>
+            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">BB</text></svg>
             <h3>Black Belt</h3>
             <p>Lead complex work and coach improvement teams.</p>
           </article>
           <article class="station master">
-            <span class="station-node"><span class="belt-badge">MBB</span></span>
+            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">MBB</text></svg>
             <h3>Master Black Belt</h3>
             <p>Build the system that sustains capability.</p>
           </article>
@@ -164,25 +142,29 @@ import "../styles/home.css";
       </div>
     </section>
 
-    <section class="section charcoal highlights-section">
+    <section class="section charcoal highlights-section" id="highlights">
       <div class="section-inner">
         <div class="section-head">
           <div class="eyebrow light">HIGHLIGHTS</div>
           <h2 class="section-title">Training that makes methods usable under pressure.</h2>
         </div>
-        <div class="highlight-grid">
-          <article class="highlight-box dark">
-            <h3>Workshops built around active practice</h3>
+        <div class="flagship-highlights">
+          <article class="flagship-card">
+            <div class="flagship-reveal" aria-hidden="true"></div>
+            <span class="flagship-kicker">Active practice</span>
+            <h3>Workshops built around doing the work, not watching slides.</h3>
             <p>Learners practise the method, receive coaching and leave with tools they can reuse immediately.</p>
           </article>
-          <article class="highlight-box dark">
-            <h3>AI supports the method</h3>
-            <p>AI is used to accelerate analysis and communication, while the improvement method remains the control system.</p>
-          </article>
-          <article class="highlight-box dark">
-            <h3>Credentials with separation</h3>
-            <p>Lean Six Sigma credentials are issued through an independent certification pathway, not a self-awarded badge.</p>
-          </article>
+          <div class="highlight-rail" aria-label="Training highlights">
+            <article class="rail-item">
+              <h3>AI supports the method</h3>
+              <p>AI accelerates analysis and communication while the improvement method remains the control system.</p>
+            </article>
+            <article class="rail-item">
+              <h3>Credentials with separation</h3>
+              <p>Lean Six Sigma credentials use an independent certification pathway, not a self-awarded badge.</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -203,34 +185,122 @@ import "../styles/home.css";
       </div>
     </section>
 
-    <section class="section grey sector-section">
+    <section class="section grey sector-section" id="contextualised-training">
       <div class="section-inner">
         <div class="section-head">
           <div class="eyebrow">CONTEXTUALISED TRAINING</div>
           <h2 class="section-title">Programs are adapted to the sector, not delivered as generic improvement theory.</h2>
           <p class="section-intro">The core method stays disciplined. The examples, data, constraints and practice scenarios change to match how the work actually runs.</p>
         </div>
-        <div class="sector-grid">
-          <article class="sector-card">
-            <span class="sector-label">Corporate services</span>
-            <h3>Improve repeatable service work</h3>
-            <p>Use customer evidence, queue data and process ownership to reduce friction across service operations.</p>
-          </article>
-          <article class="sector-card">
-            <span class="sector-label">Government</span>
-            <h3>Make public services easier to run</h3>
-            <p>Translate policy, compliance and citizen experience into practical improvement projects.</p>
-          </article>
-          <article class="sector-card">
-            <span class="sector-label">Financial services</span>
-            <h3>Control risk while improving flow</h3>
-            <p>Connect improvement methods to regulated processes, operational controls and measurable service outcomes.</p>
-          </article>
-          <article class="sector-card">
-            <span class="sector-label">Healthcare and education</span>
-            <h3>Protect care and learning time</h3>
-            <p>Apply Lean tools to handoffs, scheduling, administration and frontline problem solving.</p>
-          </article>
+        <div class="sector-selector" data-sector-selector>
+          <div class="sector-tabs" role="tablist" aria-label="Training sectors">
+            <button class="sector-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="sector-corporate" id="tab-corporate" data-sector-tab="corporate"><span class="sector-tab-icon corporate-icon" aria-hidden="true"></span><span>Corporate services</span></button>
+            <button class="sector-tab" type="button" role="tab" aria-selected="false" aria-controls="sector-government" id="tab-government" data-sector-tab="government"><span class="sector-tab-icon government-icon" aria-hidden="true"></span><span>Government</span></button>
+            <button class="sector-tab" type="button" role="tab" aria-selected="false" aria-controls="sector-financial" id="tab-financial" data-sector-tab="financial"><span class="sector-tab-icon financial-icon" aria-hidden="true"></span><span>Financial services</span></button>
+            <button class="sector-tab" type="button" role="tab" aria-selected="false" aria-controls="sector-health" id="tab-health" data-sector-tab="health"><span class="sector-tab-icon health-icon" aria-hidden="true"></span><span>Healthcare and education</span></button>
+          </div>
+          <div class="sector-panels">
+            <article class="sector-panel is-active" id="sector-corporate" role="tabpanel" aria-labelledby="tab-corporate" data-sector-panel="corporate">
+              <div>
+                <span class="sector-label">Corporate services</span>
+                <h3>Improve repeatable service work</h3>
+                <p>Use customer evidence, queue data and process ownership to reduce friction across shared service operations.</p>
+              </div>
+              <div class="sector-lists">
+                <div>
+                  <h4>Common challenges</h4>
+                  <ul>
+                    <li>Backlogs moving between teams without clear ownership.</li>
+                    <li>Inconsistent handoffs across customer and internal service journeys.</li>
+                    <li>Improvement work competing with daily delivery pressure.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Context we include in training</h4>
+                  <ul>
+                    <li>Queue data, service-level evidence and demand patterns.</li>
+                    <li>Process ownership, escalation paths and operational routines.</li>
+                    <li>AI-assisted problem framing for service improvement work.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+            <article class="sector-panel" id="sector-government" role="tabpanel" aria-labelledby="tab-government" data-sector-panel="government" hidden>
+              <div>
+                <span class="sector-label">Government</span>
+                <h3>Make public services easier to run</h3>
+                <p>Translate policy, compliance and citizen experience into practical improvement projects.</p>
+              </div>
+              <div class="sector-lists">
+                <div>
+                  <h4>Common challenges</h4>
+                  <ul>
+                    <li>Policy intent losing clarity as work moves into delivery.</li>
+                    <li>Citizen experience constrained by compliance and legacy systems.</li>
+                    <li>Slow approvals, rework and unclear evidence for change.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Context we include in training</h4>
+                  <ul>
+                    <li>Policy-to-process translation and risk-aware improvement framing.</li>
+                    <li>Citizen journey evidence, service standards and governance needs.</li>
+                    <li>Practical AI use for synthesis, communication and decision briefs.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+            <article class="sector-panel" id="sector-financial" role="tabpanel" aria-labelledby="tab-financial" data-sector-panel="financial" hidden>
+              <div>
+                <span class="sector-label">Financial services</span>
+                <h3>Control risk while improving flow</h3>
+                <p>Connect improvement methods to regulated processes, operational controls and measurable service outcomes.</p>
+              </div>
+              <div class="sector-lists">
+                <div>
+                  <h4>Common challenges</h4>
+                  <ul>
+                    <li>Customer delays caused by control steps and manual rework.</li>
+                    <li>Process improvement blocked by risk, compliance and audit needs.</li>
+                    <li>Teams measuring activity instead of customer and control outcomes.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Context we include in training</h4>
+                  <ul>
+                    <li>Control mapping, defect evidence and regulated-process examples.</li>
+                    <li>Risk-aware root cause analysis and measurable operating controls.</li>
+                    <li>AI-supported analysis with human review and governance boundaries.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+            <article class="sector-panel" id="sector-health" role="tabpanel" aria-labelledby="tab-health" data-sector-panel="health" hidden>
+              <div>
+                <span class="sector-label">Healthcare and education</span>
+                <h3>Protect care and learning time</h3>
+                <p>Apply Lean tools to handoffs, scheduling, administration and frontline problem solving.</p>
+              </div>
+              <div class="sector-lists">
+                <div>
+                  <h4>Common challenges</h4>
+                  <ul>
+                    <li>Frontline time lost to duplicated administration and rework.</li>
+                    <li>Scheduling, referrals and handoffs creating avoidable waiting.</li>
+                    <li>Improvement efforts losing momentum after workshops finish.</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Context we include in training</h4>
+                  <ul>
+                    <li>Flow, handoff and demand examples from care and learning settings.</li>
+                    <li>Practical routines for frontline problem solving and escalation.</li>
+                    <li>AI use cases for synthesis, planning and communication support.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </section>
@@ -257,24 +327,53 @@ import "../styles/home.css";
       </div>
     </section>
 
-    <section class="proof-strip">
+    <section class="proof-strip" id="proof-logo-wall">
       <div class="proof-inner">
         <div>
           <div class="eyebrow">WHERE OUR GRADUATES WORK</div>
           <h2>Improvement capability for teams working in complex service environments.</h2>
         </div>
-        <div class="proof-grid" aria-label="Graduate workplace categories">
-          <span>Public sector</span>
-          <span>Banking</span>
-          <span>Insurance</span>
-          <span>Healthcare</span>
-          <span>Education</span>
-          <span>Corporate services</span>
+        <div class="proof-grid" aria-label="Anonymised graduate workplace logo wall">
+          <span><i></i><b>Public service group</b></span>
+          <span><i></i><b>Banking operations</b></span>
+          <span><i></i><b>Insurance services</b></span>
+          <span><i></i><b>Health network</b></span>
+          <span><i></i><b>Education provider</b></span>
+          <span><i></i><b>Corporate services</b></span>
+          <span><i></i><b>Shared service hub</b></span>
+          <span><i></i><b>Customer operations</b></span>
+          <span><i></i><b>Claims team</b></span>
+          <span><i></i><b>Compliance function</b></span>
+          <span><i></i><b>Service design group</b></span>
+          <span><i></i><b>Improvement office</b></span>
+        </div>
+        <div class="client-wall" aria-label="Anonymised organisations trained logo wall">
+          <div class="client-wall-head">
+            <div class="eyebrow">CLIENTS</div>
+            <h3>Organisations we've trained</h3>
+          </div>
+          <div class="client-logo-grid">
+            <span><i></i></span>
+            <span><i></i></span>
+            <span><i></i></span>
+            <span><i></i></span>
+            <span><i></i></span>
+            <span><i></i></span>
+            <span><i></i></span>
+            <span><i></i></span>
+            <span><i></i></span>
+            <span><i></i></span>
+            <span><i></i></span>
+            <span><i></i></span>
+            <span><i></i></span>
+            <span><i></i></span>
+            <span><i></i></span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section white bottom-pathway">
+    <section class="section white bottom-pathway" id="next-step-pathway">
       <div class="section-inner">
         <div class="bottom-panel">
           <div>
@@ -282,15 +381,67 @@ import "../styles/home.css";
             <h2 class="section-title">Start with the belt level that matches the work you need people to lead.</h2>
             <p class="section-intro">The sequence is simple: orient the team, build project leadership, then develop the internal capability to coach and govern improvement.</p>
           </div>
-          <div class="compact-trainline" aria-label="Bottom belt trainline">
-            <span class="compact-station yellow"><span class="belt-badge">YB</span></span>
-            <span class="compact-station green selected"><span class="belt-badge">GB</span></span>
-            <span class="compact-station black"><span class="belt-badge">BB</span></span>
-            <span class="compact-station master"><span class="belt-badge">MBB</span></span>
+          <div class="compact-trainline" aria-label="Bottom belt stair progression">
+            <svg class="step-path compact-step-path" viewBox="0 0 520 190" aria-hidden="true">
+              <path class="step-stroke step-yellow" d="M28 154 H130 V118 H232"/>
+              <path class="step-stroke step-green" d="M232 118 H334 V82 H436"/>
+              <path class="step-stroke step-black" d="M436 82 H492 V46"/>
+              <path class="step-stroke step-master" d="M492 46 H514"/>
+            </svg>
+            <span class="compact-station yellow"><svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">YB</text></svg></span>
+            <span class="compact-station green selected"><svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">GB</text></svg></span>
+            <span class="compact-station black"><svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">BB</text></svg></span>
+            <span class="compact-station master"><svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">MBB</text></svg></span>
           </div>
         </div>
       </div>
     </section>
+
+    <section class="equibt-handover" id="equibt-handover" aria-labelledby="equibt-handover-title">
+      <div class="handover-inner">
+        <div class="handover-copy">
+          <div class="eyebrow">PART OF EQUIBT GROUP</div>
+          <h2 id="equibt-handover-title">The advisory firm behind the training.</h2>
+          <p>Lean Methods Institute is the specialist training division of EQUIBT Group. The same Lean and AI methods EQUIBT runs inside advisory engagements, taught to your team through structured courses, so the capability stays in-house after the project ends.</p>
+          <svg class="equibt-wordmark" viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
+            <g fill="#2C3E50">
+              <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
+              <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
+              <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
+              <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
+              <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
+              <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
+            </g>
+            <path fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
+          </svg>
+          <a href="https://equibt.com" class="btn-text"><span class="link-label">Explore advisory at EQUIBT</span> <span class="ar">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
   </main>
+  <script>
+    const selectors = document.querySelectorAll("[data-sector-selector]");
+    selectors.forEach((selector) => {
+      const tabs = Array.from(selector.querySelectorAll("[data-sector-tab]"));
+      const panels = Array.from(selector.querySelectorAll("[data-sector-panel]"));
+
+      const activate = (key) => {
+        tabs.forEach((tab) => {
+          const isActive = tab.dataset.sectorTab === key;
+          tab.classList.toggle("is-active", isActive);
+          tab.setAttribute("aria-selected", String(isActive));
+        });
+        panels.forEach((panel) => {
+          const isActive = panel.dataset.sectorPanel === key;
+          panel.classList.toggle("is-active", isActive);
+          panel.hidden = !isActive;
+        });
+      };
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => activate(tab.dataset.sectorTab));
+      });
+    });
+  </script>
   <Footer />
 </Layout>
