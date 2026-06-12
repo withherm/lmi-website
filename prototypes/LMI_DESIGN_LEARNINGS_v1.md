@@ -73,7 +73,7 @@ Same two families as EQUIBT v6x, on purpose.
 
 > SUPERSEDED by the 2026-06-12 reversal: LMI is ALL-MONTSERRAT, no Lora. Read the four bullets below with Lora replaced by Montserrat throughout.
 - **Headings: Montserrat 700**, letter-spacing -0.015em (one notch tighter than EQUIBT's -0.012em so LMI reads as the more energetic sibling). Charcoal `#2C3E50` / `#161616`, never crimson (crimson is the accent, not the heading colour).
-- **Body: Montserrat 400/500, ~17px**, line-height 1.5, near-black `#161616` / `#2C2C2C`. (Was Lora 500 19px; Lora dropped 2026-06-12.)
+- **Body: Montserrat 500, ~17px**, line-height 1.5, near-black `#161616` (NOT 400, NOT mid-grey `#2C2C2C` — that renders thin and fuzzy; Herman R2). (Was Lora 500 19px; Lora dropped 2026-06-12.)
 - **Captions / evidence / belt descriptors / testimonial attribution: Montserrat italic or medium.** Functional labels (eyebrows, kickers, belt names, nav, chips) Montserrat. No Lora anywhere.
 - **One typeface: Montserrat.** No second or third face.
 
@@ -228,6 +228,12 @@ Second batch (noticed 2026-06-11, the certification area):
 ## Anti-slop checklist (reject all of these)
 
 Generic stock photography; stocky purple/blue gradients; autoplay carousels and logo marquees; full-screen hero images you scroll past to reach information; parallax; load-in animation theatre; bouncing or pulsing CTAs; emoji or generic icon-font icons; AI-raster illustration; dense small grey text; the default Squarespace/template look; big-image heroes that bury the content. _(2026-06-12: "red or crimson buttons" removed from this reject list, crimson buttons are now the LMI accent.)_
+
+**HARD NOs inherited from EQUIBT v6x (added 2026-06-12, EQT-299 round 2 — these were missing from this doc and got built by mistake; they are non-negotiable):**
+- **No `01 / 02 / 03` (or any) numbering on feature/difference/value cards.** Lifted verbatim from EQUIBT v6x ("No 01/02/03 numbering"). Differentiate cards by icon, heading and copy, not numerals.
+- **No coloured or accent bar across the top of a card.** Cards are clean 1px hairline boxes (≈16px radius, no shadow), hover = border darken + small lift. No crimson/colour top-stripe, no left-rule. The accent lives in the link/eyebrow/icon, never as a bar on the card edge.
+- **Body copy is never thin or light-grey.** Montserrat 500, near-black `#161616`. Montserrat 400 / mid-grey body renders fuzzy and is rejected.
+- **Eyebrows must stay legible on dark grounds.** Crimson `#A51C30` eyebrow text on a dark navy section fails contrast; on dark grounds use a light tint (off-white / pale crimson-tint) so the eyebrow reads. Crimson eyebrows are for light grounds only.
 
 ---
 

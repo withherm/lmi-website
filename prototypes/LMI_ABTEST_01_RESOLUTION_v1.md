@@ -81,4 +81,23 @@ Policy set (4 pages): Course Cancellation Policy, Privacy Policy, Terms, Accessi
 5. Open PR, comment the URL on EQT-299, move EQT-299 to In Review. Herman merges and sets Done after live verify.
 
 ---
-_Resolves EQT-299. Authored Cowork, 2026-06-12. Vault copy: `Docs/LMI/LMI_ABTEST_01_RESOLUTION_v1.md`._
+
+## 7. Round 2 — Herman's review of the first build (2026-06-12)
+
+The first build was close but missed several things. Apply all of the below. Note: two of these (numbering, card top-bars) were already EQUIBT hard rules that were missing from `LMI_DESIGN_LEARNINGS_v1.md`; they are now written into its anti-slop checklist. Re-read that section.
+
+1. **Hero — remove the belt ladder.** The hero currently shows the vertical belt ladder beside the copy. Remove it; replace with a plain image slot (captioned placeholder). Not every visitor wants Lean Six Sigma, so the hero must not lead with the belt ladder. The belt ladder belongs ONLY in the Belt Pathway section.
+2. **Our Difference — kill the 01/02/03 numbering (hard NO)** and redesign it. It's boring with too much white space. Differentiate the points by icon + heading + copy, tighten the spacing, make it visually engaging. No numerals.
+3. **Four offers — remove the crimson top-bars (hard NO).** Cards are clean hairline boxes. Add a creative icon per card (Lean Six Sigma belts, Lean Service Design, Lean Business Analysis, In-house). Accent via icon and link, never a top-stripe.
+4. **Belt pathway — make it an ascending stair.** It still renders as a flat horizontal row. Step each station up from the one before (Yellow at the foot to Master Black at the top). Remove the outer circle ring around each belt badge — show just the rounded-square badge, no enclosing circle. Make the badge outline strokes THICKER, matching Herman's supplied badge artwork. Apply to both trainlines.
+5. **Highlights — redesign, it's boring.** Right now it's three text cards that look like every other section. Differentiate it visually (distinct layout + the animated highlight-box reveal from the EQUIBT flagship card). It must not read as a repeat of the sections above it.
+6. **Body text — Montserrat 500, near-black `#161616`.** Current body is thin/light-grey and renders fuzzy. Thicken and darken it site-wide.
+7. **Eyebrows on dark sections — fix contrast.** The crimson eyebrow is unreadable on the dark navy band. On dark grounds use a light tint (off-white / pale crimson) so the eyebrow reads. Crimson eyebrows are for light grounds only.
+8. **Contextualised training — rebuild as the EQUIBT industry-hub SELECTOR.** This was the original ask and it's currently static cards. Build the interactive sector selector (tabs per sector, like EQUIBT /industries). For each sector show **Common challenges** (a list) and **"Context we include in training"** (the LMI analogue of EQUIBT's "Where to start"). Both are currently missing.
+9. **Proof / "Where our graduates work" — add the client logo wall.** It currently shows only sector tag chips. Add the monochrome client logo wall (neutral placeholder marks until real logos are cleared; client names anonymised). Static grid, never a carousel.
+10. **Add an EQUIBT handover block above the footer.** Reciprocal of the LMI handover that sits on EQUIBT pages: a short "Lean Methods Institute is the training division of EQUIBT" block with a link to equibt.com, placed above the footer. Currently missing.
+
+Re-screenshot the hero, the Our Difference section, the four offers, both trainlines, Highlights, the contextualised-training selector, the proof/logo-wall, and the EQUIBT handover. Still no PR until Herman approves round 2.
+
+---
+_Resolves EQT-299. Authored Cowork, 2026-06-12 (round 2 appended same day). Vault copy: `Docs/LMI/LMI_ABTEST_01_RESOLUTION_v1.md`._
