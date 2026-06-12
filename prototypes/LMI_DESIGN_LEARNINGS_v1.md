@@ -22,6 +22,21 @@ _**Status: LOCKED.** This is the canonical design authority for the LMI build, t
 
 ---
 
+## BUILD DECISIONS — AB-test 01 home rebuild, rounds 2–3 (Herman, 2026-06-12) — GOVERNS COMPONENTS
+
+Component-level rules locked while reviewing the rendered LMI home rebuild (EQT-299). They sit under the colour/type REVERSAL block above and override any older component description below. Full per-round detail: `LMI_ABTEST_01_RESOLUTION_v1.md` §7 (round 2) and §8 (round 3).
+
+- **Section rhythm = alternating grounds, EQUIBT-style.** No two adjacent light sections share a ground (white → pale-grey → white …); dark navy sections are punctuation. **No hairline dividers between sections** — the ground change does the separation. Tighten section heights so heading + content form one balanced composition, no empty bands. (Root cause of the round-2 dead-space miss: heading-left / content-right layouts left large empty quadrants.)
+- **Belt badges = true squircle, line-art.** A real superellipse (SVG path / clip-path), NOT `border-radius` (a lopsided rounded-rect is wrong). One squircle shape applied identically to all four badges (YB/GB/BB/MBB). Drawn as a thick stroked outline: belt colour is the stroke, fill white/transparent, belt letter inside, same thick stroke weight on all four. Selected-state convention holds: the active belt fills solid in its belt colour; the rest stay thick-stroked outlines.
+- **Belt pathway = stepped stairs.** Discrete stair treads (each belt one step up, badges on the steps), NOT a single sloped/diagonal line, and the connector must not cut through card content. Both trainlines.
+- **Cards.** Clean 1px hairline boxes, distinct line-art icon per card, accent in icon/link only. No top-bars, no numbering (see hard NOs). **No gradient on featured/active cards** — mark a featured card with a flat crimson hairline border + barely-there flat crimson tint, never a gradient wash.
+- **Value/difference card headers = benefit/outcome, not what-we-do.** "Our difference" points lead with the outcome ("Decisions your team can defend"), not the mechanism ("Evidence-first"). Layout: tiles can bleed off the right edge and cascade (stepped right-indent down the stack) to balance a heading-left column.
+- **Sector contextualisation = EQUIBT industry-hub selector.** Interactive sector tabs (left rail), each tab carries a leading line-art icon (crimson active / charcoal inactive). Per sector: "Common challenges" + "Context we include in training". Mirrors EQUIBT `/industries`.
+- **Proof = two walls.** (1) "Where our graduates work": large anonymised monochrome descriptor grid (~12–15 tiles), static, never a carousel. (2) "Organisations we've trained" (CLIENTS): a separate monochrome client-logo wall modelled on EQUIBT's about-page wall (~15 marks, white ground). Placeholder/monochrome marks until real logos are cleared; no named or recognisable client logos until cleared.
+- **EQUIBT handover = story-framed reciprocal.** Above the footer: eyebrow "PART OF EQUIBT GROUP", an H2, a narrative paragraph (LMI is EQUIBT's specialist training division; same Lean + AI methods, taught to your team), the EQUIBT wordmark, a text link "Explore advisory at EQUIBT ›" → equibt.com. Mirrors EQUIBT's "OUR TRAINING DIVISION" block. Not a thin two-line card.
+
+---
+
 ## DIRECTION CHANGE — visual idiom (Herman, 2026-06-11, later same day)
 
 **The idiom moves from "line-art-led / hand-drawn signature" to a structured, formal, precise system. Hybrid: hand-drawn is retained in ONE place only, the belt / credential badges. Everything else, framework diagrams, program and sector icons, layout, components, is clean architectural line, no wobble.**
@@ -234,6 +249,12 @@ Generic stock photography; stocky purple/blue gradients; autoplay carousels and 
 - **No coloured or accent bar across the top of a card.** Cards are clean 1px hairline boxes (≈16px radius, no shadow), hover = border darken + small lift. No crimson/colour top-stripe, no left-rule. The accent lives in the link/eyebrow/icon, never as a bar on the card edge.
 - **Body copy is never thin or light-grey.** Montserrat 500, near-black `#161616`. Montserrat 400 / mid-grey body renders fuzzy and is rejected.
 - **Eyebrows must stay legible on dark grounds.** Crimson `#A51C30` eyebrow text on a dark navy section fails contrast; on dark grounds use a light tint (off-white / pale crimson-tint) so the eyebrow reads. Crimson eyebrows are for light grounds only.
+
+**HARD NOs added 2026-06-12, EQT-299 round 3 (caught in the round-2 build):**
+- **No gradient wash on a featured/active card.** A soft crimson/pink gradient reads SaaS-marketing, not practitioner-authority. Mark a featured card with a flat crimson hairline border + barely-there flat crimson tint instead.
+- **No single diagonal "ramp" line for the belt pathway.** The progression must be stepped stairs (discrete treads, each belt one step up), never one sloped line, and the connector must never cut through card content.
+- **No fake squircle from `border-radius`.** Belt badges are a true superellipse (SVG path / clip-path), thick line-art stroke, identical shape across all four.
+- **No two adjacent light sections on the same ground, and no hairline dividers as a substitute.** Alternate white / pale-grey; let the ground change separate sections.
 
 ---
 
