@@ -1,0 +1,19 @@
+:root{
+  /* LMI palette (BRAND_SYSTEM.md). Token names mirror the EQUIBT foundation
+     so the shared base.css carries across; values are LMI brand.
+     --ink  = primary dark / headings (Petrol Teal)
+     --accent = hero / links / markers (Crimson) */
+  --ink:#004757;          /* Petrol Teal — headings, dark UI */
+  --accent:#A51C30;       /* Crimson — eyebrows, links, accents */
+  --accent-dark:#7E1525;  /* Crimson hover */
+  --off-white:#F5F3EE;
+  --dark-slate:#2C3E50;   /* shared wordmark grey */
+  --near-black:#161616;
+  --mid-grey:#2B2B2B;
+  --caption:#5A5A5A;
+  --muted:#6E7B80;
+  --hairline:rgba(0,71,87,0.13);
+  --max:1180px;
+  --wide:1320px;
+  --link-gap:22px;
+}

@@ -1,0 +1,123 @@
+<nav class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo" aria-label="Lean Methods Institute home">
+      <img src="/assets/logos/lmi-logo.svg" alt="Lean Methods Institute" width="188" height="49" />
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+
+      <!-- Courses dropdown -->
+      <div class="nav-item has-dropdown" data-dropdown>
+        <div class="nav-item-row">
+          <a href="/courses/" class="nav-link">Courses</a>
+          <button class="nav-chevron-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Toggle Courses submenu">
+            <span class="nav-chevron" aria-hidden="true">&#8964;</span>
+          </button>
+        </div>
+        <ul class="nav-dropdown" role="menu">
+          <li role="none">
+            <a href="/courses/lean-six-sigma/" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-eyebrow">AUSQ CERTIFIED</span>
+              <span class="nav-dropdown-label">Lean Six Sigma</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="/courses/lean-service-design/" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-eyebrow">AUSQ CERTIFIED</span>
+              <span class="nav-dropdown-label">Lean Service Design</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="/courses/lean-business-analysis/" role="menuitem" class="nav-dropdown-item">
+              <span class="nav-dropdown-eyebrow">AUSQ CERTIFIED</span>
+              <span class="nav-dropdown-label">Lean Business Analysis</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <a href="/approach/" class="nav-link">Approach</a>
+      <a href="/insights/" class="nav-link">Insights</a>
+      <a href="/about/" class="nav-link">About</a>
+      <a href="/contact/" class="nav-cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Dropdown + mobile accordion logic (mirrors EQUIBT v6x foundation).
+  const dropdowns = document.querySelectorAll<HTMLElement>('[data-dropdown]');
+
+  function openItem(item: HTMLElement) {
+    const btn = item.querySelector<HTMLButtonElement>('.nav-chevron-btn');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+    item.classList.add('is-open');
+  }
+
+  function closeItem(item: HTMLElement) {
+    const btn = item.querySelector<HTMLButtonElement>('.nav-chevron-btn');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+    item.classList.remove('is-open');
+  }
+
+  function isMobile() {
+    return window.innerWidth <= 760;
+  }
+
+  dropdowns.forEach((item) => {
+    const btn = item.querySelector<HTMLButtonElement>('.nav-chevron-btn');
+
+    item.addEventListener('focusin', () => {
+      if (!isMobile()) openItem(item);
+    });
+    item.addEventListener('focusout', (e: FocusEvent) => {
+      if (!isMobile() && !item.contains(e.relatedTarget as Node)) closeItem(item);
+    });
+
+    btn?.addEventListener('click', (e) => {
+      if (isMobile()) {
+        e.preventDefault();
+        if (item.classList.contains('is-open')) {
+          closeItem(item);
+        } else {
+          openItem(item);
+        }
+      }
+    });
+
+    item.addEventListener('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeItem(item);
+        btn?.focus();
+      }
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!isMobile()) {
+      dropdowns.forEach((item) => {
+        if (!item.contains(e.target as Node)) closeItem(item);
+      });
+    }
+  });
+
+  // Hamburger toggle
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  toggle?.addEventListener('click', () => {
+    const open = navLinks?.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.classList.toggle('nav-open', !!open);
+  });
+
+  if (navLinks) {
+    const observer = new MutationObserver(() => {
+      if (!navLinks.classList.contains('is-open')) {
+        dropdowns.forEach(closeItem);
+      }
+    });
+    observer.observe(navLinks, { attributes: true, attributeFilter: ['class'] });
+  }
+</script>

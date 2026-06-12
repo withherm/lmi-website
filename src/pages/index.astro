@@ -1,0 +1,54 @@
+---
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import "../styles/home.css";
+---
+
+<Layout
+  title="Lean Methods Institute | Lean and AI capability training"
+  description="Lean Methods Institute builds lean, AI-capable teams. Lean Six Sigma, Lean Service Design and Lean Business Analysis training with AI built in."
+>
+  <Nav />
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">LEAN X AI TRAINING</div>
+        <h1>We build lean, AI-capable teams.</h1>
+        <p class="hero-subhead">Lean Six Sigma, Lean Service Design and Lean Business Analysis, with AI built into every program. Practitioner-led, AUSQ certified, designed for teams that have to make the work stick.</p>
+        <div class="hero-actions">
+          <a href="/courses/" class="btn-primary">Explore courses</a>
+          <a href="/approach/" class="btn-text"><span class="link-label">How we train</span> <span class="ar">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section beige">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="eyebrow">THREE CERTIFIED TRACKS</div>
+          <h2 class="section-title">Capability that holds, not certificates that sit in a drawer.</h2>
+          <p class="section-intro">Every track runs on real work, with AI woven through the method rather than bolted on at the end.</p>
+        </div>
+        <div class="track-grid">
+          <article class="track-card">
+            <span class="track-kicker">AUSQ Certified</span>
+            <h3>Lean Six Sigma</h3>
+            <p>Yellow, Green and Black Belt pathways that build problem-solving capability your team uses on Monday.</p>
+          </article>
+          <article class="track-card">
+            <span class="track-kicker">AUSQ Certified</span>
+            <h3>Lean Service Design</h3>
+            <p>Design and improve service experiences end to end, grounded in customer evidence.</p>
+          </article>
+          <article class="track-card">
+            <span class="track-kicker">AUSQ Certified</span>
+            <h3>Lean Business Analysis</h3>
+            <p>Frame the right problem and shape the right requirements before the build starts.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

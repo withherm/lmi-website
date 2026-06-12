@@ -1,0 +1,31 @@
+{
+  "name": "lmi-website",
+  "version": "1.0.0",
+  "description": "Lean Methods Institute website build",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/withherm/lmi-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/withherm/lmi-website/issues"
+  },
+  "homepage": "https://github.com/withherm/lmi-website#readme",
+  "dependencies": {
+    "@astrojs/cloudflare": "13.5.4",
+    "@fontsource/lato": "5.2.7",
+    "@fontsource/source-serif-4": "5.2.9",
+    "astro": "6.3.7"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}
