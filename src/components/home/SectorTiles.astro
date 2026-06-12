@@ -1,0 +1,29 @@
+---
+import IconGlyph from "./IconGlyph.astro";
+
+const sectors = [
+  { icon: "capability", title: "Corporate", copy: "Build internal improvement capability across shared services, operations and transformation teams." },
+  { icon: "government", title: "Government", copy: "Make service delivery more reliable under procedural, budget and evidence constraints." },
+  { icon: "financial", title: "Financial Services", copy: "Improve regulated processes where throughput, controls and customer outcomes all matter." },
+  { icon: "assure", title: "Healthcare", copy: "Support safer, clearer improvement work in environments where variation has consequences." },
+] as const;
+---
+
+<section class="section white home-reveal" id="sectors">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">Sectors</div>
+      <h2 class="section-title">Designed for teams with real operating constraints.</h2>
+      <p class="section-intro">LMI works best where practical capability, evidence and operating discipline have to move together.</p>
+    </div>
+    <div class="sector-grid">
+      {sectors.map((sector) => (
+        <article class="sector-card">
+          <span class="card-icon"><IconGlyph name={sector.icon} /></span>
+          <h3>{sector.title}</h3>
+          <p>{sector.copy}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

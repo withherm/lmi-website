@@ -1,0 +1,34 @@
+---
+import IconGlyph from "./IconGlyph.astro";
+
+const programs = [
+  { icon: "roadmap", title: "Lean Six Sigma", copy: "Belt pathways for teams that need measurable improvement capability.", formats: ["Classroom", "Live online", "In-house"] },
+  { icon: "automation", title: "AI-Enabled Improvement", copy: "Practical AI woven into process discovery, root cause analysis and delivery.", formats: ["Workshop", "Project-based", "In-house"] },
+  { icon: "loop", title: "Lean Service Design", copy: "Improve service experiences from customer evidence to future-state design.", formats: ["Classroom", "Live online", "Team cohort"] },
+  { icon: "network", title: "Lean Business Analysis", copy: "Frame requirements, process evidence and change decisions before build starts.", formats: ["Classroom", "Live online", "In-house"] },
+] as const;
+---
+
+<section class="section white home-reveal" id="programs">
+  <div class="section-inner">
+    <div class="section-head">
+      <div class="eyebrow">Programs</div>
+      <h2 class="section-title">Outcome-first training for teams and practitioners.</h2>
+      <p class="section-intro">Pick the capability your work needs now. Every program keeps the same Lean spine and the same AI-integrated discipline.</p>
+    </div>
+    <div class="program-grid">
+      {programs.map((program) => (
+        <article class="program-card">
+          <span class="card-icon"><IconGlyph name={program.icon} /></span>
+          <span class="credential">AUSQ certified</span>
+          <h3>{program.title}</h3>
+          <p>{program.copy}</p>
+          <ul class="chip-list" aria-label={`${program.title} delivery formats`}>
+            {program.formats.map((format) => <li>{format}</li>)}
+          </ul>
+          <a href="/programs/" class="btn-text"><span class="link-label">View programs</span> <span class="ar">&rsaquo;</span></a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
