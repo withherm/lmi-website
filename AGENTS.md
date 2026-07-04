@@ -1,5 +1,5 @@
 # Codex Project GOS — Operating Instructions
-_Last updated: 2026-06-11 (staleness refresh) | Platform: OpenAI Codex (cloud code agent, GitHub access, no vault access)_
+_Last updated: 2026-06-20 | Platform: OpenAI Codex (cloud code agent, GitHub access, no vault access)_
 
 ---
 
@@ -13,6 +13,23 @@ Code agent for GOS build tasks. Codex operates from Linear issues and GitHub —
 
 1. Read the assigned Linear issue at `linear.app/equibt` (team EQUIBT, key EQT). Understand the spec, scope, and acceptance criteria before writing any code.
 2. Do not start without a Linear issue. If none exists, ask Herman to create one.
+
+## Plan-gate (before writing code)
+
+Show your plan and the exact file list before writing any code. Wait for that to be acceptable, then build. Do not expand beyond the files you named.
+
+## Scope fence
+
+Touch only the files the issue names. If the work seems to need another file, stop and say so in a Linear comment rather than editing it.
+
+---
+
+## Repository discipline
+
+1. ONE working copy only: `REPOS/lmi-website`. Never create side clones, integration clones, per-issue clones, or extra worktrees. All branches live inside the single canonical clone, which stays on main synced to origin/main. Do not work from a detached HEAD.
+2. Branch per Linear issue inside that clone; PR to `withherm/lmi-website`; merge to main.
+3. Do not commit or push without Herman's explicit approval.
+4. If you find uncommitted local changes or a stash, inspect before discarding. `LMI_DESIGN_LEARNINGS_v1.md` and `LMI_V1_UI_TRANSLATION.md` spec edits have lived only in the working tree; preserve spec updates, never silently drop them.
 
 ---
 
@@ -28,6 +45,11 @@ Code agent for GOS build tasks. Codex operates from Linear issues and GitHub —
 
 To pick up the next task: read the Linear board, take the highest-priority Backlog issue in the relevant project.
 
+## Verify against the deployed URL, not just the build
+
+`npm run build` passing does NOT mean the feature works. For any server behaviour (form handlers, API routes), hit the actual deployed preview URL and confirm the real response.
+On this stack (Astro `output: "static"` + `@astrojs/cloudflare`, deployed as a Cloudflare Pages project serving `dist/client`), on-demand server routes do NOT run: an Astro `prerender = false` endpoint returns 405. Server handlers MUST be Cloudflare Pages Functions in `/functions` (e.g. `functions/api/contact.ts`, `onRequestPost`, bindings via `context.env`).
+
 ---
 
 ## Runtime state
@@ -42,8 +64,8 @@ Codex does not replace or configure Hermes. It handles code execution tasks assi
 
 | Brand | Repo | Stack | Notes |
 |---|---|---|---|
-| EQUIBT | `withherm/equibt-website` | Astro + Cloudflare Pages (v6x) | Live (gated) at `equibt-website.pages.dev`; go-live pending EQT-262. Design authority: `prototypes/DESIGN_LEARNINGS_v6x.md`. Squarespace/WordPress retired. |
-| LMI | `withherm/lmi-website` | Astro + Cloudflare Pages (same stack as EQUIBT v6x) | In build. Design authority: `prototypes/LMI_DESIGN_LEARNINGS_v1.md`. NOT WordPress. |
+| LMI | `withherm/lmi-website` | Astro + Cloudflare Pages + Stripe | In build, go-live 11 Sep 2026. Design authority: `prototypes/LMI_DESIGN_LEARNINGS_v1.md`. Direction: crimson-led, all-Montserrat (no Lora). NOT WordPress. |
+| EQUIBT | `withherm/equibt-website` | Astro + Cloudflare Pages (v6x) | Live (gated) at `equibt-website.pages.dev`; go-live pending EQT-262. Design authority: `prototypes/DESIGN_LEARNINGS_v6x.md`. |
 | CUBOROO | No repo — Squarespace only | Squarespace only | Never WordPress |
 
 **Use before build:** existing subscription → existing platform → SaaS tool → custom build.
@@ -55,18 +77,19 @@ Codex does not replace or configure Hermes. It handles code execution tasks assi
 - Access the GOS-OBSIDIAN vault (no file access outside GitHub repos)
 - Design or make visual decisions (that is Skye's role)
 - Make autonomous product or architecture decisions — brief Herman first
+- **Write, rephrase, expand or "tidy" any user-facing copy (HARD RULE).** All site copy (headings, body, eyebrows, labels, microcopy, framework text, comparison sections) is authored by Claude/Cowork for one consistent voice. Wire in the copy you are given, verbatim. If copy is missing for a section, STOP and request it — do not draft it yourself.
 
 ---
 
 ## Brand rules
 
-**EQUIBT:** B2B advisory. Six locked pillars (DMAICO): FRAME, PLAN, SOLVE, EVOLVE, GOVERN, SCALE. Rapid Pilot is delivered under EVOLVE (not a separate pillar; not LeanPilots).
+**LMI:** Training. Tagline: "We build lean, AI-capable teams." Never write "LMI" in public/website copy — always spell out "Lean Methods Institute". AUSQ may be named.
 
-**LMI:** Training. Tagline: "We build lean, AI-capable teams."
+**EQUIBT:** B2B advisory. Six locked pillars (DMAICO): FRAME, PLAN, SOLVE, EVOLVE, GOVERN, SCALE. Rapid Pilot is delivered under EVOLVE (not a separate pillar; not LeanPilots).
 
 **CUBOROO:** Squarespace only. Never WordPress.
 
-**Do not include in any external content:** CUBOROO AU, Emvisage, AUSQ by name, specific client names.
+**Do not include in any external content:** CUBOROO AU, Emvisage, specific client names.
 
 ---
 
