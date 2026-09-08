@@ -1,0 +1,7 @@
+---
+/* Marked placeholder for a commissioned watercolour illustration.
+   Never ships to production as-is: see prototypes/LMI_ILLUSTRATION_PRODUCTION_v1.md */
+interface Props { label: string; h?: string; style?: string; }
+const { label, h = "240px", style = "" } = Astro.props;
+---
+<div class="illus" style={`height:${h};${style}`} role="img" aria-label={`Illustration placeholder: ${label}`}>{label}</div>

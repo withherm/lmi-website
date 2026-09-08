@@ -1,16 +1,194 @@
 ---
-import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
----
+import Footer from "../components/Footer.astro";
+import BeltBadge from "../components/BeltBadge.astro";
+import "../styles/home.css";
 
-<Layout title="Certifications | Lean Methods Institute" description="Lean Methods Institute certifications hub.">
+const gates = [
+  { h: "Training",       b: "Attend and take part in the full programme.",                          f: "Missed content is not waived. You join the next cohort for it." },
+  { h: "Knowledge test", b: "A test of the method, not a memory test on jargon.",                    f: "Below the standard, you sit it again. Two attempts, then coaching." },
+  { h: "Application",    b: "A real project from your own workplace, documented as evidence.",       f: "A project without a measured result is not certified." },
+  { h: "Coaching",       b: "Reviews with an assessor through the project, not only at the end.",    f: "Skipped reviews stop the assessment, they do not delay it." },
+];
+
+const ladderA = [
+  { code: "YB",  name: "Yellow Belt",       b: "Contributes to improvement work and runs small local fixes." },
+  { code: "GB",  name: "Green Belt",        b: "Leads a project end to end and proves the result." },
+  { code: "BB",  name: "Black Belt",        b: "Solves cross-functional problems and coaches Green Belts." },
+  { code: "MBB", name: "Master Black Belt", b: "Builds the capability, sets the standard, develops Black Belts." },
+] as const;
+---
+<Layout title="Certifications | Lean Methods Institute" description="We train. A separate body certifies. How Lean Methods Institute credentials are assessed, what each level means, and how an employer verifies one.">
   <Nav />
-  <main class="policy-main">
-    <div class="policy-inner">
-      <h1>Certifications</h1>
-      <p>Coming soon.</p>
-    </div>
+  <main id="main">
+
+    <section class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">Certifications</p>
+        <h1>We train. A separate body certifies.</h1>
+        <p class="lede measure-wide">Most training providers assess their own students and issue their own certificates. We do not. AUSQ assesses the evidence and issues the Lean Six Sigma credential, and it does not deliver our training.</p>
+      </div>
+    </section>
+
+    <section class="sec g-off reveal">
+      <div class="wrap">
+        <div class="measure" style="margin-bottom:26px">
+          <p class="eyebrow">The separation</p>
+          <h2>Who does what, and who decides.</h2>
+        </div>
+        <div class="sep-diagram">
+          <svg viewBox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lean Methods Institute delivers training and coaching. Project evidence passes to AUSQ, an independent body, which assesses it and issues the credential back to the participant.">
+            <rect x="10" y="40" width="290" height="150" rx="26" fill="#FFFFFF" stroke="#1F3268" stroke-width="2"/>
+            <rect x="10" y="40" width="290" height="46" rx="23" fill="#1F3268"/>
+            <text x="155" y="69" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="700" font-size="16" letter-spacing="1.4" fill="#FFFFFF">WE TRAIN</text>
+            <text x="155" y="120" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="17" fill="#161616">Teaching, coaching,</text>
+            <text x="155" y="146" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="17" fill="#161616">project supervision</text>
+            <text x="155" y="172" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="600" font-size="12" letter-spacing="1" fill="#4A4A4A">NO SAY IN THE OUTCOME</text>
+
+            <path d="M320,95 L640,95 L640,75 L700,115 L640,155 L640,135 L320,135 Z" fill="#C2D4E7"/>
+            <text x="490" y="80" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="700" font-size="13" letter-spacing="1.6" fill="#1F3268">PROJECT EVIDENCE</text>
+
+            <rect x="700" y="40" width="290" height="150" rx="26" fill="#FFFFFF" stroke="#2E6CB5" stroke-width="2"/>
+            <rect x="700" y="40" width="290" height="46" rx="23" fill="#2E6CB5"/>
+            <text x="845" y="69" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="700" font-size="16" letter-spacing="1.4" fill="#FFFFFF">AUSQ CERTIFIES</text>
+            <text x="845" y="120" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="17" fill="#161616">Independent assessment</text>
+            <text x="845" y="146" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="17" fill="#161616">and the credential</text>
+            <text x="845" y="172" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="600" font-size="12" letter-spacing="1" fill="#4A4A4A">DOES NOT DELIVER TRAINING</text>
+
+            <path d="M845,200 L845,250 L200,250 L200,232 L155,262 L200,292 L200,274 L863,274 A18,18 0 0,0 881,256 L881,200 Z" fill="none" stroke="#35A8DC" stroke-width="2.5" stroke-linejoin="round"/>
+            <text x="520" y="243" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="700" font-size="13" letter-spacing="1.6" fill="#2E6CB5">CREDENTIAL ISSUED TO THE PARTICIPANT</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:30px">
+          <p class="eyebrow">The four gates</p>
+          <h2>Clear all four, or you do not hold the credential.</h2>
+          <p>There is no participation certificate. A gate that is not cleared is not waived.</p>
+        </div>
+        <div class="grid g4">
+          {gates.map((g) => (
+            <div class="capsule">
+              <div class="capsule-head">{g.h}</div>
+              <div class="capsule-body">
+                <p class="small" style="margin:0">{g.b}</p>
+                <div class="gate-fail">
+                  <span class="signal-quiet">Not cleared</span>
+                </div>
+                <p class="gate-note" style="margin:0">{g.f}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-off reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:30px">
+          <p class="eyebrow">The two ladders</p>
+          <h2>Improvement capability, and Lean system capability.</h2>
+          <p>They are different things and they are certified separately. A Black Belt who has never designed a management system is not a Lean Practitioner, and the reverse is just as true.</p>
+        </div>
+        <div class="grid g2" style="gap:40px">
+          <div>
+            <h3 style="margin-bottom:16px">Improvement capability</h3>
+            <div class="grid" style="gap:12px">
+              {ladderA.map((l) => (
+                <div class="card" style="display:flex;gap:16px;align-items:center;padding:16px 18px">
+                  <BeltBadge code={l.code} size={44} />
+                  <div>
+                    <h4 style="margin:0 0 3px">{l.name}</h4>
+                    <p class="small" style="margin:0">{l.b}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h3 style="margin-bottom:16px">Lean system capability</h3>
+            <div class="grid" style="gap:12px">
+              <div class="card" style="padding:16px 18px">
+                <h4 style="margin:0 0 3px">Lean Foundation</h4>
+                <p class="small" style="margin:0">Understands flow, waste and standard work, and can take part in a Lean system.</p>
+              </div>
+              <div class="card" style="padding:16px 18px">
+                <h4 style="margin:0 0 3px">Lean Practitioner</h4>
+                <p class="small" style="margin:0">Designs and runs the management system that keeps improvement going after the project ends.</p>
+              </div>
+              <div class="card card-featured" style="padding:16px 18px">
+                <h4 style="margin:0 0 3px">Lean Executive Champion</h4>
+                <p class="small" style="margin:0">A sponsor role. It sits on neither ladder, because sponsoring the work is not the same as doing it.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-tint reveal" id="verify">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">For employers</p>
+          <h2>Verify a credential in one step.</h2>
+          <p>Enter the credential ID and you get one clean result: the holder, the level, the date and whether it is current. No paginated register, no scrolling through eighteen thousand rows.</p>
+          <p>Every credential also carries a shareable digital badge with a verifiable link, which the holder can add to a LinkedIn profile.</p>
+        </div>
+        <div class="card" style="padding:30px">
+          <h3 style="margin-bottom:14px">Check a credential</h3>
+          <form class="verify" onsubmit="return false">
+            <label class="sr-only" for="credid">Credential ID</label>
+            <input id="credid" type="text" placeholder="Credential ID" autocomplete="off" />
+            <button class="btn" type="submit">Verify</button>
+          </form>
+          <p class="meta" style="margin-top:14px">Lookup is handled by the certifying body, not by us.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:26px">
+          <p class="eyebrow">Plain language</p>
+          <h2>What each credential means to an employer.</h2>
+        </div>
+        <div class="table-scroll">
+          <table class="data">
+            <thead><tr><th>Credential</th><th>Can be trusted to</th><th>Evidence behind it</th><th>Typical time</th></tr></thead>
+            <tbody>
+              <tr><td>Yellow Belt</td><td>Contribute to improvement work and run small local fixes.</td><td>Knowledge test plus a supervised contribution.</td><td>2 days</td></tr>
+              <tr><td>Green Belt</td><td>Lead a project end to end and defend the result to a manager.</td><td>A completed project with a measured outcome.</td><td>3 to 6 months</td></tr>
+              <tr><td>Black Belt</td><td>Solve cross-functional problems and coach Green Belts.</td><td>Two projects, one of them cross-functional.</td><td>6 to 12 months</td></tr>
+              <tr><td>Master Black Belt</td><td>Build the capability and set the standard for others.</td><td>Portfolio, coaching record, and assessed teaching.</td><td>12 months or more</td></tr>
+              <tr><td>Lean Foundation</td><td>Take part in a Lean system and use standard work.</td><td>Knowledge test.</td><td>1 day</td></tr>
+              <tr><td>Lean Practitioner</td><td>Design and run the management system that holds the gains.</td><td>A designed and implemented system, assessed in place.</td><td>6 months</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-dark reveal">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Questions from procurement</p>
+          <h2>Ask us the hard one.</h2>
+          <p>If you are assessing training providers and want to know exactly who assesses what, ask. We will put the separation in writing.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/contact/">Get in touch</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">Start the pathway</p>
+          <h3 style="color:#fff;margin:0">Belt Level Selector</h3>
+          <p>Work out which level matches the decisions your people have to defend.</p>
+          <a class="chev" href="/resources/">Open the selector <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+
   </main>
   <Footer />
 </Layout>

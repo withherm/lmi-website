@@ -1,0 +1,25 @@
+---
+/* True superellipse (not border-radius). Belt colour is the stroke; the
+   selected belt fills solid. Identical shape and stroke weight on all four. */
+const SQUIRCLE =
+  "M96.0 50.0C96.0 57.2,95.8 66.6,95.4 71.7C95.0 76.7,94.5 77.9,93.7 80.3C92.9 82.7,91.9 84.6,90.7 86.3C89.5 88.1,88.1 89.5,86.3 90.7C84.6 91.9,82.7 92.9,80.3 93.7C77.9 94.5,76.7 95.0,71.7 95.4C66.6 95.8,57.2 96.0,50.0 96.0C42.8 96.0,33.4 95.8,28.3 95.4C23.3 95.0,22.1 94.5,19.7 93.7C17.3 92.9,15.4 91.9,13.7 90.7C11.9 89.5,10.5 88.1,9.3 86.3C8.1 84.6,7.1 82.7,6.3 80.3C5.5 77.9,5.0 76.7,4.6 71.7C4.2 66.6,4.0 57.2,4.0 50.0C4.0 42.8,4.2 33.4,4.6 28.3C5.0 23.3,5.5 22.1,6.3 19.7C7.1 17.3,8.1 15.4,9.3 13.7C10.5 11.9,11.9 10.5,13.7 9.3C15.4 8.1,17.3 7.1,19.7 6.3C22.1 5.5,23.3 5.0,28.3 4.6C33.4 4.2,42.8 4.0,50.0 4.0C57.2 4.0,66.6 4.2,71.7 4.6C76.7 5.0,77.9 5.5,80.3 6.3C82.7 7.1,84.6 8.1,86.3 9.3C88.1 10.5,89.5 11.9,90.7 13.7C91.9 15.4,92.9 17.3,93.7 19.7C94.5 22.1,95.0 23.3,95.4 28.3C95.8 33.4,96.0 42.8,96.0 50.0Z";
+
+const BELTS: Record<string, { colour: string; label: string }> = {
+  YB: { colour: "#E8B833", label: "Yellow Belt" },
+  GB: { colour: "#2E7D52", label: "Green Belt" },
+  BB: { colour: "#1C1C1C", label: "Black Belt" },
+  MBB: { colour: "#1C1C1C", label: "Master Black Belt" },
+};
+
+interface Props { code: "YB" | "GB" | "BB" | "MBB"; size?: number; selected?: boolean; }
+const { code, size = 52, selected = false } = Astro.props;
+const belt = BELTS[code];
+const fill = selected ? belt.colour : "#FFFFFF";
+const mono = selected ? (code === "YB" ? "#1F3268" : "#FFFFFF") : "#1F3268";
+const fs = code === "MBB" ? 26 : 30;
+---
+<svg width={size} height={size} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="rung-badge" role="img" aria-label={belt.label}>
+  <path d={SQUIRCLE} fill={fill} stroke={belt.colour} stroke-width="7" />
+  <text x="50" y="50" text-anchor="middle" dominant-baseline="central"
+        font-family="Montserrat, Arial, sans-serif" font-weight="700" font-size={fs} fill={mono}>{code}</text>
+</svg>

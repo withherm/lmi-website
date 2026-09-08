@@ -1,21 +1,41 @@
 :root{
-  --font-sans:"Montserrat",system-ui,-apple-system,Segoe UI,sans-serif;
-  --font-body:"Montserrat",system-ui,-apple-system,Segoe UI,sans-serif;
-  --font-heading:"Montserrat",system-ui,-apple-system,Segoe UI,sans-serif;
-  --ink:#161616;
-  --accent:#A51C30;
-  --accent-dark:#7E1525;
-  --cobalt:#103E8C;
-  --off-white:#F4F5F6;
-  --soft-grey:#ECEFF1;
-  --charcoal:#263238;
-  --dark-slate:#2C3E50;   /* shared wordmark grey */
-  --near-black:#161616;
-  --mid-grey:#2B2B2B;
-  --caption:#5A5A5A;
-  --muted:#6E7B80;
-  --hairline:rgba(44,62,80,0.16);
+  /* Type ---------------------------------------------------------------- */
+  --font-heading:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-sans:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-body:"Lora",Georgia,"Times New Roman",serif;
+
+  /* Colour — AESQ-referenced watercolour blue system (EQT, 8 Sep 2026) --- */
+  --deep-navy:#1F3268;      /* structure, card headers, H1/H2, dark sections */
+  --ink-navy:#152451;       /* deepest fills, silhouettes */
+  --mid-blue:#2E6CB5;       /* primary action, logo mark, active states      */
+  --mid-blue-hover:#1F3268;
+  --steel-blue:#5B87C0;     /* secondary fills                              */
+  --cyan:#35A8DC;           /* small accents, connector triangles           */
+  --pale-blue:#C2D4E7;      /* flow arrows, illustration ground             */
+  --pale-blue-tint:#E3EBF4; /* third page ground, pills                     */
+  --grey:#9A9A9A;
+  --charcoal-grey:#4A4A4A;
+  --white:#FFFFFF;
+  --off-white:#F4F4F2;
+  --near-black:#161616;     /* body copy                                    */
+  --dark-slate:#2C3E50;     /* logo wordmark only                           */
+
+  /* Signal Red: risk and failure states ONLY.
+     Never a button, a heading, a link, or decoration. */
+  --signal-red:#E8484C;
+
+  /* Belt identity. Badges only, never chrome. */
+  --belt-yellow:#E8B833;
+  --belt-green:#2E7D52;
+  --belt-black:#1C1C1C;
+
+  --hairline:rgba(31,50,104,0.14);
+  --hairline-strong:rgba(31,50,104,0.28);
+
+  /* Layout -------------------------------------------------------------- */
   --max:1180px;
   --wide:1320px;
-  --link-gap:22px;
+  --radius-card:16px;
+  --radius-capsule:26px;
+  --nav-h:80px;
 }

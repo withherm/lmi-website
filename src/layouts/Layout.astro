@@ -1,9 +1,11 @@
 ---
-import "@fontsource/montserrat/400.css";
 import "@fontsource/montserrat/500.css";
 import "@fontsource/montserrat/600.css";
 import "@fontsource/montserrat/700.css";
-import "@fontsource/montserrat/400-italic.css";
+import "@fontsource/lora/400.css";
+import "@fontsource/lora/500.css";
+import "@fontsource/lora/400-italic.css";
+import "@fontsource/lora/500-italic.css";
 import "../styles/tokens.css";
 import "../styles/base.css";
 
@@ -14,21 +16,80 @@ interface Props {
 
 const {
   title = "Lean Methods Institute | Lean and AI capability training",
-  description = "Lean Methods Institute builds lean, AI-capable teams. Lean Six Sigma, Lean Service Design and Lean Business Analysis training with AI built in.",
+  description =
+    "Lean Methods Institute builds lean, AI-capable teams. Lean Six Sigma, Lean Service Design and Lean Business Analysis training with AI built in.",
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-AU">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="icon" href="data:," />
+    <meta name="theme-color" content="#1F3268" />
+    <link rel="icon" href="/assets/logos/lmi-logo.svg" />
     <slot name="head" />
   </head>
   <body>
+    <a href="#main" class="sr-only">Skip to content</a>
     <slot />
+
+    <script is:inline>
+      // Section reveal: one fade + 8px rise, once, reduced-motion safe.
+      (function () {
+        var els = document.querySelectorAll(".reveal");
+        if (!els.length) return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) {
+          els.forEach(function (el) { el.classList.add("in"); });
+          return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+          });
+        }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+        els.forEach(function (el) { io.observe(el); });
+      })();
+
+      // Nav: mobile toggle and dropdowns. Click and keyboard, no hover-only.
+      (function () {
+        var toggle = document.querySelector(".nav-toggle");
+        if (toggle) {
+          toggle.addEventListener("click", function () {
+            var open = document.body.classList.toggle("nav-open");
+            toggle.setAttribute("aria-expanded", String(open));
+            toggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+          });
+        }
+        var items = document.querySelectorAll("[data-dropdown]");
+        function closeAll(except) {
+          items.forEach(function (it) {
+            if (it === except) return;
+            it.setAttribute("data-open", "false");
+            var b = it.querySelector(".nav-chevron-btn");
+            if (b) b.setAttribute("aria-expanded", "false");
+          });
+        }
+        items.forEach(function (item) {
+          var btn = item.querySelector(".nav-chevron-btn");
+          if (!btn) return;
+          btn.addEventListener("click", function (ev) {
+            ev.preventDefault();
+            var open = item.getAttribute("data-open") === "true";
+            closeAll(item);
+            item.setAttribute("data-open", String(!open));
+            btn.setAttribute("aria-expanded", String(!open));
+          });
+        });
+        document.addEventListener("click", function (ev) {
+          if (!ev.target.closest("[data-dropdown]")) closeAll(null);
+        });
+        document.addEventListener("keydown", function (ev) {
+          if (ev.key === "Escape") closeAll(null);
+        });
+      })();
+    </script>
   </body>
 </html>

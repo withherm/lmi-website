@@ -1,16 +1,152 @@
 ---
-import Footer from "../../components/Footer.astro";
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
----
+import Footer from "../../components/Footer.astro";
+import BeltBadge from "../../components/BeltBadge.astro";
+import Illus from "../../components/Illus.astro";
+import "../../styles/home.css";
 
-<Layout title="Courses | Lean Methods Institute" description="Lean Methods Institute courses hub.">
+const belts = [
+  { code: "YB",  name: "Yellow Belt",        outcome: "Run your first improvement with support behind you.", duration: "2 days", formats: ["In-house", "Public"], href: "/courses/lean-six-sigma/" },
+  { code: "GB",  name: "Green Belt",         outcome: "Lead a project end to end and prove the result.",     duration: "5 days over 3 months", formats: ["In-house", "Public"], href: "/courses/lean-six-sigma/" },
+  { code: "BB",  name: "Black Belt",         outcome: "Close out the problems nobody else can finish.",      duration: "10 days over 6 months", formats: ["In-house"], href: "/courses/lean-six-sigma/" },
+  { code: "MBB", name: "Master Black Belt",  outcome: "Build the improvement capability, not just the project.", duration: "12 months, by application", formats: ["In-house"], href: "/courses/lean-six-sigma/" },
+] as const;
+
+const others = [
+  { name: "Lean Service Design",    outcome: "Redesign a service around the people who actually use it.", duration: "3 days", formats: ["In-house", "Public"], href: "/courses/lean-service-design/",    i: "Illustration: service journey loop" },
+  { name: "Lean Business Analysis", outcome: "Turn a fuzzy brief into the right problem to solve.",        duration: "3 days", formats: ["In-house", "Public"], href: "/courses/lean-business-analysis/", i: "Illustration: brief becoming a problem statement" },
+];
+---
+<Layout title="Courses | Lean Methods Institute" description="Lean Six Sigma belts, Lean Service Design and Lean Business Analysis, delivered in-house or public, with AI built into every course.">
   <Nav />
-  <main class="policy-main">
-    <div class="policy-inner">
-      <h1>Courses</h1>
-      <p>Coming soon.</p>
-    </div>
+  <main id="main">
+
+    <section class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">Courses</p>
+        <h1>Learn the method, then prove it on your own work.</h1>
+        <p class="lede measure-wide">Every course is assessed on a real project from your workplace, and the credential is issued by a body that does not teach.</p>
+      </div>
+    </section>
+
+    <section class="sec-tight g-off">
+      <div class="wrap">
+        <div class="filters">
+          <span class="filter-label">Method</span>
+          <button class="filter" type="button" aria-pressed="true">All</button>
+          <button class="filter" type="button" aria-pressed="false">Lean Six Sigma</button>
+          <button class="filter" type="button" aria-pressed="false">Lean Service Design</button>
+          <button class="filter" type="button" aria-pressed="false">Lean Business Analysis</button>
+        </div>
+        <div class="filters" style="margin-top:14px">
+          <span class="filter-label">Level</span>
+          <button class="filter" type="button" aria-pressed="true">All</button>
+          <button class="filter" type="button" aria-pressed="false">Yellow</button>
+          <button class="filter" type="button" aria-pressed="false">Green</button>
+          <button class="filter" type="button" aria-pressed="false">Black</button>
+          <button class="filter" type="button" aria-pressed="false">Master Black</button>
+        </div>
+        <div class="filters" style="margin-top:14px">
+          <span class="filter-label">Format</span>
+          <button class="filter" type="button" aria-pressed="true">All</button>
+          <button class="filter" type="button" aria-pressed="false">In-house</button>
+          <button class="filter" type="button" aria-pressed="false">Public</button>
+          <button class="filter" type="button" aria-pressed="false">Self-paced</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap">
+        <div class="measure" style="margin-bottom:30px">
+          <p class="eyebrow">Lean Six Sigma</p>
+          <h2>The belt pathway.</h2>
+        </div>
+        <div class="grid g4">
+          {belts.map((b) => (
+            <a class="card card-link" href={b.href}>
+              <span class="course-card">
+                <span class="course-top">
+                  <BeltBadge code={b.code} size={46} />
+                  <span class="pill">AUSQ certified</span>
+                </span>
+                <h3 style="margin:6px 0 0">{b.name}</h3>
+                <span class="small" style="display:block">{b.outcome}</span>
+                <span class="meta" style="display:block">{b.duration}</span>
+                <span class="pill-row">{b.formats.map((f) => <span class="pill">{f}</span>)}</span>
+                <span class="price">Fee <span class="todo">PRICE INC GST</span><small>Per participant</small></span>
+                <span class="chev">View course <span class="c" aria-hidden="true">&rsaquo;</span></span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-off reveal">
+      <div class="wrap">
+        <div class="measure" style="margin-bottom:30px">
+          <p class="eyebrow">Other methods</p>
+          <h2>Two more ways to take the same discipline into service work.</h2>
+        </div>
+        <div class="grid g2">
+          {others.map((o) => (
+            <a class="card card-link" href={o.href} style="padding:0;overflow:hidden">
+              <Illus label={o.i} h="150px" style="border-radius:0;border:0;border-bottom:1px dashed #1F3268;font-size:9px" />
+              <span style="display:block;padding:24px">
+                <h3>{o.name}</h3>
+                <span class="small" style="display:block">{o.outcome}</span>
+                <span class="meta" style="display:block;margin-top:8px">{o.duration}</span>
+                <span class="pill-row" style="margin:12px 0">{o.formats.map((f) => <span class="pill">{f}</span>)}<span class="pill">AUSQ certified</span></span>
+                <span class="price" style="display:block;margin-bottom:10px">Fee <span class="todo">PRICE INC GST</span></span>
+                <span class="chev">View course <span class="c" aria-hidden="true">&rsaquo;</span></span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap split">
+        <Illus label="Photograph or illustration: an in-house cohort working on their own process" h="320px" />
+        <div>
+          <p class="eyebrow">In-house delivery</p>
+          <h2>Most of our work runs inside one organisation.</h2>
+          <p>A public course teaches the method. An in-house cohort teaches it against your processes, your data and your constraints, and the projects are ones your leadership already wants solved. Cohorts run from eight participants.</p>
+          <p style="margin-top:22px"><a class="btn" href="/contact/">Enquire about in-house training</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec-tight g-tint reveal">
+      <div class="wrap" style="display:flex;gap:30px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+        <div class="measure">
+          <h2 style="font-size:26px;margin-bottom:8px">Not sure where to start?</h2>
+          <p class="small" style="margin:0">Six questions on the work your team does and the decisions they have to defend.</p>
+        </div>
+        <a class="btn" href="/resources/">Open the Belt Level Selector</a>
+      </div>
+    </section>
+
+    <section class="sec g-dark reveal">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Start here</p>
+          <h2>Tell us the problem, not the course code.</h2>
+          <p>We will tell you which belt fits, and say so plainly if training is not the answer.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/contact/">Get in touch</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">Independent certification</p>
+          <h3 style="color:#fff;margin:0">We train. Someone else certifies.</h3>
+          <p>AUSQ assesses the evidence and issues the Lean Six Sigma credential. We do not mark our own homework.</p>
+          <a class="chev" href="/certifications/">How certification works <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+
   </main>
   <Footer />
 </Layout>

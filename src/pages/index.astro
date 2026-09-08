@@ -1,443 +1,368 @@
 ---
-import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import BeltBadge from "../components/BeltBadge.astro";
+import Illus from "../components/Illus.astro";
 import "../styles/home.css";
 
-const icons = {
-  diffLiveWork: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="11" stroke="#2C3E50" stroke-width="1.8"/><circle cx="16" cy="16" r="5.6" stroke="#2C3E50" stroke-width="1.8"/><circle cx="16" cy="16" r="2" fill="#A51C30"/></svg>`,
-  diffAiAnalysis: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="9" stroke="#2C3E50" stroke-width="1.8"/><line x1="20.6" y1="20.6" x2="27" y2="27" stroke="#2C3E50" stroke-width="1.9"/><path d="M14 8.6 L15.5 12.5 L19.4 14 L15.5 15.5 L14 19.4 L12.5 15.5 L8.6 14 L12.5 12.5 Z" fill="#A51C30"/></svg>`,
-  diffEvidence: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 V26 H26" stroke="#2C3E50" stroke-width="1.8"/><polyline points="10,21 15,16 19,18.5 23.5,10.5" stroke="#2C3E50" stroke-width="1.8"/><circle cx="23.5" cy="10.5" r="2.1" fill="#A51C30"/></svg>`,
-  methodSixSigma: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round"><rect x="6" y="16" width="4.6" height="10" rx="1.2" stroke="#2C3E50" stroke-width="1.8"/><rect x="13.7" y="11" width="4.6" height="15" rx="1.2" stroke="#2C3E50" stroke-width="1.8"/><rect x="21.4" y="6" width="4.6" height="20" rx="1.2" fill="#A51C30"/></svg>`,
-  methodServiceDesign: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><path d="M22.5 9.5 A9 9 0 1 0 25 16" stroke="#2C3E50" stroke-width="1.8"/><polyline points="18.5,9 22.8,9.3 23,5" stroke="#2C3E50" stroke-width="1.8"/><circle cx="9" cy="20" r="2.1" fill="#A51C30"/></svg>`,
-  methodBusinessAnalysis: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="6" width="16" height="21" rx="2.2" stroke="#2C3E50" stroke-width="1.8"/><rect x="12" y="4" width="8" height="4.2" rx="1.3" stroke="#2C3E50" stroke-width="1.8"/><line x1="12" y1="14" x2="20" y2="14" stroke="#2C3E50" stroke-width="1.6"/><line x1="12" y1="17.6" x2="18" y2="17.6" stroke="#2C3E50" stroke-width="1.6"/><polyline points="11.8,22 14,24.2 18.4,20" stroke="#A51C30" stroke-width="1.9"/></svg>`,
-  offerInHouse: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><path d="M6 27 V13 L16 6.5 L26 13 V27" stroke="#2C3E50" stroke-width="1.8"/><line x1="4" y1="27" x2="28" y2="27" stroke="#2C3E50" stroke-width="1.8"/><rect x="13.4" y="19" width="5.2" height="8" fill="#A51C30"/></svg>`,
-  sectorCorporate: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="22" height="15" rx="2.5" stroke="#2C3E50" stroke-width="1.8"/><path d="M12 11 V8.6 A2 2 0 0 1 14 6.6 H18 A2 2 0 0 1 20 8.6 V11" stroke="#2C3E50" stroke-width="1.8"/><line x1="5" y1="18" x2="27" y2="18" stroke="#2C3E50" stroke-width="1.5"/><rect x="14" y="16.4" width="4" height="3.2" rx="0.9" fill="#A51C30"/></svg>`,
-  sectorGovernment: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5 L27 11 H5 Z" stroke="#2C3E50" stroke-width="1.8"/><line x1="9" y1="14" x2="9" y2="23" stroke="#2C3E50" stroke-width="1.8"/><line x1="16" y1="14" x2="16" y2="23" stroke="#2C3E50" stroke-width="1.8"/><line x1="23" y1="14" x2="23" y2="23" stroke="#2C3E50" stroke-width="1.8"/><line x1="5.5" y1="26" x2="26.5" y2="26" stroke="#A51C30" stroke-width="2.1"/></svg>`,
-  sectorFinancial: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="10" stroke="#2C3E50" stroke-width="1.8"/><polyline points="11,18.5 16,12 21,18.5" stroke="#A51C30" stroke-width="2"/><line x1="16" y1="12" x2="16" y2="21.5" stroke="#A51C30" stroke-width="2"/></svg>`,
-  sectorHealthEducation: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10 C13 8 8.5 8 6 9 V25 C8.5 24 13 24 16 26 C19 24 23.5 24 26 25 V9 C23.5 8 19 8 16 10 Z" stroke="#2C3E50" stroke-width="1.8"/><line x1="16" y1="10" x2="16" y2="26" stroke="#2C3E50" stroke-width="1.4"/><line x1="20.6" y1="12.6" x2="20.6" y2="18" stroke="#A51C30" stroke-width="1.9"/><line x1="17.9" y1="15.3" x2="23.3" y2="15.3" stroke="#A51C30" stroke-width="1.9"/></svg>`
-};
+const belts = [
+  { code: "MBB", name: "Master Black Belt", outcome: "Build the improvement capability, not just the project.", detail: "By application, 12 months, independently certified", indent: 132, step: 4 },
+  { code: "BB",  name: "Black Belt",        outcome: "Close out the problems nobody else can finish.",           detail: "10 days over 6 months, independently certified", indent: 88, step: 3 },
+  { code: "GB",  name: "Green Belt",        outcome: "Lead a project end to end and prove the result.",          detail: "5 days over 3 months, independently certified",  indent: 44, step: 2 },
+  { code: "YB",  name: "Yellow Belt",       outcome: "Run your first improvement with support behind you.",      detail: "2 days, independently certified",                indent: 0,  step: 1 },
+] as const;
+
+const aiCards = [
+  { head: "Yellow Belt", body: "AI drafts the process map from your own notes. You still walk the process and confirm what actually happens on the floor.", pills: ["Process mapping", "Waste"] },
+  { head: "Green Belt",  body: "AI runs the first pass on the data and suggests the tests. You choose the test, and you own the assumption behind it.",     pills: ["Data analysis", "Root cause"] },
+  { head: "Black Belt",  body: "AI accelerates the modelling and the write-up. It never signs off a control plan, and it never makes a capability claim.",  pills: ["Experiments", "Control plans"] },
+];
+
+const difference = [
+  { h: "Decisions your team can defend",       b: "Every conclusion traces back to the data and the test that produced it.",              i: "Glyph: scales" },
+  { h: "Skills that hold up in live work",     b: "Participants learn on their own processes, not a case study about a pizza shop.",      i: "Glyph: hands at work" },
+  { h: "Faster analysis without losing rigour",b: "AI removes the grind. The method and the judgement stay with the person.",             i: "Glyph: dial and chart" },
+  { h: "Evidence you can take to a board",     b: "Each project leaves a documented result an independent body has assessed.",            i: "Glyph: folder and seal" },
+];
+
+const teach = [
+  { h: "Lean Six Sigma belts",   b: "Prove an improvement with data a finance team will accept.", pills: ["In-house", "Public"], href: "/courses/lean-six-sigma/",        i: "Illustration: belt ladder motif" },
+  { h: "Lean Service Design",    b: "Redesign a service around the people who actually use it.",  pills: ["In-house", "Public"], href: "/courses/lean-service-design/",   i: "Illustration: service journey loop" },
+  { h: "Lean Business Analysis", b: "Turn a fuzzy brief into the right problem to solve.",        pills: ["In-house", "Public"], href: "/courses/lean-business-analysis/",i: "Illustration: brief becoming a problem statement" },
+  { h: "In-house training",      b: "Train a whole cohort on your own processes and your own data.", pills: ["In-house"],       href: "/contact/",                        i: "Illustration: cohort around a board" },
+];
+
+const cohort = [
+  { h: "Scope",   b: "We agree the problems the cohort will work on." },
+  { h: "Design",  b: "We build the material around your processes and your data." },
+  { h: "Teach",   b: "We run the sessions in your workplace, or online across sites." },
+  { h: "Apply",   b: "Each participant runs a real project with coaching behind it." },
+  { h: "Certify", b: "An independent body assesses the evidence and issues the credential." },
+];
+
+const sectors = [
+  { id: "corporate", label: "Corporate",
+    challenges: ["Handovers between teams add days to every cycle.", "Improvement work stalls the week after the workshop ends.", "Nobody agrees which number is the real one."],
+    context: "We work from your own process data, your escalation paths and the reporting your executives already read, so the project lands in language the business accepts." },
+  { id: "government", label: "Government",
+    challenges: ["Policy changes faster than the process can absorb it.", "Demand keeps rising while headcount stays flat.", "Improvement has to survive a change of minister."],
+    context: "We build around your procurement rules, records obligations and approval chains, and we design the change to hold through a machinery-of-government shift." },
+  { id: "financial", label: "Financial Services",
+    challenges: ["Controls and improvement pull in opposite directions.", "Remediation work crowds out everything else.", "Evidence has to satisfy a regulator, not just a manager."],
+    context: "We build the control evidence into the project as it runs, not as a write-up afterwards, so the improvement and the obligation are the same piece of work." },
+  { id: "healthcare", label: "Healthcare",
+    challenges: ["Clinical time disappears into administration.", "Improvement competes directly with patient safety work.", "Data sits in systems that were never meant to talk."],
+    context: "We protect care time in how the training is scheduled, and we use your incident, audit and flow data so the projects are about patients rather than paperwork." },
+];
+
+const graduates = [
+  "National bank, retail operations","State health service, patient flow","Federal department, service delivery",
+  "Energy utility, field operations","General insurer, claims","University, student administration",
+  "Rail operator, maintenance","Local council, permits and approvals","Superannuation fund, member services",
+  "Aged care provider, rostering","Logistics operator, distribution","Water utility, asset management",
+  "Telecommunications, provisioning","Manufacturer, quality assurance",
+];
 ---
 
-<Layout
-  title="Lean Methods Institute | Lean and AI capability training"
-  description="Lean Methods Institute builds lean, AI-capable teams. Lean Six Sigma, Lean Service Design and Lean Business Analysis training with AI built in."
->
+<Layout>
   <Nav />
-  <main>
-    <section class="hero" id="hero">
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <div class="eyebrow">LEAN X AI TRAINING</div>
+  <main id="main">
+
+    <!-- Hero + belt ladder -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Training with AI built in</p>
           <h1>We build lean, AI-capable teams.</h1>
-          <p class="hero-subhead">Lean Six Sigma, Lean Service Design and Lean Business Analysis training for organisations that need improvement capability to show up in live work, not only in course notes.</p>
+          <p class="hero-lede">We train Lean Six Sigma, Lean Service Design and Lean Business Analysis for teams across Australia and New Zealand. Every belt teaches where AI carries the work, and where it must not touch it.</p>
           <div class="hero-actions">
-            <a href="/courses/" class="btn-primary">Explore courses</a>
-            <a href="/contact/" class="btn-text"><span class="link-label">Get in touch</span> <span class="ar">&rsaquo;</span></a>
+            <a class="btn" href="/contact/">Get in touch</a>
+            <a class="chev" href="/courses/lean-six-sigma/">Explore the belt pathway <span class="c" aria-hidden="true">&rsaquo;</span></a>
           </div>
-          <div class="hero-video-slot" aria-label="Explainer video placeholder">
-            <span class="video-play" aria-hidden="true"></span>
-            <div>
-              <strong>Explainer video slot</strong>
-              <p>Short method overview reserved for the first Lean Methods Institute course video.</p>
+        </div>
+
+        <div class="ladder" id="belt-ladder">
+          <div class="ladder-spine" aria-hidden="true"></div>
+          <div class="ladder-fill" id="ladder-fill" aria-hidden="true"></div>
+          <div class="ladder-rungs">
+            {belts.map((b) => (
+              <button class="rung" type="button" data-belt={b.code} data-step={b.step}
+                      aria-pressed={b.code === "GB" ? "true" : "false"} style={`margin-left:${b.indent}px`}>
+                <span class="rung-inner">
+                  <BeltBadge code={b.code} selected={b.code === "GB"} />
+                  <span>
+                    <span class="rung-name">{b.name}</span>
+                    <span class="rung-outcome" style="display:block">{b.outcome}</span>
+                    <span class="rung-detail">{b.detail}</span>
+                  </span>
+                </span>
+              </button>
+            ))}
+          </div>
+          <p class="meta ladder-hint">Select a belt to see the detail</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI differentiator -->
+    <section class="sec g-off reveal">
+      <div class="wrap">
+        <div class="split" style="margin-bottom:40px">
+          <div>
+            <p class="eyebrow">The difference in every course</p>
+            <h2>Teach AI where it earns its place, and where it must not touch the work.</h2>
+            <p>Most training bolts an AI module onto the end. We build it into each belt, on the tools the participant already uses, with a clear line around the judgement a person has to make and defend.</p>
+          </div>
+          <Illus label="Illustration: practitioner at a screen with a process map, a colleague reviewing beside them" />
+        </div>
+        <div class="grid g3">
+          {aiCards.map((c) => (
+            <div class="capsule">
+              <div class="capsule-head">{c.head}</div>
+              <div class="capsule-body">
+                <p class="small">{c.body}</p>
+                <div class="pill-row">{c.pills.map((p) => <span class="pill">{p}</span>)}</div>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div class="hero-panel" aria-label="Captioned training image placeholder">
-          <figure class="photo-slot hero-photo">
-            <span>Captioned image slot</span>
-            <figcaption>Replace with approved Lean Methods Institute classroom, facilitator or art-directed training imagery. The belt pathway is introduced later, after visitors choose that route.</figcaption>
-          </figure>
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="section grey difference-section" id="our-difference">
-      <div class="section-inner split">
-        <div class="section-head sticky-head">
-          <div class="eyebrow">OUR DIFFERENCE</div>
-          <h2 class="section-title">Methods taught through real work, with AI built into the way people improve.</h2>
+    <!-- Our difference -->
+    <section class="sec g-white reveal">
+      <div class="wrap">
+        <div class="measure" style="margin-bottom:36px">
+          <p class="eyebrow">What you get</p>
+          <h2>Train people who can still do the work six months later.</h2>
         </div>
-        <div class="difference-stack">
-          <article class="difference-card">
-            <span class="line-icon supplied-icon" aria-hidden="true" set:html={icons.diffLiveWork}></span>
-            <h3>Skills that hold up in live work</h3>
-            <p>We teach the method against real operational constraints and the messy reality of service work, not tidy classroom cases.</p>
-          </article>
-          <article class="difference-card">
-            <span class="line-icon supplied-icon" aria-hidden="true" set:html={icons.diffAiAnalysis}></span>
-            <h3>Faster analysis without losing rigour</h3>
-            <p>We build AI into problem framing, data sense-making and communication, so teams move faster without losing rigour.</p>
-          </article>
-          <article class="difference-card">
-            <span class="line-icon supplied-icon" aria-hidden="true" set:html={icons.diffEvidence}></span>
-            <h3>Decisions your team can defend</h3>
-            <p>We tie every activity back to the action that produced the result, so your team can defend decisions and repeat the improvement.</p>
-          </article>
+        <div class="grid g4">
+          {difference.map((d) => (
+            <div class="card">
+              <Illus label={d.i} h="76px" style="width:76px;font-size:9px;margin-bottom:12px" />
+              <h3>{d.h}</h3>
+              <p class="small">{d.b}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="section white offers-section" id="offers">
-      <div class="section-inner">
-        <div class="section-head">
-          <div class="eyebrow">FOUR OFFERS</div>
-          <h2 class="section-title">Choose the training model that matches the capability you need to build.</h2>
-          <p class="section-intro">Each offer is outcome-led, practical and built to connect coursework with live organisational work.</p>
+    <!-- What we teach -->
+    <section class="sec g-off reveal">
+      <div class="wrap">
+        <div class="measure" style="margin-bottom:36px">
+          <p class="eyebrow">What we teach</p>
+          <h2>Choose the method that matches the problem.</h2>
         </div>
-        <div class="offer-grid">
-          <article class="offer-card">
-            <span class="offer-icon supplied-icon" aria-hidden="true" set:html={icons.methodSixSigma}></span>
-            <span class="offer-kicker">Core pathway</span>
-            <h3>Lean Six Sigma belts</h3>
-            <p>Yellow, Green and Black Belt training for teams that need a common improvement method and recognised credentials.</p>
-            <a href="/courses/lean-six-sigma/" class="btn-text"><span class="link-label">View pathway</span> <span class="ar">&rsaquo;</span></a>
-          </article>
-          <article class="offer-card">
-            <span class="offer-icon supplied-icon" aria-hidden="true" set:html={icons.methodServiceDesign}></span>
-            <span class="offer-kicker">Service teams</span>
-            <h3>Lean Service Design</h3>
-            <p>Improve service journeys, handoffs and pain points with customer evidence and operational design discipline.</p>
-            <a href="/courses/lean-service-design/" class="btn-text"><span class="link-label">View course</span> <span class="ar">&rsaquo;</span></a>
-          </article>
-          <article class="offer-card">
-            <span class="offer-icon supplied-icon" aria-hidden="true" set:html={icons.methodBusinessAnalysis}></span>
-            <span class="offer-kicker">Change delivery</span>
-            <h3>Lean Business Analysis</h3>
-            <p>Frame the right problem, test assumptions early and translate evidence into clear requirements before work scales.</p>
-            <a href="/courses/lean-business-analysis/" class="btn-text"><span class="link-label">View course</span> <span class="ar">&rsaquo;</span></a>
-          </article>
-          <article class="offer-card">
-            <span class="offer-icon supplied-icon" aria-hidden="true" set:html={icons.offerInHouse}></span>
-            <span class="offer-kicker">Organisation uplift</span>
-            <h3>In-house training</h3>
-            <p>Contextualise the method around your processes, data, governance and improvement priorities for faster transfer.</p>
-            <a href="/contact/" class="btn-text"><span class="link-label">Enquire</span> <span class="ar">&rsaquo;</span></a>
-          </article>
+        <div class="grid g4">
+          {teach.map((t) => (
+            <a class="card card-link" href={t.href} style="padding:0;overflow:hidden">
+              <Illus label={t.i} h="132px" style="border-radius:0;border:0;border-bottom:1px dashed #1F3268;font-size:9px" />
+              <span style="display:block;padding:22px">
+                <h3>{t.h}</h3>
+                <p class="small">{t.b}</p>
+                <span class="pill-row" style="margin:12px 0">{t.pills.map((p) => <span class="pill">{p}</span>)}</span>
+                <span class="chev">View programs <span class="c" aria-hidden="true">&rsaquo;</span></span>
+              </span>
+            </a>
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="section grey trainline-section" id="belt-pathway">
-      <div class="section-inner">
-        <div class="section-head">
-          <div class="eyebrow">BELT PATHWAY</div>
-          <h2 class="section-title">A step-by-step progression from shared language to internal improvement leadership.</h2>
+    <!-- How a cohort runs -->
+    <section class="sec g-white reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:24px">
+          <p class="eyebrow">How a cohort runs</p>
+          <h2>Run it as a programme, not a two-day event.</h2>
         </div>
-        <div class="stair-trainline" aria-label="Lean Six Sigma belt stair progression">
-          <svg class="step-path main-step-path" viewBox="0 0 1000 340" preserveAspectRatio="none" aria-hidden="true">
-            <path class="step-stroke step-yellow" d="M80 248 H245"/>
-            <path class="step-stroke step-green" d="M245 248 V196 H440"/>
-            <path class="step-stroke step-black" d="M440 196 V144 H635"/>
-            <path class="step-stroke step-master" d="M635 144 V92 H830"/>
+        <div class="flow">
+          <svg class="flow-arrow" viewBox="0 0 1000 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M0,28 L928,28 L928,0 L1000,50 L928,100 L928,72 L0,72 Z" fill="#C2D4E7"></path>
           </svg>
-          <article class="station yellow" tabindex="0" data-belt-station>
-            <p class="station-note">Spot waste, frame problems and support improvement work.</p>
-            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 3 C53 3 61 11 61 32 C61 53 53 61 32 61 C11 61 3 53 3 32 C3 11 11 3 32 3Z"/><text x="32" y="37">YB</text></svg>
-            <h3>Yellow Belt</h3>
-          </article>
-          <article class="station green is-pinned" tabindex="0" data-belt-station>
-            <p class="station-note">Lead scoped projects and apply structured analysis.</p>
-            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 3 C53 3 61 11 61 32 C61 53 53 61 32 61 C11 61 3 53 3 32 C3 11 11 3 32 3Z"/><text x="32" y="37">GB</text></svg>
-            <h3>Green Belt</h3>
-          </article>
-          <article class="station black" tabindex="0" data-belt-station>
-            <p class="station-note">Lead complex work and coach improvement teams.</p>
-            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 3 C53 3 61 11 61 32 C61 53 53 61 32 61 C11 61 3 53 3 32 C3 11 11 3 32 3Z"/><text x="32" y="37">BB</text></svg>
-            <h3>Black Belt</h3>
-          </article>
-          <article class="station master" tabindex="0" data-belt-station>
-            <p class="station-note">Build the system that sustains capability.</p>
-            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 3 C53 3 61 11 61 32 C61 53 53 61 32 61 C11 61 3 53 3 32 C3 11 11 3 32 3Z"/><text x="32" y="37">MBB</text></svg>
-            <h3>Master Black Belt</h3>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section charcoal highlights-section" id="highlights">
-      <div class="section-inner">
-        <div class="section-head">
-          <div class="eyebrow light">HIGHLIGHTS</div>
-          <h2 class="section-title">Training that makes methods usable under pressure.</h2>
-        </div>
-        <div class="flagship-highlights">
-          <article class="flagship-card">
-            <span class="flagship-kicker">Active practice</span>
-            <h3>Workshops built around doing the work, not watching slides.</h3>
-            <p>Learners practise on realistic operating constraints, use AI where it improves the work, and leave with tools they can reuse immediately.</p>
-          </article>
-          <div class="highlight-rail" aria-label="Training highlights">
-            <article class="rail-item">
-              <h3>Practice before theory drifts</h3>
-              <p>Each block turns the method into an activity: framing the problem, testing the evidence, explaining the decision and planning the next action.</p>
-            </article>
-            <article class="rail-item">
-              <h3>Built for service work</h3>
-              <p>Examples use queues, handoffs, approvals, rework, controls and customer friction, so the training fits corporate and public-sector operations.</p>
-            </article>
-            <article class="rail-item">
-              <h3>Reusable work products</h3>
-              <p>Learners leave with problem statements, evidence maps, decision summaries and action plans their managers can inspect.</p>
-            </article>
+          <div class="flow-row">
+            {cohort.map((c, i) => (
+              <>
+                <div class="capsule">
+                  <div class="capsule-head" style="font-size:13px">{c.h}</div>
+                  <div class="capsule-body" style="padding:16px 16px 20px"><p class="small" style="font-size:15px">{c.b}</p></div>
+                </div>
+                {i < cohort.length - 1 && (
+                  <div class="flow-tri" aria-hidden="true">
+                    <svg width="15" height="20" viewBox="0 0 15 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L15 10 L0 20 Z" fill="#35A8DC"></path></svg>
+                  </div>
+                )}
+              </>
+            ))}
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section white org-section">
-      <div class="section-inner org-grid">
-        <div class="photo-slot org-photo">
-          <span>Photography slot</span>
-          <p>Replace with genuine Lean Methods Institute facilitator or in-house delivery photography.</p>
+    <!-- Contextualised training -->
+    <section class="sec g-tint reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:36px">
+          <p class="eyebrow">Contextualised training</p>
+          <h2>Teach the method against the work your sector actually does.</h2>
         </div>
-        <div class="org-copy">
-          <div class="eyebrow">CREDENTIALS</div>
-          <h2 class="section-title">Lean Methods Institute delivers the training. AUSQ provides independent Lean Six Sigma certification.</h2>
-          <p>Lean Methods Institute develops practical improvement capability for corporate, public sector and service teams. The work is grounded in Lean Six Sigma, service design, business analysis and the responsible use of AI in improvement practice.</p>
-          <p>AUSQ provides separation for Lean Six Sigma credentials, so learners and employers can distinguish training delivery from independent certification. That separation matters for procurement, governance and employer trust.</p>
-          <a href="/courses/lean-six-sigma/" class="btn-text"><span class="link-label">See the credential pathway</span> <span class="ar">&rsaquo;</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section grey sector-section" id="contextualised-training">
-      <div class="section-inner">
-        <div class="section-head">
-          <div class="eyebrow">CONTEXTUALISED TRAINING</div>
-          <h2 class="section-title">Programs are adapted to the sector, not delivered as generic improvement theory.</h2>
-          <p class="section-intro">The core method stays disciplined. The examples, data, constraints and practice scenarios change to match how the work actually runs.</p>
-        </div>
-        <div class="sector-selector" data-sector-selector>
-          <div class="sector-tabs" role="tablist" aria-label="Training sectors">
-            <button class="sector-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="sector-corporate" id="tab-corporate" data-sector-tab="corporate"><span class="sector-tab-icon supplied-icon" aria-hidden="true" set:html={icons.sectorCorporate}></span><span>Corporate services</span></button>
-            <button class="sector-tab" type="button" role="tab" aria-selected="false" aria-controls="sector-government" id="tab-government" data-sector-tab="government"><span class="sector-tab-icon supplied-icon" aria-hidden="true" set:html={icons.sectorGovernment}></span><span>Government</span></button>
-            <button class="sector-tab" type="button" role="tab" aria-selected="false" aria-controls="sector-financial" id="tab-financial" data-sector-tab="financial"><span class="sector-tab-icon supplied-icon" aria-hidden="true" set:html={icons.sectorFinancial}></span><span>Financial services</span></button>
-            <button class="sector-tab" type="button" role="tab" aria-selected="false" aria-controls="sector-health" id="tab-health" data-sector-tab="health"><span class="sector-tab-icon supplied-icon" aria-hidden="true" set:html={icons.sectorHealthEducation}></span><span>Healthcare and education</span></button>
+        <div class="sectors">
+          <div class="sector-rail" role="tablist" aria-label="Sector">
+            {sectors.map((s, i) => (
+              <button class="sector-tab" type="button" role="tab" id={`tab-${s.id}`}
+                      aria-controls={`panel-${s.id}`} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? "0" : "-1"}>
+                <span class="sector-dot" aria-hidden="true"></span>{s.label}
+              </button>
+            ))}
           </div>
-          <div class="sector-panels">
-            <article class="sector-panel is-active" id="sector-corporate" role="tabpanel" aria-labelledby="tab-corporate" data-sector-panel="corporate">
-              <div>
-                <span class="sector-label">Corporate services</span>
-                <h3>Improve repeatable service work</h3>
-                <p>Use customer evidence, queue data and process ownership to reduce friction across shared service operations.</p>
-              </div>
-              <div class="sector-lists">
-                <div>
-                  <h4>Common challenges</h4>
-                  <ul>
-                    <li>Backlogs moving between teams without clear ownership.</li>
-                    <li>Inconsistent handoffs across customer and internal service journeys.</li>
-                    <li>Improvement work competing with daily delivery pressure.</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>Context we include in training</h4>
-                  <ul>
-                    <li>Queue data, service-level evidence and demand patterns.</li>
-                    <li>Process ownership, escalation paths and operational routines.</li>
-                    <li>AI-assisted problem framing for service improvement work.</li>
-                  </ul>
+          <div>
+            {sectors.map((s, i) => (
+              <div class="sector-panel" role="tabpanel" id={`panel-${s.id}`} aria-labelledby={`tab-${s.id}`} hidden={i !== 0}>
+                <div class="sector-cols">
+                  <div>
+                    <p class="sector-h">Common challenges</p>
+                    <ul class="sector-list">
+                      {s.challenges.map((c) => <li><span class="sq" aria-hidden="true"></span><span>{c}</span></li>)}
+                    </ul>
+                  </div>
+                  <div>
+                    <p class="sector-h">Context we include in training</p>
+                    <p class="small">{s.context}</p>
+                    <Illus label="Illustration: sector scene, swaps with the tab" h="118px" style="margin-top:16px;font-size:9px" />
+                  </div>
                 </div>
               </div>
-            </article>
-            <article class="sector-panel" id="sector-government" role="tabpanel" aria-labelledby="tab-government" data-sector-panel="government" hidden>
-              <div>
-                <span class="sector-label">Government</span>
-                <h3>Make public services easier to run</h3>
-                <p>Translate policy, compliance and citizen experience into practical improvement projects.</p>
-              </div>
-              <div class="sector-lists">
-                <div>
-                  <h4>Common challenges</h4>
-                  <ul>
-                    <li>Policy intent losing clarity as work moves into delivery.</li>
-                    <li>Citizen experience constrained by compliance and legacy systems.</li>
-                    <li>Slow approvals, rework and unclear evidence for change.</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>Context we include in training</h4>
-                  <ul>
-                    <li>Policy-to-process translation and risk-aware improvement framing.</li>
-                    <li>Citizen journey evidence, service standards and governance needs.</li>
-                    <li>Practical AI use for synthesis, communication and decision briefs.</li>
-                  </ul>
-                </div>
-              </div>
-            </article>
-            <article class="sector-panel" id="sector-financial" role="tabpanel" aria-labelledby="tab-financial" data-sector-panel="financial" hidden>
-              <div>
-                <span class="sector-label">Financial services</span>
-                <h3>Control risk while improving flow</h3>
-                <p>Connect improvement methods to regulated processes, operational controls and measurable service outcomes.</p>
-              </div>
-              <div class="sector-lists">
-                <div>
-                  <h4>Common challenges</h4>
-                  <ul>
-                    <li>Customer delays caused by control steps and manual rework.</li>
-                    <li>Process improvement blocked by risk, compliance and audit needs.</li>
-                    <li>Teams measuring activity instead of customer and control outcomes.</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>Context we include in training</h4>
-                  <ul>
-                    <li>Control mapping, defect evidence and regulated-process examples.</li>
-                    <li>Risk-aware root cause analysis and measurable operating controls.</li>
-                    <li>AI-supported analysis with human review and governance boundaries.</li>
-                  </ul>
-                </div>
-              </div>
-            </article>
-            <article class="sector-panel" id="sector-health" role="tabpanel" aria-labelledby="tab-health" data-sector-panel="health" hidden>
-              <div>
-                <span class="sector-label">Healthcare and education</span>
-                <h3>Protect care and learning time</h3>
-                <p>Apply Lean tools to handoffs, scheduling, administration and frontline problem solving.</p>
-              </div>
-              <div class="sector-lists">
-                <div>
-                  <h4>Common challenges</h4>
-                  <ul>
-                    <li>Frontline time lost to duplicated administration and rework.</li>
-                    <li>Scheduling, referrals and handoffs creating avoidable waiting.</li>
-                    <li>Improvement efforts losing momentum after workshops finish.</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4>Context we include in training</h4>
-                  <ul>
-                    <li>Flow, handoff and demand examples from care and learning settings.</li>
-                    <li>Practical routines for frontline problem solving and escalation.</li>
-                    <li>AI use cases for synthesis, planning and communication support.</li>
-                  </ul>
-                </div>
-              </div>
-            </article>
+            ))}
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section white methods-section" id="methods-we-teach">
-      <div class="section-inner methods-grid">
+    <!-- In-house callout -->
+    <section class="sec g-white reveal">
+      <div class="wrap split">
+        <Illus label="Photograph or illustration: a real session in progress, captioned" h="340px" />
         <div>
-          <div class="eyebrow">METHODS WE TEACH</div>
-          <h2 class="section-title">Three practical methods for improving service work.</h2>
-          <p class="section-intro">This overview keeps the home page concise. The detail belongs on the dedicated method pages.</p>
-        </div>
-        <div class="method-card-grid">
-          <article class="method-card">
-            <span class="method-icon supplied-icon" aria-hidden="true" set:html={icons.methodSixSigma}></span>
-            <h3>Lean Six Sigma</h3>
-            <p>Structured problem solving through DMAIC, variation reduction, root cause analysis and measurable improvement.</p>
-            <a href="/methods/lean-six-sigma/" class="btn-text"><span class="link-label">View method</span> <span class="ar">&rsaquo;</span></a>
-          </article>
-          <article class="method-card">
-            <span class="method-icon supplied-icon" aria-hidden="true" set:html={icons.methodServiceDesign}></span>
-            <h3>Lean Service Design</h3>
-            <p>Service journeys, handoffs and customer evidence translated into practical operational improvements.</p>
-            <a href="/methods/lean-service-design/" class="btn-text"><span class="link-label">View method</span> <span class="ar">&rsaquo;</span></a>
-          </article>
-          <article class="method-card">
-            <span class="method-icon supplied-icon" aria-hidden="true" set:html={icons.methodBusinessAnalysis}></span>
-            <h3>Lean Business Analysis</h3>
-            <p>Problem framing, evidence-led requirements and early assumption testing before delivery work scales.</p>
-            <a href="/methods/lean-business-analysis/" class="btn-text"><span class="link-label">View method</span> <span class="ar">&rsaquo;</span></a>
-          </article>
+          <p class="eyebrow">In-house delivery</p>
+          <h2>Train the whole team on the work they actually do.</h2>
+          <p>Most of our work is in-house. We build the cohort around your processes, your data and your constraints, then coach the projects through to a result. Delivery runs in English and Mandarin across Australia, New Zealand and the wider region.</p>
+          <p style="margin-top:22px"><a class="btn" href="/contact/">Enquire about in-house training</a></p>
         </div>
       </div>
     </section>
 
-    <section class="proof-strip" id="proof-logo-wall">
-      <div class="proof-inner">
+    <!-- Proof -->
+    <section class="sec g-off reveal">
+      <div class="wrap">
+        <p class="eyebrow">Proof</p>
+        <h2>Where our graduates work.</h2>
+        <p class="small measure" style="color:var(--charcoal-grey);margin-bottom:26px">Client names stay off the public site. These are the kinds of teams, and the work they took back.</p>
+        <div class="grad-wall">{graduates.map((g) => <div class="grad-tile">{g}</div>)}</div>
+
+        <h2 style="font-size:26px;margin:56px 0 22px">Organisations we have trained.</h2>
+        <div class="logo-wall">
+          {Array.from({ length: 15 }).map(() => <div class="logo-mark" aria-hidden="true"><span></span></div>)}
+        </div>
+        <p class="meta" style="margin-top:18px">Placeholder marks. Real logos go live only once each client has cleared it.</p>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="sec-tight g-white reveal">
+      <div class="wrap grid-quote">
+        <Illus label="Photograph: the person quoted, real, never generated" h="200px" style="font-size:9px" />
         <div>
-          <div class="eyebrow">TRACK RECORD</div>
-          <h2>The organisations whose teams we've trained.</h2>
-          <p>We build improvement capability inside complex, regulated operations. These are the teams our graduates take the method back into.</p>
-        </div>
-        <div class="client-logo-grid" aria-label="Monochrome anonymised organisation marks">
-          <span><i></i></span>
-          <span><i></i></span>
-          <span><i></i></span>
-          <span><i></i></span>
-          <span><i></i></span>
-          <span><i></i></span>
-          <span><i></i></span>
-          <span><i></i></span>
-          <span><i></i></span>
-          <span><i></i></span>
-          <span><i></i></span>
-          <span><i></i></span>
-          <span><i></i></span>
-          <span><i></i></span>
-          <span><i></i></span>
+          <p class="quote">"The projects did not stop when the training did. Six months on the team is still closing them out, and finance accepts the numbers without a fight."</p>
+          <p class="quote-by">Head of Operational Excellence, national insurer</p>
         </div>
       </div>
     </section>
 
-    <section class="equibt-handover" id="equibt-handover" aria-labelledby="equibt-handover-title">
-      <div class="handover-inner">
-        <div class="handover-copy">
-          <div class="eyebrow">PART OF EQUIBT GROUP</div>
-          <h2 id="equibt-handover-title">The advisory firm behind the training.</h2>
-          <p>Lean Methods Institute is the specialist training division of EQUIBT Group. The same Lean and AI methods EQUIBT runs inside advisory engagements, taught to your team through structured courses, so the capability stays in-house after the project ends.</p>
-          <svg class="equibt-wordmark" viewBox="0 0 1900.02 441.3" role="img" aria-label="EQUIBT">
-            <g fill="#2C3E50">
-              <path d="M45.48,308.58v-172.32h186.84v33.08H87.37v35.23h100.68v33.08h-100.68v37.84h151.61v33.08H45.48Z"/>
-              <path d="M421.06,310.01c-5.56,1.11-10.99,1.94-16.3,2.5-5.32.55-10.67.83-16.06.83-17.61,0-33.88-2.46-48.79-7.38-14.92-4.91-27.77-11.9-38.56-20.94-9.84-8.09-17.22-17.45-22.13-28.09-4.92-10.63-7.38-22.29-7.38-34.99,0-25.39,10-46.25,29.99-62.6,10.95-9.04,23.88-16.07,38.8-21.06,14.91-5,31.02-7.5,48.32-7.5s33.44,2.51,48.43,7.5c14.99,5,27.88,12.03,38.68,21.08,19.99,16.68,29.99,37.55,29.99,62.64,0,16.36-4.13,30.93-12.38,43.71-8.25,12.78-20.55,23.46-36.89,32.03l23.09,24.16-36.65,10.95-22.14-22.85ZM431.05,271.21c10.63-5.24,18.6-12.02,23.92-20.35,5.31-8.33,7.97-17.97,7.97-28.92,0-8.57-1.75-16.42-5.24-23.56-3.49-7.14-8.45-13.25-14.88-18.33-6.43-5.08-14.2-9.04-23.33-11.9-9.13-2.86-19.32-4.28-30.58-4.28s-21.46,1.43-30.58,4.29c-9.13,2.86-16.9,6.87-23.32,12.04-6.43,5.17-11.39,11.29-14.88,18.36-3.49,7.08-5.24,14.91-5.24,23.49s1.7,16.69,5.12,23.85c3.41,7.15,8.33,13.27,14.76,18.36,6.43,5.09,14.16,9.03,23.21,11.81,9.05,2.78,19.28,4.17,30.7,4.17h3.33l-19.52-20.47,37.37-10.47,21.18,21.9Z"/>
-              <path d="M772.36,250.74c0,9.04-2.42,17.45-7.26,25.2-4.84,7.76-11.75,14.4-20.71,19.91-8.97,5.52-19.87,9.85-32.73,13-12.85,3.15-27.37,4.73-43.56,4.73s-30.7-1.58-43.55-4.73c-12.85-3.15-23.76-7.48-32.73-13-8.97-5.51-15.87-12.15-20.71-19.91-4.84-7.76-7.26-16.16-7.26-25.2v-114.24h41.89v108.53c0,10.63,5.39,19.2,16.18,25.71,10.79,6.51,26.18,9.76,46.17,9.76s35.38-3.29,46.17-9.88c10.79-6.58,16.18-15.11,16.18-25.59v-108.53h41.89v114.24Z"/>
-              <path d="M846.14,308.58v-172.32h41.89v172.32h-41.89Z"/>
-              <path d="M1147.69,219.09c8.57,4.76,15.15,10.35,19.75,16.78,4.6,6.43,6.9,14.16,6.9,23.21,0,7.14-1.51,13.73-4.52,19.75-3.02,6.03-7.34,11.27-12.97,15.71-5.63,4.44-12.46,7.89-20.47,10.35-8.01,2.46-17.1,3.69-27.25,3.69h-150.18v-172.32h145.42c9.84,0,19.08,1.83,27.73,5.48,8.65,3.65,15.83,8.65,21.54,14.99,7.77,8.57,11.66,18.33,11.66,29.28,0,7.14-1.43,13.37-4.28,18.68-2.86,5.32-7.3,10.12-13.33,14.4ZM1105.81,203.38c4.6,0,8.61-1.62,12.02-4.88,3.41-3.25,5.12-7.41,5.12-12.49s-1.75-8.93-5.24-12.02c-3.49-3.1-8.01-4.64-13.57-4.64h-103.3v34.04h104.96ZM1105.81,275.5c8.57,0,15.03-1.63,19.4-4.88,4.36-3.25,6.54-7.81,6.54-13.68s-2.22-10.95-6.66-14.76c-4.44-3.81-10.63-5.71-18.56-5.71h-105.68v39.03h104.96Z"/>
-              <path d="M1327.39,169.34v139.24h-41.89v-139.24h-82.11v-33.08h206.12v33.08h-82.11Z"/>
-            </g>
-            <path fill="#26245C" d="M1503.14,44.95v351.41h351.41V44.95h-351.41ZM1756.25,169.92h-58.84v32.17h54.83v34.05h-54.83v37.56h58.84v35.68h-99.53v-35.43h-58.84v-37.56h54.83v-34.05h-54.83v-32.17h58.84v-35.43h99.53v35.18Z"/>
-          </svg>
-          <a href="https://equibt.com" class="btn-text"><span class="link-label">Explore advisory at EQUIBT</span> <span class="ar">&rsaquo;</span></a>
+    <!-- Dark CTA -->
+    <section class="sec g-dark reveal">
+      <div class="wrap grid-cta">
+        <div>
+          <p class="eyebrow">Start here</p>
+          <h2>Find the right belt for your team.</h2>
+          <p>Tell us the problem you are trying to shift and the level your people are at now. We will tell you which belt fits, and say so plainly if training is not the answer.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/contact/">Get in touch</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">Free tool</p>
+          <h3 style="color:#fff;margin:0">Belt Level Selector</h3>
+          <p>Six questions on the work your team does and the decisions they have to defend. No email needed to see the result.</p>
+          <a class="chev" href="/resources/">Open the selector <span class="c" aria-hidden="true">&rsaquo;</span></a>
         </div>
       </div>
     </section>
+
+    <!-- EQUIBT handover -->
+    <section class="sec g-white reveal">
+      <div class="wrap handover">
+        <div>
+          <p class="eyebrow">Part of EQUIBT Group</p>
+          <h2>Take the same methods into how the organisation runs.</h2>
+          <p>We are the specialist training division of EQUIBT Group. Where we teach your people to run improvement, EQUIBT works alongside your leadership to design the operating model that keeps it running. Same methods, same standard of evidence, applied rather than taught.</p>
+          <p style="margin-top:16px"><a class="chev" href="https://equibt.com/">Explore advisory at EQUIBT <span class="c" aria-hidden="true">&rsaquo;</span></a></p>
+        </div>
+        <div class="eq-mark">EQUIBT</div>
+      </div>
+    </section>
+
   </main>
-  <script>
-    const selectors = document.querySelectorAll("[data-sector-selector]");
-    selectors.forEach((selector) => {
-      const tabs = Array.from(selector.querySelectorAll("[data-sector-tab]"));
-      const panels = Array.from(selector.querySelectorAll("[data-sector-panel]"));
-
-      const activate = (key) => {
-        tabs.forEach((tab) => {
-          const isActive = tab.dataset.sectorTab === key;
-          tab.classList.toggle("is-active", isActive);
-          tab.setAttribute("aria-selected", String(isActive));
-        });
-        panels.forEach((panel) => {
-          const isActive = panel.dataset.sectorPanel === key;
-          panel.classList.toggle("is-active", isActive);
-          panel.hidden = !isActive;
-        });
-      };
-
-      tabs.forEach((tab) => {
-        tab.addEventListener("click", () => activate(tab.dataset.sectorTab));
-      });
-    });
-
-    const beltStations = Array.from(document.querySelectorAll("[data-belt-station]"));
-    beltStations.forEach((station) => {
-      const pin = () => {
-        beltStations.forEach((item) => item.classList.toggle("is-pinned", item === station));
-      };
-      station.addEventListener("click", pin);
-      station.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          pin();
-        }
-      });
-    });
-  </script>
   <Footer />
+
+  <script is:inline>
+    (function () {
+      var ladder = document.getElementById("belt-ladder");
+      if (!ladder) return;
+      var fill = document.getElementById("ladder-fill");
+      var rungs = Array.prototype.slice.call(ladder.querySelectorAll(".rung"));
+      function select(btn) {
+        rungs.forEach(function (r) { r.setAttribute("aria-pressed", String(r === btn)); });
+        var step = parseInt(btn.getAttribute("data-step"), 10) || 1;
+        if (fill) fill.style.height = (step / rungs.length) * 100 + "%";
+        // Solid fill on the selected badge, outline on the rest.
+        rungs.forEach(function (r) {
+          var on = r === btn;
+          var code = r.getAttribute("data-belt");
+          var colour = code === "YB" ? "#E8B833" : code === "GB" ? "#2E7D52" : "#1C1C1C";
+          var path = r.querySelector("path");
+          var text = r.querySelector("text");
+          if (path) path.setAttribute("fill", on ? colour : "#FFFFFF");
+          if (text) text.setAttribute("fill", on ? (code === "YB" ? "#1F3268" : "#FFFFFF") : "#1F3268");
+        });
+      }
+      rungs.forEach(function (r) { r.addEventListener("click", function () { select(r); }); });
+      var initial = ladder.querySelector('.rung[aria-pressed="true"]') || rungs[rungs.length - 1];
+      if (initial) select(initial);
+    })();
+
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+      if (!tabs.length) return;
+      function show(tab) {
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.setAttribute("aria-selected", String(on));
+          t.setAttribute("tabindex", on ? "0" : "-1");
+          var panel = document.getElementById(t.getAttribute("aria-controls"));
+          if (panel) panel.hidden = !on;
+        });
+      }
+      tabs.forEach(function (t, i) {
+        t.addEventListener("click", function () { show(t); });
+        t.addEventListener("keydown", function (ev) {
+          var d = ev.key === "ArrowDown" || ev.key === "ArrowRight" ? 1 : ev.key === "ArrowUp" || ev.key === "ArrowLeft" ? -1 : 0;
+          if (!d) return;
+          ev.preventDefault();
+          var next = tabs[(i + d + tabs.length) % tabs.length];
+          show(next); next.focus();
+        });
+      });
+    })();
+  </script>
 </Layout>
