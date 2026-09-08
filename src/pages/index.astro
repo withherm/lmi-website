@@ -3,6 +3,20 @@ import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import "../styles/home.css";
+
+const icons = {
+  diffLiveWork: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="11" stroke="#2C3E50" stroke-width="1.8"/><circle cx="16" cy="16" r="5.6" stroke="#2C3E50" stroke-width="1.8"/><circle cx="16" cy="16" r="2" fill="#A51C30"/></svg>`,
+  diffAiAnalysis: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><circle cx="14" cy="14" r="9" stroke="#2C3E50" stroke-width="1.8"/><line x1="20.6" y1="20.6" x2="27" y2="27" stroke="#2C3E50" stroke-width="1.9"/><path d="M14 8.6 L15.5 12.5 L19.4 14 L15.5 15.5 L14 19.4 L12.5 15.5 L8.6 14 L12.5 12.5 Z" fill="#A51C30"/></svg>`,
+  diffEvidence: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6 V26 H26" stroke="#2C3E50" stroke-width="1.8"/><polyline points="10,21 15,16 19,18.5 23.5,10.5" stroke="#2C3E50" stroke-width="1.8"/><circle cx="23.5" cy="10.5" r="2.1" fill="#A51C30"/></svg>`,
+  methodSixSigma: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round"><rect x="6" y="16" width="4.6" height="10" rx="1.2" stroke="#2C3E50" stroke-width="1.8"/><rect x="13.7" y="11" width="4.6" height="15" rx="1.2" stroke="#2C3E50" stroke-width="1.8"/><rect x="21.4" y="6" width="4.6" height="20" rx="1.2" fill="#A51C30"/></svg>`,
+  methodServiceDesign: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><path d="M22.5 9.5 A9 9 0 1 0 25 16" stroke="#2C3E50" stroke-width="1.8"/><polyline points="18.5,9 22.8,9.3 23,5" stroke="#2C3E50" stroke-width="1.8"/><circle cx="9" cy="20" r="2.1" fill="#A51C30"/></svg>`,
+  methodBusinessAnalysis: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="6" width="16" height="21" rx="2.2" stroke="#2C3E50" stroke-width="1.8"/><rect x="12" y="4" width="8" height="4.2" rx="1.3" stroke="#2C3E50" stroke-width="1.8"/><line x1="12" y1="14" x2="20" y2="14" stroke="#2C3E50" stroke-width="1.6"/><line x1="12" y1="17.6" x2="18" y2="17.6" stroke="#2C3E50" stroke-width="1.6"/><polyline points="11.8,22 14,24.2 18.4,20" stroke="#A51C30" stroke-width="1.9"/></svg>`,
+  offerInHouse: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><path d="M6 27 V13 L16 6.5 L26 13 V27" stroke="#2C3E50" stroke-width="1.8"/><line x1="4" y1="27" x2="28" y2="27" stroke="#2C3E50" stroke-width="1.8"/><rect x="13.4" y="19" width="5.2" height="8" fill="#A51C30"/></svg>`,
+  sectorCorporate: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="22" height="15" rx="2.5" stroke="#2C3E50" stroke-width="1.8"/><path d="M12 11 V8.6 A2 2 0 0 1 14 6.6 H18 A2 2 0 0 1 20 8.6 V11" stroke="#2C3E50" stroke-width="1.8"/><line x1="5" y1="18" x2="27" y2="18" stroke="#2C3E50" stroke-width="1.5"/><rect x="14" y="16.4" width="4" height="3.2" rx="0.9" fill="#A51C30"/></svg>`,
+  sectorGovernment: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5 L27 11 H5 Z" stroke="#2C3E50" stroke-width="1.8"/><line x1="9" y1="14" x2="9" y2="23" stroke="#2C3E50" stroke-width="1.8"/><line x1="16" y1="14" x2="16" y2="23" stroke="#2C3E50" stroke-width="1.8"/><line x1="23" y1="14" x2="23" y2="23" stroke="#2C3E50" stroke-width="1.8"/><line x1="5.5" y1="26" x2="26.5" y2="26" stroke="#A51C30" stroke-width="2.1"/></svg>`,
+  sectorFinancial: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="10" stroke="#2C3E50" stroke-width="1.8"/><polyline points="11,18.5 16,12 21,18.5" stroke="#A51C30" stroke-width="2"/><line x1="16" y1="12" x2="16" y2="21.5" stroke="#A51C30" stroke-width="2"/></svg>`,
+  sectorHealthEducation: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10 C13 8 8.5 8 6 9 V25 C8.5 24 13 24 16 26 C19 24 23.5 24 26 25 V9 C23.5 8 19 8 16 10 Z" stroke="#2C3E50" stroke-width="1.8"/><line x1="16" y1="10" x2="16" y2="26" stroke="#2C3E50" stroke-width="1.4"/><line x1="20.6" y1="12.6" x2="20.6" y2="18" stroke="#A51C30" stroke-width="1.9"/><line x1="17.9" y1="15.3" x2="23.3" y2="15.3" stroke="#A51C30" stroke-width="1.9"/></svg>`
+};
 ---
 
 <Layout
@@ -25,7 +39,7 @@ import "../styles/home.css";
             <span class="video-play" aria-hidden="true"></span>
             <div>
               <strong>Explainer video slot</strong>
-              <p>Short method overview reserved for the first LMI course video.</p>
+              <p>Short method overview reserved for the first Lean Methods Institute course video.</p>
             </div>
           </div>
         </div>
@@ -33,7 +47,7 @@ import "../styles/home.css";
         <div class="hero-panel" aria-label="Captioned training image placeholder">
           <figure class="photo-slot hero-photo">
             <span>Captioned image slot</span>
-            <figcaption>Replace with approved LMI classroom, facilitator or art-directed training imagery. The belt pathway is introduced later, after visitors choose that route.</figcaption>
+            <figcaption>Replace with approved Lean Methods Institute classroom, facilitator or art-directed training imagery. The belt pathway is introduced later, after visitors choose that route.</figcaption>
           </figure>
         </div>
       </div>
@@ -47,19 +61,19 @@ import "../styles/home.css";
         </div>
         <div class="difference-stack">
           <article class="difference-card">
-            <span class="line-icon practice-icon" aria-hidden="true"></span>
+            <span class="line-icon supplied-icon" aria-hidden="true" set:html={icons.diffLiveWork}></span>
             <h3>Skills that hold up in live work</h3>
-            <p>Facilitators connect the method to operational constraints, stakeholder pressure and the messy reality of service work.</p>
-          </article>
-          <article class="difference-card featured">
-            <span class="line-icon ai-icon" aria-hidden="true"></span>
-            <h3>Faster analysis without losing rigour</h3>
-            <p>Learners use AI for problem framing, data sense-making, experiment design and communication without weakening the discipline.</p>
+            <p>We teach the method against real operational constraints and the messy reality of service work, not tidy classroom cases.</p>
           </article>
           <article class="difference-card">
-            <span class="line-icon evidence-icon" aria-hidden="true"></span>
+            <span class="line-icon supplied-icon" aria-hidden="true" set:html={icons.diffAiAnalysis}></span>
+            <h3>Faster analysis without losing rigour</h3>
+            <p>We build AI into problem framing, data sense-making and communication, so teams move faster without losing rigour.</p>
+          </article>
+          <article class="difference-card">
+            <span class="line-icon supplied-icon" aria-hidden="true" set:html={icons.diffEvidence}></span>
             <h3>Decisions your team can defend</h3>
-            <p>Every activity ties back to the action that produced the result, so teams can defend decisions and repeat the improvement.</p>
+            <p>We tie every activity back to the action that produced the result, so your team can defend decisions and repeat the improvement.</p>
           </article>
         </div>
       </div>
@@ -74,28 +88,28 @@ import "../styles/home.css";
         </div>
         <div class="offer-grid">
           <article class="offer-card">
-            <span class="offer-icon belt-offer-icon" aria-hidden="true"></span>
+            <span class="offer-icon supplied-icon" aria-hidden="true" set:html={icons.methodSixSigma}></span>
             <span class="offer-kicker">Core pathway</span>
             <h3>Lean Six Sigma belts</h3>
             <p>Yellow, Green and Black Belt training for teams that need a common improvement method and recognised credentials.</p>
             <a href="/courses/lean-six-sigma/" class="btn-text"><span class="link-label">View pathway</span> <span class="ar">&rsaquo;</span></a>
           </article>
           <article class="offer-card">
-            <span class="offer-icon service-offer-icon" aria-hidden="true"></span>
+            <span class="offer-icon supplied-icon" aria-hidden="true" set:html={icons.methodServiceDesign}></span>
             <span class="offer-kicker">Service teams</span>
             <h3>Lean Service Design</h3>
             <p>Improve service journeys, handoffs and pain points with customer evidence and operational design discipline.</p>
             <a href="/courses/lean-service-design/" class="btn-text"><span class="link-label">View course</span> <span class="ar">&rsaquo;</span></a>
           </article>
           <article class="offer-card">
-            <span class="offer-icon analysis-offer-icon" aria-hidden="true"></span>
+            <span class="offer-icon supplied-icon" aria-hidden="true" set:html={icons.methodBusinessAnalysis}></span>
             <span class="offer-kicker">Change delivery</span>
             <h3>Lean Business Analysis</h3>
             <p>Frame the right problem, test assumptions early and translate evidence into clear requirements before work scales.</p>
             <a href="/courses/lean-business-analysis/" class="btn-text"><span class="link-label">View course</span> <span class="ar">&rsaquo;</span></a>
           </article>
           <article class="offer-card">
-            <span class="offer-icon inhouse-offer-icon" aria-hidden="true"></span>
+            <span class="offer-icon supplied-icon" aria-hidden="true" set:html={icons.offerInHouse}></span>
             <span class="offer-kicker">Organisation uplift</span>
             <h3>In-house training</h3>
             <p>Contextualise the method around your processes, data, governance and improvement priorities for faster transfer.</p>
@@ -109,34 +123,34 @@ import "../styles/home.css";
       <div class="section-inner">
         <div class="section-head">
           <div class="eyebrow">BELT PATHWAY</div>
-          <h2 class="section-title">A straight progression from shared language to internal improvement leadership.</h2>
+          <h2 class="section-title">A step-by-step progression from shared language to internal improvement leadership.</h2>
         </div>
         <div class="stair-trainline" aria-label="Lean Six Sigma belt stair progression">
-          <svg class="step-path main-step-path" viewBox="0 0 1000 250" aria-hidden="true">
-            <path class="step-stroke step-yellow" d="M58 206 H226 V158 H394"/>
-            <path class="step-stroke step-green" d="M394 158 H562 V110 H730"/>
-            <path class="step-stroke step-black" d="M730 110 H894 V62"/>
-            <path class="step-stroke step-master" d="M894 62 H942"/>
+          <svg class="step-path main-step-path" viewBox="0 0 1000 340" preserveAspectRatio="none" aria-hidden="true">
+            <path class="step-stroke step-yellow" d="M80 248 H245"/>
+            <path class="step-stroke step-green" d="M245 248 V196 H440"/>
+            <path class="step-stroke step-black" d="M440 196 V144 H635"/>
+            <path class="step-stroke step-master" d="M635 144 V92 H830"/>
           </svg>
-          <article class="station yellow">
-            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">YB</text></svg>
+          <article class="station yellow" tabindex="0" data-belt-station>
+            <p class="station-note">Spot waste, frame problems and support improvement work.</p>
+            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 3 C53 3 61 11 61 32 C61 53 53 61 32 61 C11 61 3 53 3 32 C3 11 11 3 32 3Z"/><text x="32" y="37">YB</text></svg>
             <h3>Yellow Belt</h3>
-            <p>Spot waste, frame problems and support improvement work.</p>
           </article>
-          <article class="station green selected">
-            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">GB</text></svg>
+          <article class="station green is-pinned" tabindex="0" data-belt-station>
+            <p class="station-note">Lead scoped projects and apply structured analysis.</p>
+            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 3 C53 3 61 11 61 32 C61 53 53 61 32 61 C11 61 3 53 3 32 C3 11 11 3 32 3Z"/><text x="32" y="37">GB</text></svg>
             <h3>Green Belt</h3>
-            <p>Lead scoped projects and apply structured analysis.</p>
           </article>
-          <article class="station black">
-            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">BB</text></svg>
+          <article class="station black" tabindex="0" data-belt-station>
+            <p class="station-note">Lead complex work and coach improvement teams.</p>
+            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 3 C53 3 61 11 61 32 C61 53 53 61 32 61 C11 61 3 53 3 32 C3 11 11 3 32 3Z"/><text x="32" y="37">BB</text></svg>
             <h3>Black Belt</h3>
-            <p>Lead complex work and coach improvement teams.</p>
           </article>
-          <article class="station master">
-            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">MBB</text></svg>
+          <article class="station master" tabindex="0" data-belt-station>
+            <p class="station-note">Build the system that sustains capability.</p>
+            <svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 3 C53 3 61 11 61 32 C61 53 53 61 32 61 C11 61 3 53 3 32 C3 11 11 3 32 3Z"/><text x="32" y="37">MBB</text></svg>
             <h3>Master Black Belt</h3>
-            <p>Build the system that sustains capability.</p>
           </article>
         </div>
       </div>
@@ -150,19 +164,22 @@ import "../styles/home.css";
         </div>
         <div class="flagship-highlights">
           <article class="flagship-card">
-            <div class="flagship-reveal" aria-hidden="true"></div>
             <span class="flagship-kicker">Active practice</span>
             <h3>Workshops built around doing the work, not watching slides.</h3>
-            <p>Learners practise the method, receive coaching and leave with tools they can reuse immediately.</p>
+            <p>Learners practise on realistic operating constraints, use AI where it improves the work, and leave with tools they can reuse immediately.</p>
           </article>
           <div class="highlight-rail" aria-label="Training highlights">
             <article class="rail-item">
-              <h3>AI supports the method</h3>
-              <p>AI accelerates analysis and communication while the improvement method remains the control system.</p>
+              <h3>Practice before theory drifts</h3>
+              <p>Each block turns the method into an activity: framing the problem, testing the evidence, explaining the decision and planning the next action.</p>
             </article>
             <article class="rail-item">
-              <h3>Credentials with separation</h3>
-              <p>Lean Six Sigma credentials use an independent certification pathway, not a self-awarded badge.</p>
+              <h3>Built for service work</h3>
+              <p>Examples use queues, handoffs, approvals, rework, controls and customer friction, so the training fits corporate and public-sector operations.</p>
+            </article>
+            <article class="rail-item">
+              <h3>Reusable work products</h3>
+              <p>Learners leave with problem statements, evidence maps, decision summaries and action plans their managers can inspect.</p>
             </article>
           </div>
         </div>
@@ -173,11 +190,11 @@ import "../styles/home.css";
       <div class="section-inner org-grid">
         <div class="photo-slot org-photo">
           <span>Photography slot</span>
-          <p>Replace with genuine LMI facilitator or in-house delivery photography.</p>
+          <p>Replace with genuine Lean Methods Institute facilitator or in-house delivery photography.</p>
         </div>
         <div class="org-copy">
           <div class="eyebrow">CREDENTIALS</div>
-          <h2 class="section-title">LMI delivers the training. AUSQ provides independent Lean Six Sigma certification.</h2>
+          <h2 class="section-title">Lean Methods Institute delivers the training. AUSQ provides independent Lean Six Sigma certification.</h2>
           <p>Lean Methods Institute develops practical improvement capability for corporate, public sector and service teams. The work is grounded in Lean Six Sigma, service design, business analysis and the responsible use of AI in improvement practice.</p>
           <p>AUSQ provides separation for Lean Six Sigma credentials, so learners and employers can distinguish training delivery from independent certification. That separation matters for procurement, governance and employer trust.</p>
           <a href="/courses/lean-six-sigma/" class="btn-text"><span class="link-label">See the credential pathway</span> <span class="ar">&rsaquo;</span></a>
@@ -194,10 +211,10 @@ import "../styles/home.css";
         </div>
         <div class="sector-selector" data-sector-selector>
           <div class="sector-tabs" role="tablist" aria-label="Training sectors">
-            <button class="sector-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="sector-corporate" id="tab-corporate" data-sector-tab="corporate"><span class="sector-tab-icon corporate-icon" aria-hidden="true"></span><span>Corporate services</span></button>
-            <button class="sector-tab" type="button" role="tab" aria-selected="false" aria-controls="sector-government" id="tab-government" data-sector-tab="government"><span class="sector-tab-icon government-icon" aria-hidden="true"></span><span>Government</span></button>
-            <button class="sector-tab" type="button" role="tab" aria-selected="false" aria-controls="sector-financial" id="tab-financial" data-sector-tab="financial"><span class="sector-tab-icon financial-icon" aria-hidden="true"></span><span>Financial services</span></button>
-            <button class="sector-tab" type="button" role="tab" aria-selected="false" aria-controls="sector-health" id="tab-health" data-sector-tab="health"><span class="sector-tab-icon health-icon" aria-hidden="true"></span><span>Healthcare and education</span></button>
+            <button class="sector-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="sector-corporate" id="tab-corporate" data-sector-tab="corporate"><span class="sector-tab-icon supplied-icon" aria-hidden="true" set:html={icons.sectorCorporate}></span><span>Corporate services</span></button>
+            <button class="sector-tab" type="button" role="tab" aria-selected="false" aria-controls="sector-government" id="tab-government" data-sector-tab="government"><span class="sector-tab-icon supplied-icon" aria-hidden="true" set:html={icons.sectorGovernment}></span><span>Government</span></button>
+            <button class="sector-tab" type="button" role="tab" aria-selected="false" aria-controls="sector-financial" id="tab-financial" data-sector-tab="financial"><span class="sector-tab-icon supplied-icon" aria-hidden="true" set:html={icons.sectorFinancial}></span><span>Financial services</span></button>
+            <button class="sector-tab" type="button" role="tab" aria-selected="false" aria-controls="sector-health" id="tab-health" data-sector-tab="health"><span class="sector-tab-icon supplied-icon" aria-hidden="true" set:html={icons.sectorHealthEducation}></span><span>Healthcare and education</span></button>
           </div>
           <div class="sector-panels">
             <article class="sector-panel is-active" id="sector-corporate" role="tabpanel" aria-labelledby="tab-corporate" data-sector-panel="corporate">
@@ -305,24 +322,32 @@ import "../styles/home.css";
       </div>
     </section>
 
-    <section class="section white methods-section">
+    <section class="section white methods-section" id="methods-we-teach">
       <div class="section-inner methods-grid">
         <div>
-          <div class="eyebrow">METHOD VIDEOS</div>
-          <h2 class="section-title">Short explainers will teach the method before learners enrol.</h2>
-          <p class="section-intro">Reserved slots are in place for concise videos on belt selection, DMAIC, problem framing and how AI supports improvement work.</p>
+          <div class="eyebrow">METHODS WE TEACH</div>
+          <h2 class="section-title">Three practical methods for improving service work.</h2>
+          <p class="section-intro">This overview keeps the home page concise. The detail belongs on the dedicated method pages.</p>
         </div>
-        <div class="video-grid">
-          <div class="video-card">
-            <span class="video-play" aria-hidden="true"></span>
-            <h3>Choose your belt level</h3>
-            <p>Explainer slot, 3 to 4 minutes.</p>
-          </div>
-          <div class="video-card">
-            <span class="video-play" aria-hidden="true"></span>
-            <h3>Use AI inside DMAIC</h3>
-            <p>Explainer slot, 4 to 5 minutes.</p>
-          </div>
+        <div class="method-card-grid">
+          <article class="method-card">
+            <span class="method-icon supplied-icon" aria-hidden="true" set:html={icons.methodSixSigma}></span>
+            <h3>Lean Six Sigma</h3>
+            <p>Structured problem solving through DMAIC, variation reduction, root cause analysis and measurable improvement.</p>
+            <a href="/methods/lean-six-sigma/" class="btn-text"><span class="link-label">View method</span> <span class="ar">&rsaquo;</span></a>
+          </article>
+          <article class="method-card">
+            <span class="method-icon supplied-icon" aria-hidden="true" set:html={icons.methodServiceDesign}></span>
+            <h3>Lean Service Design</h3>
+            <p>Service journeys, handoffs and customer evidence translated into practical operational improvements.</p>
+            <a href="/methods/lean-service-design/" class="btn-text"><span class="link-label">View method</span> <span class="ar">&rsaquo;</span></a>
+          </article>
+          <article class="method-card">
+            <span class="method-icon supplied-icon" aria-hidden="true" set:html={icons.methodBusinessAnalysis}></span>
+            <h3>Lean Business Analysis</h3>
+            <p>Problem framing, evidence-led requirements and early assumption testing before delivery work scales.</p>
+            <a href="/methods/lean-business-analysis/" class="btn-text"><span class="link-label">View method</span> <span class="ar">&rsaquo;</span></a>
+          </article>
         </div>
       </div>
     </section>
@@ -330,69 +355,26 @@ import "../styles/home.css";
     <section class="proof-strip" id="proof-logo-wall">
       <div class="proof-inner">
         <div>
-          <div class="eyebrow">WHERE OUR GRADUATES WORK</div>
-          <h2>Improvement capability for teams working in complex service environments.</h2>
+          <div class="eyebrow">TRACK RECORD</div>
+          <h2>The organisations whose teams we've trained.</h2>
+          <p>We build improvement capability inside complex, regulated operations. These are the teams our graduates take the method back into.</p>
         </div>
-        <div class="proof-grid" aria-label="Anonymised graduate workplace logo wall">
-          <span><i></i><b>Public service group</b></span>
-          <span><i></i><b>Banking operations</b></span>
-          <span><i></i><b>Insurance services</b></span>
-          <span><i></i><b>Health network</b></span>
-          <span><i></i><b>Education provider</b></span>
-          <span><i></i><b>Corporate services</b></span>
-          <span><i></i><b>Shared service hub</b></span>
-          <span><i></i><b>Customer operations</b></span>
-          <span><i></i><b>Claims team</b></span>
-          <span><i></i><b>Compliance function</b></span>
-          <span><i></i><b>Service design group</b></span>
-          <span><i></i><b>Improvement office</b></span>
-        </div>
-        <div class="client-wall" aria-label="Anonymised organisations trained logo wall">
-          <div class="client-wall-head">
-            <div class="eyebrow">CLIENTS</div>
-            <h3>Organisations we've trained</h3>
-          </div>
-          <div class="client-logo-grid">
-            <span><i></i></span>
-            <span><i></i></span>
-            <span><i></i></span>
-            <span><i></i></span>
-            <span><i></i></span>
-            <span><i></i></span>
-            <span><i></i></span>
-            <span><i></i></span>
-            <span><i></i></span>
-            <span><i></i></span>
-            <span><i></i></span>
-            <span><i></i></span>
-            <span><i></i></span>
-            <span><i></i></span>
-            <span><i></i></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section white bottom-pathway" id="next-step-pathway">
-      <div class="section-inner">
-        <div class="bottom-panel">
-          <div>
-            <div class="eyebrow">NEXT STEP</div>
-            <h2 class="section-title">Start with the belt level that matches the work you need people to lead.</h2>
-            <p class="section-intro">The sequence is simple: orient the team, build project leadership, then develop the internal capability to coach and govern improvement.</p>
-          </div>
-          <div class="compact-trainline" aria-label="Bottom belt stair progression">
-            <svg class="step-path compact-step-path" viewBox="0 0 520 190" aria-hidden="true">
-              <path class="step-stroke step-yellow" d="M28 154 H130 V118 H232"/>
-              <path class="step-stroke step-green" d="M232 118 H334 V82 H436"/>
-              <path class="step-stroke step-black" d="M436 82 H492 V46"/>
-              <path class="step-stroke step-master" d="M492 46 H514"/>
-            </svg>
-            <span class="compact-station yellow"><svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">YB</text></svg></span>
-            <span class="compact-station green selected"><svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">GB</text></svg></span>
-            <span class="compact-station black"><svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">BB</text></svg></span>
-            <span class="compact-station master"><svg class="belt-badge" viewBox="0 0 64 64" aria-hidden="true"><path class="badge-shape" d="M32 4 C50 4 60 14 60 32 C60 50 50 60 32 60 C14 60 4 50 4 32 C4 14 14 4 32 4Z"/><text x="32" y="37">MBB</text></svg></span>
-          </div>
+        <div class="client-logo-grid" aria-label="Monochrome anonymised organisation marks">
+          <span><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
+          <span><i></i></span>
         </div>
       </div>
     </section>
@@ -440,6 +422,20 @@ import "../styles/home.css";
 
       tabs.forEach((tab) => {
         tab.addEventListener("click", () => activate(tab.dataset.sectorTab));
+      });
+    });
+
+    const beltStations = Array.from(document.querySelectorAll("[data-belt-station]"));
+    beltStations.forEach((station) => {
+      const pin = () => {
+        beltStations.forEach((item) => item.classList.toggle("is-pinned", item === station));
+      };
+      station.addEventListener("click", pin);
+      station.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          pin();
+        }
       });
     });
   </script>

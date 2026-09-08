@@ -13,6 +13,8 @@ Two reversals govern everything below (both committed to `main`):
 1. **Crimson-led, cobalt minor.** Accent = **Crimson `#A51C30`** (logo, primary buttons, text links + underline, eyebrows, sparing inline emphasis). Structure / headings = **charcoal-navy** (Dark Slate `#2C3E50` / Ink `#161616`); headings are never crimson. Cobalt `#103E8C` is demoted to rare minor use. Grounds are **white + grey/charcoal**, no blue fills. This reverses the 2026-06-11 cobalt-single-accent system.
 2. **All-Montserrat.** Montserrat for headings AND body, **no Lora**. A deliberate LMI exception to the portfolio Montserrat + Lora lock; LMI differentiates on colour + photography, not shared fonts. Scaffold fix (EQT-277): swap `@fontsource/lato` + `@fontsource/source-serif-4` for `@fontsource/montserrat` only.
 
+**Icon system (2026-06-13):** **Icons8 Forma Regular** (slate `#2C3E50` glyph + crimson `#A51C30` accent, via `fill:currentColor`) covers program icons, sector icons, feature/difference cards AND functional/utility glyphs (chevrons, close, search, hamburger, social, arrows, form affordances). Bespoke is reserved for hero, brand marks, genuine illustration and the hand-drawn belt/credential badges. See `LMI_DESIGN_LEARNINGS_v1.md` (DIRECTION CHANGE, STOCK-ICON SCOPE) and the catalogues in the GOS vault `Docs/LMI/ARTWORK/ICONS8_FORMA/`.
+
 ## Global rules
 
 | Element | Treatment |

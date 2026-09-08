@@ -32,9 +32,9 @@ To pick up the next task: read the Linear board, take the highest-priority Backl
 
 ## Runtime state
 
-GOS runtime is **Hermes Agent** (Nous Research). OpenClaw is retired. Do not reference OpenClaw or edit openclaw.json.
+GOS runtime is **Grok Bot** (xAI), not Hermes. Hermes Agent was planned June 2026 and never started: cancelled, not pending. OpenClaw is retired. Do not reference OpenClaw, openclaw.json, or Hermes as live systems.
 
-Codex does not replace or configure Hermes. It handles code execution tasks assigned via Linear.
+Codex handles code execution tasks assigned via Linear. Grok Bot's eight agents coordinate and file the tickets; Claude Code reviews and tests what Codex builds.
 
 ---
 
