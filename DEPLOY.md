@@ -65,7 +65,9 @@ Compute > Workers & Pages > Create > Import a repository. Repo
 
 - Build command: `npm run build`
 - Deploy command: `npx wrangler deploy -c dist/server/wrangler.json`
-- Build variable: `NODE_VERSION` = `22`
+- Build variables: none. `.node-version` in the repo pins Node 24 and is the
+  single source of truth. If a `NODE_VERSION` variable exists in the dashboard,
+  delete it, otherwise it overrides the file.
 
 You get `lmi-website.<subdomain>.workers.dev`. That is the review URL.
 
