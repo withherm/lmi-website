@@ -16,7 +16,7 @@ const fam = FAMILIES[course.family];
 const related = course.related.map((s) => bySlug(s)).filter(Boolean);
 const priceIsFigure = course.investment.startsWith("A$");
 ---
-<Layout title={`${course.metaTitle} | Lean Methods Institute`} description={course.metaDesc}>
+<Layout title={course.metaTitle} description={course.metaDesc}>
   <Nav />
   <main id="main">
 
