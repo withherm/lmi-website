@@ -1,0 +1,84 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { RESOURCE_HUBS } from "../data/site";
+import "../styles/home.css";
+const hubs = RESOURCE_HUBS;
+---
+<Layout title="Resources | Lean Methods Institute" description="Free Lean Six Sigma tools, templates, guides, a glossary and a knowledge base. Use them on a live problem, no enrolment needed.">
+  <Nav />
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">Resources</p>
+        <h1>Use the method before you pay us anything.</h1>
+        <p class="lede measure-wide">Everything we teach with, given away. Calculators, templates, guides and plain-English definitions. If a tool here solves your problem and you never enrol, that is a fine outcome.</p>
+      </div>
+    </section>
+
+    <section class="sec-tight g-tint reveal">
+      <div class="wrap">
+        <p class="eyebrow">Start here</p>
+        <div class="grid g3" style="margin-top:18px">
+          <div class="card card-featured">
+            <h3>Belt Level Selector</h3>
+            <p class="small">Six questions on the work your team does and the decisions they have to defend. No email needed to see the result.</p>
+            <p class="meta" style="margin-top:10px">Tool &middot; 3 min</p>
+          </div>
+          <div class="card">
+            <h3>Lean Six Sigma 101</h3>
+            <p class="small">What it is, what it is not, and whether it fits the problem you have.</p>
+            <p class="meta" style="margin-top:10px">Guide &middot; 8 min read</p>
+          </div>
+          <div class="card">
+            <h3>The DMAIC toolkit</h3>
+            <p class="small">Every template we use across a Green Belt project, in one download.</p>
+            <p class="meta" style="margin-top:10px">Template &middot; Free</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:30px">
+          <p class="eyebrow">Browse by type</p>
+          <h2>Six shelves, filling up through the year.</h2>
+          <p class="small">Marked honestly: what is in build is not live yet.</p>
+        </div>
+        <div class="grid g3">
+          {hubs.map((r) => (
+            <a class="card card-link" href={`/resources/${r.slug}/`}>
+              <span style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+                <h3 style="margin:0">{r.name}</h3>
+                <span class="pill">{r.status}</span>
+              </span>
+              <span class="small" style="display:block;margin-top:10px">{r.lede}</span>
+              <span class="meta" style="display:block;margin-top:10px">{r.items.length} items</span>
+              <span class="chev" style="margin-top:12px;display:inline-flex">Open <span class="c" aria-hidden="true">&rsaquo;</span></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-dark reveal">
+      <div class="wrap grid-cta">
+        <div>
+          <p class="eyebrow">Stay in the loop</p>
+          <h2>One email when something useful lands.</h2>
+          <p>New tools, new guides, and what we are learning about applying AI to improvement work. No cadence promises we will not keep.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/contact/">Get in touch</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">Prefer to talk</p>
+          <h3 style="color:#fff;margin:0">Ask us the awkward question</h3>
+          <p>Whether a tool fits your problem, or whether you need training at all.</p>
+          <a class="chev" href="/contact/">Get in touch <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

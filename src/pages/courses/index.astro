@@ -1,0 +1,99 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import BeltBadge from "../../components/BeltBadge.astro";
+import { COURSES, FAMILIES, type Family } from "../../data/courses";
+import "../../styles/home.css";
+
+const families = (Object.keys(FAMILIES) as Family[]).sort((a, b) => FAMILIES[a].order - FAMILIES[b].order);
+const grouped = families.map((f) => ({ key: f, meta: FAMILIES[f], courses: COURSES.filter((c) => c.family === f) }));
+const grounds = ["g-white", "g-off"];
+---
+<Layout title="Courses | Lean Methods Institute" description="Lean Six Sigma, Zero Defects, AI-Enabled Improvement, Lean Service Design, Lean Business Analysis and Lean Agile. Twenty programmes, AI built in.">
+  <Nav />
+  <main id="main">
+
+    <section class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">Courses</p>
+        <h1>Learn the method, then prove it on your own work.</h1>
+        <p class="lede measure-wide">Every programme is assessed on real work from your own workplace, and the Lean Six Sigma credentials are issued by a body that does not teach.</p>
+      </div>
+    </section>
+
+    <section class="sec-tight g-tint">
+      <div class="wrap">
+        <div class="filters">
+          <span class="filter-label">Jump to</span>
+          {grouped.map((g) => <a class="filter" href={`#${g.key}`}>{g.meta.name}</a>)}
+        </div>
+      </div>
+    </section>
+
+    {grouped.map((g, i) => (
+      <section class={`sec ${grounds[i % 2]} reveal`} id={g.key}>
+        <div class="wrap">
+          <div class="measure-wide" style="margin-bottom:30px">
+            <p class="eyebrow">{g.meta.name}</p>
+            <h2>{g.meta.blurb}</h2>
+            <p style="margin-top:14px"><a class="chev" href={`/methods/${g.key}/`}>About {g.meta.name} <span class="c" aria-hidden="true">&rsaquo;</span></a></p>
+          </div>
+          <div class="grid g4">
+            {g.courses.map((c) => (
+              <a class="card card-link" href={`/courses/${c.slug}/`}>
+                <span class="course-card">
+                  <span class="course-top">
+                    {c.belt ? <BeltBadge code={c.belt} size={46} /> : <span></span>}
+                    {c.inHouseOnly && <span class="pill">In-house only</span>}
+                  </span>
+                  <h3 style="margin:6px 0 0">{c.name}</h3>
+                  <span class="small" style="display:block">{c.subhead}</span>
+                  <span class="meta" style="display:block">{c.duration}</span>
+                  <span class="price">{c.investment.replace(" per participant, incl GST", "")}
+                    {c.investment.startsWith("A$") && <small>Per participant, incl GST</small>}
+                  </span>
+                  <span class="chev">View course <span class="c" aria-hidden="true">&rsaquo;</span></span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="sec g-white reveal">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">In-house delivery</p>
+          <h2>Most of our work runs inside one organisation.</h2>
+          <p>A public course teaches the method. An in-house cohort teaches it against your processes, your data and your constraints, and the projects are ones your leadership already wants solved. Cohorts run from eight participants and are usually better value per head.</p>
+          <p style="margin-top:22px"><a class="btn" href="/contact/">Enquire about in-house training</a></p>
+        </div>
+        <div class="card">
+          <h3>Pricing note</h3>
+          <p class="small">Public course fees are shown per participant, including GST. In-house delivery is quoted per cohort. Zero Defects pricing is not yet set and is quoted on enquiry.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-dark reveal">
+      <div class="wrap grid-cta">
+        <div>
+          <p class="eyebrow">Start here</p>
+          <h2>Tell us the problem, not the course code.</h2>
+          <p>We will tell you which programme fits, and say so plainly if training is not the answer.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/contact/">Get in touch</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">Independent certification</p>
+          <h3 style="color:#fff;margin:0">We train. Someone else certifies.</h3>
+          <p>AUSQ assesses the evidence and issues the Lean Six Sigma credential. We do not mark our own homework.</p>
+          <a class="chev" href="/certifications/">How certification works <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

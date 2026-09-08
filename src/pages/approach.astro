@@ -1,0 +1,87 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import Illus from "../components/Illus.astro";
+import "../styles/home.css";
+const beliefs = [
+  { h: "Teach on the real problem", b: "Participants bring work their leadership already wants solved. A case study about a pizza shop teaches the vocabulary and nothing else." },
+  { h: "Evidence over assertion", b: "Every conclusion traces back to the data and the test that produced it. If it cannot be defended to a finance team, it is not finished." },
+  { h: "Change the system", b: "Almost every defect is a system producing exactly what it was designed to produce. Asking people to be more careful is not a corrective action." },
+  { h: "AI where it earns its place", b: "AI removes the grind: mapping, first-pass analysis, drafting. The method, the assumptions and the sign-off stay with a person." },
+  { h: "Finish the project", b: "Training that ends with a certificate and no closed project has produced nothing. Coaching runs through to a result." },
+  { h: "Say when training is wrong", b: "Sometimes the answer is a decision, a system change or a conversation with a supplier. We would rather say so than sell a cohort." },
+];
+---
+<Layout title="Our approach | Lean Methods Institute" description="How we teach: on real problems from your own workplace, assessed on evidence, with AI where it earns its place and coaching through to a finished project.">
+  <Nav />
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap split" style="align-items:center">
+        <div>
+          <p class="eyebrow">Our approach</p>
+          <h1>Training is only worth what survives it.</h1>
+          <p class="lede">The test of a programme is not the feedback form on the last afternoon. It is whether the team is still closing projects six months later and whether finance accepts the numbers.</p>
+        </div>
+        <Illus label="Illustration: cohort working on their own process at a board" h="300px" />
+      </div>
+    </section>
+
+    <section class="sec g-off reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:30px">
+          <p class="eyebrow">What we believe</p>
+          <h2>Six positions, and they shape every programme.</h2>
+        </div>
+        <div class="grid g3">
+          {beliefs.map((b) => (
+            <div class="card"><h3>{b.h}</h3><p class="small">{b.b}</p></div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:24px">
+          <p class="eyebrow">How a cohort runs</p>
+          <h2>Run it as a programme, not a two-day event.</h2>
+        </div>
+        <div class="flow">
+          <svg class="flow-arrow" viewBox="0 0 1000 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M0,28 L928,28 L928,0 L1000,50 L928,100 L928,72 L0,72 Z" fill="#C2D4E7"></path>
+          </svg>
+          <div class="flow-row">
+            <div class="capsule"><div class="capsule-head" style="font-size:13px">Scope</div><div class="capsule-body" style="padding:16px 16px 20px"><p class="small" style="font-size:15px;margin:0">We agree the problems the cohort will work on.</p></div></div>
+            <div class="flow-tri" aria-hidden="true"><svg width="15" height="20" viewBox="0 0 15 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L15 10 L0 20 Z" fill="#35A8DC"></path></svg></div>
+            <div class="capsule"><div class="capsule-head" style="font-size:13px">Design</div><div class="capsule-body" style="padding:16px 16px 20px"><p class="small" style="font-size:15px;margin:0">We build the material around your processes and your data.</p></div></div>
+            <div class="flow-tri" aria-hidden="true"><svg width="15" height="20" viewBox="0 0 15 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L15 10 L0 20 Z" fill="#35A8DC"></path></svg></div>
+            <div class="capsule"><div class="capsule-head" style="font-size:13px">Teach</div><div class="capsule-body" style="padding:16px 16px 20px"><p class="small" style="font-size:15px;margin:0">Sessions in your workplace, or online across sites.</p></div></div>
+            <div class="flow-tri" aria-hidden="true"><svg width="15" height="20" viewBox="0 0 15 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L15 10 L0 20 Z" fill="#35A8DC"></path></svg></div>
+            <div class="capsule"><div class="capsule-head" style="font-size:13px">Apply</div><div class="capsule-body" style="padding:16px 16px 20px"><p class="small" style="font-size:15px;margin:0">Each participant runs a real project with coaching behind it.</p></div></div>
+            <div class="flow-tri" aria-hidden="true"><svg width="15" height="20" viewBox="0 0 15 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L15 10 L0 20 Z" fill="#35A8DC"></path></svg></div>
+            <div class="capsule"><div class="capsule-head" style="font-size:13px">Certify</div><div class="capsule-body" style="padding:16px 16px 20px"><p class="small" style="font-size:15px;margin:0">An independent body assesses the evidence.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-dark reveal">
+      <div class="wrap grid-cta">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2>Bring a problem, not a course code.</h2>
+          <p>We will tell you which programme fits, and say so plainly if training is not the answer.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/contact/">Get in touch</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">In-house</p>
+          <h3 style="color:#fff;margin:0">Train the whole team</h3>
+          <p>Built around your processes and your data, and usually better value per head.</p>
+          <a class="chev" href="/contact/">Enquire about in-house <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

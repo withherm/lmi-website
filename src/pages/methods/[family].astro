@@ -1,0 +1,128 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import BeltBadge from "../../components/BeltBadge.astro";
+import Illus from "../../components/Illus.astro";
+import { COURSES, FAMILIES, type Family } from "../../data/courses";
+import "../../styles/home.css";
+
+export function getStaticPaths() {
+  return (Object.keys(FAMILIES) as Family[]).map((family) => ({
+    params: { family },
+    props: { family, meta: FAMILIES[family], courses: COURSES.filter((c) => c.family === family) },
+  }));
+}
+const { family, meta, courses } = Astro.props;
+
+const INTRO: Record<string, { h1: string; lede: string; body: string[] }> = {
+  "lean-six-sigma": {
+    h1: "Prove the improvement, do not just claim it.",
+    lede: "The belt pathway takes a person from recognising waste to leading enterprise programmes, and every credential above Yellow is earned on a real project.",
+    body: ["Lean Six Sigma is the discipline of finding the cause with evidence, fixing it, and holding the gain. We teach it with AI built into the analysis and with Lean Service Design in the Green Belt curriculum, so it works on service processes and not only on production lines.", "The belts are certified by AUSQ, an independent Australian body that does not deliver our training."],
+  },
+  "lean-operations": {
+    h1: "Take the waste out and make the work flow.",
+    lede: "Lean without the full Six Sigma statistical route. See the flow, find the waste, redesign the process and hold the gain.",
+    body: ["Plenty of process problems do not need hypothesis testing. They need someone who can map how the work actually runs, see where it stalls, and redesign it with the people who do it.", "Lean Operations is that route. Foundation gives you the lens in a day. Practitioner takes you through a real improvement end to end, and it also gives you a three-day upgrade path into Green Belt if you want the full Six Sigma toolkit later."],
+  },
+  "zero-defects": {
+    h1: "Build quality in rather than inspecting it in.",
+    lede: "Inspection is never fully effective. These programmes teach the prevention chain taught to the AS13000 series, from design risk through to process control.",
+    body: ["Every organisation that has tried to inspect its way to zero defects has found the same thing: escapes keep happening and the cost of finding them keeps climbing. Prevention is the only route that works.", "These courses follow the chain as one connected system: understand the requirement, analyse design and process risk, control the risks that matter, prove the measurement can be trusted, hold the process on target, and close out properly when something still gets through."],
+  },
+  "ai-enabled": {
+    h1: "Get a result from the AI you already pay for.",
+    lede: "The full DMAICO cycle with corporate AI applied at every phase, on your own processes and inside your own approved tools.",
+    body: ["Most organisations bought the AI licences and are still waiting for the return. This programme closes that gap by teaching a method AI can genuinely accelerate, and the judgement to check what it produces.", "DMAICO adds a sixth phase, Operate, so the improvement keeps running after the project closes."],
+  },
+  "lean-service-design": {
+    h1: "Fix the service, not just the queue.",
+    lede: "See a service front-stage and back-stage as one system, find the moments that cause complaints, and redesign both halves together.",
+    body: ["Service work fails differently from manufacturing. The customer experiences the front-stage and the organisation runs the back-stage, and most improvement work only ever touches one of them.", "These programmes teach you to see and redesign both, which is why the method holds up in government, health, insurance and financial services."],
+  },
+  "lean-business-analysis": {
+    h1: "Solve the right problem the first time.",
+    lede: "Frame the problem before delivery starts, and hand the delivery team a brief they can actually trust.",
+    body: ["Most delivery waste is created before a line of work begins, in the gap between what someone asked for and what they actually needed.", "Lean Business Analysis closes that gap: separate the stated request from the real need, map only what matters, and write requirements a delivery team can use."],
+  },
+  "lean-agile": {
+    h1: "Make Agile delivery actually flow.",
+    lede: "Agile ceremonies with Lean working practices behind them, so delivery moves instead of just meeting.",
+    body: ["Agile without Lean tends to produce a lot of ceremony and not much flow. These programmes put the two together.", "You learn the framework, the facilitation, and the Lean thinking that keeps work moving between the stand-ups."],
+  },
+};
+const intro = INTRO[family] ?? {
+  h1: `${meta.name} training.`,
+  lede: meta.blurb,
+  body: [meta.blurb],
+};
+---
+<Layout title={`${meta.name} training | Lean Methods Institute`} description={meta.blurb}>
+  <Nav />
+  <main id="main">
+
+    <section class="page-head">
+      <div class="wrap split" style="align-items:center">
+        <div>
+          <p class="eyebrow">{meta.name}</p>
+          <h1>{intro.h1}</h1>
+          <p class="lede">{intro.lede}</p>
+        </div>
+        <Illus label={`Illustration: ${meta.name} motif`} h="260px" />
+      </div>
+    </section>
+
+    <section class="sec g-off reveal">
+      <div class="wrap measure-wide">
+        <p class="eyebrow">What this is</p>
+        {intro.body.map((p) => <p>{p}</p>)}
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:30px">
+          <p class="eyebrow">The pathway</p>
+          <h2>{courses.length} programme{courses.length === 1 ? "" : "s"} in this family.</h2>
+        </div>
+        <div class="grid g3">
+          {courses.map((c) => (
+            <a class="card card-link" href={`/courses/${c.slug}/`}>
+              <span class="course-card">
+                <span class="course-top">
+                  {c.belt ? <BeltBadge code={c.belt} size={46} /> : <span></span>}
+                  {c.inHouseOnly && <span class="pill">In-house only</span>}
+                </span>
+                <h3 style="margin:6px 0 0">{c.name}</h3>
+                <span class="small" style="display:block">{c.subhead}</span>
+                <span class="meta" style="display:block">{c.duration}</span>
+                <span class="price">{c.investment.replace(" per participant, incl GST", "")}</span>
+                <span class="chev">View course <span class="c" aria-hidden="true">&rsaquo;</span></span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-dark reveal">
+      <div class="wrap grid-cta">
+        <div>
+          <p class="eyebrow">Not sure which level</p>
+          <h2>Tell us the problem you are trying to shift.</h2>
+          <p>We will point you at the right programme in this family, or a different one, or tell you training is not the answer.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/contact/">Get in touch</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">In-house</p>
+          <h3 style="color:#fff;margin:0">Train the whole team</h3>
+          <p>Built around your processes and your data, and usually better value per head.</p>
+          <a class="chev" href="/contact/">Enquire about in-house <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,89 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/home.css";
+---
+<Layout title="Get in touch | Lean Methods Institute" description="Tell us the problem you are trying to shift. We will tell you which programme fits, and say so plainly if training is not the answer.">
+  <Nav />
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">Get in touch</p>
+        <h1>Tell us the problem, not the course code.</h1>
+        <p class="lede measure-wide">We answer by email, usually within a working day. If training is not the right answer we will say so, and we will not put you on a nurture sequence for eighteen months.</p>
+      </div>
+    </section>
+
+    <section class="sec g-off reveal">
+      <div class="wrap" style="display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:48px;align-items:start" id="enquiry-grid">
+        <div class="card" style="padding:32px">
+          <h2 style="font-size:26px">Send an enquiry</h2>
+          <form style="display:flex;flex-direction:column;gap:18px;margin-top:20px" onsubmit="return false">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px" class="form-2">
+              <div><label class="sector-h" for="name">Your name</label><input id="name" type="text" autocomplete="name" /></div>
+              <div><label class="sector-h" for="email">Work email</label><input id="email" type="email" autocomplete="email" /></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px" class="form-2">
+              <div><label class="sector-h" for="org">Organisation</label><input id="org" type="text" autocomplete="organization" /></div>
+              <div><label class="sector-h" for="people">How many people</label><input id="people" type="text" /></div>
+            </div>
+            <div>
+              <label class="sector-h" for="interest">What are you interested in</label>
+              <select id="interest">
+                <option>In-house training for a team</option>
+                <option>A place on a public course</option>
+                <option>Zero Defects and AS13000 compliance</option>
+                <option>Certification or verifying a credential</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div>
+              <label class="sector-h" for="problem">What are you trying to shift</label>
+              <textarea id="problem" rows="5" placeholder="The process, the symptom, and who it is hurting."></textarea>
+            </div>
+            <button class="btn" type="submit" style="align-self:flex-start">Send enquiry</button>
+            <p class="meta">Form is not wired to a backend yet. Endpoint to be connected before launch.</p>
+          </form>
+        </div>
+
+        <div class="stack" style="gap:18px">
+          <div class="card">
+            <h3>Email</h3>
+            <p class="small" style="margin:0"><a href="mailto:hello@leanmethods.com.au">hello@leanmethods.com.au</a></p>
+          </div>
+          <div class="card">
+            <h3>Where we are</h3>
+            <p class="small" style="margin:0">Melbourne, Australia. Delivery across Australia, New Zealand and the wider region, in English and Mandarin.</p>
+          </div>
+          <div class="card card-featured">
+            <h3>In-house enquiries</h3>
+            <p class="small" style="margin:0">Most of our work is in-house. Tell us the team, the processes and the constraint, and we will come back with a shape and a quote rather than a brochure.</p>
+          </div>
+          <div class="card">
+            <h3>Verifying a credential</h3>
+            <p class="small" style="margin:0">Employers and procurement teams can check a credential in one step. <a href="/certifications/#verify">Verify a credential</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-dark reveal">
+      <div class="wrap grid-cta">
+        <div>
+          <p class="eyebrow">Not ready to talk</p>
+          <h2>Use the tools instead.</h2>
+          <p>Calculators, templates and guides you can put against a live problem today, with no enrolment and no email required.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/resources/">Open the resources</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">Browse first</p>
+          <h3 style="color:#fff;margin:0">Twenty programmes</h3>
+          <p>Across Lean Six Sigma, Zero Defects, AI-Enabled Improvement, service design, business analysis and Agile.</p>
+          <a class="chev" href="/courses/">See all courses <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

@@ -1,0 +1,68 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/home.css";
+---
+<Layout title="Insights | Lean Methods Institute" description="Articles on Lean, Six Sigma, quality and the practical application of AI to improvement work in Australian and New Zealand organisations.">
+  <Nav />
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">Insights</p>
+        <h1>What we are learning, written down.</h1>
+        <p class="lede measure-wide">Notes from delivery: what works in a room, what fails in a business case, and where AI is genuinely changing improvement work rather than being announced at it.</p>
+      </div>
+    </section>
+
+    <section class="sec-tight g-off">
+      <div class="wrap">
+        <div class="filters">
+          <span class="filter-label">Topic</span>
+          <button class="filter" type="button" aria-pressed="true">All</button>
+          <button class="filter" type="button" aria-pressed="false">Lean Six Sigma</button>
+          <button class="filter" type="button" aria-pressed="false">AI in Lean</button>
+          <button class="filter" type="button" aria-pressed="false">Quality</button>
+          <button class="filter" type="button" aria-pressed="false">Service design</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap">
+        <div class="card card-featured" style="margin-bottom:26px">
+          <h3>The back catalogue is being migrated.</h3>
+          <p class="small" style="margin:0">Articles from the current site move across before launch. This page shows the card pattern and the filters they will land in. Nothing below is published yet, and no dates have been invented.</p>
+        </div>
+        <div class="grid g3">
+          {Array.from({ length: 6 }).map(() => (
+            <div class="card">
+              <p class="meta"><span class="todo">TYPE</span> &middot; <span class="todo">READ TIME</span> &middot; <span class="todo">DATE</span></p>
+              <h3 style="margin-top:10px"><span class="todo">ARTICLE TITLE</span></h3>
+              <p class="small"><span class="todo">ONE-SENTENCE PLAIN-ENGLISH SUMMARY</span></p>
+              <p class="chev" style="margin-top:10px">Read <span class="c" aria-hidden="true">&rsaquo;</span></p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-dark reveal">
+      <div class="wrap grid-cta">
+        <div>
+          <p class="eyebrow">While you wait</p>
+          <h2>The tools are more useful than the articles anyway.</h2>
+          <p>Calculators, templates and guides you can put against a live problem today.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/resources/">Open the resources</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">Courses</p>
+          <h3 style="color:#fff;margin:0">Twenty programmes</h3>
+          <p>Lean Six Sigma, Zero Defects, AI-Enabled Improvement, service design, business analysis and Agile.</p>
+          <a class="chev" href="/courses/">Browse courses <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

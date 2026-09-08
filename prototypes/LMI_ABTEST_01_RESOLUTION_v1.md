@@ -100,4 +100,34 @@ The first build was close but missed several things. Apply all of the below. Not
 Re-screenshot the hero, the Our Difference section, the four offers, both trainlines, Highlights, the contextualised-training selector, the proof/logo-wall, and the EQUIBT handover. Still no PR until Herman approves round 2.
 
 ---
-_Resolves EQT-299. Authored Cowork, 2026-06-12 (round 2 appended same day). Vault copy: `Docs/LMI/LMI_ABTEST_01_RESOLUTION_v1.md`._
+
+## 8. Round 3 — Herman's review of the round-2 build (2026-06-12)
+
+Round 2 landed 8 of 10. Signed off: Our Difference (numbering gone), four offers (hairline boxes + distinct icons), body weight, Highlights distinctiveness, the sector-selector structure, both trainlines ascending, badges as rounded squares. Apply the fixes below. Touch only the listed sections — do not regress the rest.
+
+1. **Section rhythm / dead space.** Two adjacent white sections (hero + Our Difference) read flat with large empty quadrants. **Do NOT add hairline dividers.** Adopt EQUIBT's alternating-ground pattern (`section white` / `section beige` equivalent): no two adjacent light sections share a ground. Set Our Difference to the pale-grey ground, flip Four Offers to white, continue alternating down the page; the dark navy sections (Highlights, Proof) stay as punctuation. Tighten section heights so heading and content sit in one balanced composition — no empty bands.
+
+2. **Our Difference — restructure + reword.**
+   - Layout: the three tiles bleed off the RIGHT page edge and cascade — top tile furthest left, each tile below indented progressively further right, stepping rightward down the stack. This fills the left dead space.
+   - **Remove the gradient wash** on the featured tile. If marking one tile as featured, use a flat crimson hairline border + barely-there flat crimson tint. No gradient (reads SaaS, not practitioner-authority).
+   - Headers are too generic (Practitioner-led / AI-enabled / Evidence-first). Reword to **benefit/outcome, not what-we-do**. Draft options (pick one each; Zoe can refine):
+     - Practitioner-led → "Skills that hold up in live work" / "Capability that survives the messy reality" / "Methods that work under pressure"
+     - AI-enabled → "Faster analysis without losing rigour" / "AI that speeds the work, not the method" / "AI built in without weakening the discipline"
+     - Evidence-first → "Decisions your team can defend" / "Improvements that repeat, not one-offs" / "Results you can trace to the action"
+
+3. **Belt badges — true squircles.** Herman's supplied belt icons are squircle (superellipse) shapes, NOT rounded rectangles. Use the supplied squircle assets for ALL belt badges (YB/GB/BB/MBB): consistent outer squircle, belt letter/stroke inside, same outside shape and inside stroke across all four. Do not redraw as rounded-rects.
+
+4. **Belt pathway — actual stepped stairs, not a diagonal line.** The current rising straight line is wrong. Build discrete stair treads (reference: a 5-level "stairs with arrow steps" diagram) — each belt one step up, badges sitting on the steps. The connecting form must read as a staircase, not one sloped line, and must not cut through card content. Apply to both trainlines; the compact bottom one already reads cleanly — match its tidiness.
+
+5. **Contextualised training selector — add sector icons.** Like EQUIBT `/industries`, each sector tab in the left rail carries an icon. Reference: `src/components/icons/Icon.astro` as used in EQUIBT `src/pages/industries/index.astro` (each sector object has an `icon:` field). Add an icon to Corporate services, Government, Financial services, Healthcare and education.
+
+6. **Proof — TWO separate walls (Herman's call).**
+   - Wall A "Where our graduates work": keep, make it **BIGGER** (~12–15 tiles, stronger presence). Anonymised monochrome descriptors, static grid.
+   - Wall B "Organisations we've trained" (clients): NEW, separate wall modelled on EQUIBT's client logo wall — reference `about.astro` §7 (`.about-logo-marks`, 15 monochrome logo marks, white ground). Ships with placeholder/monochrome logo slots now; real cleared logos drop in later. **Anonymisation rule: no named or recognisable client logos until cleared.**
+
+7. **EQUIBT handover — rebuild, it's weak.** Model on EQUIBT's story-framed handover: reference `src/pages/about.astro` lines 168–178 (`.about-lmi`, eyebrow "OUR TRAINING DIVISION", real H2, a narrative paragraph on why the division exists, the logo, a text link). Build the reciprocal: eyebrow "PART OF EQUIBT GROUP", an H2, a narrative paragraph (LMI is EQUIBT's specialist training division; the same Lean + AI methods, taught to your team), the EQUIBT wordmark, and a text link to equibt.com. Replace the current thin two-line card.
+
+Re-screenshot: full page (to show the alternating grounds), Our Difference, both trainlines, the sector selector, both proof walls, the EQUIBT handover. Anti-slop pass holds (no numbering, no top-bars, no gradient featured-card, no carousel, body Montserrat 500 `#161616`, dark-ground eyebrows light-tinted) — evidence-based screenshots, not self-cert. Keep on `codex/eqt-299-lmi-rebuild`. No PR, no Linear updates until Herman approves round 3.
+
+---
+_Resolves EQT-299. Authored Cowork, 2026-06-12 (rounds 2 and 3 appended same day). Vault copy: `Docs/LMI/LMI_ABTEST_01_RESOLUTION_v1.md`._

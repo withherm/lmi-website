@@ -1,54 +1,368 @@
 ---
-import Footer from "../components/Footer.astro";
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import BeltBadge from "../components/BeltBadge.astro";
+import Illus from "../components/Illus.astro";
 import "../styles/home.css";
+
+const belts = [
+  { code: "MBB", name: "Master Black Belt", outcome: "Build the improvement capability, not just the project.", detail: "By application, 12 months, independently certified", indent: 132, step: 4 },
+  { code: "BB",  name: "Black Belt",        outcome: "Close out the problems nobody else can finish.",           detail: "10 days over 6 months, independently certified", indent: 88, step: 3 },
+  { code: "GB",  name: "Green Belt",        outcome: "Lead a project end to end and prove the result.",          detail: "5 days over 3 months, independently certified",  indent: 44, step: 2 },
+  { code: "YB",  name: "Yellow Belt",       outcome: "Run your first improvement with support behind you.",      detail: "2 days, independently certified",                indent: 0,  step: 1 },
+] as const;
+
+const aiCards = [
+  { head: "Yellow Belt", body: "AI drafts the process map from your own notes. You still walk the process and confirm what actually happens on the floor.", pills: ["Process mapping", "Waste"] },
+  { head: "Green Belt",  body: "AI runs the first pass on the data and suggests the tests. You choose the test, and you own the assumption behind it.",     pills: ["Data analysis", "Root cause"] },
+  { head: "Black Belt",  body: "AI accelerates the modelling and the write-up. It never signs off a control plan, and it never makes a capability claim.",  pills: ["Experiments", "Control plans"] },
+];
+
+const difference = [
+  { h: "Decisions your team can defend",       b: "Every conclusion traces back to the data and the test that produced it.",              i: "Glyph: scales" },
+  { h: "Skills that hold up in live work",     b: "Participants learn on their own processes, not a case study about a pizza shop.",      i: "Glyph: hands at work" },
+  { h: "Faster analysis without losing rigour",b: "AI removes the grind. The method and the judgement stay with the person.",             i: "Glyph: dial and chart" },
+  { h: "Evidence you can take to a board",     b: "Each project leaves a documented result an independent body has assessed.",            i: "Glyph: folder and seal" },
+];
+
+const teach = [
+  { h: "Lean Six Sigma belts",   b: "Prove an improvement with data a finance team will accept.", pills: ["In-house", "Public"], href: "/courses/lean-six-sigma/",        i: "Illustration: belt ladder motif" },
+  { h: "Lean Service Design",    b: "Redesign a service around the people who actually use it.",  pills: ["In-house", "Public"], href: "/courses/lean-service-design/",   i: "Illustration: service journey loop" },
+  { h: "Lean Business Analysis", b: "Turn a fuzzy brief into the right problem to solve.",        pills: ["In-house", "Public"], href: "/courses/lean-business-analysis/",i: "Illustration: brief becoming a problem statement" },
+  { h: "In-house training",      b: "Train a whole cohort on your own processes and your own data.", pills: ["In-house"],       href: "/contact/",                        i: "Illustration: cohort around a board" },
+];
+
+const cohort = [
+  { h: "Scope",   b: "We agree the problems the cohort will work on." },
+  { h: "Design",  b: "We build the material around your processes and your data." },
+  { h: "Teach",   b: "We run the sessions in your workplace, or online across sites." },
+  { h: "Apply",   b: "Each participant runs a real project with coaching behind it." },
+  { h: "Certify", b: "An independent body assesses the evidence and issues the credential." },
+];
+
+const sectors = [
+  { id: "corporate", label: "Corporate",
+    challenges: ["Handovers between teams add days to every cycle.", "Improvement work stalls the week after the workshop ends.", "Nobody agrees which number is the real one."],
+    context: "We work from your own process data, your escalation paths and the reporting your executives already read, so the project lands in language the business accepts." },
+  { id: "government", label: "Government",
+    challenges: ["Policy changes faster than the process can absorb it.", "Demand keeps rising while headcount stays flat.", "Improvement has to survive a change of minister."],
+    context: "We build around your procurement rules, records obligations and approval chains, and we design the change to hold through a machinery-of-government shift." },
+  { id: "financial", label: "Financial Services",
+    challenges: ["Controls and improvement pull in opposite directions.", "Remediation work crowds out everything else.", "Evidence has to satisfy a regulator, not just a manager."],
+    context: "We build the control evidence into the project as it runs, not as a write-up afterwards, so the improvement and the obligation are the same piece of work." },
+  { id: "healthcare", label: "Healthcare",
+    challenges: ["Clinical time disappears into administration.", "Improvement competes directly with patient safety work.", "Data sits in systems that were never meant to talk."],
+    context: "We protect care time in how the training is scheduled, and we use your incident, audit and flow data so the projects are about patients rather than paperwork." },
+];
+
+const graduates = [
+  "National bank, retail operations","State health service, patient flow","Federal department, service delivery",
+  "Energy utility, field operations","General insurer, claims","University, student administration",
+  "Rail operator, maintenance","Local council, permits and approvals","Superannuation fund, member services",
+  "Aged care provider, rostering","Logistics operator, distribution","Water utility, asset management",
+  "Telecommunications, provisioning","Manufacturer, quality assurance",
+];
 ---
 
-<Layout
-  title="Lean Methods Institute | Lean and AI capability training"
-  description="Lean Methods Institute builds lean, AI-capable teams. Lean Six Sigma, Lean Service Design and Lean Business Analysis training with AI built in."
->
+<Layout>
   <Nav />
-  <main>
+  <main id="main">
+
+    <!-- Hero + belt ladder -->
     <section class="hero">
-      <div class="hero-inner">
-        <div class="eyebrow">LEAN X AI TRAINING</div>
-        <h1>We build lean, AI-capable teams.</h1>
-        <p class="hero-subhead">Lean Six Sigma, Lean Service Design and Lean Business Analysis, with AI built into every program. Practitioner-led, AUSQ certified, designed for teams that have to make the work stick.</p>
-        <div class="hero-actions">
-          <a href="/courses/" class="btn-primary">Explore courses</a>
-          <a href="/approach/" class="btn-text"><span class="link-label">How we train</span> <span class="ar">&rsaquo;</span></a>
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Training with AI built in</p>
+          <h1>We build lean, AI-capable teams.</h1>
+          <p class="hero-lede">We train Lean Six Sigma, Lean Service Design and Lean Business Analysis for teams across Australia and New Zealand. Every belt teaches where AI carries the work, and where it must not touch it.</p>
+          <div class="hero-actions">
+            <a class="btn" href="/contact/">Get in touch</a>
+            <a class="chev" href="/courses/lean-six-sigma/">Explore the belt pathway <span class="c" aria-hidden="true">&rsaquo;</span></a>
+          </div>
+        </div>
+
+        <div class="ladder" id="belt-ladder">
+          <div class="ladder-spine" aria-hidden="true"></div>
+          <div class="ladder-fill" id="ladder-fill" aria-hidden="true"></div>
+          <div class="ladder-rungs">
+            {belts.map((b) => (
+              <button class="rung" type="button" data-belt={b.code} data-step={b.step}
+                      aria-pressed={b.code === "GB" ? "true" : "false"} style={`margin-left:${b.indent}px`}>
+                <span class="rung-inner">
+                  <BeltBadge code={b.code} selected={b.code === "GB"} />
+                  <span>
+                    <span class="rung-name">{b.name}</span>
+                    <span class="rung-outcome" style="display:block">{b.outcome}</span>
+                    <span class="rung-detail">{b.detail}</span>
+                  </span>
+                </span>
+              </button>
+            ))}
+          </div>
+          <p class="meta ladder-hint">Select a belt to see the detail</p>
         </div>
       </div>
     </section>
 
-    <section class="section beige">
-      <div class="section-inner">
-        <div class="section-head">
-          <div class="eyebrow">THREE CERTIFIED TRACKS</div>
-          <h2 class="section-title">Capability that holds, not certificates that sit in a drawer.</h2>
-          <p class="section-intro">Every track runs on real work, with AI woven through the method rather than bolted on at the end.</p>
+    <!-- AI differentiator -->
+    <section class="sec g-off reveal">
+      <div class="wrap">
+        <div class="split" style="margin-bottom:40px">
+          <div>
+            <p class="eyebrow">The difference in every course</p>
+            <h2>Teach AI where it earns its place, and where it must not touch the work.</h2>
+            <p>Most training bolts an AI module onto the end. We build it into each belt, on the tools the participant already uses, with a clear line around the judgement a person has to make and defend.</p>
+          </div>
+          <Illus label="Illustration: practitioner at a screen with a process map, a colleague reviewing beside them" />
         </div>
-        <div class="track-grid">
-          <article class="track-card">
-            <span class="track-kicker">AUSQ Certified</span>
-            <h3>Lean Six Sigma</h3>
-            <p>Yellow, Green and Black Belt pathways that build problem-solving capability your team uses on Monday.</p>
-          </article>
-          <article class="track-card">
-            <span class="track-kicker">AUSQ Certified</span>
-            <h3>Lean Service Design</h3>
-            <p>Design and improve service experiences end to end, grounded in customer evidence.</p>
-          </article>
-          <article class="track-card">
-            <span class="track-kicker">AUSQ Certified</span>
-            <h3>Lean Business Analysis</h3>
-            <p>Frame the right problem and shape the right requirements before the build starts.</p>
-          </article>
+        <div class="grid g3">
+          {aiCards.map((c) => (
+            <div class="capsule">
+              <div class="capsule-head">{c.head}</div>
+              <div class="capsule-body">
+                <p class="small">{c.body}</p>
+                <div class="pill-row">{c.pills.map((p) => <span class="pill">{p}</span>)}</div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
+
+    <!-- Our difference -->
+    <section class="sec g-white reveal">
+      <div class="wrap">
+        <div class="measure" style="margin-bottom:36px">
+          <p class="eyebrow">What you get</p>
+          <h2>Train people who can still do the work six months later.</h2>
+        </div>
+        <div class="grid g4">
+          {difference.map((d) => (
+            <div class="card">
+              <Illus label={d.i} h="76px" style="width:76px;font-size:9px;margin-bottom:12px" />
+              <h3>{d.h}</h3>
+              <p class="small">{d.b}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- What we teach -->
+    <section class="sec g-off reveal">
+      <div class="wrap">
+        <div class="measure" style="margin-bottom:36px">
+          <p class="eyebrow">What we teach</p>
+          <h2>Choose the method that matches the problem.</h2>
+        </div>
+        <div class="grid g4">
+          {teach.map((t) => (
+            <a class="card card-link" href={t.href} style="padding:0;overflow:hidden">
+              <Illus label={t.i} h="132px" style="border-radius:0;border:0;border-bottom:1px dashed #1F3268;font-size:9px" />
+              <span style="display:block;padding:22px">
+                <h3>{t.h}</h3>
+                <p class="small">{t.b}</p>
+                <span class="pill-row" style="margin:12px 0">{t.pills.map((p) => <span class="pill">{p}</span>)}</span>
+                <span class="chev">View programs <span class="c" aria-hidden="true">&rsaquo;</span></span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- How a cohort runs -->
+    <section class="sec g-white reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:24px">
+          <p class="eyebrow">How a cohort runs</p>
+          <h2>Run it as a programme, not a two-day event.</h2>
+        </div>
+        <div class="flow">
+          <svg class="flow-arrow" viewBox="0 0 1000 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M0,28 L928,28 L928,0 L1000,50 L928,100 L928,72 L0,72 Z" fill="#C2D4E7"></path>
+          </svg>
+          <div class="flow-row">
+            {cohort.map((c, i) => (
+              <>
+                <div class="capsule">
+                  <div class="capsule-head" style="font-size:13px">{c.h}</div>
+                  <div class="capsule-body" style="padding:16px 16px 20px"><p class="small" style="font-size:15px">{c.b}</p></div>
+                </div>
+                {i < cohort.length - 1 && (
+                  <div class="flow-tri" aria-hidden="true">
+                    <svg width="15" height="20" viewBox="0 0 15 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L15 10 L0 20 Z" fill="#35A8DC"></path></svg>
+                  </div>
+                )}
+              </>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contextualised training -->
+    <section class="sec g-tint reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:36px">
+          <p class="eyebrow">Contextualised training</p>
+          <h2>Teach the method against the work your sector actually does.</h2>
+        </div>
+        <div class="sectors">
+          <div class="sector-rail" role="tablist" aria-label="Sector">
+            {sectors.map((s, i) => (
+              <button class="sector-tab" type="button" role="tab" id={`tab-${s.id}`}
+                      aria-controls={`panel-${s.id}`} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? "0" : "-1"}>
+                <span class="sector-dot" aria-hidden="true"></span>{s.label}
+              </button>
+            ))}
+          </div>
+          <div>
+            {sectors.map((s, i) => (
+              <div class="sector-panel" role="tabpanel" id={`panel-${s.id}`} aria-labelledby={`tab-${s.id}`} hidden={i !== 0}>
+                <div class="sector-cols">
+                  <div>
+                    <p class="sector-h">Common challenges</p>
+                    <ul class="sector-list">
+                      {s.challenges.map((c) => <li><span class="sq" aria-hidden="true"></span><span>{c}</span></li>)}
+                    </ul>
+                  </div>
+                  <div>
+                    <p class="sector-h">Context we include in training</p>
+                    <p class="small">{s.context}</p>
+                    <Illus label="Illustration: sector scene, swaps with the tab" h="118px" style="margin-top:16px;font-size:9px" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- In-house callout -->
+    <section class="sec g-white reveal">
+      <div class="wrap split">
+        <Illus label="Photograph or illustration: a real session in progress, captioned" h="340px" />
+        <div>
+          <p class="eyebrow">In-house delivery</p>
+          <h2>Train the whole team on the work they actually do.</h2>
+          <p>Most of our work is in-house. We build the cohort around your processes, your data and your constraints, then coach the projects through to a result. Delivery runs in English and Mandarin across Australia, New Zealand and the wider region.</p>
+          <p style="margin-top:22px"><a class="btn" href="/contact/">Enquire about in-house training</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proof -->
+    <section class="sec g-off reveal">
+      <div class="wrap">
+        <p class="eyebrow">Proof</p>
+        <h2>Where our graduates work.</h2>
+        <p class="small measure" style="color:var(--charcoal-grey);margin-bottom:26px">Client names stay off the public site. These are the kinds of teams, and the work they took back.</p>
+        <div class="grad-wall">{graduates.map((g) => <div class="grad-tile">{g}</div>)}</div>
+
+        <h2 style="font-size:26px;margin:56px 0 22px">Organisations we have trained.</h2>
+        <div class="logo-wall">
+          {Array.from({ length: 15 }).map(() => <div class="logo-mark" aria-hidden="true"><span></span></div>)}
+        </div>
+        <p class="meta" style="margin-top:18px">Placeholder marks. Real logos go live only once each client has cleared it.</p>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="sec-tight g-white reveal">
+      <div class="wrap grid-quote">
+        <Illus label="Photograph: the person quoted, real, never generated" h="200px" style="font-size:9px" />
+        <div>
+          <p class="quote">"The projects did not stop when the training did. Six months on the team is still closing them out, and finance accepts the numbers without a fight."</p>
+          <p class="quote-by">Head of Operational Excellence, national insurer</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dark CTA -->
+    <section class="sec g-dark reveal">
+      <div class="wrap grid-cta">
+        <div>
+          <p class="eyebrow">Start here</p>
+          <h2>Find the right belt for your team.</h2>
+          <p>Tell us the problem you are trying to shift and the level your people are at now. We will tell you which belt fits, and say so plainly if training is not the answer.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/contact/">Get in touch</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">Free tool</p>
+          <h3 style="color:#fff;margin:0">Belt Level Selector</h3>
+          <p>Six questions on the work your team does and the decisions they have to defend. No email needed to see the result.</p>
+          <a class="chev" href="/resources/">Open the selector <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EQUIBT handover -->
+    <section class="sec g-white reveal">
+      <div class="wrap handover">
+        <div>
+          <p class="eyebrow">Part of EQUIBT Group</p>
+          <h2>Take the same methods into how the organisation runs.</h2>
+          <p>We are the specialist training division of EQUIBT Group. Where we teach your people to run improvement, EQUIBT works alongside your leadership to design the operating model that keeps it running. Same methods, same standard of evidence, applied rather than taught.</p>
+          <p style="margin-top:16px"><a class="chev" href="https://equibt.com/">Explore advisory at EQUIBT <span class="c" aria-hidden="true">&rsaquo;</span></a></p>
+        </div>
+        <div class="eq-mark">EQUIBT</div>
+      </div>
+    </section>
+
   </main>
   <Footer />
+
+  <script is:inline>
+    (function () {
+      var ladder = document.getElementById("belt-ladder");
+      if (!ladder) return;
+      var fill = document.getElementById("ladder-fill");
+      var rungs = Array.prototype.slice.call(ladder.querySelectorAll(".rung"));
+      function select(btn) {
+        rungs.forEach(function (r) { r.setAttribute("aria-pressed", String(r === btn)); });
+        var step = parseInt(btn.getAttribute("data-step"), 10) || 1;
+        if (fill) fill.style.height = (step / rungs.length) * 100 + "%";
+        // Solid fill on the selected badge, outline on the rest.
+        rungs.forEach(function (r) {
+          var on = r === btn;
+          var code = r.getAttribute("data-belt");
+          var colour = code === "YB" ? "#E8B833" : code === "GB" ? "#2E7D52" : "#1C1C1C";
+          var path = r.querySelector("path");
+          var text = r.querySelector("text");
+          if (path) path.setAttribute("fill", on ? colour : "#FFFFFF");
+          if (text) text.setAttribute("fill", on ? (code === "YB" ? "#1F3268" : "#FFFFFF") : "#1F3268");
+        });
+      }
+      rungs.forEach(function (r) { r.addEventListener("click", function () { select(r); }); });
+      var initial = ladder.querySelector('.rung[aria-pressed="true"]') || rungs[rungs.length - 1];
+      if (initial) select(initial);
+    })();
+
+    (function () {
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+      if (!tabs.length) return;
+      function show(tab) {
+        tabs.forEach(function (t) {
+          var on = t === tab;
+          t.setAttribute("aria-selected", String(on));
+          t.setAttribute("tabindex", on ? "0" : "-1");
+          var panel = document.getElementById(t.getAttribute("aria-controls"));
+          if (panel) panel.hidden = !on;
+        });
+      }
+      tabs.forEach(function (t, i) {
+        t.addEventListener("click", function () { show(t); });
+        t.addEventListener("keydown", function (ev) {
+          var d = ev.key === "ArrowDown" || ev.key === "ArrowRight" ? 1 : ev.key === "ArrowUp" || ev.key === "ArrowLeft" ? -1 : 0;
+          if (!d) return;
+          ev.preventDefault();
+          var next = tabs[(i + d + tabs.length) % tabs.length];
+          show(next); next.focus();
+        });
+      });
+    })();
+  </script>
 </Layout>

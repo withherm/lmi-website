@@ -1,0 +1,132 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import Illus from "../../components/Illus.astro";
+import { SECTORS } from "../../data/site";
+import "../../styles/home.css";
+---
+<Layout title="In-house Lean and AI training | Lean Methods Institute" description="Tailored in-house Lean and AI training, delivered on your processes, with your data. Independently assured. Across Australia and the Asia Pacific, in English and Chinese.">
+  <Nav />
+  <main id="main">
+
+    <section class="page-head">
+      <div class="wrap split" style="align-items:center">
+        <div>
+          <p class="eyebrow">In-house delivery</p>
+          <h1>Train your team on your problems, not generic examples.</h1>
+          <p class="lede">We tailor every in-house programme to your organisation, so your people learn Lean and AI on your real processes and apply it the same week. Independently assured, and delivered across Australia and the Asia Pacific in English and Chinese.</p>
+          <div class="hero-actions" style="margin-top:26px">
+            <a class="btn" href="/contact/">Enquire about in-house training</a>
+            <a class="chev" href="/resources/tools/">Take the Lean and AI Readiness Check <span class="c" aria-hidden="true">&rsaquo;</span></a>
+          </div>
+        </div>
+        <Illus label="Photograph: a real in-house cohort working on their own process" h="320px" />
+      </div>
+    </section>
+
+    <section class="sec g-off reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:24px">
+          <p class="eyebrow">How it works</p>
+          <h2>Three steps, no guesswork.</h2>
+        </div>
+        <div class="flow">
+          <svg class="flow-arrow" viewBox="0 0 1000 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M0,28 L928,28 L928,0 L1000,50 L928,100 L928,72 L0,72 Z" fill="#C2D4E7"></path>
+          </svg>
+          <div class="flow-row">
+            <div class="capsule"><div class="capsule-head">Discover</div><div class="capsule-body"><p class="small" style="margin:0">We learn your context: your processes, and the problems you need solved.</p></div></div>
+            <div class="flow-tri" aria-hidden="true"><svg width="15" height="20" viewBox="0 0 15 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L15 10 L0 20 Z" fill="#35A8DC"></path></svg></div>
+            <div class="capsule"><div class="capsule-head">Design</div><div class="capsule-body"><p class="small" style="margin:0">We tailor the programme, the examples and the data to your organisation.</p></div></div>
+            <div class="flow-tri" aria-hidden="true"><svg width="15" height="20" viewBox="0 0 15 20" xmlns="http://www.w3.org/2000/svg"><path d="M0 0 L15 10 L0 20 Z" fill="#35A8DC"></path></svg></div>
+            <div class="capsule"><div class="capsule-head">Deliver</div><div class="capsule-body"><p class="small" style="margin:0">Your team trains together on real work, and leaves with a credential and a result in progress.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">The case for in-house</p>
+          <h2>Your team trains together, and the language sticks.</h2>
+          <p>Send five people to five public courses and you get five sets of notes. Train them together, in-house, and you get a shared method, a shared language, and a fix already underway on one of your own processes.</p>
+          <p>The credential is the same. The application is immediate. And delivery fits around how your team actually works.</p>
+        </div>
+        <div>
+          <p class="eyebrow">The AI advantage</p>
+          <h2>Apply AI to your processes, not a textbook case.</h2>
+          <p>In-house participants learn AI tools on your organisation's own processes and data, inside the corporate AI environment you already run. Your people leave able to do the work, on the work that matters, the day they get back to their desks.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-tint reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:30px">
+          <p class="eyebrow">Contextualised by sector</p>
+          <h2>The method is the same. The constraints are not.</h2>
+          <p>We teach against the work your sector actually does, using your own data and your own obligations.</p>
+        </div>
+        <div class="grid g4">
+          {SECTORS.map((s) => (
+            <a class="card card-link" href={`/in-house/${s.slug}/`}>
+              <h3>{s.name}</h3>
+              <span class="small" style="display:block;margin-top:8px">{s.lede}</span>
+              <span class="chev" style="margin-top:12px;display:inline-flex">See the detail <span class="c" aria-hidden="true">&rsaquo;</span></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Reach and language</p>
+          <h2>Deliver across the Asia Pacific, in English and Chinese.</h2>
+          <p>We deliver Lean training across the Asia Pacific in English and Chinese. For organisations with teams across the region that means one provider and one standard, in the language your people work in.</p>
+        </div>
+        <div>
+          <p class="eyebrow">Certification confidence</p>
+          <h2>Every credential is independently assured.</h2>
+          <p>Lean Six Sigma is certified by AUSQ. Other credentials are recognised by LeanMethods.org. All are issued and verified through Certizio, so an employer can confirm one in seconds.</p>
+          <p style="margin-top:14px"><a class="chev" href="/certifications/">How certification works <span class="c" aria-hidden="true">&rsaquo;</span></a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-off reveal">
+      <div class="wrap grid g2">
+        <div class="card">
+          <p class="quote" style="font-size:21px">"Facilitated well and specific to the business and role, which made the course very enjoyable."</p>
+          <p class="quote-by">Supplier Quality Manager, global aerospace manufacturer</p>
+        </div>
+        <div class="card">
+          <p class="quote" style="font-size:21px">"The practical simulations were great in reinforcing the theory."</p>
+          <p class="quote-by">Improvement Specialist, private health insurer</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-dark reveal">
+      <div class="wrap grid-cta">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2>Tell us what your team needs to do differently.</h2>
+          <p>Organisations that need consulting-led improvement before or alongside training work with EQUIBT directly.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/contact/">Enquire about in-house training</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">Before you commit</p>
+          <h3 style="color:#fff;margin:0">Lean and AI Readiness Check</h3>
+          <p>Where your organisation actually sits on applying AI to improvement work.</p>
+          <a class="chev" href="/resources/tools/">Take the check <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

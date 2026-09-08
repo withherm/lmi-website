@@ -1,0 +1,99 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import Illus from "../components/Illus.astro";
+import "../styles/home.css";
+---
+<Layout title="About | Lean Methods Institute" description="A specialist training division of EQUIBT Group, teaching Lean Six Sigma, quality and improvement to corporate and government teams across Australia, New Zealand and the wider region since 2009.">
+  <Nav />
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap split" style="align-items:center">
+        <div>
+          <p class="eyebrow">About</p>
+          <h1>We teach improvement to people who have to make it work on Monday.</h1>
+          <p class="lede">Since 2009 we have trained corporate and government teams across Australia, New Zealand and the wider region, in their own workplaces, on their own problems.</p>
+        </div>
+        <Illus label="Photograph: a real session in progress, captioned" h="300px" />
+      </div>
+    </section>
+
+    <section class="sec g-off reveal">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">What we are</p>
+          <h2>The training half of a advisory group.</h2>
+          <p>Lean Methods Institute is the specialist training division of EQUIBT Group. EQUIBT works alongside leadership to design how an organisation runs. We teach the people inside it to run and improve the work. The methods are the same and the standard of evidence is the same.</p>
+          <p>That split matters commercially. We are not a training company looking for consulting work, and we are not consultants selling a course as a way in.</p>
+        </div>
+        <div>
+          <p class="eyebrow">How we are different</p>
+          <h2>Three things, and we would rather be judged on them.</h2>
+          <div class="grid" style="gap:14px;margin-top:18px">
+            <div class="card"><h3>AI is built in, not bolted on</h3><p class="small">Every programme teaches where AI carries the work and where a person has to own the judgement.</p></div>
+            <div class="card"><h3>Someone else certifies</h3><p class="small">AUSQ assesses the Lean Six Sigma evidence and issues the credential. We do not mark our own homework.</p></div>
+            <div class="card"><h3>Assessed on real work</h3><p class="small">Above Yellow Belt, the credential is earned on a project from your own workplace with a measured result.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:30px">
+          <p class="eyebrow">Faculty</p>
+          <h2>Taught by people who have done the work.</h2>
+          <p>Programmes are led by certified Master Black Belts with real project experience, not by presenters working from someone else's deck. The instructor who teaches your cohort is the one who coaches your projects.</p>
+        </div>
+        <div class="grid g3">
+          {Array.from({ length: 3 }).map(() => (
+            <div class="card">
+              <Illus label="Photograph: faculty member, real, never generated" h="180px" style="font-size:9px;margin-bottom:14px" />
+              <h3><span class="todo">NAME</span></h3>
+              <p class="meta"><span class="todo">ROLE AND CREDENTIALS</span></p>
+              <p class="small" style="margin-top:8px"><span class="todo">TWO LINES ON BACKGROUND AND WHAT THEY TEACH</span></p>
+            </div>
+          ))}
+        </div>
+        <p class="meta" style="margin-top:16px">Faculty photographs and biographies are real or the section does not ship. No generated faces.</p>
+      </div>
+    </section>
+
+    <section class="sec g-tint reveal">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Where we work</p>
+          <h2>Australia, New Zealand and the wider region.</h2>
+          <p>Most delivery is in-house and on site. We run classroom sessions in Melbourne and live online cohorts across time zones, and we deliver in English and Mandarin.</p>
+        </div>
+        <div>
+          <p class="eyebrow">The group</p>
+          <h2>Where the other brands fit.</h2>
+          <div class="grid" style="gap:14px;margin-top:18px">
+            <div class="card"><h3>EQUIBT</h3><p class="small">Advisory. Designing how the operation runs. <a class="chev" href="https://equibt.com/">Explore advisory <span class="c" aria-hidden="true">&rsaquo;</span></a></p></div>
+            <div class="card"><h3>Lean&amp;</h3><p class="small">Self-paced online courses for individuals who want the method without a cohort.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-dark reveal">
+      <div class="wrap grid-cta">
+        <div>
+          <p class="eyebrow">Start a conversation</p>
+          <h2>Tell us what is going wrong.</h2>
+          <p>We will tell you which programme fits, and say so plainly if training is not the answer.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/contact/">Get in touch</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">Credentials</p>
+          <h3 style="color:#fff;margin:0">How certification works</h3>
+          <p>Who assesses what, and how an employer verifies a credential in one step.</p>
+          <a class="chev" href="/certifications/">See the separation <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
