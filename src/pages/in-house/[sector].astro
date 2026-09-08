@@ -1,0 +1,97 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import BeltBadge from "../../components/BeltBadge.astro";
+import Illus from "../../components/Illus.astro";
+import { SECTORS } from "../../data/site";
+import { bySlug } from "../../data/courses";
+import "../../styles/home.css";
+
+export function getStaticPaths() {
+  return SECTORS.map((sector) => ({ params: { sector: sector.slug }, props: { sector } }));
+}
+const { sector } = Astro.props;
+const programmes = sector.programmes.map((s) => bySlug(s)).filter(Boolean);
+---
+<Layout title={`Lean and AI training for ${sector.name} | Lean Methods Institute`} description={sector.lede}>
+  <Nav />
+  <main id="main">
+
+    <section class="page-head">
+      <div class="wrap split" style="align-items:center">
+        <div>
+          <p class="eyebrow"><a href="/in-house/" style="color:inherit">In-house</a> &middot; {sector.name}</p>
+          <h1>{sector.h1}</h1>
+          <p class="lede">{sector.lede}</p>
+        </div>
+        <Illus label={`Illustration: ${sector.name} scene`} h="280px" />
+      </div>
+    </section>
+
+    <section class="sec g-off reveal">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">What we hear</p>
+          <h2>Common challenges.</h2>
+          <ul class="sector-list" style="margin-top:18px">
+            {sector.challenges.map((c) => <li><span class="sq" aria-hidden="true"></span><span>{c}</span></li>)}
+          </ul>
+        </div>
+        <div>
+          <p class="eyebrow">What we do about it</p>
+          <h2>Context we build into the training.</h2>
+          <p>{sector.context}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap measure-wide">
+        <p class="eyebrow">In practice</p>
+        {sector.body.map((p) => <p>{p}</p>)}
+      </div>
+    </section>
+
+    <section class="sec g-tint reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:30px">
+          <p class="eyebrow">Where teams usually start</p>
+          <h2>Three programmes that fit this work.</h2>
+        </div>
+        <div class="grid g3">
+          {programmes.map((c) => (
+            <a class="card card-link" href={`/courses/${c!.slug}/`}>
+              <span class="course-card">
+                <span class="course-top">{c!.belt ? <BeltBadge code={c!.belt} size={46} /> : <span></span>}</span>
+                <h3 style="margin:6px 0 0">{c!.name}</h3>
+                <span class="small" style="display:block">{c!.subhead}</span>
+                <span class="meta" style="display:block">{c!.duration}</span>
+                <span class="chev">View course <span class="c" aria-hidden="true">&rsaquo;</span></span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-dark reveal">
+      <div class="wrap grid-cta">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2>Bring the constraint, not just the course code.</h2>
+          <p>Tell us what your team is up against. We will shape the cohort around it, and say plainly if training is not the answer.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/contact/">Enquire about in-house training</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">Other sectors</p>
+          <h3 style="color:#fff;margin:0">We work across four</h3>
+          <p>Corporate, government, financial services and healthcare, each with its own constraints built in.</p>
+          <a class="chev" href="/in-house/">See all sectors <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

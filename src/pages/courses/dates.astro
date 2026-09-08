@@ -1,0 +1,117 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import BeltBadge from "../../components/BeltBadge.astro";
+import { COURSES, bySlug } from "../../data/courses";
+import "../../styles/home.css";
+
+// Public scheduled offerings. The live site currently advertises Green Belt
+// (Melbourne and online) and Black Belt Fast Track. Every date here is a
+// placeholder: the dates on leanmethods.com.au have already passed.
+const COHORTS = [
+  { slug: "lean-six-sigma-green-belt", location: "Melbourne", mode: "Classroom", status: "Open" },
+  { slug: "lean-six-sigma-green-belt", location: "Online", mode: "Live online", status: "Open" },
+  { slug: "lean-six-sigma-black-belt", location: "Melbourne", mode: "Classroom, fast track", status: "Class full" },
+  { slug: "lean-six-sigma-yellow-belt", location: "Melbourne", mode: "Classroom", status: "Open" },
+  { slug: "lean-practitioner", location: "Online", mode: "Live online", status: "Open" },
+  { slug: "ai-enabled-improvement-practitioner", location: "Online", mode: "Live online", status: "Register interest" },
+];
+const rows = COHORTS.map((c) => ({ ...c, course: bySlug(c.slug)! }));
+const selfPaced = COURSES.filter((c) => c.delivery.startsWith("Self-paced"));
+const byApplication = COURSES.filter((c) => c.investment === "By application");
+const statusClass = (s: string) => s === "Class full" ? "signal-quiet" : "pill";
+---
+<Layout title="Upcoming course dates | Lean Methods Institute" description="Public Lean Six Sigma and Lean course dates in Melbourne and online, with fees per participant including GST.">
+  <Nav />
+  <main id="main">
+
+    <section class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">Upcoming courses</p>
+        <h1>Public dates, in Melbourne and online.</h1>
+        <p class="lede measure-wide">Every public cohort runs small, with a Master Black Belt instructor. If a date does not suit, register interest and we will tell you when the next one opens rather than adding you to a mailing list.</p>
+      </div>
+    </section>
+
+    <section class="sec g-off reveal">
+      <div class="wrap">
+        <div class="card card-featured" style="margin-bottom:26px">
+          <h3>Dates are not confirmed yet</h3>
+          <p class="small" style="margin:0">Every date below is a marked placeholder. The dates currently advertised on the live site have already passed, which is one of the things this rebuild is fixing. Confirm the schedule and these fill in.</p>
+        </div>
+        <div class="table-scroll">
+          <table class="data">
+            <thead><tr><th>Course</th><th>Starts</th><th>Location</th><th>Delivery</th><th>Fee, incl GST</th><th>Status</th></tr></thead>
+            <tbody>
+              {rows.map((r) => (
+                <tr>
+                  <td><a href={`/courses/${r.course.slug}/`}>{r.course.name}</a></td>
+                  <td><span class="todo">DATE</span></td>
+                  <td>{r.location}</td>
+                  <td>{r.mode}</td>
+                  <td>{r.course.investment.replace(" per participant, incl GST", "")}</td>
+                  <td><span class={statusClass(r.status)}>{r.status}</span></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="meta" style="margin-top:14px">Fees are per participant including GST. In-house cohorts are quoted separately and are usually better value per head.</p>
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap grid g2">
+        <div>
+          <p class="eyebrow">No date needed</p>
+          <h2>Start today.</h2>
+          <div class="grid" style="gap:12px;margin-top:18px">
+            {selfPaced.map((c) => (
+              <a class="card card-link" href={`/courses/${c.slug}/`} style="padding:18px 20px">
+                <span style="display:flex;align-items:center;gap:14px">
+                  {c.belt && <BeltBadge code={c.belt} size={40} />}
+                  <span>
+                    <h4 style="margin:0 0 2px">{c.name}</h4>
+                    <span class="meta">{c.duration} &middot; {c.investment}</span>
+                  </span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p class="eyebrow">Run on demand</p>
+          <h2>By application, not on a schedule.</h2>
+          <div class="grid" style="gap:12px;margin-top:18px">
+            {byApplication.map((c) => (
+              <a class="card card-link" href={`/courses/${c.slug}/`} style="padding:18px 20px">
+                <h4 style="margin:0 0 2px">{c.name}</h4>
+                <span class="meta">{c.duration}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-dark reveal">
+      <div class="wrap grid-cta">
+        <div>
+          <p class="eyebrow">Nothing fits</p>
+          <h2>Tell us when you need it.</h2>
+          <p>If the public dates do not work, an in-house cohort runs when your team is free, on your own processes, from eight participants.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/in-house/">Explore in-house delivery</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">Not sure of the level</p>
+          <h3 style="color:#fff;margin:0">Belt Level Selector</h3>
+          <p>Six questions, and a straight answer on which level fits.</p>
+          <a class="chev" href="/resources/tools/">Open the selector <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>

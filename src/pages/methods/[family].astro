@@ -21,6 +21,11 @@ const INTRO: Record<string, { h1: string; lede: string; body: string[] }> = {
     lede: "The belt pathway takes a person from recognising waste to leading enterprise programmes, and every credential above Yellow is earned on a real project.",
     body: ["Lean Six Sigma is the discipline of finding the cause with evidence, fixing it, and holding the gain. We teach it with AI built into the analysis and with Lean Service Design in the Green Belt curriculum, so it works on service processes and not only on production lines.", "The belts are certified by AUSQ, an independent Australian body that does not deliver our training."],
   },
+  "lean-operations": {
+    h1: "Take the waste out and make the work flow.",
+    lede: "Lean without the full Six Sigma statistical route. See the flow, find the waste, redesign the process and hold the gain.",
+    body: ["Plenty of process problems do not need hypothesis testing. They need someone who can map how the work actually runs, see where it stalls, and redesign it with the people who do it.", "Lean Operations is that route. Foundation gives you the lens in a day. Practitioner takes you through a real improvement end to end, and it also gives you a three-day upgrade path into Green Belt if you want the full Six Sigma toolkit later."],
+  },
   "zero-defects": {
     h1: "Build quality in rather than inspecting it in.",
     lede: "Inspection is never fully effective. These programmes teach the prevention chain taught to the AS13000 series, from design risk through to process control.",
@@ -47,7 +52,11 @@ const INTRO: Record<string, { h1: string; lede: string; body: string[] }> = {
     body: ["Agile without Lean tends to produce a lot of ceremony and not much flow. These programmes put the two together.", "You learn the framework, the facilitation, and the Lean thinking that keeps work moving between the stand-ups."],
   },
 };
-const intro = INTRO[family];
+const intro = INTRO[family] ?? {
+  h1: `${meta.name} training.`,
+  lede: meta.blurb,
+  body: [meta.blurb],
+};
 ---
 <Layout title={`${meta.name} training | Lean Methods Institute`} description={meta.blurb}>
   <Nav />

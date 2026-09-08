@@ -1,5 +1,5 @@
 export type Family =
-  | "lean-six-sigma" | "ai-enabled" | "lean-service-design"
+  | "lean-six-sigma" | "lean-operations" | "ai-enabled" | "lean-service-design"
   | "lean-business-analysis" | "lean-agile" | "zero-defects";
 
 export interface Course {
@@ -16,11 +16,12 @@ export interface Course {
 
 export const FAMILIES: Record<Family, { name: string; blurb: string; order: number }> = {
   "lean-six-sigma": { name: "Lean Six Sigma", order: 1, blurb: "The belt pathway, certified by AUSQ. Find the cause with evidence, fix it, and hold the gain." },
-  "zero-defects": { name: "Zero Defects", order: 2, blurb: "Aerospace and regulated manufacturing quality, taught to the AS13000 series. Prevent the defect rather than inspect for it." },
-  "ai-enabled": { name: "AI-Enabled Improvement", order: 3, blurb: "The full DMAICO cycle with corporate AI applied at every phase." },
-  "lean-service-design": { name: "Lean Service Design", order: 4, blurb: "See and redesign a service front-stage and back-stage, so it is simpler to use and simpler to run." },
-  "lean-business-analysis": { name: "Lean Business Analysis", order: 5, blurb: "Frame the right problem before delivery starts, and brief it so the right thing gets built." },
-  "lean-agile": { name: "Lean Agile", order: 6, blurb: "Run and support Agile delivery with Lean working practices behind it." },
+  "lean-operations": { name: "Lean Operations", order: 2, blurb: "Make work flow and take the waste out, without the full Six Sigma route." },
+  "zero-defects": { name: "Zero Defects", order: 3, blurb: "Aerospace and regulated manufacturing quality, taught to the AS13000 series. Prevent the defect rather than inspect for it." },
+  "ai-enabled": { name: "AI-Enabled Improvement", order: 4, blurb: "The full DMAICO cycle with corporate AI applied at every phase." },
+  "lean-service-design": { name: "Lean Service Design", order: 5, blurb: "See and redesign a service front-stage and back-stage, so it is simpler to use and simpler to run." },
+  "lean-business-analysis": { name: "Lean Business Analysis", order: 6, blurb: "Frame the right problem before delivery starts, and brief it so the right thing gets built." },
+  "lean-agile": { name: "Lean Agile", order: 7, blurb: "Run and support Agile delivery with Lean working practices behind it." },
 };
 
 const AUSQ = "AUSQ, an independent Australian certification body for Lean Six Sigma";
@@ -79,7 +80,32 @@ export const COURSES: Course[] = [
     related: ["lean-practitioner", "lean-six-sigma-green-belt"],
   },
   {
-    slug: "lean-practitioner", name: "Lean Practitioner", family: "lean-six-sigma",
+    slug: "lean-foundation", name: "Lean Foundation", family: "lean-operations",
+    metaTitle: "Lean Foundation Training | Lean Methods Institute",
+    metaDesc: "Understand flow, waste and standard work in one day, and take a useful part in a Lean system.",
+    h1: "See the waste before you try to remove it.",
+    subhead: "A one-day introduction to Lean operations, so you can recognise waste, understand flow, and take a useful part in an improvement effort.",
+    ctaPrimary: "View dates and enrol", ctaSecondary: "Download course overview",
+    credential: "Lean Foundation", certifier: LMO,
+    duration: "1 day", delivery: "Classroom or live online instructor-led",
+    prerequisite: "None", certification: "Coursework",
+    investment: "A$895 per participant, incl GST",
+    overview: ["Lean Foundation is the entry point to Lean operations. In a day you learn to see work as a flow, recognise the waste sitting inside it, and understand why standard work is what holds an improvement in place."],
+    outcomes: ["Recognise the eight wastes in your own area.", "Describe how work flows and where it stalls.", "Understand what standard work is for.", "Take a useful part in a Lean improvement effort."],
+    audience: "Team members and supervisors in operations, service delivery and administration who need the language and the lens before doing improvement work.",
+    curriculum: [
+      { h: "Flow", b: "Seeing work as a flow rather than a set of tasks." },
+      { h: "Waste", b: "The eight wastes, found in your own process." },
+      { h: "Standard work", b: "Why the gain disappears without it." },
+      { h: "Your part", b: "How improvement runs and where you fit." },
+    ],
+    ai: "A first look at using corporate AI to map a process and surface waste faster than a workshop can.",
+    assessment: "Recognised by LeanMethods.org against a published competency standard, launching Q4 2026. Includes digital certificate and badge. Verified through Certizio.",
+    fits: "The entry point to Lean Operations. Next step: Lean Practitioner.",
+    related: ["lean-practitioner", "lean-six-sigma-yellow-belt"],
+  },
+  {
+    slug: "lean-practitioner", name: "Lean Practitioner", family: "lean-operations",
     metaTitle: "Lean Practitioner Training & Certification | LMI",
     metaDesc: "Run Lean improvements and eliminate waste with an AUSQ-certified Lean Practitioner credential. Three days, AI built in.",
     h1: "Eliminate waste and make work flow.",

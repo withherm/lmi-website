@@ -2,15 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import { RESOURCE_HUBS } from "../data/site";
 import "../styles/home.css";
-const hubs = [
-  { h: "Tools", b: "Calculators and selectors you can use on a live problem today.", items: "Belt Level Selector, sample size, process sigma, Cp and Cpk, DPMO to sigma, takt time, control chart selector", status: "In build" },
-  { h: "Templates", b: "The toolkits and project templates we teach with, free to reuse.", items: "DMAIC toolkit, service design toolkit, business analysis toolkit", status: "In build" },
-  { h: "Guides", b: "The 101 set and the cheat sheets, written to be scanned and printed.", items: "Lean Six Sigma 101, the eight wastes, 5S, sigma table, test selector", status: "In build" },
-  { h: "Glossary", b: "Plain-English definitions, because most of the jargon is doing no work.", items: "Lean, Six Sigma and quality terms", status: "In build" },
-  { h: "Knowledge base", b: "Short answers to the questions people actually search for.", items: "Certification, belts, projects, delivery", status: "In build" },
-  { h: "Reports", b: "Original research on Lean and AI in Australian and New Zealand organisations.", items: "Lean x AI report", status: "Planned" },
-];
+const hubs = RESOURCE_HUBS;
 ---
 <Layout title="Resources | Lean Methods Institute" description="Free Lean Six Sigma tools, templates, guides, a glossary and a knowledge base. Use them on a live problem, no enrolment needed.">
   <Nav />
@@ -55,14 +49,15 @@ const hubs = [
         </div>
         <div class="grid g3">
           {hubs.map((r) => (
-            <div class="card">
-              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
-                <h3 style="margin:0">{r.h}</h3>
+            <a class="card card-link" href={`/resources/${r.slug}/`}>
+              <span style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+                <h3 style="margin:0">{r.name}</h3>
                 <span class="pill">{r.status}</span>
-              </div>
-              <p class="small" style="margin-top:10px">{r.b}</p>
-              <p class="meta" style="margin-top:10px">{r.items}</p>
-            </div>
+              </span>
+              <span class="small" style="display:block;margin-top:10px">{r.lede}</span>
+              <span class="meta" style="display:block;margin-top:10px">{r.items.length} items</span>
+              <span class="chev" style="margin-top:12px;display:inline-flex">Open <span class="c" aria-hidden="true">&rsaquo;</span></span>
+            </a>
           ))}
         </div>
       </div>
