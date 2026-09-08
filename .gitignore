@@ -7,3 +7,4 @@ graphify-out/
 .wrangler/
 dist/
 .vscode/
+_superseded/

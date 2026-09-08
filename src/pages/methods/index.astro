@@ -1,16 +1,55 @@
 ---
-import Footer from "../../components/Footer.astro";
 import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import Illus from "../../components/Illus.astro";
+import { COURSES, FAMILIES, type Family } from "../../data/courses";
+import "../../styles/home.css";
+const families = (Object.keys(FAMILIES) as Family[]).sort((a, b) => FAMILIES[a].order - FAMILIES[b].order);
 ---
-
-<Layout title="Methods | Lean Methods Institute" description="Lean Methods Institute methods hub.">
+<Layout title="Methods | Lean Methods Institute" description="Six method families: Lean Six Sigma, Zero Defects, AI-Enabled Improvement, Lean Service Design, Lean Business Analysis and Lean Agile.">
   <Nav />
-  <main class="policy-main">
-    <div class="policy-inner">
-      <h1>Methods</h1>
-      <p>Coming soon.</p>
-    </div>
+  <main id="main">
+    <section class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">Methods</p>
+        <h1>Six methods, one discipline underneath.</h1>
+        <p class="lede measure-wide">They all start the same way: understand the work as it actually runs, find the cause with evidence, and change the system rather than asking people to try harder. What differs is the kind of work each one is built for.</p>
+      </div>
+    </section>
+
+    <section class="sec g-off reveal">
+      <div class="wrap grid g3">
+        {families.map((f) => (
+          <a class="card card-link" href={`/methods/${f}/`} style="padding:0;overflow:hidden">
+            <Illus label={`Glyph: ${FAMILIES[f].name}`} h="120px" style="border-radius:0;border:0;border-bottom:1px dashed #1F3268;font-size:9px" />
+            <span style="display:block;padding:24px">
+              <h3>{FAMILIES[f].name}</h3>
+              <span class="small" style="display:block">{FAMILIES[f].blurb}</span>
+              <span class="meta" style="display:block;margin-top:10px">{COURSES.filter((c) => c.family === f).length} programmes</span>
+              <span class="chev" style="margin-top:10px;display:inline-flex">Explore <span class="c" aria-hidden="true">&rsaquo;</span></span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="sec g-dark reveal">
+      <div class="wrap grid-cta">
+        <div>
+          <p class="eyebrow">Choosing between them</p>
+          <h2>Bring the problem and we will name the method.</h2>
+          <p>Most people arrive asking for a belt. The useful conversation starts with what is going wrong and who it is hurting.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/contact/">Get in touch</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">Free tool</p>
+          <h3 style="color:#fff;margin:0">Belt Level Selector</h3>
+          <p>Six questions on the work your team does and the decisions they have to defend.</p>
+          <a class="chev" href="/resources/">Open the selector <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
   </main>
   <Footer />
 </Layout>

@@ -155,7 +155,7 @@ table.data th{font-family:var(--font-heading);font-weight:700;font-size:11px;let
 .todo{
   font-family:var(--font-heading);font-weight:700;font-size:.82em;letter-spacing:.06em;
   color:var(--deep-navy);background:var(--pale-blue-tint);border:1px dashed var(--steel-blue);
-  border-radius:5px;padding:2px 7px;white-space:nowrap;
+  border-radius:5px;padding:2px 7px;white-space:normal;
 }
 
 /* Certifications: separation diagram */
@@ -179,4 +179,19 @@ table.data th{font-family:var(--font-heading);font-weight:700;font-size:11px;let
 @media (max-width:820px){
   .grid-5{grid-template-columns:1fr;}
   .grid-quote{grid-template-columns:1fr;gap:24px;}
+}
+
+/* Forms ------------------------------------------------------------------ */
+label.sector-h{display:block;margin-bottom:7px;}
+input[type=text],input[type=email],select,textarea{
+  width:100%;font-family:var(--font-heading);font-size:15px;padding:12px 14px;border-radius:8px;
+  border:1px solid var(--hairline);background:var(--white);color:var(--near-black);min-height:46px;
+}
+textarea{font-family:var(--font-body);font-size:16px;line-height:1.5;resize:vertical;}
+input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var(--mid-blue);}
+@media (max-width:1024px){
+  #enquiry-grid{grid-template-columns:1fr !important;gap:28px !important;}
+}
+@media (max-width:820px){
+  .form-2{grid-template-columns:1fr !important;}
 }

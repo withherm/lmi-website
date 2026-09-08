@@ -1,0 +1,174 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import BeltBadge from "../../components/BeltBadge.astro";
+import Illus from "../../components/Illus.astro";
+import { COURSES, FAMILIES, bySlug } from "../../data/courses";
+import "../../styles/home.css";
+
+export function getStaticPaths() {
+  return COURSES.map((course) => ({ params: { slug: course.slug }, props: { course } }));
+}
+
+const { course } = Astro.props;
+const fam = FAMILIES[course.family];
+const related = course.related.map((s) => bySlug(s)).filter(Boolean);
+const priceIsFigure = course.investment.startsWith("A$");
+---
+<Layout title={`${course.metaTitle} | Lean Methods Institute`} description={course.metaDesc}>
+  <Nav />
+  <main id="main">
+
+    <section class="page-head">
+      <div class="wrap grid-course-head">
+        <div>
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap">
+            {course.belt && <BeltBadge code={course.belt} size={54} selected={true} />}
+            <p class="eyebrow" style="margin:0">
+              <a href={`/methods/${course.family}/`} style="color:inherit">{fam.name}</a>
+            </p>
+          </div>
+          <h1>{course.h1}</h1>
+          <p class="lede">{course.subhead}</p>
+        </div>
+
+        <aside class="enrol" aria-label="Course details">
+          {priceIsFigure
+            ? <div class="enrol-price">{course.investment.replace(" per participant, incl GST", "")}<small>Per participant, incl GST</small></div>
+            : <div class="enrol-price" style="font-size:24px">{course.investment}<small>{course.investmentNote}</small></div>}
+          <ul class="enrol-rows">
+            <li><span class="k">Duration</span><span>{course.duration}</span></li>
+            <li><span class="k">Delivery</span><span>{course.delivery}</span></li>
+            <li><span class="k">Credential</span><span>{course.credential}</span></li>
+            <li><span class="k">Prerequisite</span><span>{course.prerequisite}</span></li>
+            {priceIsFigure && <li><span class="k">Next dates</span><span><span class="todo">NEXT DATES</span></span></li>}
+          </ul>
+          <a class="btn" href="/contact/" style="width:100%">{course.ctaPrimary}</a>
+          <a class="chev" href="/contact/">{course.ctaSecondary} <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="sec g-off reveal">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Course overview</p>
+          {course.overview.map((p) => <p>{p}</p>)}
+        </div>
+        <div>
+          <h3 style="margin-bottom:16px">What you will be able to do</h3>
+          <ul class="sector-list">
+            {course.outcomes.map((o) => <li><span class="sq" aria-hidden="true"></span><span>{o}</span></li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">AI in this course</p>
+          <h2>Where AI carries the work, and where it must not.</h2>
+          <p>{course.ai}</p>
+        </div>
+        <Illus label="Illustration: practitioner and colleague reviewing an analysis on screen" h="280px" />
+      </div>
+    </section>
+
+    <section class="sec g-off reveal">
+      <div class="wrap">
+        <div class="measure-wide" style="margin-bottom:30px">
+          <p class="eyebrow">Curriculum</p>
+          <h2>What is covered.</h2>
+          <p class="small">Indicative only. Contextualisation to your own processes is available on in-house delivery.</p>
+        </div>
+        <div class="grid-5">
+          {course.curriculum.map((m) => (
+            <div class="capsule">
+              <div class="capsule-head" style="font-size:13px">{m.h}</div>
+              <div class="capsule-body" style="padding:16px 16px 20px"><p class="small" style="font-size:15px;margin:0">{m.b}</p></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-white reveal">
+      <div class="wrap grid g2">
+        <div class="card">
+          <h3>Who this is for</h3>
+          <p class="small">{course.audience}</p>
+        </div>
+        <div class="card">
+          <h3>Assessment and certification</h3>
+          <p class="small">{course.certification}</p>
+          <p class="small" style="margin-top:10px">{course.assessment}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec g-tint reveal">
+      <div class="wrap split">
+        <div>
+          <p class="eyebrow">Where it fits</p>
+          <h2>{fam.name}</h2>
+          <p>{course.fits}</p>
+          <p style="margin-top:16px"><a class="chev" href={`/methods/${course.family}/`}>See the whole {fam.name} pathway <span class="c" aria-hidden="true">&rsaquo;</span></a></p>
+        </div>
+        <div class="grid" style="gap:12px">
+          {related.map((r) => (
+            <a class="card card-link" href={`/courses/${r!.slug}/`} style="padding:18px 20px">
+              <span style="display:flex;align-items:center;gap:14px">
+                {r!.belt && <BeltBadge code={r!.belt} size={40} />}
+                <span>
+                  <h4 style="margin:0 0 2px">{r!.name}</h4>
+                  <span class="meta">{r!.duration}</span>
+                </span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {course.inHouseOnly && (
+      <section class="sec-tight g-white reveal">
+        <div class="wrap">
+          <div class="card card-featured">
+            <h3>In-house only</h3>
+            <p class="small" style="margin:0">This programme is tailored to your organisation and runs alongside your team's training. It is not sold per seat and has no public cohort.</p>
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section class="sec g-dark reveal">
+      <div class="wrap grid-cta">
+        <div>
+          <p class="eyebrow">Next step</p>
+          <h2>Bring a problem, not a course code.</h2>
+          <p>Tell us what you are trying to shift. We will tell you whether this is the right level, and say so plainly if it is not.</p>
+          <p style="margin-top:22px"><a class="btn btn-on-dark" href="/contact/">Get in touch</a></p>
+        </div>
+        <div class="cta-tool">
+          <p class="eyebrow">Not sure of the level</p>
+          <h3 style="color:#fff;margin:0">Belt Level Selector</h3>
+          <p>Six questions, no email needed to see the result.</p>
+          <a class="chev" href="/resources/">Open the selector <span class="c" aria-hidden="true">&rsaquo;</span></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  {priceIsFigure && (
+    <div class="mobile-bar">
+      <div class="p">{course.investment.replace(" per participant, incl GST", "")}</div>
+      <a class="btn" href="/contact/">{course.ctaPrimary}</a>
+    </div>
+  )}
+
+  <Footer />
+  {priceIsFigure && <script is:inline>document.body.classList.add("has-mobile-bar");</script>}
+</Layout>
