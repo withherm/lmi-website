@@ -8,7 +8,9 @@ _For an external AI reviewer. 9 September 2026. Prepared by Claude for Herman Ch
 
 A rebuilt marketing and enrolment site for **Lean Methods Institute**, the training division of EQUIBT Group. Melbourne based, delivering Lean Six Sigma, Lean Service Design, Lean Business Analysis and Zero Defects training to corporate and government clients across Australia and New Zealand.
 
-**Preview URL:** https://99fa9156-lmi-website.equibt.workers.dev
+**Preview URL:** https://6b959d5a-lmi-website.equibt.workers.dev
+
+That URL is permanent and is the exact build you are reviewing. It is a preview version, not the live site, so nothing you say can break production.
 **Repo:** `withherm/lmi-website`, branch `eqt-417-design-coherence`
 **Stack:** Astro 6 static output, Cloudflare Workers with static assets. 53 routes.
 

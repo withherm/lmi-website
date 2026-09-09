@@ -7,7 +7,7 @@ _9 September 2026. Companion to `LMI_EXTERNAL_REVIEW_BRIEF_v1.md`, which goes to
 ## Access
 
 **Repo:** `withherm/lmi-website`, branch `eqt-417-design-coherence`
-**Preview:** https://d91de323-lmi-website.equibt.workers.dev (public, no auth, one commit behind the branch)
+**Preview:** https://6b959d5a-lmi-website.equibt.workers.dev (public, no auth, permanent, and the exact build in this brief)
 **Stack:** Astro 6 static output, Cloudflare Workers with static assets. 53 routes.
 
 Run it yourself rather than using the preview, it will be faster and current:
