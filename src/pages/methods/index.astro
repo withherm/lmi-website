@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import Illus from "../../components/Illus.astro";
+import Icon from "../../components/icons/Icon.astro";
 import { COURSES, FAMILIES, type Family } from "../../data/courses";
 import "../../styles/home.css";
 const families = (Object.keys(FAMILIES) as Family[]).sort((a, b) => FAMILIES[a].order - FAMILIES[b].order);
@@ -22,7 +23,7 @@ const families = (Object.keys(FAMILIES) as Family[]).sort((a, b) => FAMILIES[a].
       <div class="wrap grid g3">
         {families.map((f) => (
           <a class="card card-link" href={`/methods/${f}/`} style="padding:0;overflow:hidden">
-            <Illus label={`Glyph: ${FAMILIES[f].name}`} h="120px" style="border-radius:0;border:0;border-bottom:1px dashed #1F3268" />
+            <span class="card-icon"><span class="ic ic-lg"><Icon name={f} /></span></span>
             <span style="display:block;padding:24px">
               <h3>{FAMILIES[f].name}</h3>
               <span class="small" style="display:block">{FAMILIES[f].blurb}</span>

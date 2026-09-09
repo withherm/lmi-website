@@ -205,3 +205,12 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var
    that were scattered across the pages. Two steps only, both on the ladder. */
 .quote-sm{font-size:var(--t-h3);}
 .enrol-price-sm{font-size:var(--t-h3);}
+
+/* Icon banner at the head of a card. Replaces the dashed illustration
+   placeholder on cards that only ever needed a glyph. EQT-417. */
+.card-icon{
+  display:flex;align-items:center;justify-content:center;
+  padding:26px 0;background:var(--pale-blue-tint);border-bottom:1px solid var(--hairline);
+}
+.g-tint .card-icon{background:var(--white);}
+.sector-tab .ic{margin-right:2px;}

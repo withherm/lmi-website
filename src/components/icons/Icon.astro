@@ -1,0 +1,129 @@
+---
+/**
+ * Lean Methods Institute icon library. EQT-417.
+ *
+ * Grammar lifted from equibt-website/src/components/icons: single-weight
+ * line art, round caps and joins, no fill, no container box, one accent
+ * stroke per icon. Recoloured to the blue system: Deep Navy carries the
+ * drawing, Cyan carries the one thing the icon is actually about.
+ *
+ * 64 viewBox, 3.2 stroke, which lands on the same optical weight as the
+ * EQUIBT set at 375/21.83. Sized by the page wrapper (.ic), never here.
+ * Stroke classes .hd and .hd-acc live in base.css so a colour change is
+ * one edit, not twenty.
+ *
+ * Usage: <Icon name="lean-six-sigma" />
+ */
+interface Props { name: string; }
+const { name } = Astro.props;
+
+// Each entry: [structural paths, accent paths]. Accent is the point of the
+// icon, never decoration: the special-cause point, the caught defect, the
+// tick that closes the loop.
+const P: Record<string, [string[], string[]]> = {
+  // Methods -----------------------------------------------------------
+  "lean-six-sigma": [
+    ["M11 9 V53 H56", "M15 44 L24 31 L32 37 L40 20 L48 33 L55 27", "M11 26 H56"],
+    ["M40 20 m-5.5 0 a5.5 5.5 0 1 0 11 0 a5.5 5.5 0 1 0 -11 0"],
+  ],
+  "zero-defects": [
+    ["M9 20 h26 a4 4 0 0 1 4 4 v24 a4 4 0 0 1 -4 4 h-26 a4 4 0 0 1 -4 -4 v-24 a4 4 0 0 1 4 -4 z",
+     "M42 24 m-12 0 a12 12 0 1 0 24 0 a12 12 0 1 0 -24 0", "M51 33 L58 41"],
+    ["M38 20 L46 28", "M46 20 L38 28"],
+  ],
+  "ai-enabled": [
+    ["M7 47 C19 47 20 26 33 26 C46 26 47 41 58 41", "M7 47 m-3 0 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0"],
+    ["M46 8 V20", "M40 14 H52", "M42 10 L50 18", "M50 10 L42 18"],
+  ],
+  "lean-service-design": [
+    ["M8 48 C21 48 19 20 33 20 C47 20 45 46 57 46",
+     "M8 48 m-3 0 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0", "M57 46 m-3 0 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0"],
+    ["M33 20 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0"],
+  ],
+  "lean-business-analysis": [
+    ["M10 15 H46", "M10 28 H40", "M10 41 H33"],
+    ["M36 45 L44 54 L58 34"],
+  ],
+  "lean-agile": [
+    ["M52 24 A22 22 0 1 1 40 12", "M22 32 h20", "M22 40 h13"],
+    ["M40 4 L48 12 L40 20"],
+  ],
+  "lean-operations": [
+    ["M7 22 h17 v20 h-17 z", "M40 22 h17 v20 h-17 z", "M25 32 H37"],
+    ["M33 28 L41 36", "M41 28 L33 36"],
+  ],
+  // Sectors ------------------------------------------------------------
+  "corporate": [
+    ["M12 55 V16 h24 v39", "M40 55 V28 h12 v27", "M18 24 h5", "M27 24 h5", "M18 34 h5", "M27 34 h5", "M18 44 h5", "M27 44 h5"],
+    ["M44 38 h5"],
+  ],
+  "government": [
+    ["M8 24 L32 10 L56 24", "M8 55 H56", "M15 28 V49", "M25 28 V49", "M39 28 V49", "M49 28 V49"],
+    ["M32 10 V4"],
+  ],
+  "financial-services": [
+    ["M10 54 V38", "M23 54 V28", "M36 54 V33", "M49 54 V18", "M6 54 H58"],
+    ["M12 30 L25 18 L36 24 L52 8"],
+  ],
+  "healthcare": [
+    ["M6 34 h12 l5 -12 l7 24 l6 -16 l4 4 h18"],
+    ["M46 44 V56", "M40 50 H52"],
+  ],
+  // The three differences ------------------------------------------------
+  "diff-live-work": [
+    ["M6 10 h34 v24 h-34 z", "M12 18 h14", "M12 26 h18", "M23 34 V44", "M14 44 h18"],
+    ["M50 26 m-5.5 0 a5.5 5.5 0 1 0 11 0 a5.5 5.5 0 1 0 -11 0", "M42 54 c0 -8 3.5 -12 8 -12 c4.5 0 8 4 8 12"],
+  ],
+  // A credential a third party stamped, not a second document.
+  "assessed": [
+    ["M9 6 h27 v30 h-27 z", "M15 16 h15", "M15 24 h11"],
+    ["M42 40 m-11 0 a11 11 0 1 0 22 0 a11 11 0 1 0 -22 0", "M36 49 L33 60 L42 55 L51 60 L48 49"],
+  ],
+  "diff-ai-analysis": [
+    ["M8 44 V26", "M18 44 V18", "M28 44 V32", "M4 50 H44",
+     "M42 22 m-11 0 a11 11 0 1 0 22 0 a11 11 0 1 0 -22 0", "M50 30 L58 38"],
+    ["M37 22 L41 26 L48 17"],
+  ],
+  "diff-evidence": [
+    ["M13 6 h26 l10 10 v42 h-36 z", "M39 6 v10 h10", "M20 26 h20", "M20 34 h14"],
+    ["M20 46 L27 53 L42 38"],
+  ],
+  "in-house": [
+    ["M6 30 L26 14 L46 30", "M12 30 V54 H40 V30", "M22 54 V42 h8 v12"],
+    ["M52 22 m-5 0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0", "M45 42 c0 -7 3 -11 7 -11 c4 0 7 4 7 11"],
+  ],
+  // Resource hubs --------------------------------------------------------
+  "res-tools": [
+    ["M10 50 L30 30", "M30 30 a10 10 0 1 0 -6 -18 l7 7 l-6 6 l-7 -7 a10 10 0 0 0 12 12 z"],
+    ["M38 40 L48 50 L58 40", "M48 50 V26"],
+  ],
+  "res-templates": [
+    ["M8 10 h48 v44 h-48 z", "M8 22 H56", "M24 22 V54"],
+    ["M32 32 h16", "M32 42 h16"],
+  ],
+  "res-guides": [
+    ["M32 18 C26 12 16 11 8 12 v34 c8 -1 18 0 24 6", "M32 18 C38 12 48 11 56 12 v34 c-8 -1 -18 0 -24 6", "M32 18 V58"],
+    ["M14 24 h10", "M40 24 h10"],
+  ],
+  "res-glossary": [
+    ["M10 8 h44 v48 h-44 z", "M20 44 L28 20 L36 44", "M23 36 h10"],
+    ["M42 20 v24", "M42 20 h6 a6 6 0 0 1 0 12 h-6", "M42 32 h7 a6 6 0 0 1 0 12 h-7"],
+  ],
+  "res-knowledge-base": [
+    ["M32 8 L58 20 L32 32 L6 20 Z", "M6 32 L32 44 L58 32"],
+    ["M6 44 L32 56 L58 44"],
+  ],
+  "res-reports": [
+    ["M13 6 h26 l10 10 v42 h-36 z", "M39 6 v10 h10"],
+    ["M20 48 V34", "M29 48 V26", "M38 48 V38"],
+  ],
+};
+
+const [hd, acc] = P[name] ?? [[], []];
+---
+{hd.length === 0 ? null : (
+  <svg viewBox="0 0 64 64" role="presentation" aria-hidden="true" focusable="false">
+    {hd.map((d) => <path class="hd" d={d} />)}
+    {acc.map((d) => <path class="hd-acc" d={d} />)}
+  </svg>
+)}

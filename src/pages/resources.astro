@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import { RESOURCE_HUBS } from "../data/site";
+import Icon from "../components/icons/Icon.astro";
 import "../styles/home.css";
 const hubs = RESOURCE_HUBS;
 ---
@@ -51,9 +52,10 @@ const hubs = RESOURCE_HUBS;
           {hubs.map((r) => (
             <a class="card card-link" href={`/resources/${r.slug}/`}>
               <span style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
-                <h3 style="margin:0">{r.name}</h3>
+                <span class="ic"><Icon name={`res-${r.slug}`} /></span>
                 <span class="pill">{r.status}</span>
               </span>
+              <h3 style="margin:14px 0 0">{r.name}</h3>
               <span class="small" style="display:block;margin-top:10px">{r.lede}</span>
               <span class="meta" style="display:block;margin-top:10px">{r.items.length} items</span>
               <span class="chev" style="margin-top:12px;display:inline-flex">Open <span class="c" aria-hidden="true">&rsaquo;</span></span>

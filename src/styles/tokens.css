@@ -2,7 +2,7 @@
   /* Type families ------------------------------------------------------- */
   --font-heading:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-sans:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --font-body:"Lora",Georgia,"Times New Roman",serif;
+  --font-body:"Source Serif 4",Georgia,"Times New Roman",serif;
 
   /* Type scale — LOCKED, EQT-417.
      Every size in the site comes from this ladder. Do not introduce a new

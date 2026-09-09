@@ -4,6 +4,7 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import BeltBadge from "../components/BeltBadge.astro";
 import Illus from "../components/Illus.astro";
+import Icon from "../components/icons/Icon.astro";
 import "../styles/home.css";
 
 const belts = [
@@ -20,17 +21,17 @@ const aiCards = [
 ];
 
 const difference = [
-  { h: "Decisions your team can defend",       b: "Every conclusion traces back to the data and the test that produced it.",              i: "Glyph: scales" },
-  { h: "Skills that hold up in live work",     b: "Participants learn on their own processes, not a case study about a pizza shop.",      i: "Glyph: hands at work" },
-  { h: "Faster analysis without losing rigour",b: "AI removes the grind. The method and the judgement stay with the person.",             i: "Glyph: dial and chart" },
-  { h: "Evidence you can take to a board",     b: "Each project leaves a documented result an independent body has assessed.",            i: "Glyph: folder and seal" },
+  { h: "Decisions your team can defend",       b: "Every conclusion traces back to the data and the test that produced it.",              i: "Glyph: scales", ic: "diff-evidence" },
+  { h: "Skills that hold up in live work",     b: "Participants learn on their own processes, not a case study about a pizza shop.",      i: "Glyph: hands at work", ic: "diff-live-work" },
+  { h: "Faster analysis without losing rigour",b: "AI removes the grind. The method and the judgement stay with the person.",             i: "Glyph: dial and chart", ic: "diff-ai-analysis" },
+  { h: "Evidence you can take to a board",     b: "Each project leaves a documented result an independent body has assessed.",            i: "Glyph: folder and seal", ic: "assessed" },
 ];
 
 const teach = [
-  { h: "Lean Six Sigma belts",   b: "Prove an improvement with data a finance team will accept.", pills: ["In-house", "Public"], href: "/courses/lean-six-sigma/",        i: "Illustration: belt ladder motif" },
-  { h: "Lean Service Design",    b: "Redesign a service around the people who actually use it.",  pills: ["In-house", "Public"], href: "/courses/lean-service-design/",   i: "Illustration: service journey loop" },
-  { h: "Lean Business Analysis", b: "Turn a fuzzy brief into the right problem to solve.",        pills: ["In-house", "Public"], href: "/courses/lean-business-analysis/",i: "Illustration: brief becoming a problem statement" },
-  { h: "In-house training",      b: "Train a whole cohort on your own processes and your own data.", pills: ["In-house"],       href: "/contact/",                        i: "Illustration: cohort around a board" },
+  { h: "Lean Six Sigma belts",   b: "Prove an improvement with data a finance team will accept.", pills: ["In-house", "Public"], href: "/courses/lean-six-sigma/",        ic: "lean-six-sigma" },
+  { h: "Lean Service Design",    b: "Redesign a service around the people who actually use it.",  pills: ["In-house", "Public"], href: "/courses/lean-service-design/",   ic: "lean-service-design" },
+  { h: "Lean Business Analysis", b: "Turn a fuzzy brief into the right problem to solve.",        pills: ["In-house", "Public"], href: "/courses/lean-business-analysis/",ic: "lean-business-analysis" },
+  { h: "In-house training",      b: "Train a whole cohort on your own processes and your own data.", pills: ["In-house"],       href: "/contact/",                        ic: "in-house" },
 ];
 
 const cohort = [
@@ -140,7 +141,7 @@ const graduates = [
         <div class="grid g4">
           {difference.map((d) => (
             <div class="card">
-              <Illus label={d.i} h="76px" style="width:76px;margin-bottom:12px" />
+              <span class="ic" style="margin-bottom:14px"><Icon name={d.ic} /></span>
               <h3>{d.h}</h3>
               <p class="small">{d.b}</p>
             </div>
@@ -159,7 +160,7 @@ const graduates = [
         <div class="grid g4">
           {teach.map((t) => (
             <a class="card card-link" href={t.href} style="padding:0;overflow:hidden">
-              <Illus label={t.i} h="132px" style="border-radius:0;border:0;border-bottom:1px dashed #1F3268" />
+              <span class="card-icon"><span class="ic ic-lg"><Icon name={t.ic} /></span></span>
               <span style="display:block;padding:22px">
                 <h3>{t.h}</h3>
                 <p class="small">{t.b}</p>
@@ -214,7 +215,7 @@ const graduates = [
             {sectors.map((s, i) => (
               <button class="sector-tab" type="button" role="tab" id={`tab-${s.id}`}
                       aria-controls={`panel-${s.id}`} aria-selected={i === 0 ? "true" : "false"} tabindex={i === 0 ? "0" : "-1"}>
-                <span class="sector-dot" aria-hidden="true"></span>{s.label}
+                <span class="ic ic-sm"><Icon name={s.id === "financial" ? "financial-services" : s.id} /></span>{s.label}
               </button>
             ))}
           </div>
@@ -231,7 +232,7 @@ const graduates = [
                   <div>
                     <p class="sector-h">Context we include in training</p>
                     <p class="small">{s.context}</p>
-                    <Illus label="Illustration: sector scene, swaps with the tab" h="118px" style="margin-top:16px" />
+                    <span class="ic ic-lg" style="margin-top:18px"><Icon name={s.id === "financial" ? "financial-services" : s.id} /></span>
                   </div>
                 </div>
               </div>

@@ -112,6 +112,20 @@ a.card,.card-link{display:block;color:inherit;}
 }
 .capsule-body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:12px;flex:1;}
 
+/* Icon library. Stroke grammar from equibt-website base.css, recoloured.
+   .hd carries the drawing, .hd-acc carries the one thing the icon is about.
+   A colour change is these two rules, not twenty files. EQT-417. */
+.hd{fill:none;stroke:var(--deep-navy);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;}
+.hd-acc{fill:none;stroke:var(--cyan);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;}
+.ic{display:block;width:64px;height:64px;flex:0 0 auto;}
+.ic svg{display:block;width:100%;height:100%;overflow:visible;}
+.ic-lg{width:96px;height:96px;}
+.ic-sm{width:44px;height:44px;}
+/* On a navy ground and inside a selected tab the drawing inverts, the
+   accent holds so the icon still says the same thing. */
+.g-dark .hd,[aria-selected="true"] .hd{stroke:var(--white);}
+[aria-selected="true"] .hd-acc{stroke:var(--white);}
+
 /* Illustration placeholder --------------------------------------------- */
 .illus{
   background:var(--pale-blue);border:1px dashed var(--deep-navy);border-radius:12px;
