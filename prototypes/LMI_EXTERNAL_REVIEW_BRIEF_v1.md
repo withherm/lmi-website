@@ -12,7 +12,7 @@ A rebuilt marketing and enrolment site for **Lean Methods Institute**, the train
 **Repo:** `withherm/lmi-website`, branch `eqt-417-design-coherence`
 **Stack:** Astro 6 static output, Cloudflare Workers with static assets. 53 routes.
 
-Start with the site, not the repo. The repo is there to answer "why is it like that", not to be read end to end.
+A reference sheet of the art direction is attached, see section 4. Start with the site, not the repo. The repo is there to answer "why is it like that", not to be read end to end.
 
 **The seven pages that carry the argument:**
 
@@ -73,7 +73,34 @@ Accessibility, semantics, SEO, performance, structured data, anything that will 
 
 ---
 
-## 4. Already decided. Do not relitigate these.
+## 4. The art direction we are aiming at
+
+Attached: `AESQ-REFERENCE-SHEET.jpg`, eleven frames from the AESQ "Defect Prevention: Key Quality Tools for Zero Defects" explainer.
+
+**Read this first.** That artwork belongs to AESQ, an aerospace quality standards body. It is here as a direction reference so you can judge the site against the intent, and for no other purpose. Do not generate imagery from it, do not propose using it, and do not suggest feeding it to an image model as a style reference. Our own illustration set will be grown from original work, not from these frames.
+
+It is the right reference for this business for three reasons. It teaches a technical process without dumbing it down. It reads as credible to exactly the conservative engineering and quality buyer we sell to. And it carries warmth without a single stock photograph.
+
+**The reference runs two registers, and they are different.**
+
+**Register A, people.** Soft mottled watercolour washes with visible brush variation inside each garment. Navy, mid blue, steel blue, warm grey, black. Skin left as a pale warm neutral, close to unpainted. Faces are properly drawn: eyes, glasses, hair, an expression. Economical, but not abstract. Hair and shoes carry the darkest values and anchor each figure. Figures stand on nothing, no ground shadow and no baseline. Cyan appears once per figure at most, on a shoe or a tie.
+
+**Register B, objects and diagrams.** Flat blue value fills with a faint mottle, not smooth vector. Outline strokes in deep navy with a rough, slightly wobbling hand-drawn edge. Parts of an object separated by white keylines, never dark ones. Capsule containers: rounded rectangles with a drawn navy edge, sometimes filled pale blue behind a fine white grid. Cards carry a navy header cap with white uppercase tracked type. Pale blue arrow bands run left to right behind the cards and carry the flow. Cyan marks the one element under attention. Red appears only on risk and failure: cross marks, warning triangles, the high and low risk bars.
+
+The ground in both registers is plain off-white with no texture. Type in the reference is sans throughout, with a bold weight carrying the emphasis word.
+
+**What the site already takes from this, deliberately:** capsule cards with navy header caps, the three-tone ground rhythm, cyan reserved as the accent, red restricted to risk and failure states, white keylines inside the icon set, and the left-to-right flow.
+
+**What the site does not have yet:** the illustrated people, the painted objects, and the flow band running behind the cards. Every `.illus` block on the site is a marked placeholder standing in for one of those.
+
+**Two questions we want you to answer against this reference.**
+
+1. Where does the built site drift from this direction, in layout and in visual grammar, ignoring the missing illustrations? Judge the bones, not the empty slots.
+2. The reference is entirely sans-serif. The site now runs Montserrat headings with a Source Serif 4 body. Does the serif body strengthen the site by adding an editorial, considered register that a video cannot carry, or does it fight the reference? Argue it either way, but argue it.
+
+---
+
+## 5. Already decided. Do not relitigate these.
 
 Comment only if you think one is actively wrong and can say why in one paragraph.
 
@@ -84,11 +111,11 @@ Comment only if you think one is actively wrong and can say why in one paragraph
 | Nav | Ported deliberately from the EQUIBT site so the two feel like one group. |
 | Signal colour | Red is risk and failure states only. Green is cleared states only. Never a button, heading, link or decoration. |
 | Stack | Astro plus Cloudflare Workers. Not up for discussion. |
-| Illustrations | Not made yet. Every `.illus` block is a marked placeholder, not a design failure. Ignore them, but do comment on whether the slots are in the right places. |
+| Illustrations | Not made yet. Every `.illus` block is a marked placeholder, not a design failure. See section 4 for the direction they will follow. Do comment on whether the slots are in the right places. |
 
 ---
 
-## 5. Hard constraints. Breaking any of these makes the output unusable.
+## 6. Hard constraints. Breaking any of these makes the output unusable.
 
 1. **Never write "LMI".** The name is always spelled out as Lean Methods Institute. AUSQ may be named.
 2. **Never name a client.** Not in an example, not in a suggestion, not hypothetically.
@@ -98,11 +125,12 @@ Comment only if you think one is actively wrong and can say why in one paragraph
 6. **No emojis.**
 7. **Critique copy, do not author replacement copy that ships.** House rule: all site copy is Claude-authored. Show us the problem and, where it helps, a short illustrative rewrite to make the point. We will write the version that ships.
 8. **Do not invent figures.** No pass rates, no client counts, no ROI percentages, no participant numbers. If a claim on the site needs a number to be credible, say so and leave the number blank. Placeholders on the site currently read `DATE` and `In build` on purpose.
-9. **Do not suggest generated photographs of people.** Four slots are marked as photography and stay that way. A fabricated face presented as a real instructor or a real cohort is the single worst mistake available here.
+9. **Do not generate from, or propose generating from, the AESQ reference frames.** They are direction only, see section 4.
+10. **Do not suggest generated photographs of people.** Four slots are marked as photography and stay that way. A fabricated face presented as a real instructor or a real cohort is the single worst mistake available here.
 
 ---
 
-## 6. Known issues. Confirm, deepen, or dismiss. Do not just repeat them.
+## 7. Known issues. Confirm, deepen, or dismiss. Do not just repeat them.
 
 We already know about these. Telling us they exist adds nothing. Telling us we are wrong about them is worth a lot.
 
@@ -115,7 +143,7 @@ We already know about these. Telling us they exist adds nothing. Telling us we a
 
 ---
 
-## 7. How to give us the output
+## 8. How to give us the output
 
 One document. Ruthless, specific, prioritised.
 
@@ -134,7 +162,7 @@ One document. Ruthless, specific, prioritised.
 
 ---
 
-## 8. Reference files in the repo
+## 9. Reference files in the repo
 
 | File | What it holds |
 |---|---|

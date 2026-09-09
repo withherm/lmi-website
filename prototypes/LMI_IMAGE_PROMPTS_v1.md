@@ -22,21 +22,51 @@ Signal Red `#E8484C` appears on risk and failure states only, and never inside a
 
 Run each of the four prompts below at **5 variations**, giving you 20 candidates. Text prompt only. Do not attach anything.
 
-**The style block.** Every Stage 1 prompt starts with this paragraph verbatim:
+**Corrected against the source, 9 September 2026.** An earlier version of this
+file described the style from memory and got it wrong in three ways. It is not
+deckled-edged, the ground carries no paper grain, and the faces are not three
+abstract lines. Corrected below against `AESQ-SAMPLE/`.
 
-> Watercolour illustration with visible cold-press paper grain and soft deckled edges where the wash ends. Flat washes of colour with gentle tonal variation inside each shape, no gradients, no airbrush. White and pale-blue contour lines drawn on top of the fill to describe form, never dark outlines. Skin left as bare paper with no fill. Faces described with three or four fine black lines only, no shading on the face. Separate parts of an object are divided by a thin white keyline, not by a dark stroke. Generous empty paper around the subject. Editorial, calm, unhurried. No text, no lettering, no numbers, no logos anywhere in the image.
+**The reference runs two registers, and they are different.** Do not blend them.
 
-**Seed A, a person and a screen**
-> [style block] A person seated at a desk looking at a large monitor showing an abstract flow diagram of connected rectangles. A second person stands beside them, one hand resting on the desk, looking at the same screen. Three-quarter view from behind and to the side. [palette line]
+**Register A, people.** Soft mottled watercolour washes with visible brush
+variation inside each garment. Navy, mid blue, steel blue, warm grey and black.
+Skin is left as a pale warm neutral, close to unpainted. Faces are properly
+drawn: eyes, glasses, hair, an expression. Economical linework, but not
+abstract and not featureless. Hair and shoes carry the darkest values and
+anchor each figure. Figures stand on nothing, there is no ground shadow and no
+baseline, they sit directly on the off-white. Full length, mid distance, no
+crops. Cyan appears once per figure at most, as a small accent on a shoe or a
+tie.
 
-**Seed B, a group at a wall**
-> [style block] Four people standing in a loose semicircle facing a large paper-covered wall, one of them reaching up to place a small square note on it. Seen from behind the group. [palette line]
+**Register B, objects and diagrams.** Flat blue value fills with a faint
+mottle, not smooth vector. Outline strokes in deep navy with a rough,
+slightly wobbling hand-drawn edge. Parts of an object are separated by white
+keylines, never dark ones. Capsule containers are rounded rectangles with a
+drawn navy edge, sometimes filled pale blue behind a fine white grid. Cyan
+marks the one element under attention. Red appears only on risk and failure.
 
-**Seed C, a single object study**
-> [style block] A simple industrial object on an empty paper ground: a stack of three shallow trays, slightly separated, seen from a low three-quarter angle. No people. Deep shadow replaced by a single flat pale-blue wash. [palette line]
+**The ground in both registers is plain off-white with no texture.**
 
-**Seed D, a hand and a document**
-> [style block] Close crop of two hands on a desk, one holding a pen above a sheet of paper carrying an abstract line chart. No face in frame. [palette line]
+**Style block for Register A prompts:**
+
+> Watercolour illustration on a plain off-white ground with no background texture. Soft mottled washes with visible brush variation inside each garment, no gradients and no airbrush. Skin left as a pale warm neutral, almost unpainted. The face is properly drawn with eyes, hair and an expression in economical fine dark linework. Hair and shoes carry the darkest values. The figure stands on nothing, no ground shadow and no baseline. Full length, mid distance. No text, no lettering, no numbers, no logos anywhere in the image.
+
+**Style block for Register B prompts:**
+
+> Flat editorial illustration on a plain off-white ground. Flat blue value fills with a faint mottled wash inside each shape, no gradients. Outline strokes in deep navy with a rough slightly wobbling hand-drawn edge, never a clean geometric line. Separate parts of an object divided by thin white keylines, never dark ones. Generous empty ground around the subject. No text, no lettering, no numbers, no logos anywhere in the image.
+
+**Seed A, a person and a screen** (Register A)
+> [Register A style block] A person seated at a desk looking at a large monitor showing an abstract flow diagram of connected rectangles. A second person stands beside them, one hand resting on the desk, looking at the same screen. Three-quarter view from behind and to the side. [palette line]
+
+**Seed B, a group at a wall** (Register A)
+> [Register A style block] Four people standing in a loose semicircle facing a large paper-covered wall, one of them reaching up to place a small square note on it. Seen from behind the group. [palette line]
+
+**Seed C, a single object study** (Register B)
+> [Register B style block] A simple industrial object on an empty paper ground: a stack of three shallow trays, slightly separated, seen from a low three-quarter angle. No people. Deep shadow replaced by a single flat pale-blue wash. [palette line]
+
+**Seed D, a hand and a document** (Register B)
+> [Register B style block] Close crop of two hands on a desk, one holding a pen above a sheet of paper carrying an abstract line chart. No face in frame. [palette line]
 
 **Then:** pick the 5 strongest across all four seeds, open each in Affinity, correct it against section 6 until it is exactly right, and **those five corrected files are your reference pack.** Nothing else goes in.
 
@@ -181,11 +211,11 @@ Nothing ships straight out of a generator. Open it in Affinity and go down this 
 
 - **Palette lock.** Recolour on import, every time. Generators will not land on `#1F3268`, `#2E6CB5`, `#35A8DC` and `#C2D4E7` reliably, and a near-miss navy is worse than an obviously different one because it reads as a printing fault.
 - **Hands and fingers.** The usual failure. Redraw rather than accept.
-- **Contour lines.** White or pale blue, sitting on top of the fill. Generators default to dark outlines and that is the single biggest tell.
+- **Keylines and outlines.** Inside an object, parts are separated by white keylines, never dark ones. The outer contour of a drawn object is deep navy with a rough hand-drawn edge. Generators default to a clean uniform dark outline everywhere, and that is the single biggest tell.
 - **Text inside the image.** Remove all of it. Any label in a diagram is live HTML or a real SVG text node, never baked into a raster. This matters for accessibility, for translation, and for the bilingual English and Chinese delivery line.
 - **Artefacts.** Extra limbs, melted lanyards, nonsense on a clipboard, garbled equipment. A Lean Six Sigma buyer looking at a badly drawn control chart is the worst possible outcome on a page arguing for rigour.
 - **Red.** Strip every instance. Red is a risk signal in this system and nothing else.
-- **Faces.** Three or four fine lines. If a generated face has enough detail to look like a specific person, redraw it flatter.
+- **Faces.** Properly drawn but economical: eyes, hair, an expression, in fine dark line. Not abstract, not featureless. If a face has enough photographic detail to look like a specific real person, redraw it flatter.
 
 ---
 
