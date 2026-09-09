@@ -27,14 +27,14 @@ const others = RESOURCE_HUBS.filter((h) => h.slug !== hub.slug);
     <section class="sec g-off reveal">
       <div class="wrap">
         <div class="card card-featured" style="margin-bottom:26px">
-          <h3>What is here, and what is not</h3>
+          <h2 style="font-size:var(--t-h3)">What is here, and what is not</h2>
           <p class="small" style="margin:0">This shelf is {hub.status === "Planned" ? "planned and nothing on it is written yet" : "being built"}. Everything below is listed so you can see what is coming and tell us if the order is wrong. {hub.gating}</p>
         </div>
         <div class="grid g2">
           {hub.items.map((it) => (
             <div class="card">
               <p class="meta">{hub.kind} &middot; {it.meta}</p>
-              <h3 style="margin-top:10px">{it.h}</h3>
+              <h3 style="margin-top:10px">{it.h}</h2>
               <p class="small" style="margin:0">{it.b}</p>
             </div>
           ))}
@@ -51,7 +51,7 @@ const others = RESOURCE_HUBS.filter((h) => h.slug !== hub.slug);
         <div class="grid g3">
           {others.map((o) => (
             <a class="card card-link" href={`/resources/${o.slug}/`}>
-              <h3>{o.name}</h3>
+              <h2 style="font-size:var(--t-h3)">{o.name}</h2>
               <span class="small" style="display:block;margin-top:8px">{o.lede}</span>
               <span class="chev" style="margin-top:12px;display:inline-flex">Open <span class="c" aria-hidden="true">&rsaquo;</span></span>
             </a>
@@ -70,7 +70,7 @@ const others = RESOURCE_HUBS.filter((h) => h.slug !== hub.slug);
         </div>
         <div class="cta-tool">
           <p class="eyebrow">Start here</p>
-          <h3 style="color:#fff;margin:0">Belt Level Selector</h3>
+          <h3 style="color:#fff;margin:0">Belt Level Selector</h2>
           <p>Six questions, and a straight answer on which level fits.</p>
           <a class="chev" href="/resources/tools/">Open the selector <span class="c" aria-hidden="true">&rsaquo;</span></a>
         </div>

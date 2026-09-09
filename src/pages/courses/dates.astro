@@ -37,7 +37,7 @@ const statusClass = (s: string) => s === "Class full" ? "signal-quiet" : "pill";
     <section class="sec g-off reveal">
       <div class="wrap">
         <div class="card card-featured" style="margin-bottom:26px">
-          <h3>Dates are not confirmed yet</h3>
+          <h2 style="font-size:var(--t-h3)">Dates are not confirmed yet</h2>
           <p class="small" style="margin:0">Every date below is a marked placeholder. The dates currently advertised on the live site have already passed, which is one of the things this rebuild is fixing. Confirm the schedule and these fill in.</p>
         </div>
         <div class="table-scroll">
@@ -72,7 +72,7 @@ const statusClass = (s: string) => s === "Class full" ? "signal-quiet" : "pill";
                 <span style="display:flex;align-items:center;gap:14px">
                   {c.belt && <BeltBadge code={c.belt} size={40} />}
                   <span>
-                    <h4 style="margin:0 0 2px">{c.name}</h4>
+                    <h3 style="margin:0 0 2px">{c.name}</h3>
                     <span class="meta">{c.duration} &middot; {c.investment}</span>
                   </span>
                 </span>
@@ -86,7 +86,7 @@ const statusClass = (s: string) => s === "Class full" ? "signal-quiet" : "pill";
           <div class="grid" style="gap:12px;margin-top:18px">
             {byApplication.map((c) => (
               <a class="card card-link" href={`/courses/${c.slug}/`} style="padding:18px 20px">
-                <h4 style="margin:0 0 2px">{c.name}</h4>
+                <h3 style="margin:0 0 2px">{c.name}</h3>
                 <span class="meta">{c.duration}</span>
               </a>
             ))}
@@ -105,7 +105,7 @@ const statusClass = (s: string) => s === "Class full" ? "signal-quiet" : "pill";
         </div>
         <div class="cta-tool">
           <p class="eyebrow">Not sure of the level</p>
-          <h3 style="color:#fff;margin:0">Belt Level Selector</h3>
+          <h3 style="color:#fff;margin:0">Belt Level Selector</h2>
           <p>Six questions, and a straight answer on which level fits.</p>
           <a class="chev" href="/resources/tools/">Open the selector <span class="c" aria-hidden="true">&rsaquo;</span></a>
         </div>

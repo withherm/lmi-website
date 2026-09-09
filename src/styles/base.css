@@ -236,7 +236,7 @@ a.card,.card-link{display:block;color:inherit;}
 .footer-brand .footer-logo{display:inline-flex;width:168px;margin-bottom:14px;}
 .footer-tagline{font-family:var(--font-heading);font-weight:600;font-size:var(--t-ui);color:var(--deep-navy);margin:0 0 8px;}
 .footer-note{font-size:var(--t-ui);color:var(--charcoal-grey);margin:0;}
-.footer-col h4{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--deep-navy);margin:0 0 12px;}
+.footer-col .footer-h{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--deep-navy);margin:0 0 12px;}
 .footer-col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;}
 .footer-col a{font-family:var(--font-heading);font-weight:500;font-size:var(--t-ui-sm);color:var(--charcoal-grey);}
 .footer-col a:hover,.footer-col a:focus-visible{color:var(--mid-blue);}
@@ -280,4 +280,16 @@ a.card,.card-link{display:block;color:inherit;}
   .sec{padding:60px 0;}
   .g2,.g3,.g4{grid-template-columns:1fr;}
   .footer-inner{grid-template-columns:1fr 1fr;}
+}
+
+/* WCAG 1.4.10 Reflow. At a 320px viewport, which is 1280 at 400% browser zoom,
+   the footer grid could not shrink: a 1fr track has an automatic minimum of
+   its min-content width, and "Certifications" is one unbreakable word about
+   98px wide, so the tracks refused to narrow and the page scrolled sideways.
+   min-width:0 releases the track, and below 520 the footer is a single
+   column so the links stay readable rather than merely fitting. EQT-417. */
+.footer-col,.footer-brand{min-width:0;}
+@media (max-width:520px){
+  .footer-inner{grid-template-columns:1fr;gap:26px;}
+  .footer-bottom{flex-direction:column;gap:10px;}
 }

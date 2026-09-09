@@ -25,7 +25,7 @@ const families = (Object.keys(FAMILIES) as Family[]).sort((a, b) => FAMILIES[a].
           <a class="card card-link" href={`/methods/${f}/`} style="padding:0;overflow:hidden">
             <span class="card-icon"><span class="ic ic-lg"><Icon name={f} /></span></span>
             <span style="display:block;padding:24px">
-              <h3>{FAMILIES[f].name}</h3>
+              <h2 style="font-size:var(--t-h3)">{FAMILIES[f].name}</h2>
               <span class="small" style="display:block">{FAMILIES[f].blurb}</span>
               <span class="meta" style="display:block;margin-top:10px">{COURSES.filter((c) => c.family === f).length} programmes</span>
               <span class="chev" style="margin-top:10px;display:inline-flex">Explore <span class="c" aria-hidden="true">&rsaquo;</span></span>
@@ -45,7 +45,7 @@ const families = (Object.keys(FAMILIES) as Family[]).sort((a, b) => FAMILIES[a].
         </div>
         <div class="cta-tool">
           <p class="eyebrow">Free tool</p>
-          <h3 style="color:#fff;margin:0">Belt Level Selector</h3>
+          <h3 style="color:#fff;margin:0">Belt Level Selector</h2>
           <p>Six questions on the work your team does and the decisions they have to defend.</p>
           <a class="chev" href="/resources/">Open the selector <span class="c" aria-hidden="true">&rsaquo;</span></a>
         </div>

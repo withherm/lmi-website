@@ -57,7 +57,7 @@ const priceIsFigure = course.investment.startsWith("A$");
           {course.overview.map((p) => <p>{p}</p>)}
         </div>
         <div>
-          <h3 style="margin-bottom:16px">What you will be able to do</h3>
+          <h2 style="margin-bottom:16px;font-size:var(--t-h3)">What you will be able to do</h2>
           <ul class="sector-list">
             {course.outcomes.map((o) => <li><span class="sq" aria-hidden="true"></span><span>{o}</span></li>)}
           </ul>
@@ -122,7 +122,7 @@ const priceIsFigure = course.investment.startsWith("A$");
               <span style="display:flex;align-items:center;gap:14px">
                 {r!.belt && <BeltBadge code={r!.belt} size={40} />}
                 <span>
-                  <h4 style="margin:0 0 2px">{r!.name}</h4>
+                  <h3 style="margin:0 0 2px;font-size:var(--t-h4)">{r!.name}</h3>
                   <span class="meta">{r!.duration}</span>
                 </span>
               </span>
