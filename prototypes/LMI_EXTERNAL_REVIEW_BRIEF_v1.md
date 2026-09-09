@@ -41,7 +41,7 @@ Three buyers, and the site currently tries to serve all three from the same page
 
 ## 3. What we want from you
 
-Four reviews, in this priority order. Be adversarial. Assume the site is worse than it looks.
+Three reviews, in this priority order. Be adversarial. Assume the site is worse than it looks.
 
 ### A. Copy
 
@@ -67,9 +67,7 @@ Lean Methods Institute sits under EQUIBT Group. EQUIBT is B2B advisory, position
 
 Tell us whether the current direction reads as a coherent group or as two businesses wearing the same jumper. Tell us whether "We build lean, AI-capable teams" is a position or a slogan. Tell us whether the AI angle reads as a genuine differentiator or as 2026 table stakes that every competitor is also claiming.
 
-### D. Anything in the repo that will bite
-
-Accessibility, semantics, SEO, performance, structured data, anything that will cost us in six months. Lower priority than A to C, but flag it.
+**Not your job.** Accessibility, semantics, SEO, performance and code health are going to a separate reviewer running the site empirically in a browser. Do not spend effort there, and do not report findings on it. If something in that territory is so bad it changes your answer on A, B or C, mention it in one line and move on.
 
 ---
 

@@ -89,7 +89,8 @@
   border:1px solid var(--hairline);background:var(--white);color:var(--deep-navy);cursor:pointer;
 }
 .filter[aria-pressed="true"]{background:var(--deep-navy);border-color:var(--deep-navy);color:var(--white);}
-.filter-label{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--grey);margin-right:4px;}
+/* Was --grey #9A9A9A, 2.81:1 on white. Fails WCAG AA for text. EQT-417. */
+.filter-label{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--charcoal-grey);margin-right:4px;}
 
 /* Course card ------------------------------------------------------------ */
 .course-card{display:flex;flex-direction:column;gap:12px;height:100%;}

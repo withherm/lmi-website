@@ -52,6 +52,9 @@ img,svg{max-width:100%;}
 /* Type helpers — every size from the ladder ---------------------------- */
 .eyebrow{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--mid-blue);margin:0 0 14px;line-height:var(--lh-head);}
 .g-dark .eyebrow{color:var(--pale-blue);}
+/* Mid Blue on the pale tint ground is 4.44:1, which misses AA by 0.06.
+   The eyebrow goes navy on that ground only. EQT-417. */
+.g-tint .eyebrow{color:var(--deep-navy);}
 .lede{font-size:var(--t-lede);line-height:1.5;}
 .small{font-size:var(--t-small);line-height:1.55;}
 .caption{font-style:italic;font-size:var(--t-small);color:var(--charcoal-grey);}
