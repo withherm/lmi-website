@@ -106,7 +106,7 @@ export const COURSES: Course[] = [
   },
   {
     slug: "lean-practitioner", name: "Lean Practitioner", family: "lean-operations",
-    metaTitle: "Lean Practitioner Training & Certification | LMI",
+    metaTitle: "Lean Practitioner Certification | Lean Methods Institute",
     metaDesc: "Run Lean improvements and eliminate waste with an AUSQ-certified Lean Practitioner credential. Three days, AI built in.",
     h1: "Eliminate waste and make work flow.",
     subhead: "Build the Lean problem-solving capability to run improvements end to end, with AI built in and a real workplace initiative as your proof.",
@@ -194,7 +194,7 @@ export const COURSES: Course[] = [
   },
   {
     slug: "lean-six-sigma-master-black-belt", name: "Lean Six Sigma Master Black Belt", family: "lean-six-sigma", belt: "MBB",
-    metaTitle: "Lean Six Sigma Master Black Belt | LMI",
+    metaTitle: "Lean Six Sigma Master Black Belt | Lean Methods Institute",
     metaDesc: "Coach belts, govern a portfolio, and set the improvement standard across an organisation. AUSQ-certified, by application.",
     h1: "Set the improvement standard across an organisation.",
     subhead: "Master Black Belt builds the capability to coach belts, govern a portfolio of projects, and lead a continuous improvement program at scale.",
@@ -221,7 +221,7 @@ export const COURSES: Course[] = [
   },
   {
     slug: "lean-executive-champion", name: "Lean Executive Champion", family: "lean-six-sigma", inHouseOnly: true,
-    metaTitle: "Lean Executive Champion Workshop | Lean Methods",
+    metaTitle: "Lean Executive Champion Workshop | Lean Methods Institute",
     metaDesc: "Lead and sponsor improvement well. A tailored half or full-day executive workshop, delivered in-house.",
     h1: "Sponsor improvement so it actually sticks.",
     subhead: "A tailored executive workshop that gives your leaders the working knowledge to scope, sponsor and back improvement work, so your team's training turns into results.",
@@ -248,7 +248,7 @@ export const COURSES: Course[] = [
   },
   {
     slug: "ai-enabled-improvement-practitioner", name: "AI-Enabled Improvement Practitioner", family: "ai-enabled",
-    metaTitle: "AI-Enabled Improvement Practitioner Course | LMI",
+    metaTitle: "AI-Enabled Improvement Practitioner | Lean Methods Institute",
     metaDesc: "Run the full DMAICO improvement method with corporate AI doing the analysis. Three days, recognised by LeanMethods.org.",
     h1: "Run improvement projects with AI doing the analysis.",
     subhead: "Learn the full DMAICO method with corporate AI applied at every phase, so you move from problem to fix without the expensive software or the wait.",
@@ -275,7 +275,7 @@ export const COURSES: Course[] = [
   },
   {
     slug: "lean-service-design-foundation", name: "Lean Service Design Foundation", family: "lean-service-design",
-    metaTitle: "Lean Service Design Foundation Course | LMI",
+    metaTitle: "Lean Service Design Foundation Course | Lean Methods Institute",
     metaDesc: "Learn to see a service end to end, front-stage and back-stage, in one day. The entry point to Lean Service Design.",
     h1: "See a service the way your customer does.",
     subhead: "A one-day introduction to Lean Service Design, so you can map a service front-stage and back-stage and spot where it breaks.",
@@ -327,7 +327,7 @@ export const COURSES: Course[] = [
   },
   {
     slug: "lean-business-analysis-foundation", name: "Lean Business Analysis Foundation", family: "lean-business-analysis",
-    metaTitle: "Lean Business Analysis Foundation Course | LMI",
+    metaTitle: "Lean Business Analysis Foundation Course | Lean Methods Institute",
     metaDesc: "Learn to frame the real problem and cut the noise before delivery starts, in one day.",
     h1: "Ask the right question before the work starts.",
     subhead: "A one-day introduction to Lean Business Analysis, so you can separate the stated request from the real need and brief delivery better.",
@@ -379,7 +379,7 @@ export const COURSES: Course[] = [
   },
   {
     slug: "lean-agile-foundation", name: "Lean Agile Foundation", family: "lean-agile",
-    metaTitle: "Lean Agile Foundation Training & Certification | LMI",
+    metaTitle: "Lean Agile Foundation Course | Lean Methods Institute",
     metaDesc: "Run and support Agile delivery with Lean working practices. Two days, classroom or live online.",
     h1: "Run Agile delivery the Lean way.",
     subhead: "Learn the techniques to run and support Agile projects, with Lean principles applied to real delivery.",
@@ -404,7 +404,7 @@ export const COURSES: Course[] = [
   },
   {
     slug: "lean-agile-scrum-master", name: "Lean Agile Scrum Master", family: "lean-agile",
-    metaTitle: "Lean Agile Scrum Master Training | Lean Methods",
+    metaTitle: "Lean Agile Scrum Master Training | Lean Methods Institute",
     metaDesc: "Support your team as moderator and coach in a Lean Agile environment. Two days.",
     h1: "Coach your team to deliver, sprint after sprint.",
     subhead: "Build the core skills to support an Agile team as moderator and coach in a Lean Agile environment.",
@@ -504,7 +504,7 @@ export const COURSES: Course[] = [
   },
   {
     slug: "design-and-process-fmea", name: "Design and Process FMEA", family: "zero-defects",
-    metaTitle: "Design and Process FMEA Training | AS13004 | LMI",
+    metaTitle: "Design and Process FMEA | AS13004 | Lean Methods Institute",
     metaDesc: "Find the failure modes before the customer does. Two days on design risk analysis and PFMEA to AS13004.",
     h1: "Find the failure before the customer finds it.",
     subhead: "Two days on design and process risk analysis, taught to the AS13004 requirements, so risks are identified, understood and mitigated before the first part is made.",
@@ -541,7 +541,7 @@ export const COURSES: Course[] = [
   },
   {
     slug: "measurement-systems-analysis", name: "Measurement Systems Analysis", family: "zero-defects",
-    metaTitle: "Measurement Systems Analysis Training | AS13003 | LMI",
+    metaTitle: "Measurement Systems Analysis | AS13003 | Lean Methods Institute",
     metaDesc: "Prove your inspection can be trusted. One day on gauge R&R and attribute agreement analysis to AS13003.",
     h1: "Trust the number before you act on it.",
     subhead: "One day on measurement systems analysis to AS13003, covering variable gauge repeatability and reproducibility and attribute agreement analysis.",
