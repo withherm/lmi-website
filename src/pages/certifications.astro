@@ -5,11 +5,54 @@ import Footer from "../components/Footer.astro";
 import BeltBadge from "../components/BeltBadge.astro";
 import "../styles/home.css";
 
+// EQT-417. Each gate states the pass condition first, then the fail condition.
+// Showing only the fail state made the page read as though the visitor had
+// already failed all four.
 const gates = [
-  { h: "Training",       b: "Attend and take part in the full programme.",                          f: "Missed content is not waived. You join the next cohort for it." },
-  { h: "Knowledge test", b: "A test of the method, not a memory test on jargon.",                    f: "Below the standard, you sit it again. Two attempts, then coaching." },
-  { h: "Application",    b: "A real project from your own workplace, documented as evidence.",       f: "A project without a measured result is not certified." },
-  { h: "Coaching",       b: "Reviews with an assessor through the project, not only at the end.",    f: "Skipped reviews stop the assessment, they do not delay it." },
+  {
+    h: "Training",
+    b: "Attend and take part in the full programme.",
+    pass: "You attend every session and take part in the exercises.",
+    fail: "You miss content. It is not waived. You sit that session with the next cohort.",
+  },
+  {
+    h: "Knowledge test",
+    b: "A test of the method, not a memory test on jargon.",
+    pass: "You reach the standard. A pass is a pass, whichever attempt it comes on.",
+    fail: "You are below the standard. You sit it again. After two attempts we coach you before a third.",
+  },
+  {
+    h: "Application",
+    b: "A real project from your own workplace, documented as evidence.",
+    pass: "Your project shows a measured before and after, and you can defend the method you used.",
+    fail: "There is no measured result. The project comes back for the measurement rather than being refused.",
+  },
+  {
+    h: "Coaching",
+    b: "Reviews with an assessor through the project, not only at the end.",
+    pass: "You attend your reviews and act on what comes out of them.",
+    fail: "Reviews are skipped. Assessment stops until they are done.",
+  },
+];
+
+// Illustrative paths, not case studies. No figures, because we do not publish
+// participant results without the client clearing them.
+const paths = [
+  {
+    tag: "Clears all four",
+    tone: "pass",
+    b: "Attends the full programme. Passes the knowledge test on the first sitting. Runs a changeover project with a measured before and after. Attends every review. Credential issued at the end of the cohort.",
+  },
+  {
+    tag: "One resit, same credential",
+    tone: "pass",
+    b: "Sits the knowledge test twice and passes on the second attempt. Everything else on time. The credential is identical and the resit does not appear on it.",
+  },
+  {
+    tag: "Project comes back",
+    tone: "hold",
+    b: "A real improvement, but nothing was measured before the change. The project returns for the baseline and the credential follows a few weeks later. Nothing else is repeated.",
+  },
 ];
 
 const ladderA = [
@@ -38,7 +81,7 @@ const ladderA = [
           <h2>Who does what, and who decides.</h2>
         </div>
         <div class="sep-diagram">
-          <svg viewBox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lean Methods Institute delivers training and coaching. Project evidence passes to AUSQ, an independent body, which assesses it and issues the credential back to the participant.">
+          <svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lean Methods Institute delivers training and coaching. Project evidence passes to AUSQ, an independent body, which assesses it and issues the credential back to the participant.">
             <rect x="10" y="40" width="290" height="150" rx="26" fill="#FFFFFF" stroke="#1F3268" stroke-width="2"/>
             <rect x="10" y="40" width="290" height="46" rx="23" fill="#1F3268"/>
             <text x="155" y="69" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="700" font-size="16" letter-spacing="1.4" fill="#FFFFFF">WE TRAIN</text>
@@ -46,8 +89,10 @@ const ladderA = [
             <text x="155" y="146" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="17" fill="#161616">project supervision</text>
             <text x="155" y="172" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="600" font-size="12" letter-spacing="1" fill="#4A4A4A">NO SAY IN THE OUTCOME</text>
 
-            <path d="M320,95 L640,95 L640,75 L700,115 L640,155 L640,135 L320,135 Z" fill="#C2D4E7"/>
-            <text x="490" y="80" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="700" font-size="13" letter-spacing="1.6" fill="#1F3268">PROJECT EVIDENCE</text>
+            <!-- EQT-417: one arrow treatment. 2px stroke, open chevron head, both directions. -->
+            <path d="M330,132 L688,132" fill="none" stroke="#5B87C0" stroke-width="2" stroke-linecap="round"/>
+            <path d="M676,122 L690,132 L676,142" fill="none" stroke="#5B87C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="509" y="118" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="700" font-size="13" letter-spacing="1.6" fill="#1F3268">PROJECT EVIDENCE</text>
 
             <rect x="700" y="40" width="290" height="150" rx="26" fill="#FFFFFF" stroke="#2E6CB5" stroke-width="2"/>
             <rect x="700" y="40" width="290" height="46" rx="23" fill="#2E6CB5"/>
@@ -56,8 +101,9 @@ const ladderA = [
             <text x="845" y="146" text-anchor="middle" font-family="Lora,Georgia,serif" font-size="17" fill="#161616">and the credential</text>
             <text x="845" y="172" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="600" font-size="12" letter-spacing="1" fill="#4A4A4A">DOES NOT DELIVER TRAINING</text>
 
-            <path d="M845,200 L845,250 L200,250 L200,232 L155,262 L200,292 L200,274 L863,274 A18,18 0 0,0 881,256 L881,200 Z" fill="none" stroke="#35A8DC" stroke-width="2.5" stroke-linejoin="round"/>
-            <text x="520" y="243" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="700" font-size="13" letter-spacing="1.6" fill="#2E6CB5">CREDENTIAL ISSUED TO THE PARTICIPANT</text>
+            <path d="M845,196 L845,262 L172,262" fill="none" stroke="#35A8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M184,252 L170,262 L184,272" fill="none" stroke="#35A8DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="512" y="248" text-anchor="middle" font-family="Montserrat,Arial,sans-serif" font-weight="700" font-size="13" letter-spacing="1.6" fill="#2E6CB5">CREDENTIAL ISSUED TO THE PARTICIPANT</text>
           </svg>
         </div>
       </div>
@@ -68,7 +114,7 @@ const ladderA = [
         <div class="measure-wide" style="margin-bottom:30px">
           <p class="eyebrow">The four gates</p>
           <h2>Clear all four, or you do not hold the credential.</h2>
-          <p>There is no participation certificate. A gate that is not cleared is not waived.</p>
+          <p>There is no participation certificate. Each gate below states what clears it and what does not, so you can see the standard before you enrol.</p>
         </div>
         <div class="grid g4">
           {gates.map((g) => (
@@ -76,11 +122,28 @@ const ladderA = [
               <div class="capsule-head">{g.h}</div>
               <div class="capsule-body">
                 <p class="small" style="margin:0">{g.b}</p>
-                <div class="gate-fail">
-                  <span class="signal-quiet">Not cleared</span>
+                <div class="gate-state">
+                  <span class="signal-quiet signal-pass">Cleared</span>
+                  <p class="gate-note">{g.pass}</p>
                 </div>
-                <p class="gate-note" style="margin:0">{g.f}</p>
+                <div class="gate-state">
+                  <span class="signal-quiet">Not cleared</span>
+                  <p class="gate-note">{g.fail}</p>
+                </div>
               </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="measure-wide" style="margin:56px 0 24px">
+          <h3>What this looks like in practice.</h3>
+          <p class="small">Three paths through the same four gates. Two of them end in a credential on the day, and the third ends in one a few weeks later.</p>
+        </div>
+        <div class="grid g3">
+          {paths.map((p) => (
+            <div class="card">
+              <span class={p.tone === "pass" ? "signal-quiet signal-pass" : "signal-quiet signal-hold"}>{p.tag}</span>
+              <p class="small" style="margin:12px 0 0">{p.b}</p>
             </div>
           ))}
         </div>

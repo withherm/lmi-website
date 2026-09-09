@@ -140,7 +140,7 @@ const graduates = [
         <div class="grid g4">
           {difference.map((d) => (
             <div class="card">
-              <Illus label={d.i} h="76px" style="width:76px;font-size:9px;margin-bottom:12px" />
+              <Illus label={d.i} h="76px" style="width:76px;margin-bottom:12px" />
               <h3>{d.h}</h3>
               <p class="small">{d.b}</p>
             </div>
@@ -159,7 +159,7 @@ const graduates = [
         <div class="grid g4">
           {teach.map((t) => (
             <a class="card card-link" href={t.href} style="padding:0;overflow:hidden">
-              <Illus label={t.i} h="132px" style="border-radius:0;border:0;border-bottom:1px dashed #1F3268;font-size:9px" />
+              <Illus label={t.i} h="132px" style="border-radius:0;border:0;border-bottom:1px dashed #1F3268" />
               <span style="display:block;padding:22px">
                 <h3>{t.h}</h3>
                 <p class="small">{t.b}</p>
@@ -187,8 +187,8 @@ const graduates = [
             {cohort.map((c, i) => (
               <>
                 <div class="capsule">
-                  <div class="capsule-head" style="font-size:13px">{c.h}</div>
-                  <div class="capsule-body" style="padding:16px 16px 20px"><p class="small" style="font-size:15px">{c.b}</p></div>
+                  <div class="capsule-head">{c.h}</div>
+                  <div class="capsule-body" style="padding:16px 16px 20px"><p class="small">{c.b}</p></div>
                 </div>
                 {i < cohort.length - 1 && (
                   <div class="flow-tri" aria-hidden="true">
@@ -231,7 +231,7 @@ const graduates = [
                   <div>
                     <p class="sector-h">Context we include in training</p>
                     <p class="small">{s.context}</p>
-                    <Illus label="Illustration: sector scene, swaps with the tab" h="118px" style="margin-top:16px;font-size:9px" />
+                    <Illus label="Illustration: sector scene, swaps with the tab" h="118px" style="margin-top:16px" />
                   </div>
                 </div>
               </div>
@@ -262,7 +262,7 @@ const graduates = [
         <p class="small measure" style="color:var(--charcoal-grey);margin-bottom:26px">Client names stay off the public site. These are the kinds of teams, and the work they took back.</p>
         <div class="grad-wall">{graduates.map((g) => <div class="grad-tile">{g}</div>)}</div>
 
-        <h2 style="font-size:26px;margin:56px 0 22px">Organisations we have trained.</h2>
+        <h2 style="margin:56px 0 22px">Organisations we have trained.</h2>
         <div class="logo-wall">
           {Array.from({ length: 15 }).map(() => <div class="logo-mark" aria-hidden="true"><span></span></div>)}
         </div>
@@ -273,7 +273,7 @@ const graduates = [
     <!-- Testimonial -->
     <section class="sec-tight g-white reveal">
       <div class="wrap grid-quote">
-        <Illus label="Photograph: the person quoted, real, never generated" h="200px" style="font-size:9px" />
+        <Illus label="Photograph: the person quoted, real, never generated" h="200px"  />
         <div>
           <p class="quote">"The projects did not stop when the training did. Six months on the team is still closing them out, and finance accepts the numbers without a fight."</p>
           <p class="quote-by">Head of Operational Excellence, national insurer</p>

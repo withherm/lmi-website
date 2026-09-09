@@ -8,3 +8,7 @@ graphify-out/
 dist/
 .vscode/
 _superseded/
+
+# EQT-417 local screenshot harness
+shoot.mjs
+shootb.mjs

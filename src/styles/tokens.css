@@ -1,13 +1,52 @@
 :root{
-  /* Type ---------------------------------------------------------------- */
+  /* Type families ------------------------------------------------------- */
   --font-heading:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-sans:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-body:"Lora",Georgia,"Times New Roman",serif;
 
+  /* Type scale — LOCKED, EQT-417.
+     Every size in the site comes from this ladder. Do not introduce a new
+     step. If something needs to sit between two steps, it is wrong.
+     ---------------------------------------------------------------------
+     h1 / h2      display, clamped
+     h3   21      section sub-heads
+     h4   17      card titles, rung names
+     lede 22      one per page section, under an h1 or h2
+     body 19      running prose
+     small 16     secondary prose, tables, list rows, captions, card body
+     ui   15      nav links, buttons, chevron links, form fields
+     ui-sm 14     dropdown items, filters, dense UI
+     label 11     ALL uppercase tracked labels: eyebrow, meta, pill, capsule
+                  head, signal chip, illustration placeholder, nav CTA
+     label-sm 10  nav dropdown eyebrow only                                */
+  --t-h1:clamp(36px,4vw,54px);
+  --t-h2:clamp(26px,2.4vw,33px);
+  --t-h3:21px;
+  --t-h4:17px;
+  --t-lede:22px;
+  --t-body:19px;
+  --t-small:16px;
+  --t-ui:15px;
+  --t-ui-sm:14px;
+  --t-label:11px;
+  --t-label-sm:10px;
+
+  /* Line heights, one per role ------------------------------------------ */
+  --lh-display:1.04;
+  --lh-head:1.2;
+  --lh-body:1.6;
+  --lh-tight:1.45;
+  --lh-flat:1;
+
+  /* Tracking, one per role ---------------------------------------------- */
+  --tr-display:-.015em;
+  --tr-label:.14em;
+  --tr-label-tight:.1em;
+
   /* Colour — AESQ-referenced watercolour blue system (EQT, 8 Sep 2026) --- */
   --deep-navy:#1F3268;      /* structure, card headers, H1/H2, dark sections */
   --ink-navy:#152451;       /* deepest fills, silhouettes */
-  --mid-blue:#2E6CB5;       /* primary action, logo mark, active states      */
+  --mid-blue:#2E6CB5;       /* primary action, active states                 */
   --mid-blue-hover:#1F3268;
   --steel-blue:#5B87C0;     /* secondary fills                              */
   --cyan:#35A8DC;           /* small accents, connector triangles           */
@@ -20,9 +59,16 @@
   --near-black:#161616;     /* body copy                                    */
   --dark-slate:#2C3E50;     /* logo wordmark only                           */
 
+  /* EQUIBT Group navy. The logo square only. Sourced from
+     equibt-website/brand/assets/logos/equibt/EQ-LOGO-701_EQ-MAIN-R1.svg   */
+  --eq-navy:#26245C;
+
   /* Signal Red: risk and failure states ONLY.
      Never a button, a heading, a link, or decoration. */
   --signal-red:#E8484C;
+  /* Signal Green: cleared and pass states. Same restraint as red.
+     Never a button, a heading, a link, or decoration. */
+  --signal-green:#2E7D52;
 
   /* Belt identity. Badges only, never chrome. */
   --belt-yellow:#E8B833;

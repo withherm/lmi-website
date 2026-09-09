@@ -17,11 +17,11 @@ const links = [
     </button>
 
     <div class="nav-links" id="nav-links">
-      <div class="nav-item" data-dropdown data-open="false">
+      <div class="nav-item" data-dropdown>
         <div class="nav-item-row">
           <a href="/courses/" class="nav-link">Courses</a>
           <button class="nav-chevron-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Toggle Courses submenu">
-            <span class="nav-chevron" aria-hidden="true">&#9662;</span>
+            <span class="nav-chevron" aria-hidden="true">&#8964;</span>
           </button>
         </div>
         <ul class="nav-dropdown" role="menu">
@@ -40,11 +40,11 @@ const links = [
 
       {links.map((l) => <a href={l.href} class="nav-link">{l.label}</a>)}
 
-      <div class="nav-item" data-dropdown data-open="false">
+      <div class="nav-item" data-dropdown>
         <div class="nav-item-row">
           <a href="/about/" class="nav-link">About</a>
           <button class="nav-chevron-btn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="Toggle About submenu">
-            <span class="nav-chevron" aria-hidden="true">&#9662;</span>
+            <span class="nav-chevron" aria-hidden="true">&#8964;</span>
           </button>
         </div>
         <ul class="nav-dropdown" role="menu">
@@ -54,7 +54,7 @@ const links = [
         </ul>
       </div>
 
-      <a href="/contact/" class="btn nav-cta">Get in touch</a>
+      <a href="/contact/" class="nav-cta">Get in touch</a>
     </div>
   </div>
 </nav>

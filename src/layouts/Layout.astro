@@ -53,42 +53,83 @@ const {
         els.forEach(function (el) { io.observe(el); });
       })();
 
-      // Nav: mobile toggle and dropdowns. Click and keyboard, no hover-only.
+      // Nav: ported from equibt-website. Desktop opens on CSS :hover; this
+      // handles the hamburger, keyboard focus, the mobile accordion, Esc and
+      // outside click. Breakpoint must match base.css (820px).
       (function () {
+        var MOBILE = 820;
+        function isMobile() { return window.innerWidth <= MOBILE; }
+
         var toggle = document.querySelector(".nav-toggle");
+        var navLinks = document.getElementById("nav-links");
         if (toggle) {
           toggle.addEventListener("click", function () {
             var open = document.body.classList.toggle("nav-open");
             toggle.setAttribute("aria-expanded", String(open));
             toggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+            if (navLinks) navLinks.classList.toggle("is-open", open);
           });
         }
+
         var items = document.querySelectorAll("[data-dropdown]");
-        function closeAll(except) {
-          items.forEach(function (it) {
-            if (it === except) return;
-            it.setAttribute("data-open", "false");
-            var b = it.querySelector(".nav-chevron-btn");
-            if (b) b.setAttribute("aria-expanded", "false");
-          });
+
+        function openItem(item) {
+          var b = item.querySelector(".nav-chevron-btn");
+          if (b) b.setAttribute("aria-expanded", "true");
+          item.classList.add("is-open");
         }
+        function closeItem(item) {
+          var b = item.querySelector(".nav-chevron-btn");
+          if (b) b.setAttribute("aria-expanded", "false");
+          item.classList.remove("is-open");
+        }
+
         items.forEach(function (item) {
           var btn = item.querySelector(".nav-chevron-btn");
-          if (!btn) return;
-          btn.addEventListener("click", function (ev) {
-            ev.preventDefault();
-            var open = item.getAttribute("data-open") === "true";
-            closeAll(item);
-            item.setAttribute("data-open", String(!open));
-            btn.setAttribute("aria-expanded", String(!open));
+
+          // Desktop: keyboard focus opens, leaving the item closes.
+          item.addEventListener("focusin", function () {
+            if (!isMobile()) openItem(item);
+          });
+          item.addEventListener("focusout", function (e) {
+            if (!isMobile() && !item.contains(e.relatedTarget)) closeItem(item);
+          });
+
+          // Mobile: the chevron button is an accordion toggle.
+          if (btn) {
+            btn.addEventListener("click", function (e) {
+              if (isMobile()) {
+                e.preventDefault();
+                if (item.classList.contains("is-open")) closeItem(item);
+                else openItem(item);
+              }
+            });
+          }
+
+          item.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+              closeItem(item);
+              if (btn) btn.focus();
+            }
           });
         });
-        document.addEventListener("click", function (ev) {
-          if (!ev.target.closest("[data-dropdown]")) closeAll(null);
+
+        document.addEventListener("click", function (e) {
+          if (isMobile()) return;
+          items.forEach(function (item) {
+            if (!item.contains(e.target)) closeItem(item);
+          });
         });
-        document.addEventListener("keydown", function (ev) {
-          if (ev.key === "Escape") closeAll(null);
-        });
+
+        // Closing the mobile menu closes every accordion with it.
+        if (navLinks && "MutationObserver" in window) {
+          var mo = new MutationObserver(function () {
+            if (!document.body.classList.contains("nav-open")) {
+              items.forEach(closeItem);
+            }
+          });
+          mo.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+        }
       })();
     </script>
   </body>

@@ -4,7 +4,7 @@
 .hero{padding:76px 0 84px;background:var(--white);}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center;}
 .hero h1{margin:0 0 20px;}
-.hero-lede{font-size:22px;line-height:1.5;margin:0 0 26px;}
+.hero-lede{font-size:var(--t-lede);line-height:1.5;margin:0 0 26px;}
 .hero-actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap;}
 
 /* Belt ladder: stepped stairs, spine fills from the foot ---------------- */
@@ -16,14 +16,14 @@
 .rung{background:none;border:0;padding:0;text-align:left;font:inherit;color:inherit;cursor:pointer;display:block;width:calc(100% - 132px);}
 .rung-inner{
   display:flex;align-items:center;gap:16px;padding:14px 20px 16px;border-radius:14px;background:var(--white);
-  border:1px solid var(--hairline);border-bottom:4px solid var(--hairline-strong);
+  border:1px solid var(--hairline);
   transition:border-color .18s ease;
 }
-.rung[aria-pressed="true"] .rung-inner{border-color:var(--mid-blue);border-bottom-color:var(--mid-blue);}
+.rung[aria-pressed="true"] .rung-inner{border-color:var(--mid-blue);}
 .rung-badge{flex:0 0 auto;}
-.rung-name{font-family:var(--font-heading);font-weight:700;font-size:17px;color:var(--deep-navy);}
-.rung-outcome{font-size:15px;line-height:1.5;margin:3px 0 0;}
-.rung-detail{font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mid-blue);margin-top:6px;display:none;}
+.rung-name{font-family:var(--font-heading);font-weight:700;font-size:var(--t-h4);color:var(--deep-navy);}
+.rung-outcome{font-size:var(--t-small);line-height:1.5;margin:3px 0 0;}
+.rung-detail{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--mid-blue);margin-top:6px;display:none;}
 .rung[aria-pressed="true"] .rung-detail{display:block;}
 .ladder-hint{margin-top:16px;padding-left:4px;}
 
@@ -40,7 +40,7 @@
 .sector-tab{
   display:flex;align-items:center;gap:12px;padding:15px 18px;border-radius:10px;cursor:pointer;
   background:var(--white);color:var(--deep-navy);border:1px solid var(--hairline);
-  font-family:var(--font-heading);font-weight:600;font-size:15px;text-align:left;width:100%;
+  font-family:var(--font-heading);font-weight:600;font-size:var(--t-ui);text-align:left;width:100%;
   transition:background .18s ease,border-color .18s ease,color .18s ease;
 }
 .sector-tab[aria-selected="true"]{background:var(--mid-blue);border-color:var(--mid-blue);color:var(--white);}
@@ -49,34 +49,34 @@
 .sector-panel{border:1px solid var(--hairline);border-radius:var(--radius-card);padding:32px 34px 34px;background:var(--white);}
 .sector-panel[hidden]{display:none;}
 .sector-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:34px;}
-.sector-h{font-family:var(--font-heading);font-weight:700;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--deep-navy);margin:0 0 14px;}
+.sector-h{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--deep-navy);margin:0 0 14px;}
 .sector-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
-.sector-list li{display:flex;gap:12px;align-items:flex-start;font-size:16px;line-height:1.55;}
+.sector-list li{display:flex;gap:12px;align-items:flex-start;font-size:var(--t-small);line-height:1.55;}
 .sector-list .sq{flex:0 0 auto;width:7px;height:7px;border-radius:2px;background:var(--cyan);margin-top:9px;}
 
 /* Proof walls ------------------------------------------------------------ */
 .grad-wall{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;}
 .grad-tile{background:var(--white);border:1px solid var(--hairline);border-radius:10px;padding:16px 14px;min-height:76px;display:flex;align-items:center;
-  font-family:var(--font-heading);font-weight:500;font-size:13px;line-height:1.45;color:var(--charcoal-grey);}
+  font-family:var(--font-heading);font-weight:500;font-size:var(--t-ui-sm);line-height:1.45;color:var(--charcoal-grey);}
 .logo-wall{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;}
 .logo-mark{border:1px solid var(--hairline);border-radius:10px;height:74px;display:flex;align-items:center;justify-content:center;background:var(--white);}
 .logo-mark span{display:block;width:74px;height:16px;border-radius:3px;background:rgba(31,50,104,.16);}
 
 /* Testimonial ------------------------------------------------------------ */
-.quote{font-family:var(--font-body);font-style:italic;font-weight:500;font-size:26px;line-height:1.5;color:var(--deep-navy);margin:0 0 18px;}
-.quote-by{font-family:var(--font-heading);font-weight:600;font-size:14px;color:var(--charcoal-grey);}
+.quote{font-family:var(--font-body);font-style:italic;font-weight:500;font-size:var(--t-h2);line-height:1.5;color:var(--deep-navy);margin:0 0 18px;}
+.quote-by{font-family:var(--font-heading);font-weight:600;font-size:var(--t-ui-sm);color:var(--charcoal-grey);}
 
 /* Dark CTA --------------------------------------------------------------- */
 .cta-tool{border-radius:20px;background:var(--ink-navy);padding:30px 32px 34px;border:1px solid rgba(255,255,255,.16);display:flex;flex-direction:column;gap:14px;}
 .cta-tool .eyebrow{color:var(--cyan);margin:0;}
-.cta-tool p{color:var(--pale-blue);font-size:16px;}
+.cta-tool p{color:var(--pale-blue);font-size:var(--t-small);}
 .cta-tool .chev{color:var(--cyan);}
 .cta-tool .chev::after{background:var(--cyan);}
 
 /* EQUIBT handover -------------------------------------------------------- */
 .handover{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:60px;align-items:center;}
 .eq-mark{border:1px solid var(--hairline);border-radius:var(--radius-card);height:128px;display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-heading);font-weight:700;font-size:22px;letter-spacing:.14em;color:var(--dark-slate);}
+  font-family:var(--font-heading);font-weight:700;font-size:var(--t-lede);letter-spacing:var(--tr-label);color:var(--dark-slate);}
 
 /* Page head (inner pages) ------------------------------------------------ */
 .page-head{padding:64px 0 44px;background:var(--white);}
@@ -85,41 +85,41 @@
 /* Filter row ------------------------------------------------------------- */
 .filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
 .filter{
-  font-family:var(--font-heading);font-weight:600;font-size:13px;padding:9px 16px;border-radius:999px;
+  font-family:var(--font-heading);font-weight:600;font-size:var(--t-ui-sm);padding:9px 16px;border-radius:999px;
   border:1px solid var(--hairline);background:var(--white);color:var(--deep-navy);cursor:pointer;
 }
 .filter[aria-pressed="true"]{background:var(--deep-navy);border-color:var(--deep-navy);color:var(--white);}
-.filter-label{font-family:var(--font-heading);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-right:4px;}
+.filter-label{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--grey);margin-right:4px;}
 
 /* Course card ------------------------------------------------------------ */
 .course-card{display:flex;flex-direction:column;gap:12px;height:100%;}
-.course-card .price{font-family:var(--font-heading);font-weight:700;font-size:19px;color:var(--deep-navy);}
-.course-card .price small{font-family:var(--font-heading);font-weight:500;font-size:12px;color:var(--charcoal-grey);display:block;margin-top:2px;}
+.course-card .price{font-family:var(--font-heading);font-weight:700;font-size:var(--t-body);color:var(--deep-navy);}
+.course-card .price small{font-family:var(--font-heading);font-weight:500;font-size:var(--t-label);color:var(--charcoal-grey);display:block;margin-top:2px;}
 .course-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;}
 
 /* Enrolment card (course page) ------------------------------------------- */
 .enrol{position:sticky;top:calc(var(--nav-h) + 24px);border:1px solid var(--hairline);border-radius:var(--radius-card);padding:26px 26px 28px;background:var(--white);display:flex;flex-direction:column;gap:14px;}
-.enrol-price{font-family:var(--font-heading);font-weight:700;font-size:32px;color:var(--deep-navy);line-height:1;}
-.enrol-price small{display:block;font-size:12px;font-weight:500;color:var(--charcoal-grey);margin-top:6px;letter-spacing:.04em;}
+.enrol-price{font-family:var(--font-heading);font-weight:700;font-size:var(--t-h2);color:var(--deep-navy);line-height:1;}
+.enrol-price small{display:block;font-size:var(--t-label);font-weight:500;color:var(--charcoal-grey);margin-top:6px;letter-spacing:.04em;}
 .enrol-rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
-.enrol-rows li{display:flex;justify-content:space-between;gap:14px;font-size:15px;border-bottom:1px solid var(--hairline);padding-bottom:9px;}
+.enrol-rows li{display:flex;justify-content:space-between;gap:14px;font-size:var(--t-small);border-bottom:1px solid var(--hairline);padding-bottom:9px;}
 .enrol-rows li:last-child{border-bottom:0;}
-.enrol-rows .k{font-family:var(--font-heading);font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--charcoal-grey);}
+.enrol-rows .k{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--charcoal-grey);}
 .mobile-bar{display:none;}
 
 /* Tables ----------------------------------------------------------------- */
 .table-scroll{overflow-x:auto;}
 table.data{border-collapse:collapse;width:100%;min-width:640px;}
-table.data th,table.data td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--hairline);font-size:16px;vertical-align:top;}
-table.data th{font-family:var(--font-heading);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--deep-navy);}
+table.data th,table.data td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--hairline);font-size:var(--t-small);vertical-align:top;}
+table.data th{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--deep-navy);}
 
 /* Gates / steps ----------------------------------------------------------- */
-.gate-note{font-size:15px;color:var(--charcoal-grey);}
+.gate-note{font-size:var(--t-small);color:var(--charcoal-grey);}
 
 /* Verify block ------------------------------------------------------------ */
 .verify{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
 .verify input{
-  font-family:var(--font-heading);font-size:15px;padding:12px 16px;border-radius:8px;border:1px solid var(--hairline);
+  font-family:var(--font-heading);font-size:var(--t-ui);padding:12px 16px;border-radius:8px;border:1px solid var(--hairline);
   min-width:280px;min-height:46px;color:var(--near-black);background:var(--white);
 }
 .verify input:focus-visible{border-color:var(--mid-blue);}
@@ -138,16 +138,20 @@ table.data th{font-family:var(--font-heading);font-weight:700;font-size:11px;let
   .enrol{position:static;}
 }
 @media (max-width:820px){
+  /* The staircase stagger is set inline per rung. On a phone it has no room,
+     and it was pushing the hero column 7px past the viewport. EQT-417. */
+  .rung{margin-left:0 !important;width:100%;}
+  .ladder{padding-left:22px;}
   .sector-cols{grid-template-columns:1fr;gap:24px;}
   .grad-wall{grid-template-columns:repeat(2,minmax(0,1fr));}
   .logo-wall{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .quote{font-size:21px;}
+  .quote{font-size:var(--t-h3);}
   .mobile-bar{
     display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--white);
     border-top:1px solid var(--hairline);padding:12px 20px;align-items:center;justify-content:space-between;gap:14px;
     box-shadow:0 -6px 20px rgba(31,50,104,.08);
   }
-  .mobile-bar .p{font-family:var(--font-heading);font-weight:700;font-size:17px;color:var(--deep-navy);}
+  .mobile-bar .p{font-family:var(--font-heading);font-weight:700;font-size:var(--t-h4);color:var(--deep-navy);}
   body.has-mobile-bar{padding-bottom:76px;}
 }
 
@@ -162,8 +166,9 @@ table.data th{font-family:var(--font-heading);font-weight:700;font-size:11px;let
 .sep-diagram{border:1px solid var(--hairline);border-radius:var(--radius-card);background:var(--white);padding:34px 30px;}
 .sep-diagram svg{width:100%;height:auto;display:block;}
 
-/* Gate cards */
-.gate-fail{display:flex;align-items:center;gap:10px;margin-top:4px;}
+/* Gate cards. Two states per gate, cleared first. EQT-417. */
+.gate-state{display:flex;flex-direction:column;gap:5px;padding-top:12px;border-top:1px solid var(--hairline);}
+.gate-state .gate-note{margin:0;}
 
 /* Responsive grid classes replacing inline templates ------------------- */
 .grid-5{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px;}
@@ -184,10 +189,10 @@ table.data th{font-family:var(--font-heading);font-weight:700;font-size:11px;let
 /* Forms ------------------------------------------------------------------ */
 label.sector-h{display:block;margin-bottom:7px;}
 input[type=text],input[type=email],select,textarea{
-  width:100%;font-family:var(--font-heading);font-size:15px;padding:12px 14px;border-radius:8px;
+  width:100%;font-family:var(--font-heading);font-size:var(--t-ui);padding:12px 14px;border-radius:8px;
   border:1px solid var(--hairline);background:var(--white);color:var(--near-black);min-height:46px;
 }
-textarea{font-family:var(--font-body);font-size:16px;line-height:1.5;resize:vertical;}
+textarea{font-family:var(--font-body);font-size:var(--t-small);line-height:1.5;resize:vertical;}
 input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var(--mid-blue);}
 @media (max-width:1024px){
   #enquiry-grid{grid-template-columns:1fr !important;gap:28px !important;}
@@ -195,3 +200,8 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var
 @media (max-width:820px){
   .form-2{grid-template-columns:1fr !important;}
 }
+
+/* EQT-417 ladder variants. These replace the inline font-size overrides
+   that were scattered across the pages. Two steps only, both on the ladder. */
+.quote-sm{font-size:var(--t-h3);}
+.enrol-price-sm{font-size:var(--t-h3);}

@@ -36,7 +36,7 @@ const priceIsFigure = course.investment.startsWith("A$");
         <aside class="enrol" aria-label="Course details">
           {priceIsFigure
             ? <div class="enrol-price">{course.investment.replace(" per participant, incl GST", "")}<small>Per participant, incl GST</small></div>
-            : <div class="enrol-price" style="font-size:24px">{course.investment}<small>{course.investmentNote}</small></div>}
+            : <div class="enrol-price enrol-price-sm">{course.investment}<small>{course.investmentNote}</small></div>}
           <ul class="enrol-rows">
             <li><span class="k">Duration</span><span>{course.duration}</span></li>
             <li><span class="k">Delivery</span><span>{course.delivery}</span></li>
@@ -86,8 +86,8 @@ const priceIsFigure = course.investment.startsWith("A$");
         <div class="grid-5">
           {course.curriculum.map((m) => (
             <div class="capsule">
-              <div class="capsule-head" style="font-size:13px">{m.h}</div>
-              <div class="capsule-body" style="padding:16px 16px 20px"><p class="small" style="font-size:15px;margin:0">{m.b}</p></div>
+              <div class="capsule-head">{m.h}</div>
+              <div class="capsule-body" style="padding:16px 16px 20px"><p class="small" style="margin:0">{m.b}</p></div>
             </div>
           ))}
         </div>
