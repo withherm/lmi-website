@@ -117,7 +117,17 @@ img,svg{max-width:100%;}
 }
 a.card,.card-link{display:block;color:inherit;}
 .card:hover,.card:focus-within{border-color:var(--mid-blue);}
-.card-featured{border:1px solid var(--mid-blue);background:rgba(46,108,181,0.035);}
+.card-featured{border:1px solid var(--mid-blue);background:var(--pale-blue-tint);}
+/* Object grounds. Pale blue lives inside the drawn objects, not under whole
+   sections. The page ground stays plain off-white, so the panels and the
+   diagrams are what carry colour. Both reviewers, EQT-417. */
+.card-tint{background:var(--pale-blue-tint);border-color:var(--pale-blue);}
+.card-tint:hover,.card-tint:focus-within{border-color:var(--mid-blue);}
+.panel{background:var(--pale-blue-tint);border:1px solid var(--pale-blue);border-radius:var(--radius-card);padding:26px 28px;}
+.ic-plate{
+  background:var(--pale-blue-tint);border:1px solid var(--pale-blue);border-radius:12px;
+  padding:8px;display:inline-flex;
+}
 
 /* Card grammar 2: capsule, for sequential and procedural --------------- */
 .capsule{border:1px solid var(--hairline);border-radius:var(--radius-capsule);background:var(--white);overflow:hidden;display:flex;flex-direction:column;}
@@ -137,6 +147,16 @@ a.card,.card-link{display:block;color:inherit;}
 .ic svg{display:block;width:100%;height:100%;overflow:visible;}
 .ic-lg{width:96px;height:96px;}
 .ic-sm{width:44px;height:44px;}
+/* Second ink pass: thinner and lighter, so the line reads drawn not warped. */
+.hd-2{opacity:.42;stroke-width:2.2;}
+.hd-acc.hd-2{stroke-width:2.4;}
+/* Paper grain on the large pale areas. Multiply at low opacity, so the blue
+   keeps its value: a wash overlay lightened it and broke the palette. */
+.illus,.card-icon{position:relative;isolation:isolate;}
+.illus::after,.card-icon::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  filter:url(#paper);opacity:.10;mix-blend-mode:multiply;
+}
 /* On a navy ground and inside a selected tab the drawing inverts, the
    accent holds so the icon still says the same thing. */
 .g-dark .hd,[aria-selected="true"] .hd{stroke:var(--white);}

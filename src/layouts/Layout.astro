@@ -33,6 +33,27 @@ const {
   </head>
   <body>
     <a href="#main" class="sr-only">Skip to content</a>
+    <!-- Hand-drawn treatment. Two displacement passes give the contour the
+         weight variation a single pass cannot: the second pass is thinner,
+         lighter and differently seeded, so it reads as a pen going over the
+         line rather than as a wobble filter. EQT-417. -->
+    <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+      <defs>
+        <filter id="ink1" x="-18%" y="-18%" width="136%" height="136%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="7" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <filter id="ink2" x="-18%" y="-18%" width="136%" height="136%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="29" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="1.9" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <filter id="paper">
+          <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" seed="5"/>
+          <feColorMatrix type="saturate" values="0"/>
+        </filter>
+      </defs>
+    </svg>
+
     <slot />
 
     <script is:inline>

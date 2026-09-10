@@ -123,7 +123,15 @@ const [hd, acc] = P[name] ?? [[], []];
 ---
 {hd.length === 0 ? null : (
   <svg viewBox="0 0 64 64" role="presentation" aria-hidden="true" focusable="false">
-    {hd.map((d) => <path class="hd" d={d} />)}
-    {acc.map((d) => <path class="hd-acc" d={d} />)}
+    {/* Two passes. The second is thinner and lighter, so the contour picks up
+        the weight variation of a drawn line instead of a uniform wobble. */}
+    <g filter="url(#ink1)">
+      {hd.map((d) => <path class="hd" d={d} />)}
+      {acc.map((d) => <path class="hd-acc" d={d} />)}
+    </g>
+    <g filter="url(#ink2)">
+      {hd.map((d) => <path class="hd hd-2" d={d} />)}
+      {acc.map((d) => <path class="hd-acc hd-2" d={d} />)}
+    </g>
   </svg>
 )}

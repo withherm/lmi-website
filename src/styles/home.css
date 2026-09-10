@@ -46,7 +46,7 @@
 .sector-tab[aria-selected="true"]{background:var(--mid-blue);border-color:var(--mid-blue);color:var(--white);}
 .sector-dot{width:20px;height:20px;border-radius:5px;flex:0 0 auto;background:var(--pale-blue-tint);}
 .sector-tab[aria-selected="true"] .sector-dot{background:rgba(255,255,255,.85);}
-.sector-panel{border:1px solid var(--hairline);border-radius:var(--radius-card);padding:32px 34px 34px;background:var(--white);}
+.sector-panel{border:1px solid var(--pale-blue);border-radius:var(--radius-card);padding:32px 34px 34px;background:var(--pale-blue-tint);}
 .sector-panel[hidden]{display:none;}
 .sector-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:34px;}
 .sector-h{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--deep-navy);margin:0 0 14px;}
@@ -165,7 +165,16 @@ table.data th{font-family:var(--font-heading);font-weight:700;font-size:var(--t-
 }
 
 /* Certifications: separation diagram */
-.sep-diagram{border:1px solid var(--hairline);border-radius:var(--radius-card);background:var(--white);padding:34px 30px;}
+/* The separation diagram is a process panel: the pale blue lives inside the
+   object, the nodes are white on top of it, and the ink filter carries the
+   drawn edge. Horizontal above 760, vertical below. EQT-417. */
+.sep-diagram{border:1px solid var(--pale-blue);border-radius:var(--radius-card);background:var(--pale-blue-tint);padding:34px 30px;}
+.sep-diagram .sep-v{display:none;}
+@media (max-width:760px){
+  .sep-diagram{padding:22px 14px;}
+  .sep-diagram .sep-h{display:none;}
+  .sep-diagram .sep-v{display:block;}
+}
 .sep-diagram svg{width:100%;height:auto;display:block;}
 
 /* Gate cards. Two states per gate, cleared first. EQT-417. */

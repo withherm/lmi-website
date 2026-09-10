@@ -19,7 +19,7 @@ const mono = selected ? (code === "YB" ? "#1F3268" : "#FFFFFF") : "#1F3268";
 const fs = code === "MBB" ? 26 : 30;
 ---
 <svg width={size} height={size} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="rung-badge" role="img" aria-label={belt.label}>
-  <path d={SQUIRCLE} fill={fill} stroke={belt.colour} stroke-width="7" />
+  <path d={SQUIRCLE} fill={fill} stroke={belt.colour} stroke-width="7" filter="url(#ink1)" />
   <text x="50" y="50" text-anchor="middle" dominant-baseline="central"
         font-family="Montserrat, Arial, sans-serif" font-weight="700" font-size={fs} fill={mono}>{code}</text>
 </svg>

@@ -63,7 +63,7 @@ import "../../styles/home.css";
       </div>
     </section>
 
-    <section class="sec g-tint reveal">
+    <section class="sec g-off reveal">
       <div class="wrap">
         <div class="measure-wide" style="margin-bottom:30px">
           <p class="eyebrow">Contextualised by sector</p>
@@ -73,7 +73,7 @@ import "../../styles/home.css";
         <div class="grid g4">
           {SECTORS.map((s) => (
             <a class="card card-link" href={`/in-house/${s.slug}/`}>
-              <span class="ic" style="margin-bottom:14px"><Icon name={s.slug} /></span>
+              <span class="ic-plate" style="margin-bottom:14px"><span class="ic"><Icon name={s.slug} /></span></span>
               <h3>{s.name}</h3>
               <span class="small" style="display:block;margin-top:8px">{s.lede}</span>
               <span class="chev" style="margin-top:12px;display:inline-flex">See the detail <span class="c" aria-hidden="true">&rsaquo;</span></span>

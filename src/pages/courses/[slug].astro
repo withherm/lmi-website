@@ -108,7 +108,7 @@ const priceIsFigure = course.investment.startsWith("A$");
       </div>
     </section>
 
-    <section class="sec g-tint reveal">
+    <section class="sec g-off reveal">
       <div class="wrap split">
         <div>
           <p class="eyebrow">Where it fits</p>
@@ -118,7 +118,7 @@ const priceIsFigure = course.investment.startsWith("A$");
         </div>
         <div class="grid" style="gap:12px">
           {related.map((r) => (
-            <a class="card card-link" href={`/courses/${r!.slug}/`} style="padding:18px 20px">
+            <a class="card card-link card-tint" href={`/courses/${r!.slug}/`} style="padding:18px 20px">
               <span style="display:flex;align-items:center;gap:14px">
                 {r!.belt && <BeltBadge code={r!.belt} size={40} />}
                 <span>
