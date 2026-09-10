@@ -15,11 +15,10 @@
 .ladder-rungs{display:flex;flex-direction:column;gap:12px;}
 .rung{background:none;border:0;padding:0;text-align:left;font:inherit;color:inherit;cursor:pointer;display:block;width:calc(100% - 132px);}
 .rung-inner{
-  display:flex;align-items:center;gap:16px;padding:14px 20px 16px;border-radius:14px;background:var(--white);
-  border:1px solid var(--hairline);
-  transition:border-color .18s ease;
+  display:flex;align-items:center;gap:16px;padding:14px 20px 16px;border-radius:18px;background:var(--white);
+  border:2px solid transparent;position:relative;
 }
-.rung[aria-pressed="true"] .rung-inner{border-color:var(--mid-blue);}
+.rung[aria-pressed="true"] .rung-inner{--edge-c:var(--mid-blue);}
 .rung-badge{flex:0 0 auto;}
 .rung-name{font-family:var(--font-heading);font-weight:700;font-size:var(--t-h4);color:var(--deep-navy);}
 .rung-outcome{font-size:var(--t-small);line-height:1.5;margin:3px 0 0;}
@@ -38,15 +37,15 @@
 .sectors{display:grid;grid-template-columns:280px minmax(0,1fr);gap:40px;align-items:start;}
 .sector-rail{display:flex;flex-direction:column;gap:6px;}
 .sector-tab{
-  display:flex;align-items:center;gap:12px;padding:15px 18px;border-radius:10px;cursor:pointer;
-  background:var(--white);color:var(--deep-navy);border:1px solid var(--hairline);
+  display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:14px;cursor:pointer;
+  background:var(--white);color:var(--deep-navy);border:2px solid var(--steel-blue);
   font-family:var(--font-heading);font-weight:600;font-size:var(--t-ui);text-align:left;width:100%;
   transition:background .18s ease,border-color .18s ease,color .18s ease;
 }
 .sector-tab[aria-selected="true"]{background:var(--mid-blue);border-color:var(--mid-blue);color:var(--white);}
 .sector-dot{width:20px;height:20px;border-radius:5px;flex:0 0 auto;background:var(--pale-blue-tint);}
 .sector-tab[aria-selected="true"] .sector-dot{background:rgba(255,255,255,.85);}
-.sector-panel{border:1px solid var(--pale-blue);border-radius:var(--radius-card);padding:32px 34px 34px;background:var(--pale-blue-tint);}
+.sector-panel{border:2px solid transparent;border-radius:var(--radius-card);padding:32px 34px 34px;background:var(--pale-blue-tint);position:relative;--edge-c:var(--steel-blue);}
 .sector-panel[hidden]{display:none;}
 .sector-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:34px;}
 .sector-h{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--deep-navy);margin:0 0 14px;}
@@ -56,10 +55,10 @@
 
 /* Proof walls ------------------------------------------------------------ */
 .grad-wall{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;}
-.grad-tile{background:var(--white);border:1px solid var(--hairline);border-radius:10px;padding:16px 14px;min-height:76px;display:flex;align-items:center;
+.grad-tile{background:var(--white);border:2px solid transparent;border-radius:14px;padding:16px 14px;min-height:76px;display:flex;align-items:center;position:relative;
   font-family:var(--font-heading);font-weight:500;font-size:var(--t-ui-sm);line-height:1.45;color:var(--charcoal-grey);}
 .logo-wall{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;}
-.logo-mark{border:1px solid var(--hairline);border-radius:10px;height:74px;display:flex;align-items:center;justify-content:center;background:var(--white);}
+.logo-mark{border:2px solid transparent;border-radius:14px;height:74px;display:flex;align-items:center;justify-content:center;background:var(--white);position:relative;}
 .logo-mark span{display:block;width:74px;height:16px;border-radius:3px;background:rgba(31,50,104,.16);}
 
 /* Testimonial ------------------------------------------------------------ */
@@ -67,7 +66,11 @@
 .quote-by{font-family:var(--font-heading);font-weight:600;font-size:var(--t-ui-sm);color:var(--charcoal-grey);}
 
 /* Dark CTA --------------------------------------------------------------- */
-.cta-tool{border-radius:20px;background:var(--ink-navy);padding:30px 32px 34px;border:1px solid rgba(255,255,255,.16);display:flex;flex-direction:column;gap:14px;}
+.cta-tool{
+  border-radius:22px;background:var(--ink-navy);padding:30px 32px 34px;border:2px solid rgba(255,255,255,.18);
+  display:flex;flex-direction:column;gap:14px;position:relative;isolation:isolate;overflow:hidden;
+}
+.cta-tool::before{content:"";position:absolute;inset:0;pointer-events:none;filter:url(#wash);opacity:.35;mix-blend-mode:screen;}
 .cta-tool .eyebrow{color:var(--cyan);margin:0;}
 .cta-tool p{color:var(--pale-blue);font-size:var(--t-small);}
 .cta-tool .chev{color:var(--cyan);}
@@ -75,7 +78,7 @@
 
 /* EQUIBT handover -------------------------------------------------------- */
 .handover{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:60px;align-items:center;}
-.eq-mark{border:1px solid var(--hairline);border-radius:var(--radius-card);height:128px;display:flex;align-items:center;justify-content:center;
+.eq-mark{border:2px solid transparent;border-radius:var(--radius-card);position:relative;height:128px;display:flex;align-items:center;justify-content:center;
   font-family:var(--font-heading);font-weight:700;font-size:var(--t-lede);letter-spacing:var(--tr-label);color:var(--dark-slate);}
 
 /* Page head (inner pages) ------------------------------------------------ */
@@ -85,8 +88,8 @@
 /* Filter row ------------------------------------------------------------- */
 .filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
 .filter{
-  font-family:var(--font-heading);font-weight:600;font-size:var(--t-ui-sm);padding:9px 16px;border-radius:999px;
-  border:1px solid var(--hairline);background:var(--white);color:var(--deep-navy);cursor:pointer;
+  font-family:var(--font-heading);font-weight:600;font-size:var(--t-ui-sm);padding:8px 16px;border-radius:999px;
+  border:2px solid var(--steel-blue);background:var(--white);color:var(--deep-navy);cursor:pointer;
 }
 .filter[aria-pressed="true"]{background:var(--deep-navy);border-color:var(--deep-navy);color:var(--white);}
 /* Was --grey #9A9A9A, 2.81:1 on white. Fails WCAG AA for text. EQT-417. */
@@ -99,11 +102,11 @@
 .course-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;}
 
 /* Enrolment card (course page) ------------------------------------------- */
-.enrol{position:sticky;top:calc(var(--nav-h) + 24px);border:1px solid var(--hairline);border-radius:var(--radius-card);padding:26px 26px 28px;background:var(--white);display:flex;flex-direction:column;gap:14px;}
+.enrol{position:sticky;top:calc(var(--nav-h) + 24px);border:2px solid transparent;border-radius:var(--radius-card);padding:26px 26px 28px;background:var(--white);display:flex;flex-direction:column;gap:14px;}
 .enrol-price{font-family:var(--font-heading);font-weight:700;font-size:var(--t-h2);color:var(--deep-navy);line-height:1;}
 .enrol-price small{display:block;font-size:var(--t-label);font-weight:500;color:var(--charcoal-grey);margin-top:6px;letter-spacing:.04em;}
 .enrol-rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
-.enrol-rows li{display:flex;justify-content:space-between;gap:14px;font-size:var(--t-small);border-bottom:1px solid var(--hairline);padding-bottom:9px;}
+.enrol-rows li{display:flex;justify-content:space-between;gap:14px;font-size:var(--t-small);border-bottom:1px solid var(--pale-blue);padding-bottom:9px;}
 .enrol-rows li:last-child{border-bottom:0;}
 .enrol-rows .k{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--charcoal-grey);}
 .mobile-bar{display:none;}
@@ -111,7 +114,7 @@
 /* Tables ----------------------------------------------------------------- */
 .table-scroll{overflow-x:auto;}
 table.data{border-collapse:collapse;width:100%;min-width:640px;}
-table.data th,table.data td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--hairline);font-size:var(--t-small);vertical-align:top;}
+table.data th,table.data td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--pale-blue);font-size:var(--t-small);vertical-align:top;}
 table.data th{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--deep-navy);}
 
 /* Gates / steps ----------------------------------------------------------- */
@@ -121,7 +124,7 @@ table.data th{font-family:var(--font-heading);font-weight:700;font-size:var(--t-
 .verify{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
 .verify input{flex:1 1 220px;}
 .verify input{
-  font-family:var(--font-heading);font-size:var(--t-ui);padding:12px 16px;border-radius:8px;border:1px solid var(--hairline);
+  font-family:var(--font-heading);font-size:var(--t-ui);padding:11px 16px;border-radius:12px;border:2px solid var(--steel-blue);
   min-width:min(280px,100%);min-height:46px;color:var(--near-black);background:var(--white);
 }
 .verify input:focus-visible{border-color:var(--mid-blue);}
@@ -168,7 +171,7 @@ table.data th{font-family:var(--font-heading);font-weight:700;font-size:var(--t-
 /* The separation diagram is a process panel: the pale blue lives inside the
    object, the nodes are white on top of it, and the ink filter carries the
    drawn edge. Horizontal above 760, vertical below. EQT-417. */
-.sep-diagram{border:1px solid var(--pale-blue);border-radius:var(--radius-card);background:var(--pale-blue-tint);padding:34px 30px;}
+.sep-diagram{border:2px solid transparent;border-radius:var(--radius-card);background:var(--pale-blue-tint);padding:34px 30px;position:relative;--edge-c:var(--steel-blue);}
 .sep-diagram .sep-v{display:none;}
 @media (max-width:760px){
   .sep-diagram{padding:22px 14px;}
@@ -178,7 +181,7 @@ table.data th{font-family:var(--font-heading);font-weight:700;font-size:var(--t-
 .sep-diagram svg{width:100%;height:auto;display:block;}
 
 /* Gate cards. Two states per gate, cleared first. EQT-417. */
-.gate-state{display:flex;flex-direction:column;gap:5px;padding-top:12px;border-top:1px solid var(--hairline);}
+.gate-state{display:flex;flex-direction:column;gap:5px;padding-top:12px;border-top:1px solid var(--pale-blue);}
 .gate-state .gate-note{margin:0;}
 
 /* Responsive grid classes replacing inline templates ------------------- */
@@ -219,9 +222,25 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var
 
 /* Icon banner at the head of a card. Replaces the dashed illustration
    placeholder on cards that only ever needed a glyph. EQT-417. */
+/* Inset, so white keylines separate the tinted block from the drawn edge.
+   That nesting is the reference grammar: an outlined container, a coloured
+   block inside it, white between the two. EQT-417. */
 .card-icon{
   display:flex;align-items:center;justify-content:center;
-  padding:26px 0;background:var(--pale-blue-tint);border-bottom:1px solid var(--hairline);
+  padding:26px 0;margin:9px 9px 0;background:var(--pale-blue-tint);border-radius:13px;
 }
 .g-tint .card-icon{background:var(--white);}
 .sector-tab .ic{margin-right:2px;}
+
+/* Drawn edge, same rule as base.css, for the objects declared in this file. */
+.rung-inner::after,.grad-tile::after,.logo-mark::after,.eq-mark::after,
+.enrol::after,.sector-panel::after,.sep-diagram::after{
+  content:"";position:absolute;inset:-2px;pointer-events:none;
+  border:2px solid var(--edge-c,var(--edge-blue));border-radius:inherit;
+  filter:url(#edge);transition:border-color .18s ease;
+}
+/* Selected tab and pressed filter carry the same wash as a capsule head. */
+.sector-tab[aria-selected="true"],.filter[aria-pressed="true"]{position:relative;isolation:isolate;overflow:hidden;}
+.sector-tab[aria-selected="true"]::before,.filter[aria-pressed="true"]::before{
+  content:"";position:absolute;inset:0;pointer-events:none;filter:url(#wash);opacity:.35;mix-blend-mode:screen;
+}

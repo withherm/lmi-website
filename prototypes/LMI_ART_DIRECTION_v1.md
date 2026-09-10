@@ -77,6 +77,45 @@ Redrawn in the reference grammar and split into two layouts:
 Both carry the same `aria-label`; only one is in the accessibility tree at a
 time because the other is `display:none`.
 
+## 3b. The box grammar
+
+Read off the reference frames, the container system there is four rules:
+
+1. **Outlines are a drawn line in the palette, not a grey UI hairline.** About
+   2px, generously rounded, clearly present without being dark.
+2. **A solid fill carries brush variation.** The navy capsules are not flat.
+3. **Parts of an object are separated by white keylines.** A coloured block
+   inside a container has white around it and the container's own line outside
+   that. Never a dark divider.
+4. **Small capsules are filled, not outlined.** The outline treatment belongs
+   to containers.
+
+Implemented as:
+
+- `--edge-blue: #A9C0DC` at 2px on white grounds, `--steel-blue` on tinted
+  ones. Measured on the real card grid: pale blue is 1.34:1 on white and
+  disappears at page scale, steel blue turns the page into a blue grid, and
+  the value between them reads as a line without shouting.
+- `--radius-card` 16px to 20px, and the icon banner inset 9px with its own
+  13px radius so white separates it from the container edge.
+- The visible line is an `::after`, not the element's border. The real border
+  is transparent and only reserves the space, so the displacement filter never
+  touches type. Two ways this breaks: `overflow:hidden` on the container clips
+  the wobble back to a straight line, and a child block that reaches the
+  padding edge hides the line behind it.
+- `#wash` on every solid navy surface: capsule heads, the dark CTA panel, the
+  selected sector tab, the pressed filter. Screen never darkens, so white type
+  on the fill is untouched while the fill breaks up.
+- Internal rules move from grey to pale blue: gate states, the enrolment rows,
+  the data tables.
+- Form controls and chips take `--steel-blue` rather than the card edge value,
+  because WCAG 1.4.11 wants 3:1 on a control boundary and the card edge is
+  1.86:1. Measured: 3.70:1 on white, 3.36:1 on off-white.
+
+Cost measured, not assumed: 54 filtered boxes on the home page add about 0.7ms
+per frame to a 20-frame scroll (340ms against 326ms with the filters off). The
+filters rasterise once and do not re-run on scroll.
+
 ## 4. What this does not fix
 
 The site is still a grid of hairline rectangles, and that is the largest

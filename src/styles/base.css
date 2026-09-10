@@ -109,32 +109,74 @@ img,svg{max-width:100%;}
 }
 .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
 
-/* Card grammar 1: hairline box, for browsing --------------------------- */
+/* Drawn edges ---------------------------------------------------------- */
+/* An object's outline is its own drawn line, not a UI hairline: 2px, in the
+   palette rather than in grey, on a generous radius, displaced so the contour
+   undulates. The real border is transparent and only reserves the space; the
+   visible line is the ::after, which carries no text, so the filter never
+   touches type. Measured against a four-way harness: one octave at
+   baseFrequency 0.014 and scale 2.4 undulates, more octaves read as fur, and
+   a longer wavelength pinches the corners. EQT-417. */
+.drawn{position:relative;border:2px solid transparent;}
+.drawn::after{
+  content:"";position:absolute;inset:-2px;pointer-events:none;
+  border:2px solid var(--edge-c,var(--edge-blue));border-radius:inherit;
+  filter:url(#edge);transition:border-color .18s ease;
+}
+/* A solid navy fill gets brush variation. Screen never darkens, so white type
+   sitting on the fill is untouched while the fill itself breaks up. */
+.washed{position:relative;isolation:isolate;overflow:hidden;}
+.washed::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  filter:url(#wash);opacity:.35;mix-blend-mode:screen;
+}
+
+/* Card grammar 1: drawn box, for browsing ------------------------------ */
 /* One outline weight. Hover changes colour only, never depth or position. */
 .card{
-  border:1px solid var(--hairline);border-radius:var(--radius-card);background:var(--white);
-  padding:24px;transition:border-color .18s ease;
+  border:2px solid transparent;border-radius:var(--radius-card);background:var(--white);
+  padding:24px;position:relative;
+}
+.card::after,.panel::after,.ic-plate::after,.capsule::after{
+  content:"";position:absolute;inset:-2px;pointer-events:none;
+  border:2px solid var(--edge-c,var(--edge-blue));border-radius:inherit;
+  filter:url(#edge);transition:border-color .18s ease;
 }
 a.card,.card-link{display:block;color:inherit;}
-.card:hover,.card:focus-within{border-color:var(--mid-blue);}
-.card-featured{border:1px solid var(--mid-blue);background:var(--pale-blue-tint);}
+.card:hover::after,.card:focus-within::after{border-color:var(--mid-blue);}
+.card-featured{background:var(--pale-blue-tint);--edge-c:var(--mid-blue);}
 /* Object grounds. Pale blue lives inside the drawn objects, not under whole
    sections. The page ground stays plain off-white, so the panels and the
    diagrams are what carry colour. Both reviewers, EQT-417. */
-.card-tint{background:var(--pale-blue-tint);border-color:var(--pale-blue);}
-.card-tint:hover,.card-tint:focus-within{border-color:var(--mid-blue);}
-.panel{background:var(--pale-blue-tint);border:1px solid var(--pale-blue);border-radius:var(--radius-card);padding:26px 28px;}
+/* On a tinted fill the pale blue edge disappears, so tinted objects step up
+   to steel blue. Same weight, same drawn line, one value darker. */
+.card-tint{background:var(--pale-blue-tint);--edge-c:var(--steel-blue);}
+.panel{
+  background:var(--pale-blue-tint);border:2px solid transparent;border-radius:var(--radius-card);
+  padding:26px 28px;--edge-c:var(--steel-blue);
+}
 .ic-plate{
-  background:var(--pale-blue-tint);border:1px solid var(--pale-blue);border-radius:12px;
-  padding:8px;display:inline-flex;
+  background:var(--pale-blue-tint);border:2px solid transparent;border-radius:14px;
+  padding:8px;display:inline-flex;--edge-c:var(--steel-blue);
 }
 
 /* Card grammar 2: capsule, for sequential and procedural --------------- */
-.capsule{border:1px solid var(--hairline);border-radius:var(--radius-capsule);background:var(--white);overflow:hidden;display:flex;flex-direction:column;}
+/* No overflow:hidden: it would clip the drawn edge back to a straight line.
+   The head rounds its own top corners instead. */
+.capsule{
+  border:2px solid transparent;border-radius:var(--radius-capsule);background:var(--white);
+  display:flex;flex-direction:column;position:relative;
+}
 .capsule-head{
   background:var(--deep-navy);color:var(--white);text-align:center;
   font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;
   padding:15px 20px;line-height:var(--lh-head);
+  border-radius:calc(var(--radius-capsule) - 2px) calc(var(--radius-capsule) - 2px) 0 0;
+  position:relative;isolation:isolate;overflow:hidden;
+}
+.capsule-head::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  filter:url(#wash);opacity:.35;mix-blend-mode:screen;
 }
 .capsule-body{padding:20px 22px 24px;display:flex;flex-direction:column;gap:12px;flex:1;}
 
@@ -164,7 +206,7 @@ a.card,.card-link{display:block;color:inherit;}
 
 /* Illustration placeholder --------------------------------------------- */
 .illus{
-  background:var(--pale-blue);border:1px dashed var(--deep-navy);border-radius:12px;
+  background:var(--pale-blue);border:2px dashed var(--steel-blue);border-radius:16px;
   display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;
   font-family:var(--font-heading);font-weight:700;font-size:var(--t-label-sm);letter-spacing:var(--tr-label-tight);
   text-transform:uppercase;color:var(--deep-navy);line-height:1.5;

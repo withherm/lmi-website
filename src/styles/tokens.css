@@ -76,12 +76,16 @@
   --belt-black:#1C1C1C;
 
   --hairline:rgba(31,50,104,0.14);
+  /* Drawn-object edge. Pale blue is 1.34:1 on white and disappears at page
+     scale; steel blue turns the page into a blue grid. Measured between the
+     two on the real card grid. EQT-417. */
+  --edge-blue:#A9C0DC;
   --hairline-strong:rgba(31,50,104,0.28);
 
   /* Layout -------------------------------------------------------------- */
   --max:1180px;
   --wide:1320px;
-  --radius-card:16px;
+  --radius-card:20px;
   --radius-capsule:26px;
   --nav-h:80px;
 }

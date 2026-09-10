@@ -22,7 +22,7 @@ const families = (Object.keys(FAMILIES) as Family[]).sort((a, b) => FAMILIES[a].
     <section class="sec g-off reveal">
       <div class="wrap grid g3">
         {families.map((f) => (
-          <a class="card card-link" href={`/methods/${f}/`} style="padding:0;overflow:hidden">
+          <a class="card card-link" href={`/methods/${f}/`} style="padding:0">
             <span class="card-icon"><span class="ic ic-lg"><Icon name={f} /></span></span>
             <span style="display:block;padding:24px">
               <h2 style="font-size:var(--t-h3)">{FAMILIES[f].name}</h2>
