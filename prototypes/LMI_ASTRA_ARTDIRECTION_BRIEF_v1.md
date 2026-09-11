@@ -18,7 +18,7 @@ washes, drawn outlines, flat blue fills, white keylines. The site is currently a
 approximation of that built entirely in CSS and SVG. Real illustration is a
 separate, later job.
 
-**Live preview:** https://f1f04487-lmi-website.equibt.workers.dev
+**Live preview:** https://1d3490c7-lmi-website.equibt.workers.dev
 
 Look at the home page, `/methods/`, `/certifications/` and `/in-house/`, at
 desktop width and at phone width.
