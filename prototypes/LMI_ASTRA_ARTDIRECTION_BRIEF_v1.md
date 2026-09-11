@@ -18,10 +18,17 @@ washes, drawn outlines, flat blue fills, white keylines. The site is currently a
 approximation of that built entirely in CSS and SVG. Real illustration is a
 separate, later job.
 
-**Live preview:** `PREVIEW_URL_HERE`
+**Live preview:** https://f1f04487-lmi-website.equibt.workers.dev
 
 Look at the home page, `/methods/`, `/certifications/` and `/in-house/`, at
 desktop width and at phone width.
+
+**Check you are on the right build before you write anything.** Open the page
+source, find the stylesheet, and search it for `border-image-slice`. If it is
+there, you are on the current build and this brief applies. If it is not, you
+are on an older build whose outlines were drawn with a displacement filter,
+that treatment has already been replaced, and a review of it is worth nothing.
+Say so and stop rather than reviewing the wrong thing.
 
 ## 2. What has already been built
 

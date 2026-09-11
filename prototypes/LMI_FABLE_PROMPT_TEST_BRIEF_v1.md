@@ -19,6 +19,9 @@ The house style has been written out in words. It has never been tested against
 a real generator. Before any money or days go into production, we need to know
 whether the words actually produce the picture they describe.
 
+You do not need to look at the website. This brief is only about whether the
+written style description produces the picture it describes.
+
 ## 2. Hard constraints, no exceptions
 
 **Do not ask for, accept, or use any reference image of the art style we are
