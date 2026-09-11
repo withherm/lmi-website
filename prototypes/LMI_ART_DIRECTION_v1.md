@@ -116,6 +116,42 @@ Cost measured, not assumed: 54 filtered boxes on the home page add about 0.7ms
 per frame to a 20-frame scroll (340ms against 326ms with the filters off). The
 filters rasterise once and do not re-run on scroll.
 
+## 3c. Weight, and the washed band
+
+**Edge weight is 3px, not 2.** Tested 2, 2.5, 3 and 3.5 on the real card grid.
+At 2 the line reads tentative. At 3 it reads as a decision. 3.5 starts to
+crowd a small card. Containers take 3px; chips, tabs and form controls stay at
+2px, because a 3px line on a 32px-high chip is a box, not an outline.
+
+**The background is a band of paint, not a fill on the section.** Three things
+make it read as paint, and all three are needed:
+
+1. The band edge runs through `#soft`, a long-wavelength displacement at scale
+   9, so it breaks the way a brush leaves paper. Tested against a hard edge,
+   which reads as a CSS section every time, and against gentler settings; below
+   about 6 the edge still reads as a rule.
+2. The fill pools through `#pool`, multiply so the blue holds its value. An
+   earlier screen-blend wash lightened the blue and broke the palette, which is
+   why this one darkens instead.
+3. The band is offset from the content grid, stopping about 5% short on one
+   side, so it never lines up with a container edge. Alignment is what gives a
+   section fill away.
+
+One band per page, not one per section. The rest of the page ground stays
+plain. An object standing on a band goes white: tint on wash is two values of
+the same blue and the object stops separating from its ground.
+
+**Page-wide paper grain was tested and dropped.** At 1:1 on a screen, grain
+fine enough to read as paper is invisible, and grain coarse enough to see reads
+as noise over the type. Both were measured at four strengths. The watercolour
+that actually carries is in the shapes: the band, the pooled object fills, and
+the washed navy.
+
+**One bug worth remembering.** `feTurbulence` is a generator, so with no
+explicit filter region the default `-10%/120%` paints noise *outside* the
+element. That shipped in the previous commit as a faint grey halo around every
+washed surface. All four filters now clamp their region.
+
 ## 4. What this does not fix
 
 The site is still a grid of hairline rectangles, and that is the largest

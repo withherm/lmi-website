@@ -117,12 +117,47 @@ img,svg{max-width:100%;}
    touches type. Measured against a four-way harness: one octave at
    baseFrequency 0.014 and scale 2.4 undulates, more octaves read as fur, and
    a longer wavelength pinches the corners. EQT-417. */
-.drawn{position:relative;border:2px solid transparent;}
+.drawn{position:relative;border:3px solid transparent;}
 .drawn::after{
-  content:"";position:absolute;inset:-2px;pointer-events:none;
-  border:2px solid var(--edge-c,var(--edge-blue));border-radius:inherit;
+  content:"";position:absolute;inset:-3px;pointer-events:none;
+  border:3px solid var(--edge-c,var(--edge-blue));border-radius:inherit;
   filter:url(#edge);transition:border-color .18s ease;
 }
+/* A washed band -------------------------------------------------------- */
+/* Where a group of objects belongs together, the blue is a band of paint
+   behind them rather than a fill on the whole section. Three things make it
+   read as paint: the edge is displaced so it breaks the way a brush leaves
+   paper, the fill pools instead of sitting flat, and the band is offset from
+   the content grid so it never lines up with a container edge. Measured
+   against a hard-edged band, which reads as a CSS section every time.
+   One band per page, not one per section. EQT-417. */
+.g-wash{position:relative;isolation:isolate;overflow:hidden;}
+.g-wash > *{position:relative;z-index:2;}
+.g-wash::before{
+  content:"";position:absolute;z-index:0;top:var(--wash-t,52px);bottom:var(--wash-b,30px);
+  left:0;right:var(--wash-r,5%);background:var(--wash-blue);border-radius:8px;filter:url(#soft);
+}
+.g-wash::after{
+  content:"";position:absolute;z-index:1;pointer-events:none;
+  top:var(--wash-t,52px);bottom:var(--wash-b,30px);left:0;right:var(--wash-r,5%);
+  border-radius:8px;filter:url(#pool);opacity:.5;mix-blend-mode:multiply;
+}
+/* Mirrored, for a page that carries two bands. */
+.g-wash-l::before,.g-wash-l::after{left:var(--wash-r,5%);right:0;}
+/* A tight section carries a shallower band. */
+.sec-tight.g-wash{--wash-t:26px;--wash-b:18px;}
+/* An object standing on the band goes white. Tint on wash is two values of
+   the same blue and the object stops separating from its ground. */
+.g-wash .card-tint,.g-wash .panel,.g-wash .sector-panel{background:var(--white);}
+.g-wash .card-tint::before,.g-wash .panel::before,.g-wash .sector-panel::before{display:none;}
+
+/* Pooling inside a pale object fill, same mechanic at object scale. */
+.pooled{position:relative;isolation:isolate;}
+.pooled::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  filter:url(#pool);opacity:.45;mix-blend-mode:multiply;
+}
+
 /* A solid navy fill gets brush variation. Screen never darkens, so white type
    sitting on the fill is untouched while the fill itself breaks up. */
 .washed{position:relative;isolation:isolate;overflow:hidden;}
@@ -134,12 +169,12 @@ img,svg{max-width:100%;}
 /* Card grammar 1: drawn box, for browsing ------------------------------ */
 /* One outline weight. Hover changes colour only, never depth or position. */
 .card{
-  border:2px solid transparent;border-radius:var(--radius-card);background:var(--white);
+  border:3px solid transparent;border-radius:var(--radius-card);background:var(--white);
   padding:24px;position:relative;
 }
 .card::after,.panel::after,.ic-plate::after,.capsule::after{
-  content:"";position:absolute;inset:-2px;pointer-events:none;
-  border:2px solid var(--edge-c,var(--edge-blue));border-radius:inherit;
+  content:"";position:absolute;inset:-3px;pointer-events:none;
+  border:3px solid var(--edge-c,var(--edge-blue));border-radius:inherit;
   filter:url(#edge);transition:border-color .18s ease;
 }
 a.card,.card-link{display:block;color:inherit;}
@@ -150,28 +185,32 @@ a.card,.card-link{display:block;color:inherit;}
    diagrams are what carry colour. Both reviewers, EQT-417. */
 /* On a tinted fill the pale blue edge disappears, so tinted objects step up
    to steel blue. Same weight, same drawn line, one value darker. */
-.card-tint{background:var(--pale-blue-tint);--edge-c:var(--steel-blue);}
+.card-tint{background:var(--pale-blue-tint);--edge-c:var(--steel-blue);isolation:isolate;}
+.card-tint::before,.panel::before,.ic-plate::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  filter:url(#pool);opacity:.45;mix-blend-mode:multiply;
+}
 .panel{
-  background:var(--pale-blue-tint);border:2px solid transparent;border-radius:var(--radius-card);
-  padding:26px 28px;--edge-c:var(--steel-blue);
+  background:var(--pale-blue-tint);border:3px solid transparent;border-radius:var(--radius-card);
+  padding:26px 28px;--edge-c:var(--steel-blue);isolation:isolate;
 }
 .ic-plate{
-  background:var(--pale-blue-tint);border:2px solid transparent;border-radius:14px;
-  padding:8px;display:inline-flex;--edge-c:var(--steel-blue);
+  background:var(--pale-blue-tint);border:3px solid transparent;border-radius:14px;
+  padding:8px;display:inline-flex;--edge-c:var(--steel-blue);isolation:isolate;
 }
 
 /* Card grammar 2: capsule, for sequential and procedural --------------- */
 /* No overflow:hidden: it would clip the drawn edge back to a straight line.
    The head rounds its own top corners instead. */
 .capsule{
-  border:2px solid transparent;border-radius:var(--radius-capsule);background:var(--white);
+  border:3px solid transparent;border-radius:var(--radius-capsule);background:var(--white);
   display:flex;flex-direction:column;position:relative;
 }
 .capsule-head{
   background:var(--deep-navy);color:var(--white);text-align:center;
   font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;
   padding:15px 20px;line-height:var(--lh-head);
-  border-radius:calc(var(--radius-capsule) - 2px) calc(var(--radius-capsule) - 2px) 0 0;
+  border-radius:calc(var(--radius-capsule) - 3px) calc(var(--radius-capsule) - 3px) 0 0;
   position:relative;isolation:isolate;overflow:hidden;
 }
 .capsule-head::before{

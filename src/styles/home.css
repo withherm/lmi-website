@@ -16,7 +16,7 @@
 .rung{background:none;border:0;padding:0;text-align:left;font:inherit;color:inherit;cursor:pointer;display:block;width:calc(100% - 132px);}
 .rung-inner{
   display:flex;align-items:center;gap:16px;padding:14px 20px 16px;border-radius:18px;background:var(--white);
-  border:2px solid transparent;position:relative;
+  border:3px solid transparent;position:relative;
 }
 .rung[aria-pressed="true"] .rung-inner{--edge-c:var(--mid-blue);}
 .rung-badge{flex:0 0 auto;}
@@ -45,7 +45,7 @@
 .sector-tab[aria-selected="true"]{background:var(--mid-blue);border-color:var(--mid-blue);color:var(--white);}
 .sector-dot{width:20px;height:20px;border-radius:5px;flex:0 0 auto;background:var(--pale-blue-tint);}
 .sector-tab[aria-selected="true"] .sector-dot{background:rgba(255,255,255,.85);}
-.sector-panel{border:2px solid transparent;border-radius:var(--radius-card);padding:32px 34px 34px;background:var(--pale-blue-tint);position:relative;--edge-c:var(--steel-blue);}
+.sector-panel{border:3px solid transparent;border-radius:var(--radius-card);padding:32px 34px 34px;background:var(--pale-blue-tint);position:relative;isolation:isolate;--edge-c:var(--steel-blue);}
 .sector-panel[hidden]{display:none;}
 .sector-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:34px;}
 .sector-h{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--deep-navy);margin:0 0 14px;}
@@ -55,10 +55,10 @@
 
 /* Proof walls ------------------------------------------------------------ */
 .grad-wall{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;}
-.grad-tile{background:var(--white);border:2px solid transparent;border-radius:14px;padding:16px 14px;min-height:76px;display:flex;align-items:center;position:relative;
+.grad-tile{background:var(--white);border:3px solid transparent;border-radius:14px;padding:16px 14px;min-height:76px;display:flex;align-items:center;position:relative;
   font-family:var(--font-heading);font-weight:500;font-size:var(--t-ui-sm);line-height:1.45;color:var(--charcoal-grey);}
 .logo-wall{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;}
-.logo-mark{border:2px solid transparent;border-radius:14px;height:74px;display:flex;align-items:center;justify-content:center;background:var(--white);position:relative;}
+.logo-mark{border:3px solid transparent;border-radius:14px;height:74px;display:flex;align-items:center;justify-content:center;background:var(--white);position:relative;}
 .logo-mark span{display:block;width:74px;height:16px;border-radius:3px;background:rgba(31,50,104,.16);}
 
 /* Testimonial ------------------------------------------------------------ */
@@ -78,7 +78,7 @@
 
 /* EQUIBT handover -------------------------------------------------------- */
 .handover{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:60px;align-items:center;}
-.eq-mark{border:2px solid transparent;border-radius:var(--radius-card);position:relative;height:128px;display:flex;align-items:center;justify-content:center;
+.eq-mark{border:3px solid transparent;border-radius:var(--radius-card);position:relative;height:128px;display:flex;align-items:center;justify-content:center;
   font-family:var(--font-heading);font-weight:700;font-size:var(--t-lede);letter-spacing:var(--tr-label);color:var(--dark-slate);}
 
 /* Page head (inner pages) ------------------------------------------------ */
@@ -102,7 +102,7 @@
 .course-top{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;}
 
 /* Enrolment card (course page) ------------------------------------------- */
-.enrol{position:sticky;top:calc(var(--nav-h) + 24px);border:2px solid transparent;border-radius:var(--radius-card);padding:26px 26px 28px;background:var(--white);display:flex;flex-direction:column;gap:14px;}
+.enrol{position:sticky;top:calc(var(--nav-h) + 24px);border:3px solid transparent;border-radius:var(--radius-card);padding:26px 26px 28px;background:var(--white);display:flex;flex-direction:column;gap:14px;}
 .enrol-price{font-family:var(--font-heading);font-weight:700;font-size:var(--t-h2);color:var(--deep-navy);line-height:1;}
 .enrol-price small{display:block;font-size:var(--t-label);font-weight:500;color:var(--charcoal-grey);margin-top:6px;letter-spacing:.04em;}
 .enrol-rows{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
@@ -171,7 +171,7 @@ table.data th{font-family:var(--font-heading);font-weight:700;font-size:var(--t-
 /* The separation diagram is a process panel: the pale blue lives inside the
    object, the nodes are white on top of it, and the ink filter carries the
    drawn edge. Horizontal above 760, vertical below. EQT-417. */
-.sep-diagram{border:2px solid transparent;border-radius:var(--radius-card);background:var(--pale-blue-tint);padding:34px 30px;position:relative;--edge-c:var(--steel-blue);}
+.sep-diagram{border:3px solid transparent;border-radius:var(--radius-card);background:var(--pale-blue-tint);padding:34px 30px;position:relative;isolation:isolate;--edge-c:var(--steel-blue);}
 .sep-diagram .sep-v{display:none;}
 @media (max-width:760px){
   .sep-diagram{padding:22px 14px;}
@@ -227,7 +227,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var
    block inside it, white between the two. EQT-417. */
 .card-icon{
   display:flex;align-items:center;justify-content:center;
-  padding:26px 0;margin:9px 9px 0;background:var(--pale-blue-tint);border-radius:13px;
+  padding:26px 0;margin:9px 9px 0;background:var(--pale-blue-tint);border-radius:12px;
 }
 .g-tint .card-icon{background:var(--white);}
 .sector-tab .ic{margin-right:2px;}
@@ -235,8 +235,8 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var
 /* Drawn edge, same rule as base.css, for the objects declared in this file. */
 .rung-inner::after,.grad-tile::after,.logo-mark::after,.eq-mark::after,
 .enrol::after,.sector-panel::after,.sep-diagram::after{
-  content:"";position:absolute;inset:-2px;pointer-events:none;
-  border:2px solid var(--edge-c,var(--edge-blue));border-radius:inherit;
+  content:"";position:absolute;inset:-3px;pointer-events:none;
+  border:3px solid var(--edge-c,var(--edge-blue));border-radius:inherit;
   filter:url(#edge);transition:border-color .18s ease;
 }
 /* Selected tab and pressed filter carry the same wash as a capsule head. */
@@ -244,3 +244,10 @@ input:focus-visible,select:focus-visible,textarea:focus-visible{border-color:var
 .sector-tab[aria-selected="true"]::before,.filter[aria-pressed="true"]::before{
   content:"";position:absolute;inset:0;pointer-events:none;filter:url(#wash);opacity:.35;mix-blend-mode:screen;
 }
+
+/* Pale object fills pool, same as the band. */
+.sector-panel::before,.sep-diagram::before,.card-icon::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  filter:url(#pool);opacity:.45;mix-blend-mode:multiply;
+}
+.card-icon{position:relative;isolation:isolate;}

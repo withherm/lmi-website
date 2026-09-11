@@ -80,6 +80,9 @@
      scale; steel blue turns the page into a blue grid. Measured between the
      two on the real card grid. EQT-417. */
   --edge-blue:#A9C0DC;
+  /* The band of paint behind a group of objects. A shade up from the object
+     tint, so an object sitting on the band still separates from it. */
+  --wash-blue:#DCE7F3;
   --hairline-strong:rgba(31,50,104,0.28);
 
   /* Layout -------------------------------------------------------------- */

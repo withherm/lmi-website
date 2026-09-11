@@ -54,13 +54,27 @@ const {
           <feTurbulence type="fractalNoise" baseFrequency="0.014" numOctaves="1" seed="7" result="n"/>
           <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
         </filter>
+        <!-- A washed band: a long, low-frequency displacement, so the band
+             edge breaks the way a brush leaves paper rather than the way a
+             CSS section ends. Measured against a hard edge and two softer
+             ones; below about 6 the edge still reads as a rule. -->
+        <filter id="soft" x="-4%" y="-14%" width="108%" height="128%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="2" seed="13" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <!-- Pooling inside a pale fill. Multiply, so the blue keeps its value
+             instead of being lightened the way a screen wash lightened it. -->
+        <filter id="pool" x="0" y="0" width="100%" height="100%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.012 0.026" numOctaves="4" seed="9"/>
+          <feColorMatrix type="matrix" values="0 0 0 0 0.72  0 0 0 0 0.81  0 0 0 0 0.90  0 0 0 0.55 0"/>
+        </filter>
         <!-- Wash inside a solid navy fill. Screen never darkens, so white
              type on top is untouched while the fill picks up brush variation. -->
-        <filter id="wash">
+        <filter id="wash" x="0" y="0" width="100%" height="100%">
           <feTurbulence type="fractalNoise" baseFrequency="0.09" numOctaves="3" seed="11"/>
           <feColorMatrix type="matrix" values="0 0 0 0 0.20  0 0 0 0 0.31  0 0 0 0 0.56  0 0 0 0.6 0"/>
         </filter>
-        <filter id="paper">
+        <filter id="paper" x="0" y="0" width="100%" height="100%">
           <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" seed="5"/>
           <feColorMatrix type="saturate" values="0"/>
         </filter>
