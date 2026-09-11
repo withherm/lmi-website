@@ -4,8 +4,17 @@ For a reviewer that can read the repo, run the build, and drive a browser.
 11 September 2026, EQT-417.
 
 **Repo:** `withherm/lmi-website` · **Branch:** `eqt-417-design-coherence`
-**Must be at commit `9cdb586` or later.** If `src/styles/edges.css` does not
+**Must be at commit `d227998` or later.** If `src/styles/edges.css` does not
 exist, you are on an older commit and this brief does not apply. Stop and say so.
+
+**Deployed build, for cross-checking only:**
+https://1d3490c7-lmi-website.equibt.workers.dev
+
+Run your measurements against your own local build, not against that URL. Use
+the deployed one for a single check: fetch its stylesheet and confirm it
+contains `border-image-slice` and does not contain `url(#edge)`. If it does not
+match the repo, the deployment is stale and anything anyone else reviews on that
+URL is worthless. Say so if you find it.
 
 ---
 
