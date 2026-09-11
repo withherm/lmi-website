@@ -28,6 +28,7 @@
   --t-ui:15px;
   --t-ui-sm:14px;
   --t-label:11px;
+  --t-label-lg:13px;   /* uppercase label on a dark ground: 11px went grey */
   --t-label-sm:10px;
 
   /* Line heights, one per role ------------------------------------------ */

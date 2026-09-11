@@ -60,7 +60,7 @@ img,svg{max-width:100%;}
 
 /* Type helpers — every size from the ladder ---------------------------- */
 .eyebrow{font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;color:var(--mid-blue);margin:0 0 14px;line-height:var(--lh-head);}
-.g-dark .eyebrow{color:var(--pale-blue);}
+.g-dark .eyebrow{color:var(--pale-blue);font-size:var(--t-label-lg);}
 /* Mid Blue on the pale tint ground is 4.44:1, which misses AA by 0.06.
    The eyebrow goes navy on that ground only. EQT-417. */
 /* Mid Blue on the pale tint ground is 4.44:1, which misses AA by 0.06.
@@ -189,7 +189,7 @@ a.card,.card-link{display:block;color:inherit;}
 .capsule{background-color:var(--white);display:flex;flex-direction:column;position:relative;}
 .capsule-head{
   background:var(--deep-navy);color:var(--white);text-align:center;
-  font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;
+  font-family:var(--font-heading);font-weight:700;font-size:var(--t-ui-sm);letter-spacing:var(--tr-label-tight);text-transform:uppercase;
   padding:15px 20px;line-height:var(--lh-head);
   border-radius:calc(var(--radius-card) - 3px) calc(var(--radius-card) - 3px) 0 0;
   position:relative;isolation:isolate;overflow:hidden;
