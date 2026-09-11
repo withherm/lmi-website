@@ -76,7 +76,7 @@ lines = [
 for name, hexv in COLOURS.items():
     lines.append(f"  --drawn-{name}:{url(D, hexv)};")
 lines.append("}")
-DRAWN = [".card", ".panel", ".ic-plate", ".capsule", ".rung-inner", ".grad-tile",
+DRAWN = [".card", ".ic-plate", ".capsule", ".rung-inner", ".grad-tile",
          ".logo-mark", ".eq-mark", ".enrol", ".sector-panel", ".sep-diagram"]
 lines.append("\n/* Every drawn container. One weight, one radius, one line. */")
 lines.append(",\n".join(DRAWN) + "{")

@@ -145,8 +145,8 @@ img,svg{max-width:100%;}
 .sec-tight.g-wash{--wash-t:26px;--wash-b:18px;}
 /* An object standing on the band goes white. Tint on wash is two values of
    the same blue and the object stops separating from its ground. */
-.g-wash .card-tint,.g-wash .panel,.g-wash .sector-panel{background:var(--white);}
-.g-wash .card-tint::before,.g-wash .panel::before,.g-wash .sector-panel::before{display:none;}
+.g-wash .card-tint,.g-wash .sector-panel{background-color:var(--white);}
+.g-wash .card-tint::before,.g-wash .sector-panel::before{display:none;}
 
 /* Pooling inside a pale object fill, same mechanic at object scale. */
 .pooled{position:relative;isolation:isolate;}
@@ -165,27 +165,26 @@ img,svg{max-width:100%;}
 
 /* Card grammar 1: drawn box, for browsing ------------------------------ */
 /* One outline weight. Hover changes colour only, never depth or position. */
-.card{background:var(--white);padding:24px;position:relative;transition:border-image-source .18s ease;}
+.card{background-color:var(--white);padding:24px;position:relative;transition:border-image-source .18s ease;}
 a.card,.card-link{display:block;color:inherit;}
 .card:hover,.card:focus-within{--drawn-src:var(--drawn-mid);}
-.card-featured{background:var(--pale-blue-tint);--drawn-src:var(--drawn-mid);}
+.card-featured{background-color:var(--pale-blue-tint);--drawn-src:var(--drawn-mid);}
 /* Object grounds. Pale blue lives inside the drawn objects, not under whole
    sections. The page ground stays plain off-white, so the panels and the
    diagrams are what carry colour. Both reviewers, EQT-417. */
 /* On a tinted fill the pale blue edge disappears, so tinted objects step up
    to steel blue. Same weight, same drawn line, one value darker. */
-.card-tint{background:var(--pale-blue-tint);--drawn-src:var(--drawn-steel);isolation:isolate;}
-.card-tint::before,.panel::before,.ic-plate::before{
+.card-tint{background-color:var(--pale-blue-tint);--drawn-src:var(--drawn-steel);isolation:isolate;}
+.card-tint::before,.ic-plate::before{
   content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
   filter:url(#pool);opacity:.45;mix-blend-mode:multiply;
 }
-.panel{background:var(--pale-blue-tint);padding:26px 28px;--drawn-src:var(--drawn-steel);isolation:isolate;position:relative;}
-.ic-plate{background:var(--pale-blue-tint);padding:8px;display:inline-flex;--drawn-src:var(--drawn-steel);isolation:isolate;position:relative;}
+.ic-plate{background-color:var(--pale-blue-tint);padding:8px;display:inline-flex;--drawn-src:var(--drawn-steel);isolation:isolate;position:relative;}
 
 /* Card grammar 2: capsule, for sequential and procedural --------------- */
 /* No overflow:hidden: it would clip the drawn edge back to a straight line.
    The head rounds its own top corners instead. */
-.capsule{background:var(--white);display:flex;flex-direction:column;position:relative;}
+.capsule{background-color:var(--white);display:flex;flex-direction:column;position:relative;}
 .capsule-head{
   background:var(--deep-navy);color:var(--white);text-align:center;
   font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;

@@ -1,7 +1,6 @@
 :root{
   /* Type families ------------------------------------------------------- */
   --font-heading:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --font-sans:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-body:"Source Serif 4",Georgia,"Times New Roman",serif;
 
   /* Type scale — LOCKED, EQT-417.
@@ -35,7 +34,6 @@
   --lh-display:1.04;
   --lh-head:1.2;
   --lh-body:1.6;
-  --lh-tight:1.45;
   --lh-flat:1;
 
   /* Tracking, one per role ---------------------------------------------- */
@@ -52,7 +50,6 @@
   --cyan:#35A8DC;           /* small accents, connector triangles           */
   --pale-blue:#C2D4E7;      /* flow arrows, illustration ground             */
   --pale-blue-tint:#E3EBF4; /* third page ground, pills                     */
-  --grey:#9A9A9A;
   --charcoal-grey:#4A4A4A;
   --white:#FFFFFF;
   --off-white:#F4F4F2;
@@ -61,7 +58,6 @@
 
   /* EQUIBT Group navy. The logo square only. Sourced from
      equibt-website/brand/assets/logos/equibt/EQ-LOGO-701_EQ-MAIN-R1.svg   */
-  --eq-navy:#26245C;
 
   /* Signal Red: risk and failure states ONLY.
      Never a button, a heading, a link, or decoration. */
@@ -71,19 +67,16 @@
   --signal-green:#2E7D52;
 
   /* Belt identity. Badges only, never chrome. */
-  --belt-yellow:#E8B833;
-  --belt-green:#2E7D52;
-  --belt-black:#1C1C1C;
 
   --hairline:rgba(31,50,104,0.14);
-  /* Drawn-object edge. Pale blue is 1.34:1 on white and disappears at page
-     scale; steel blue turns the page into a blue grid. Measured between the
-     two on the real card grid. EQT-417. */
-  --edge-blue:#A9C0DC;
+  /* The drawn-edge colours are NOT tokens. They are baked into the SVG paths
+     that prototypes/tools/gen_edges.py writes into edges.css, so editing a
+     value here would not recolour the outline. Change the generator and re-run
+     it. An --edge-blue token used to sit here and did nothing, which Codex
+     flagged as a trap. EQT-417. */
   /* The band of paint behind a group of objects. A shade up from the object
      tint, so an object sitting on the band still separates from it. */
   --wash-blue:#DCE7F3;
-  --hairline-strong:rgba(31,50,104,0.28);
 
   /* Layout -------------------------------------------------------------- */
   --max:1180px;
