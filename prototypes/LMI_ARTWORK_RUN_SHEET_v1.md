@@ -173,9 +173,16 @@ or not the illustration set exists.
 
 ## Volume, so the estimate is honest
 
-Roughly 30 to 40 assets, each one hand-corrected, plus six character sheets that
-must be right before anything derived from them is generated. This is days of
-Affinity time, not hours. Stage the work: methods first, sector scenes last, and
-the site stays shippable at every point in between.
+Twenty generated assets, counted slot by slot in `LMI_IMAGE_PROMPTS_v1.md`
+section 8: one home difference, four home sector strips, seven method motifs,
+one course review, four in-house scenes, one approach, two spare. Six cast
+figures on top of that, each needing a sheet and two or three poses.
+
+Every one is hand-corrected, so budget the correction time, not the generation
+time. Generation is minutes and correction is the day. Stage the work: methods
+first, sector scenes last, and the site stays shippable at every point between.
+
+(An earlier draft of this sheet said 30 to 40. That was my estimate rather than
+a count. Twenty plus the cast is the count.)
 
 _End v1._
