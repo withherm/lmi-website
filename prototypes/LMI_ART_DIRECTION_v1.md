@@ -192,6 +192,43 @@ frames on the home page.
 `#soft` and `#pool` keep using displacement, and that is fine. They act on large
 filled shapes, where quantised movement is invisible. Only thin lines tear.
 
+## 3e. Correction: the hand is in the stroke, not in the path
+
+Herman rejected the undulating outline as too wobbly, with uneven thickness,
+and it turns out I had the principle backwards from the start.
+
+**Checked at high zoom against the AESQ stills.** The reference's outlines are
+geometric. The path is a clean rounded rectangle, the thickness is even along
+its whole length, and the entire hand-drawn quality comes from the stroke's
+boundary breaking up, the way a marker behaves on textured paper. There is no
+wobble in the line. I had put the irregularity in the path and kept the stroke
+edge perfectly crisp, which is the opposite.
+
+There was a second fault underneath it. `border-image-repeat: stretch` scales
+the edge run to the box, so the same wave was compressed on a small container
+and stretched on a large one. That is what Herman read as varying thickness,
+and he was right: the treatment genuinely differed by box size.
+
+**The fix, measured at 4x against three alternatives:**
+
+- Amplitude zero. The path is a clean rounded rectangle.
+- The stroke goes through a high-frequency, low-amplitude displacement inside
+  the source SVG: baseFrequency 0.9 at scale 0.8. That grains the boundary
+  without moving the line. Rougher settings read as fuzz and the line stops
+  looking crisp.
+- `border-image-repeat: round`, not `stretch`, so the texture holds one scale
+  whatever the box size. With a smooth path the tile joins seamlessly, which is
+  why round failed before and works now.
+
+Verified: a 70px container and a full-width panel now render an identical line,
+straight and even, at 4x. No horizontal overflow at 320, 390, 768, 1024 and
+1440 across 53 routes.
+
+**The split this leaves is the reference's own.** Explanatory ink is drawn: the
+icons keep their two-pass wobble. Structural containers are a clean line. That
+contrast is what the AESQ frames do, and flattening both into one treatment is
+what made the site read as a filter applied to everything.
+
 ## 4. What this does not fix
 
 The site is still a grid of hairline rectangles, and that is the largest

@@ -1,91 +1,98 @@
 #!/usr/bin/env python3
 """Generate the drawn-edge border-image sources for src/styles/edges.css.
 
-Why a path and not a filter: an feDisplacementMap moves a rasterised line by a
-quantised amount, so a 3px border comes out in steps with visible breaks. It
-reads as a defect, not as a hand. A path is continuous by construction. The
-undulation is two sine components per straight run, tapering to zero at both
-ends so the run meets the corner arc cleanly, and border-image stretch keeps
-the corners at 1:1 while only the straight runs scale.
+The line is a SMOOTH rounded rectangle with a ROUGH STROKE EDGE. That is the
+reference's actual technique, checked at high zoom against the AESQ stills: the
+path is geometric and the thickness is even, and the whole hand-drawn quality
+comes from the stroke boundary breaking up like a marker on textured paper.
+
+Two earlier attempts had it backwards. A displacement filter on a CSS border
+tore the line into steps, because it moves a rasterised line by a quantised
+amount. Putting the irregularity into the path fixed the tearing but gave a
+line that visibly wobbled, and `stretch` then compressed the wave on a small
+box and stretched it on a large one, so the same treatment read differently at
+every size. Herman called both, in order: broken, then too wobbly with uneven
+thickness.
+
+So: zero amplitude, texture in the stroke, and `repeat: round` rather than
+`stretch`, so the texture holds one scale whatever the box size.
 
 Re-run: python3 prototypes/tools/gen_edges.py > src/styles/edges.css
 """
-import math, random, urllib.parse, sys
+import math, urllib.parse, sys
 
 W, R, INSET, SLICE = 200, 20, 4.0, 24
 COLOURS = {"edge": "#A9C0DC", "steel": "#5B87C0", "mid": "#2E6CB5"}
 
-def path(amp=1.0, waves=2, seed=1, arc_amp=0.3, sec=0.28, n=18):
-    rnd = random.Random(seed)
-    ph = [rnd.uniform(0, 6.283) for _ in range(8)]
-    x0 = y0 = INSET
-    x1 = y1 = W - INSET
-    pts, k = [], [0]
 
-    def run(ax, ay, bx, by, nx, ny):
-        p1, p2 = ph[k[0] % 8], ph[(k[0] + 3) % 8]
-        k[0] += 1
+def path(n=14):
+    """A clean rounded rectangle. No undulation: the hand is in the stroke."""
+    pts = []
+
+    def run(ax, ay, bx, by):
         for i in range(n + 1):
             t = i / n
-            d = math.sin(2 * math.pi * waves * t + p1) * (1 - sec) \
-                + math.sin(2 * math.pi * waves * 2.3 * t + p2) * sec
-            d *= amp * math.sin(math.pi * t)
-            pts.append((ax + (bx - ax) * t + nx * d, ay + (by - ay) * t + ny * d))
+            pts.append((ax + (bx - ax) * t, ay + (by - ay) * t))
 
     def arc(cx, cy, a0, a1):
-        p = ph[k[0] % 8]
-        k[0] += 1
-        for i in range(1, 7):
-            t = i / 7
-            a = math.radians(a0 + (a1 - a0) * t)
-            nx, ny = math.cos(a), math.sin(a)
-            r = R + math.sin(2 * math.pi * t + p) * arc_amp
-            pts.append((cx + r * nx, cy + r * ny))
+        for i in range(1, 8):
+            a = math.radians(a0 + (a1 - a0) * i / 8)
+            pts.append((cx + R * math.cos(a), cy + R * math.sin(a)))
 
-    run(x0 + R, y0, x1 - R, y0, 0, -1); arc(x1 - R, y0 + R, -90, 0)
-    run(x1, y0 + R, x1, y1 - R, 1, 0);  arc(x1 - R, y1 - R, 0, 90)
-    run(x1 - R, y1, x0 + R, y1, 0, 1);  arc(x0 + R, y1 - R, 90, 180)
-    run(x0, y1 - R, x0, y0 + R, -1, 0); arc(x0 + R, y0 + R, 180, 270)
+    x0 = y0 = INSET
+    x1 = y1 = W - INSET
+    run(x0 + R, y0, x1 - R, y0); arc(x1 - R, y0 + R, -90, 0)
+    run(x1, y0 + R, x1, y1 - R); arc(x1 - R, y1 - R, 0, 90)
+    run(x1 - R, y1, x0 + R, y1); arc(x0 + R, y1 - R, 90, 180)
+    run(x0, y1 - R, x0, y0 + R); arc(x0 + R, y0 + R, 180, 270)
 
     m = len(pts)
     d = [f"M{pts[0][0]:.1f},{pts[0][1]:.1f}"]
     for i in range(m):
-        p0, p1_, p2, p3 = pts[(i-1) % m], pts[i], pts[(i+1) % m], pts[(i+2) % m]
-        c1 = (p1_[0] + (p2[0]-p0[0])/6, p1_[1] + (p2[1]-p0[1])/6)
-        c2 = (p2[0] - (p3[0]-p1_[0])/6, p2[1] - (p3[1]-p1_[1])/6)
+        p0, p1, p2, p3 = pts[(i-1) % m], pts[i], pts[(i+1) % m], pts[(i+2) % m]
+        c1 = (p1[0] + (p2[0]-p0[0])/6, p1[1] + (p2[1]-p0[1])/6)
+        c2 = (p2[0] - (p3[0]-p1[0])/6, p2[1] - (p3[1]-p1[1])/6)
         d.append(f"C{c1[0]:.1f},{c1[1]:.1f} {c2[0]:.1f},{c2[1]:.1f} {p2[0]:.1f},{p2[1]:.1f}")
     return "".join(d) + "Z"
 
+
 def url(d, colour, width=3):
-    s = (f"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {W} {W}' width='{W}' height='{W}'>"
+    """Stroke the path, then break its edge. Frequency 0.9 at scale 0.8 grains
+    the boundary without moving the line. Rougher settings read as fuzz and the
+    line stops looking crisp. Measured at 4x against three alternatives."""
+    tex = ("<filter id='t' x='-6%' y='-6%' width='112%' height='112%'>"
+           "<feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'"
+           " seed='11' result='n'/>"
+           "<feDisplacementMap in='SourceGraphic' in2='n' scale='0.8'"
+           " xChannelSelector='R' yChannelSelector='G'/></filter>")
+    s = (f"<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 {W} {W}'"
+         f" width='{W}' height='{W}'>{tex}"
          f"<path d='{d}' fill='none' stroke='{colour}' stroke-width='{width}'"
-         f" stroke-linejoin='round' stroke-linecap='round'/></svg>")
+         f" stroke-linejoin='round' filter='url(#t)'/></svg>")
     return 'url("data:image/svg+xml,' + urllib.parse.quote(s, safe="") + '")'
 
-D = path(amp=1.0, waves=2, seed=4)
+
+D = path()
 lines = [
     "/* GENERATED by prototypes/tools/gen_edges.py. Do not hand-edit. */",
-    "/* The drawn edge as a path, not a displaced border. An feDisplacementMap",
-    "   moves a rasterised line by a quantised amount, so a 3px border came out",
-    "   in steps with visible breaks: it read as a defect rather than a hand.",
-    "   A path is continuous by construction. border-image keeps the corners at",
-    "   1:1 and stretches only the straight runs, so the wobble amplitude stays",
-    "   true at every box size and the wavelength grows with the box. EQT-417. */",
+    "/* A smooth rounded rectangle with a roughened stroke edge, which is the",
+    "   reference's technique: geometric path, even thickness, and the hand in",
+    "   the way the stroke boundary breaks up. border-image-repeat is round, so",
+    "   the texture holds one scale at every box size, where stretch compressed",
+    "   it on a small box and stretched it on a large one. EQT-417. */",
     ":root{",
 ]
 for name, hexv in COLOURS.items():
     lines.append(f"  --drawn-{name}:{url(D, hexv)};")
 lines.append("}")
-# Containers only. A label, a mark, or a plate sitting inside an already
-# outlined card does not get a second frame: that is what made the treatment
-# read as a filter applied to everything rather than as a hand. EQT-417.
+
 DRAWN = [".card", ".capsule", ".rung-inner", ".enrol", ".sector-panel",
          ".sep-diagram"]
 lines.append("\n/* Every drawn container. One weight, one radius, one line. */")
 lines.append(",\n".join(DRAWN) + "{")
 lines.append("  border-style:solid;border-width:3px;border-color:transparent;")
 lines.append("  border-image-source:var(--drawn-src,var(--drawn-edge));")
-lines.append(f"  border-image-slice:{SLICE};border-image-width:{SLICE}px;border-image-repeat:stretch;")
+lines.append(f"  border-image-slice:{SLICE};border-image-width:{SLICE}px;border-image-repeat:round;")
 lines.append("  background-clip:padding-box;border-radius:var(--radius-card);")
 lines.append("}")
 sys.stdout.write("\n".join(lines) + "\n")
