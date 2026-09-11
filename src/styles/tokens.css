@@ -89,6 +89,7 @@
   --max:1180px;
   --wide:1320px;
   --radius-card:20px;
-  --radius-capsule:26px;
+  /* --radius-capsule removed: one radius for every drawn container, so a
+     single border-image source serves them all. EQT-417. */
   --nav-h:80px;
 }

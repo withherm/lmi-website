@@ -7,6 +7,7 @@ import "@fontsource/source-serif-4/500.css";
 import "@fontsource/source-serif-4/500-italic.css";
 import "../styles/tokens.css";
 import "../styles/base.css";
+import "../styles/edges.css";
 
 interface Props {
   title?: string;
@@ -46,13 +47,6 @@ const {
         <filter id="ink2" x="-18%" y="-18%" width="136%" height="136%">
           <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="29" result="n"/>
           <feDisplacementMap in="SourceGraphic" in2="n" scale="1.9" xChannelSelector="R" yChannelSelector="G"/>
-        </filter>
-        <!-- Box edges. One octave at a long wavelength undulates the way a
-             drawn line does; more octaves read as fur and a longer wavelength
-             pinches the corners. Measured against a four-way harness. -->
-        <filter id="edge" x="-8%" y="-8%" width="116%" height="116%">
-          <feTurbulence type="fractalNoise" baseFrequency="0.014" numOctaves="1" seed="7" result="n"/>
-          <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
         </filter>
         <!-- A washed band: a long, low-frequency displacement, so the band
              edge breaks the way a brush leaves paper rather than the way a

@@ -117,12 +117,9 @@ img,svg{max-width:100%;}
    touches type. Measured against a four-way harness: one octave at
    baseFrequency 0.014 and scale 2.4 undulates, more octaves read as fur, and
    a longer wavelength pinches the corners. EQT-417. */
-.drawn{position:relative;border:3px solid transparent;}
-.drawn::after{
-  content:"";position:absolute;inset:-3px;pointer-events:none;
-  border:3px solid var(--edge-c,var(--edge-blue));border-radius:inherit;
-  filter:url(#edge);transition:border-color .18s ease;
-}
+/* .drawn-edge lives in edges.css, which is generated. An element takes the
+   drawn line by carrying that class and, where it needs a different colour,
+   by setting --drawn-src. */
 /* A washed band -------------------------------------------------------- */
 /* Where a group of objects belongs together, the blue is a band of paint
    behind them rather than a fill on the whole section. Three things make it
@@ -168,49 +165,32 @@ img,svg{max-width:100%;}
 
 /* Card grammar 1: drawn box, for browsing ------------------------------ */
 /* One outline weight. Hover changes colour only, never depth or position. */
-.card{
-  border:3px solid transparent;border-radius:var(--radius-card);background:var(--white);
-  padding:24px;position:relative;
-}
-.card::after,.panel::after,.ic-plate::after,.capsule::after{
-  content:"";position:absolute;inset:-3px;pointer-events:none;
-  border:3px solid var(--edge-c,var(--edge-blue));border-radius:inherit;
-  filter:url(#edge);transition:border-color .18s ease;
-}
+.card{background:var(--white);padding:24px;position:relative;transition:border-image-source .18s ease;}
 a.card,.card-link{display:block;color:inherit;}
-.card:hover::after,.card:focus-within::after{border-color:var(--mid-blue);}
-.card-featured{background:var(--pale-blue-tint);--edge-c:var(--mid-blue);}
+.card:hover,.card:focus-within{--drawn-src:var(--drawn-mid);}
+.card-featured{background:var(--pale-blue-tint);--drawn-src:var(--drawn-mid);}
 /* Object grounds. Pale blue lives inside the drawn objects, not under whole
    sections. The page ground stays plain off-white, so the panels and the
    diagrams are what carry colour. Both reviewers, EQT-417. */
 /* On a tinted fill the pale blue edge disappears, so tinted objects step up
    to steel blue. Same weight, same drawn line, one value darker. */
-.card-tint{background:var(--pale-blue-tint);--edge-c:var(--steel-blue);isolation:isolate;}
+.card-tint{background:var(--pale-blue-tint);--drawn-src:var(--drawn-steel);isolation:isolate;}
 .card-tint::before,.panel::before,.ic-plate::before{
   content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
   filter:url(#pool);opacity:.45;mix-blend-mode:multiply;
 }
-.panel{
-  background:var(--pale-blue-tint);border:3px solid transparent;border-radius:var(--radius-card);
-  padding:26px 28px;--edge-c:var(--steel-blue);isolation:isolate;
-}
-.ic-plate{
-  background:var(--pale-blue-tint);border:3px solid transparent;border-radius:14px;
-  padding:8px;display:inline-flex;--edge-c:var(--steel-blue);isolation:isolate;
-}
+.panel{background:var(--pale-blue-tint);padding:26px 28px;--drawn-src:var(--drawn-steel);isolation:isolate;position:relative;}
+.ic-plate{background:var(--pale-blue-tint);padding:8px;display:inline-flex;--drawn-src:var(--drawn-steel);isolation:isolate;position:relative;}
 
 /* Card grammar 2: capsule, for sequential and procedural --------------- */
 /* No overflow:hidden: it would clip the drawn edge back to a straight line.
    The head rounds its own top corners instead. */
-.capsule{
-  border:3px solid transparent;border-radius:var(--radius-capsule);background:var(--white);
-  display:flex;flex-direction:column;position:relative;
-}
+.capsule{background:var(--white);display:flex;flex-direction:column;position:relative;}
 .capsule-head{
   background:var(--deep-navy);color:var(--white);text-align:center;
   font-family:var(--font-heading);font-weight:700;font-size:var(--t-label);letter-spacing:var(--tr-label);text-transform:uppercase;
   padding:15px 20px;line-height:var(--lh-head);
-  border-radius:calc(var(--radius-capsule) - 3px) calc(var(--radius-capsule) - 3px) 0 0;
+  border-radius:calc(var(--radius-card) - 3px) calc(var(--radius-card) - 3px) 0 0;
   position:relative;isolation:isolate;overflow:hidden;
 }
 .capsule-head::before{
