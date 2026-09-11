@@ -7,6 +7,11 @@ import Illus from "../components/Illus.astro";
 import Icon from "../components/icons/Icon.astro";
 import "../styles/home.css";
 
+/* Fifteen empty placeholder marks took a screen of space and demonstrated
+   nothing, on a page whose argument is measured evidence. Hidden until real
+   logos are cleared: flip this to true once they are. EQT-417. */
+const SHOW_LOGO_WALL = false;
+
 const belts = [
   { code: "MBB", name: "Master Black Belt", outcome: "Build the improvement capability, not just the project.", detail: "By application, 12 months, independently certified", indent: 132, step: 4 },
   { code: "BB",  name: "Black Belt",        outcome: "Close out the problems nobody else can finish.",           detail: "10 days over 6 months, independently certified", indent: 88, step: 3 },
@@ -263,11 +268,15 @@ const graduates = [
         <p class="small measure" style="color:var(--charcoal-grey);margin-bottom:26px">Client names stay off the public site. These are the kinds of teams, and the work they took back.</p>
         <div class="grad-wall">{graduates.map((g) => <div class="grad-tile">{g}</div>)}</div>
 
-        <h2 style="margin:56px 0 22px">Organisations we have trained.</h2>
-        <div class="logo-wall">
-          {Array.from({ length: 15 }).map(() => <div class="logo-mark" aria-hidden="true"><span></span></div>)}
-        </div>
-        <p class="meta" style="margin-top:18px">Placeholder marks. Real logos go live only once each client has cleared it.</p>
+        {SHOW_LOGO_WALL && (
+          <>
+            <h2 style="margin:56px 0 22px">Organisations we have trained.</h2>
+            <div class="logo-wall">
+              {Array.from({ length: 15 }).map(() => <div class="logo-mark" aria-hidden="true"><span></span></div>)}
+            </div>
+            <p class="meta" style="margin-top:18px">Placeholder marks. Real logos go live only once each client has cleared it.</p>
+          </>
+        )}
       </div>
     </section>
 

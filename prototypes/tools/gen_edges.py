@@ -76,8 +76,11 @@ lines = [
 for name, hexv in COLOURS.items():
     lines.append(f"  --drawn-{name}:{url(D, hexv)};")
 lines.append("}")
-DRAWN = [".card", ".ic-plate", ".capsule", ".rung-inner", ".grad-tile",
-         ".logo-mark", ".eq-mark", ".enrol", ".sector-panel", ".sep-diagram"]
+# Containers only. A label, a mark, or a plate sitting inside an already
+# outlined card does not get a second frame: that is what made the treatment
+# read as a filter applied to everything rather than as a hand. EQT-417.
+DRAWN = [".card", ".capsule", ".rung-inner", ".enrol", ".sector-panel",
+         ".sep-diagram"]
 lines.append("\n/* Every drawn container. One weight, one radius, one line. */")
 lines.append(",\n".join(DRAWN) + "{")
 lines.append("  border-style:solid;border-width:3px;border-color:transparent;")

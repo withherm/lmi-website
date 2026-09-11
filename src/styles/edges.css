@@ -13,12 +13,8 @@
 
 /* Every drawn container. One weight, one radius, one line. */
 .card,
-.ic-plate,
 .capsule,
 .rung-inner,
-.grad-tile,
-.logo-mark,
-.eq-mark,
 .enrol,
 .sector-panel,
 .sep-diagram{

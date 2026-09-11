@@ -179,7 +179,9 @@ a.card,.card-link{display:block;color:inherit;}
   content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
   filter:url(#pool);opacity:.45;mix-blend-mode:multiply;
 }
-.ic-plate{background-color:var(--pale-blue-tint);padding:8px;display:inline-flex;--drawn-src:var(--drawn-steel);isolation:isolate;position:relative;}
+/* A tinted plate under the icon, with no outline of its own: it sits inside
+   an already outlined card and a second frame said nothing. EQT-417. */
+.ic-plate{background-color:var(--pale-blue-tint);border-radius:14px;padding:8px;display:inline-flex;isolation:isolate;position:relative;}
 
 /* Card grammar 2: capsule, for sequential and procedural --------------- */
 /* No overflow:hidden: it would clip the drawn edge back to a straight line.

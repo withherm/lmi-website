@@ -8,13 +8,13 @@ import { COURSES, FAMILIES, type Family } from "../../data/courses";
 import "../../styles/home.css";
 const families = (Object.keys(FAMILIES) as Family[]).sort((a, b) => FAMILIES[a].order - FAMILIES[b].order);
 ---
-<Layout title="Methods | Lean Methods Institute" description="Six method families: Lean Six Sigma, Zero Defects, AI-Enabled Improvement, Lean Service Design, Lean Business Analysis and Lean Agile.">
+<Layout title="Methods | Lean Methods Institute" description="Seven method families: Lean Six Sigma, Lean Operations, Zero Defects, AI-Enabled Improvement, Lean Service Design, Lean Business Analysis and Lean Agile.">
   <Nav />
   <main id="main">
     <section class="page-head">
       <div class="wrap">
         <p class="eyebrow">Methods</p>
-        <h1>Six methods, one discipline underneath.</h1>
+        <h1>Seven methods, one discipline underneath.</h1>
         <p class="lede measure-wide">They all start the same way: understand the work as it actually runs, find the cause with evidence, and change the system rather than asking people to try harder. What differs is the kind of work each one is built for.</p>
       </div>
     </section>
@@ -27,7 +27,7 @@ const families = (Object.keys(FAMILIES) as Family[]).sort((a, b) => FAMILIES[a].
             <span style="display:block;padding:24px">
               <h2 style="font-size:var(--t-h3)">{FAMILIES[f].name}</h2>
               <span class="small" style="display:block">{FAMILIES[f].blurb}</span>
-              <span class="meta" style="display:block;margin-top:10px">{COURSES.filter((c) => c.family === f).length} programmes</span>
+              <span class="meta" style="display:block;margin-top:10px">{(() => { const n = COURSES.filter((c) => c.family === f).length; return `${n} ${n === 1 ? "programme" : "programmes"}`; })()}</span>
               <span class="chev" style="margin-top:10px;display:inline-flex">Explore <span class="c" aria-hidden="true">&rsaquo;</span></span>
             </span>
           </a>
