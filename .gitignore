@@ -12,3 +12,7 @@ _superseded/
 # EQT-417 local screenshot harness
 shoot.mjs
 shootb.mjs
+
+# local check scripts, never committed
+/*.mjs
+/dev.sh
